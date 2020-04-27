@@ -1,7 +1,7 @@
 $(document).on('ready', function () {
     var costume = Math.floor(Math.random() * 3) + 1;
     $("#box_image").empty();
-    $("#box_image").append('<img class="width_100" src="image/logoSicsa/logo_sicsa' + costume + '.png">');
+    $("#box_image").append('<img class="width_100" src="image/incomark.png">');
     $("#iniciar_sesion").addClass('button_log' + costume);
 
     $.getJSON('https://api.ipify.org?format=json', function (data) {

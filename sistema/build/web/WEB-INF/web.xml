@@ -684,13 +684,13 @@
         <servlet-name>ControllerUsuario</servlet-name>
         <url-pattern>/ControllerUsuario</url-pattern>
     </servlet-mapping>
-    <!--    <session-config>
+    <session-config>
         <session-timeout>
             30
         </session-timeout>
-    </session-config>-->
+    </session-config>
     <display-name>
-        ARCADE Software. Call Center. Marcador Predictivo.
+        INCOMARK CALL CENTER.
     </display-name>
     <servlet-mapping>
         <servlet-name>ControllerEquipos</servlet-name>
