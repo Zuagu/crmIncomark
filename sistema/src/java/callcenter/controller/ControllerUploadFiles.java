@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package callcenter.controller;
+import callcenter.model.ModelProcesadorCsv;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class ControllerUploadFiles extends HttpServlet {
 
         upload.setFileSizeMax(MAX_FILE_SIZE);
         upload.setSizeMax(MAX_REQUEST_SIZE);
+        
         String responseDb = "";
         String fileName = "";
         String filePath = "";
@@ -80,14 +82,16 @@ public class ControllerUploadFiles extends HttpServlet {
                 }
             }
             if(status_file) {
-                //responseDb = PocesarDatosCargados.cargarBaseColores(fileName);
+                responseDb = ModelProcesadorCsv.cargar_base_azteca(filePath);
+                request.setAttribute("message_db", responseDb);
                 //System.out.println(responseDb);
             }
             
         } catch (Exception ex) {
             request.setAttribute("message", "Hubo un error en la ruta: " + filePath + " al cargar el archivo: " + ex.getMessage());
+            request.setAttribute("message_db", responseDb);
         }
-        getServletContext().getRequestDispatcher("/cargar-cartera-banco-azteca.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
         
         
     }

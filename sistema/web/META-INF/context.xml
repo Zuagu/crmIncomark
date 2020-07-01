@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/sistema">
+<!--<Context antiJARLocking="true" path="/sistema">
     <Resource auth="Container" 
               driverClassName="com.mysql.jdbc.Driver" 
               jdbcCompiliantTruncation="false" 
@@ -12,9 +12,9 @@
               type="javax.sql.DataSource" 
               url="jdbc:mysql://localhost:3306/arcade_call?autoReconnect=true" 
               username="admin"/>
-</Context>
+</Context>-->
 
-<!--<Context antiJARLocking="true" path="/sistema">
+<Context antiJARLocking="true" path="/sistema">
     <Resource auth="Container" 
               driverClassName="com.mysql.jdbc.Driver" 
               jdbcCompiliantTruncation="false" 
@@ -27,4 +27,4 @@
               type="javax.sql.DataSource" 
               url="jdbc:mysql://192.168.0.6:3306/arcade_call?autoReconnect=true" 
               username="root"/>
-</Context>-->
+</Context>

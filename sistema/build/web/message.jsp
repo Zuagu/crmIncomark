@@ -18,9 +18,10 @@
     <body>
         <div class="container center-align">
             <h3>${message}</h3>
+            <h4>${message_db}</h4>
             <div class="row">
                 <div class="col s10 m4 l4 offset-s1 offset-m4 offset-l4">
-                    <a class="btn waves-effect" href="uploadAsignacion.jsp">Regresar</a>
+                    <a class="btn waves-effect" href="cargar-cartera-banco-azteca.jsp">Regresar</a>
                 </div> 
             </div>
         </div>
