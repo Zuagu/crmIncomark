@@ -352,6 +352,10 @@
         <servlet-name>ControllerUploadFiles</servlet-name>
         <servlet-class>callcenter.controller.ControllerUploadFiles</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerDataCuentaAzteca</servlet-name>
+        <servlet-class>callcenter.controller.ControllerDataCuentaAzteca</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -691,6 +695,10 @@
     <servlet-mapping>
         <servlet-name>ControllerUploadFiles</servlet-name>
         <url-pattern>/ControllerUploadFiles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerDataCuentaAzteca</servlet-name>
+        <url-pattern>/ControllerDataCuentaAzteca</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

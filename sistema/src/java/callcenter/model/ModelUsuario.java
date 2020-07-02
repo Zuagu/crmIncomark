@@ -16,7 +16,7 @@ public class ModelUsuario {
             StartConexion inicioConexion = new StartConexion();
             int resultado = 0;
             String sql = "call sic_iniciar_sesion_con_ip('" + id_perfil + "','" + id_usuario + "', '" + password + "', '" + ip + "');";
-//            System.out.println(sql);
+            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {
                 resultado = Integer.parseInt(inicioConexion.rs.getString("resultado"));
