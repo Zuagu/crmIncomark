@@ -10,11 +10,6 @@ $(document).on('ready', function () {
     });
     window.onload = function () {
     };
-    window.setTimeout(function () {
-        $(".container").show(5000);
-        $("#preloader").hide();
-        $("body").addClass("login" + costume);
-    }, 5000);
 
 });
 //==============================================================================

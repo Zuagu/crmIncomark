@@ -14,23 +14,18 @@
     </head>
 
     <body id="loginjsp" class="style">
-        <div id="preloader" class="preload col s10 m10 l10">
-            <div class="bar">
-                <div class="circle"></div>
-                <p class="load">Cargando</p>
-            </div>
-        </div>
-        <div class="container" style="display:none">
+        <div class="container">
             <div class="row margin_bot_0"  >
                 <div class="outer">
                     <div class="middle">
                         <div class="inner">
-                            <div id="box_image" class="col s12 m6 l6 padding_40">
+                            <div id="box_image" class="col s12 m6 l6  offset-m3 offset-l3 padding_40">
                                 <img class="width_100" src="image/logoSicsa/logo_sicsa2.png">
                             </div>
                             <form id="login" class="" style="" name="login" action="/sistema/main.jsp" method="post">
-                                <div class="col s12 m6 l6 padding_40">
+                                <div class="col s12 m6 l6  offset-m3 offset-l3 padding_40">
                                     <input id="ip" type="hidden">
+                                    
                                     <div class="input-field width_100">
                                         <i class="material-icons prefix icon-white ">account_circle</i>
                                         <input id="id_usuario" type="text" name="id_usuario" class="validate input_color" onkeypress="return isNumberKey(event)">

@@ -34,22 +34,23 @@ body {
 	background-size: cover;
 	filter: blur(0px);
 	-webkit-filter: blur(0px);
+        background-color:#ffffff;
 }
 
 
 /* Start Random Background */
 
 .login1{
-	background-image: linear-gradient(to top, rgba(41, 51, 76,0.7), rgb(69, 113, 156, 0.7));
+	background-image: linear-gradient(to top, rgba(41, 51, 76,0.7), rgb(255, 255, 255, 0.7));
 
 }
 
 .login2{
-	background-color:#263238;
+	background-color:#ffffff;
 }
 
 .login3{
-	background-image: linear-gradient(to top, rgba(255, 255, 255,0.7), rgb(0, 0, 0, 0.7));
+	background-image: linear-gradient(to top, rgba(255, 255, 255,0.7), rgb(255, 255, 255, 0.7));
 }
 
 .button_log1{
@@ -130,7 +131,7 @@ input[type=password]:not(.browser-default):focus:not([readonly]){
 }
 
 i.icon-white {
-    color: white;
+    color: black;
 }
 /* preloader  code */
 
