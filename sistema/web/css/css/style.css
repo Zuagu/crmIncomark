@@ -611,12 +611,12 @@ color_icon{
 }
 .div_input_gestor_info input[type="text"]:not(.browser-default)[readonly="readonly"]{
     border-bottom: 0px solid white;  
-    color: white;
+    color: black;
 
 }
 
 .div_input_gestor_info input[type="text"]:not(.browser-default).validate + label {
-    color: white;   
+    color: black;   
 
 
 }
