@@ -599,18 +599,21 @@ color_icon{
     transition: 0.8s;
 }
 .div_input_gestor_tiempos input[type="text"]:not(.browser-default)[readonly="readonly"]{
-    border-bottom: 0px solid black;  
+    border-radius: 4px;
+     
     color: black;
 
 }
 
 .div_input_gestor_tiempos input[type="text"]:not(.browser-default).validate + label {
+    
     color: black;   
 
 
 }
 .div_input_gestor_info input[type="text"]:not(.browser-default)[readonly="readonly"]{
-    border-bottom: 0px solid white;  
+    border-radius: 4px;
+     
     color: black;
 
 }
@@ -657,12 +660,12 @@ div_info_secundaria{
     height: 5vh;
 }
 .div_gestor_textarea{
-    height: 15vh;
+    height: 17vh;
     margin-top: 5px;
     margin-left: -10px;
     border-radius: 12px;
     background: white;
-    border: 1px solid #06f;
+    border: 1px solid black; 
 
 }
 .ref_banc.collection .collection-item.avatar {
@@ -677,10 +680,12 @@ div_info_secundaria{
 }
 
 .btn_guardar_gestiones{
+    margin-top: 45px;
     background: linear-gradient(45deg,rgb(67, 160, 71), rgb(29, 233, 182));
 }
 
 .btn_siguiente {
+    margin-top: 45px;
     background: linear-gradient(45deg,rgb(255, 82, 82), rgb(244, 143, 177));
 }
 

@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/css/style.css">
     </head>
 
-    <body>
+    <body style="background: #fafafa">
         <jsp:include page="header.jsp"/>
         <div class="row" id="contenido">
             <div class="container-fluid">
@@ -25,88 +25,100 @@
                     <input id="fecha_fin_deudor" type="hidden">
                     <input id="numero_marcado_deudor" type="hidden">
                     <div id="info_gestor" class=" col s8 m8 l8 div_input_gestor_info  z-depth-1">
-                        <div class="input-field col s6 m6 l6">
-                            <input id="cuenta_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="cuenta_deudor">Cuenta</label>
+                        <div class="col s12 m12 l12">
+                            <h6>Informacon General</h6>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="nombre_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="nombre_deudor">Titular</label>
+                            <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="CLIENTE_UNICO">Cuenta</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="resto_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="resto_deudor">Gerente</label>
-                        </div>
-                         
-                        <div class="input-field col s6 m2 l2">
-                            <input id="cancelacion_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="cancelacion_deudor"></label>
-                        </div>
-                        <div class="input-field col s12 m12 l12">
-                            <input id="cancelacion_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="direccion_deudor">Direccion</label>
+                            <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="NOMBRE_CTE">Titular</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="cancelacion_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="aval">Aval</label>
+                            <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="GERENTE">Gerente</label>
                         </div>
-                         <div class="input-field col s6 m6 l6">
-                            <input id="cancelacion_deudor" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="direccion_aval">Direccion Aval</label>
+
+                        <div class="input-field col s6 m6 l6">
+                            <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="">Direccion</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="CAMPANIA">Producto</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="SUBCAMPANA">Subprodcuto</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <input id="NOMBRE_AVAL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="NOMBRE_AVAL">Aval</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <input id="DIRECCION_2" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="DIRECCION_2">Direccion Aval</label>
                         </div>
                     </div>
-                    <div id="info_gestor_secundario" class="col s4 m4 l4 div_input_gestor_tiempos  div_info_secundaria">
-                        <div class="input-field col s6 m6 l6">
-                            <input id="vencido_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="vencido_deudor">Vencido</label>
+                    <div id="info_gestor_secundario" class="col s4 m4 l4 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
+                        <div class="col s12 m12 l12">
+                            <h6>Info. Economica</h6>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="pagado_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="pagado_deudor">Pagado</label>
+                            <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="ATRASO_MAXIMO">Semanas</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="penafineq_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="penafineq_deudor">Pena Fineq</label>
+                            <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="DIA_DE_PAGO">Dia de Pago</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="penakitbp_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="penakitbp_deudor">Pena Kit BP</label>
+                            <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="ult_pago_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="ult_pago_deudor">Capital</label>
+                            <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="IMP_ULTIMO_PAGO">Ult. Pago $</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="plazo_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="plazo_deudor">Moratorios</label>
+                            <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="SALDO">Capital</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="MORATORIOS">Moratorios</label>
                         </div>
                         <div class="input-field col s12 m12 l12">
-                            <input id="cuentas_dobles_deudor" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="cuentas_dobles_deudor">Saldo Total</label>
+                            <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="SALDO_TOTAL">Saldo Total</label>
                         </div>
                     </div>
-                    
+
                     <div class=" col s12 m12 l12  div_gestor_gestion">
+                        <div class=" col s6 m6 l6 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
+                            <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion"></textarea>
+                        </div>
                         <div class=" col s6 m6 l6">
                             <div class="input-field col s6 m6 l6">
-                                <select id="estatus">
-                                    <option value="0" selected>Selecciona Estatus</option>
-                                </select>
-                                <label>Estatus</label>
+                                <div class=" input-field col s12 m12 l12  div_gestor_gestion">
+                                    <select id="estatus">
+                                        <option value="0" selected>Selecciona Estatus</option>
+                                    </select>
+                                    <select id="codigo_llamada"></select>
+                                </div> 
                             </div>
-                            <div class="input-field col s6 m6 l6">
-                                <select id="codigo_llamada"></select>
-                                <label>Codigo</label>
-                            </div>
-                            <div class="col s12 m12 l12 center-align">
-                                <a class="waves-effect waves-light btn hide btn_gestiones pulse"><i class="material-icons right">send</i>convenio</a>
-                                <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Ok.</a>
-                                <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente "><i class="material-icons right">send</i>Sig.</a>
+                            <div class="col s6 m6 l6 ">
+                                <div class="col s6 m6 l6 ">
+                                    <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Gua</a>
+                                </div>
+                                <div class="col s6 m6 l6 ">
+                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente "><i class="material-icons right">send</i>Sig.</a>
+                                </div>
                             </div>
                         </div>
-                         <div class=" col s6 m6 l6 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
-                            <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="1000" placeholder="Gestion"></textarea>
-                        </div>
+
                     </div>
                     <div class=" col s12 m12 l12 div_tabs">
                         <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
@@ -365,6 +377,17 @@
 
                     </h5>
                 </div>
+            </div>
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large red">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                </ul>
             </div>
 
         </div>	

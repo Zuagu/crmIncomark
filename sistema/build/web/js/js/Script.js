@@ -1,6 +1,7 @@
 var options_estatus_llamadas = "";
 $(document).ready(function () {
     //iniciar el dropdown del menu
+    $('.fixed-action-btn').floatingActionButton();
     $('select').formSelect();
     $('.modal').modal();
     $(".dropdown-trigger").dropdown({constrainWidth: false});

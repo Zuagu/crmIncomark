@@ -116,7 +116,7 @@ body {
 }
 
 .input_color{
-	color:#ffffff;
+	color:black !important;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]){
