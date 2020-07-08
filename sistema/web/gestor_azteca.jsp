@@ -111,10 +111,10 @@
                             </div>
                             <div class="col s6 m6 l6 ">
                                 <div class="col s6 m6 l6 ">
-                                    <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Gua</a>
+                                    <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
                                 </div>
                                 <div class="col s6 m6 l6 ">
-                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente "><i class="material-icons right">send</i>Sig.</a>
+                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente "><i class="material-icons right">send</i>Siguiente.</a>
                                 </div>
                             </div>
                         </div>
@@ -396,6 +396,6 @@
         <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/js/Script.js"></script>
+        <script type="text/javascript" src="js/js/Script_Azteca.js"></script>
     </body>
 </html>
