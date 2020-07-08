@@ -38,9 +38,7 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-        }
-        
-        else if (action.equals("select_buscar_cuentas")) {
+        } else if (action.equals("select_buscar_cuentas")) {
             String Respuesta = ModelDataCuentaAzteca.select_buscar_cuentas(
                     request.getParameter("busqueda"),
                     Integer.parseInt(request.getParameter("id_puesto"))

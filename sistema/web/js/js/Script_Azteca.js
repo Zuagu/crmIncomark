@@ -39,7 +39,7 @@ $(document).ready(function () {
 
 window.onload = function () {
     select_cuenta_siguiente(id_usuario);
-    select_llamadas_gestor(id_usuario);
+//    select_llamadas_gestor(id_usuario);
     options_estatus_llamadas = '<option value="0"  selected>Selecciona Codigo</option>' +
             '<option value="1">1A (promesa de Pago)</option>' +
             '<option value="2">3D (Contacto con Titular)</option>' +
@@ -624,12 +624,12 @@ function select_cuenta_siguiente(_id_usuario) {
     };
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
             console.log(datos_cuenta);
-            if(datos_cuenta.cuenta_deudor === 0) {
+            if(datos_cuenta.id_cuenta === 0) {
                 alert("Sin cuentas");
             }else {
                 $("#div_cuentas_encontradas").addClass("hide");
@@ -640,20 +640,20 @@ function select_cuenta_siguiente(_id_usuario) {
                 }
                 $("#estatus").empty();
                 $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta.status);
-                $("#codigo_llamada").empty();
-                $("#codigo_llamada").append(options_estatus_llamadas);
-                $('select').formSelect();
-                $("#div_telefonos_cuenta").empty();
-                $("#numero_marcado_deudor, #gestion").val("");
-                $("#tiempo_actual").val("00:00:00");
-                $("#retraso_actual").val("00:00:00");
-                conteo_llamadas_cuenta_siguiente();
-                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
-                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
-                var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
-                select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
-                select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
-                $("#gestion").attr("readonly", "readonly");
+//                $("#codigo_llamada").empty();
+//                $("#codigo_llamada").append(options_estatus_llamadas);
+//                $('select').formSelect();
+//                $("#div_telefonos_cuenta").empty();
+//                $("#numero_marcado_deudor, #gestion").val("");
+//                $("#tiempo_actual").val("00:00:00");
+//                $("#retraso_actual").val("00:00:00");
+//                conteo_llamadas_cuenta_siguiente();
+//                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
+//                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
+//                var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
+//                select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
+//                select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
+//                $("#gestion").attr("readonly", "readonly");
             }
             
         }
