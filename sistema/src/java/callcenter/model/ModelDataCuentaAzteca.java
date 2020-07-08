@@ -130,7 +130,224 @@ public class ModelDataCuentaAzteca {
             Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
             return "SQL: Falla en el parser de JSONObject";
         }
-
     }
+    
+    
+    public static String select_buscar_cuentas( String busqueda, int id_puesto) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_datos_cuenta_relacionada( String cuenta) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_telefonos_cr( String cuenta) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_gestiones_cuenta( String cuenta, String fecha_inico) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_pagos_cuenta( String cuenta, String fecha_inico) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+   
+    public static String select_convenios_cuenta( String cuenta) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_cuenta_siguiente( String id_usuario) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    
+    
+    public static String insertar_convenio(String objConvenio) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(objConvenio);
+
+            Object id_cuenta = jsonObject.get("id_cuenta");
+            
+
+            StartConexion ic = new StartConexion();
+            String sql = "guardar_gestion_azteca()";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+
+            return "";
+        } catch (SQLException e) {
+            return "SQL: Error al insertar datos de gestion Code Error: " + e;
+        } catch (org.json.simple.parser.ParseException ex) {
+            Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
+            return "SQL: Falla en el parser de JSONObject";
+        }
+    }
+    
+    
+    public static String select_saldos_gestores( String id_usuario, String id_equipo) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_cuentas_de_estaus( String id_equipo, String estatus, String id_usuario) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
+    public static String select_llamadas_gestor(String id_usuario) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+                
+            }
+            System.out.println(objCuenta.toString());
+            return objCuenta.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    
 
 }
