@@ -41,10 +41,9 @@
                             <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="GERENTE">Gerente</label>
                         </div>
-
                         <div class="input-field col s6 m6 l6">
-                            <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="">Direccion</label>
+                            <input id="RFC" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="RFC">RFC</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
                             <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
@@ -54,13 +53,9 @@
                             <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="SUBCAMPANA">Subprodcuto</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="NOMBRE_AVAL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="NOMBRE_AVAL">Aval</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="DIRECCION_2" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="DIRECCION_2">Direccion Aval</label>
+                        <div class="input-field col s12 m12 l12">
+                            <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="">Direccion</label>
                         </div>
                     </div>
                     <div id="info_gestor_secundario" class="col s4 m4 l4 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
