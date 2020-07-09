@@ -1,4 +1,5 @@
 var options_estatus_llamadas = "";
+var options_estatus_cuenta = "";
 $(document).ready(function () {
     //iniciar el dropdown del menu
     $('.fixed-action-btn').floatingActionButton();
@@ -63,6 +64,43 @@ window.onload = function () {
             '<option value="20">2B (Segunda Gestion Visita)</option>' +
             '<option value="21">3F (Tercera Gestion Visita)</option>';
     $("#codigo_llamada").append(options_estatus_llamadas);
+    options_estatus_cuenta = `<option id='1'>1.1 CUENTA LIQUIDADA</option>
+            <option value='2'>1.3 DEFUNCION</option>
+            <option value='3'>2.1 PROMESA INCUMPLIDA</option>
+            <option value='4'>2.2 PLAN INCUMPLIDO</option>
+            <option value='5'>2.3 PLAN CANCELADO</option>
+            <option value='6'>3.1 PROMESA DE PAGO</option>
+            <option value='7'>3.2 PROMESA PAGO INICIAL</option>
+            <option value='8'>3.3 PROMESA PAGO PARCIAL</option>
+            <option value='9'>3.3 PROMESA PAGO PARCIAL</option>
+            <option value='10'>3.4 PROMESA RECURRENTE</option>
+            <option value='11'>3.5 PLAN ACTIVO</option>
+            <option value='12'>3.5 PLAN ACTIVO</option>
+            <option value='13'>3.6 REESTRUCTURA</option>
+            <option value='14'>3.7 LIQUIDACION</option>
+            <option value='15'>4.1 CLIENTE NO DEFINE</option>
+            <option value='16'>4.2 AVAL NO DEFINE</option>
+            <option value='17'>4.3 SEGUIMIENTO</option>
+            <option value='18'>4.4 NEGATIVA DE PAGO</option>
+            <option value='19'>4.5 CLIENTE COLGO</option>
+            <option value='20'>5.1 MENSAJE FAMILIAR</option>
+            <option value='21'>5.2 MENSAJE TERCERO</option>
+            <option value='22'>5.3 MENSAJE EN BUZON</option>
+            <option value='23'>6.1 CLIENTE NO VIVE AHI</option>
+            <option value='24'>6.2 CUELGA LLAMADA</option>
+            <option value='25'>6.2 CUELGA LLAMADA</option>
+            <option value='26'>6.3 FUERA DE SERVICIO</option>
+            <option value='27'>6.4 NO LO CONOCE</option>
+            <option value='28'>6.4 NO LO CONOCE</option>
+            <option value='29'>6.5 NUMERO OCUPADO</option>
+            <option value='30'>6.6 NO CONTESTA</option>
+            <option value='31'>6.7 NO DISPONIBLE</option>
+            <option value='32'>6.7 NO DISPONIBLE</option>
+            <option value='33'>7.8 NO EXISTE</option>
+            <option value='34'>7.8 NO EXISTE</option>
+            <option value='35'>7.9 SIN DATOS</option>
+            <option value='36'>8.1 SIN CLASIFICAR</option>`;
+    $("#estatus").append(options_estatus_cuenta);
     $('select').formSelect();
 }
 
@@ -271,7 +309,7 @@ function select_datos_cuenta(_cuenta) {
                 $("#" + dato).val(datos_cuenta[dato]);
             }
             $("#estatus").empty();
-            $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta.status);
+            $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + options_estatus_cuenta);
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
@@ -649,7 +687,7 @@ function select_cuenta_siguiente(_id_usuario) {
                     $("#" + dato).val(datos_cuenta[dato]);
                 }
                 $("#estatus").empty();
-                $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta.status);
+                $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + options_estatus_cuenta);
                 $("#codigo_llamada").empty();
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
@@ -657,6 +695,16 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#numero_marcado_deudor, #gestion").val("");
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
+
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefonos</b></span><br>' +
+                        '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                        '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                        '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                        '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                        '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
+                        '</div>');
+
 //                conteo_llamadas_cuenta_siguiente();
 //                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
 //                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
@@ -694,15 +742,15 @@ function insertar_gestion(myObj) {
         action: "guardar_gestion",
         datos: JSON.stringify(myObj)
     };
-//    console.log(params);
+    console.log(params);
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
-        success: function (datos_cuenta) {
-//            console.log(datos_cuenta);
-            var f_inicio = myObj["fecha_inicio"].split(" ");
+        success: function (result) {
+            console.log(result);
+            
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $("#gestion").val("");
@@ -712,8 +760,11 @@ function insertar_gestion(myObj) {
 
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
-            conteo_llamadas_guardar_gestion(myObj.id_estatus_llamada);
-            select_gestiones_cuenta(myObj["cuenta"], f_inicio[0], "tbody_tabla_gestiones");
+//            conteo_llamadas_guardar_gestion(myObj.id_estatus_llamada);
+//            select_gestiones_cuenta(myObj["cuenta"], f_inicio[0], "tbody_tabla_gestiones");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
         }
     });
 }
@@ -722,24 +773,25 @@ $("#guardar_gestion").click(function () {
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
-            id_cuenta: $("#id_cuenta_deudor").val(),
-            id_asignacion: $("#id_asignacion_deudor").val(),
-            id_region: $("#id_region_deudor").val(),
-            id_cliente: $("#id_cliente_deudor").val(),
-            fecha_fin: $("#fecha_fin_deudor").val(),
-            fecha_inicio: $("#inicio_deudor").val(),
-            numero_marcado: $("#numero_marcado_deudor").val().replace(/ /gi, ""),
-            cuenta: $("#cuenta_deudor").val(),
-            id_estatus_cuenta: $("#estatus").val(),
-            id_estatus_llamada: $("#codigo_llamada").val(),
-            id_usuario: id_usuario,
-            id_puesto: id_puesto_usuario,
-            gestion: $("#gestion").val().replace(/"|,|'|-/gi, ""),
-            duracion: $("#tiempo_actual").val(),
-            retraso_llamada: $("#retraso_actual").val(),
-            expediente: $("#expediente_deudor").val(),
-            f_predictivo: 0
+            _ID_SUCURSAL: $('#ID_SUCURSAL').val(),
+            _ID_CLIENTE: $('#ID_CLIENTE').val(),
+            _TERRITORIO: $('#TERRITORIO').val(),
+            _CANAL: $('#CANAL').val(),
+            _ATRASO_MAXIMO: $('#ATRASO_MAXIMO').val(),
+            _CUENTA: $('#CLIENTE_UNICO').val(),
+            _NUMERO_MARCADO: $('#numero_marcado_deudor').val(),
+            _ID_ESTATUS_CUENTA: $('#estatus').val(),
+            _ID_ESTATUS_LLAMADA: $('#codigo_llamada').val(),
+            _ID_USUARIO: id_usuario,
+            _GESTION: $('#gestion').val(),
+            _DURACION: $('#tiempo_actual').val(),
+            _RETASO: $('#retraso_actual').val(),
+            _ID_PUESTO: id_puesto_usuario,
+            _PROMESA: 0,
+            _F_PREDICTIVO: 0,
+            _ID_EQUIPO: $('#ID_EQUIPO').val()
         };
+        console.log(myObjGestion);
         insertar_gestion(myObjGestion);
     } else {
         $("#modal_alerta").modal("open");

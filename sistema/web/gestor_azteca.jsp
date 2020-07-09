@@ -111,11 +111,11 @@
                                 </div> 
                             </div>
                             <div class="col s6 m6 l6 ">
-                                <div class="col s6 m6 l6 ">
+                                <div class="col s12 m12 l12 ">
                                     <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
                                 </div>
-                                <div class="col s6 m6 l6 ">
-                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente "><i class="material-icons right">send</i>Siguiente.</a>
+                                <div class="col s12 m12 l12">
+                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Siguiente</a>
                                 </div>
                             </div>
                         </div>

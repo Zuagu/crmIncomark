@@ -18,12 +18,13 @@
         <div class="row" id="contenido">
             <div class="container-fluid">
                 <div class="col s10 m10 l10 contenido-datos">
-                    <input id="id_cuenta_deudor" type="hidden">
-                    <input id="id_asignacion_deudor" type="hidden">
-                    <input id="id_region_deudor" type="hidden">
-                    <input id="id_cliente_deudor" type="hidden">
-                    <input id="fecha_fin_deudor" type="hidden">
+                    <input id="id_cuenta" type="hidden">
                     <input id="numero_marcado_deudor" type="hidden">
+                    <input id="ID_SUCURSAL" type="hidden">
+                    <input id="ID_CLIENTE" type="hidden">
+                    <input id="TERRITORIO" type="hidden">
+                    <input id="CANAL" type="hidden">
+                    <input id="ID_EQUIPO" type="hidden">
                     <div id="info_gestor" class=" col s8 m8 l8 div_input_gestor_info  z-depth-1">
                         <div class="col s12 m12 l12">
                             <h6>Informacon General</h6>
@@ -110,11 +111,11 @@
                                 </div> 
                             </div>
                             <div class="col s6 m6 l6 ">
-                                <div class="col s6 m6 l6 ">
+                                <div class="col s12 m12 l12 ">
                                     <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
                                 </div>
-                                <div class="col s6 m6 l6 ">
-                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente "><i class="material-icons right">send</i>Siguiente.</a>
+                                <div class="col s12 m12 l12">
+                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Siguiente</a>
                                 </div>
                             </div>
                         </div>
