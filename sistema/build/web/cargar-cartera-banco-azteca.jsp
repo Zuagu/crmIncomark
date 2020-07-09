@@ -105,6 +105,15 @@
                         <p id="datos_cuenta"></p>
                     </div>
                 </div>
+                
+                
+                <div class="col s12 m10 l10 offset-m1 offset-l1 card">
+                    <div class="card-content">
+                        <input id="str_buscar" type="text" width="200px">
+                        <a href="#" id="buscar_cuenta" class="btn waves-effect blue-grey">Buscar cuenta</a>
+                        <p id="response_datos_cuenta"></p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -128,6 +137,25 @@
                         alert(textStatus);
                     }
                 });
+            });
+            
+            $("#buscar_cuenta").click( function () {
+                
+                $.ajax({
+                    type: 'POST',
+                    url: "ControllerDataCuentaAzteca",
+                    data: {action:"buscar_cuenta_azteca", buscar: $("#str_buscar").val() },
+                    dataType: 'json',
+                    success: function (data, textStatus, jqXHR) {
+                        console.log(data);
+                        $("#response_datos_cuenta").empty();
+                        $("#response_datos_cuenta").append( JSON.stringify(data) );
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+                
             });
         </script>
     </body>

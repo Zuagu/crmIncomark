@@ -28,7 +28,7 @@
 <nav class="header_nav">
     <div class="nav-wrapper icon_nav">
         <ul>
-            <a href="#!" class="logo_principal"><img src="image/12.png" alt="image/12.png" class="img_log"></a> 
+            <a href="#!" class="logo_principal"><img src="image/logoInco.fw.png" alt="image/logoInco.fw.png" class="img_log"></a> 
         </ul>    
         <ul>
             <input id="filtro" class="search center-align grey lighten-5" onkeyup="myFunction_buscar()" type="text" placeholder="Buscar" style="width:50%">
