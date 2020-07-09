@@ -19,6 +19,7 @@
             <div class="container-fluid">
                 <div class="col s10 m10 l10 contenido-datos">
                     <input id="id_cuenta" type="hidden">
+                    <input id="numero_marcado_deudor" type="hidden">
                     <input id="ID_SUCURSAL" type="hidden">
                     <input id="ID_CLIENTE" type="hidden">
                     <input id="TERRITORIO" type="hidden">
