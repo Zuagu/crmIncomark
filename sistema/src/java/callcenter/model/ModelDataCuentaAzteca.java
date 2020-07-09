@@ -87,6 +87,11 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("RANGO", ic.rs.getString("RANGO"));
                 objCuenta.put("RANGO_DE_EDAD", ic.rs.getString("RANGO_DE_EDAD"));
                 objCuenta.put("IDENTIFICADOR2", ic.rs.getString("IDENTIFICADOR2"));
+                objCuenta.put("ID_EQUIPO", ic.rs.getString("ID_EQUIPO"));
+                objCuenta.put("ID_ESTATUS_CUENTA", ic.rs.getString("ID_ESTATUS_CUENTA"));
+                objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
+                objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
+                objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
             }
             ic.rs.close();
             ic.st.close();
@@ -103,23 +108,24 @@ public class ModelDataCuentaAzteca {
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objGestion);
 
-            Object id_cuenta = jsonObject.get("id_cuenta");
-            Object _ID_SUCURSAL = jsonObject.get("ID_SUCURSAL");
-            Object _REGION = jsonObject.get("REGION");
-            Object _ZONA = jsonObject.get("ZONA");
-            Object _CANAL = jsonObject.get("CANAL");
-            Object _FECHA_LARGA = jsonObject.get("FECHA_LARGA");
-            Object _CUENTA = jsonObject.get("CUENTA");
-            Object _EXPEDIENTE = jsonObject.get("EXPEDIENTE");
-            Object _NUMERO_MARCADO = jsonObject.get("NUMERO_MARCADO");
-            Object _ESTATUS_CUENTA = jsonObject.get("ESTATUS_CUENTA");
-            Object _ESTATUS_LLAMADA = jsonObject.get("ESTATUS_LLAMADA");
-            Object _ID_GESTOR = jsonObject.get("ID_GESTOR");
-            Object _GESTION = jsonObject.get("GESTION");
-            Object _DURACION = jsonObject.get("DURACION");
-            Object _RETRASO = jsonObject.get("RETRASO");
-            Object _F_PROMESA = jsonObject.get("F_PROMESA");
-            Object _F_PREDICTIVO = jsonObject.get("F_PREDICTIVO");
+            Object _ID_SUCURSAL = jsonObject.get("_ID_SUCURSAL");
+            Object _ID_CLIENTE = jsonObject.get("_ID_CLIENTE");
+            Object _TERRITORIO = jsonObject.get("_TERRITORIO");
+            Object _CANAL = jsonObject.get("_CANAL");
+            Object _FECHA_LARGA = jsonObject.get("_FECHA_LARGA");
+            Object _ATRASO_MAXIMO = jsonObject.get("_ATRASO_MAXIMO");
+            Object _CUENTA = jsonObject.get("_CUENTA");
+            Object _NUMERO_MARCADO = jsonObject.get("_NUMERO_MARCADO");
+            Object _ID_ESTATUS_CUENTA = jsonObject.get("_ID_ESTATUS_CUENTA");
+            Object _ID_ESTATUS_LLAMADA = jsonObject.get("_ID_ESTATUS_LLAMADA");
+            Object _ID_USUARIO = jsonObject.get("_ID_USUARIO");
+            Object _GESTION = jsonObject.get("_GESTION");
+            Object _DURACION = jsonObject.get("_DURACION");
+            Object _RETASO = jsonObject.get("_RETASO");
+            Object _ID_PUESTO = jsonObject.get("_ID_PUESTO");
+            Object _PROMESA = jsonObject.get("_PROMESA");
+            Object _F_PREDICTIVO = jsonObject.get("_F_PREDICTIVO");
+            Object _ID_EQUIPO = jsonObject.get("_ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
             String sql = "guardar_gestion_azteca()";
@@ -352,6 +358,11 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("RANGO", ic.rs.getString("RANGO"));
                 objCuenta.put("RANGO_DE_EDAD", ic.rs.getString("RANGO_DE_EDAD"));
                 objCuenta.put("IDENTIFICADOR2", ic.rs.getString("IDENTIFICADOR2"));
+                objCuenta.put("ID_EQUIPO", ic.rs.getString("ID_EQUIPO"));
+                objCuenta.put("ID_ESTATUS_CUENTA", ic.rs.getString("ID_ESTATUS_CUENTA"));
+                objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
+                objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
+                objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
                 
             }
             ic.rs.close();

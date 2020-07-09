@@ -722,25 +722,26 @@ $("#guardar_gestion").click(function () {
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
-            id_cuenta: $("#id_cuenta_deudor").val(),
-            id_asignacion: $("#id_asignacion_deudor").val(),
-            id_region: $("#id_region_deudor").val(),
-            id_cliente: $("#id_cliente_deudor").val(),
-            fecha_fin: $("#fecha_fin_deudor").val(),
-            fecha_inicio: $("#inicio_deudor").val(),
-            numero_marcado: $("#numero_marcado_deudor").val().replace(/ /gi, ""),
-            cuenta: $("#cuenta_deudor").val(),
-            id_estatus_cuenta: $("#estatus").val(),
-            id_estatus_llamada: $("#codigo_llamada").val(),
-            id_usuario: id_usuario,
-            id_puesto: id_puesto_usuario,
-            gestion: $("#gestion").val().replace(/"|,|'|-/gi, ""),
-            duracion: $("#tiempo_actual").val(),
-            retraso_llamada: $("#retraso_actual").val(),
-            expediente: $("#expediente_deudor").val(),
-            f_predictivo: 0
+            _ID_SUCURSAL: $('ID_SUCURSAL').val(),
+            _ID_CLIENTE: $('ID_CLIENTE').val(),
+            _TERRITORIO: $('TERRITORIO').val(),
+            _CANAL: $('CANAL').val(),
+            _ATRASO_MAXIMO: $('ATRASO_MAXIMO').val(),
+            _CUENTA: $('CUENTA').val(),
+            _NUMERO_MARCADO: $('NUMERO_MARCADO').val(),
+            _ID_ESTATUS_CUENTA: $('ID_ESTATUS_CUENTA').val(),
+            _ID_ESTATUS_LLAMADA: $('ID_ESTATUS_LLAMADA').val(),
+            _ID_USUARIO: id_usuario,
+            _GESTION: $('GESTION').val(),
+            _DURACION: $('DURACION').val(),
+            _RETASO: $('RETASO').val(),
+            _ID_PUESTO: id_puesto_usuario,
+            _PROMESA: $('PROMESA').val(),
+            _F_PREDICTIVO: 0,
+            _ID_EQUIPO: $('ID_EQUIPO').val()
         };
-        insertar_gestion(myObjGestion);
+        console.log(myObjGestion);
+//        insertar_gestion(myObjGestion);
     } else {
         $("#modal_alerta").modal("open");
         $("#mensaje_alerta").empty();
