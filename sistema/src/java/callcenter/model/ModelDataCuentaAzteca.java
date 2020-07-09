@@ -22,7 +22,7 @@ public class ModelDataCuentaAzteca {
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "select * from azteca_base_genenral_original where CLIENTE_UNICO = '"+ cuenta +"';";
+            String sql = "select * from azteca_base_genenral_original where CLIENTE_UNICO = '" + cuenta + "';";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
@@ -112,7 +112,6 @@ public class ModelDataCuentaAzteca {
             Object _ID_CLIENTE = jsonObject.get("_ID_CLIENTE");
             Object _TERRITORIO = jsonObject.get("_TERRITORIO");
             Object _CANAL = jsonObject.get("_CANAL");
-            Object _FECHA_LARGA = jsonObject.get("_FECHA_LARGA");
             Object _ATRASO_MAXIMO = jsonObject.get("_ATRASO_MAXIMO");
             Object _CUENTA = jsonObject.get("_CUENTA");
             Object _NUMERO_MARCADO = jsonObject.get("_NUMERO_MARCADO");
@@ -128,13 +127,30 @@ public class ModelDataCuentaAzteca {
             Object _ID_EQUIPO = jsonObject.get("_ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "guardar_gestion_azteca()";
+            String sql = "guardar_gestion_azteca("
+                    + "" + _ID_SUCURSAL + ",\n"
+                    + "" + _ID_CLIENTE + ",\n"
+                    + "'" + _TERRITORIO + "',\n"
+                    + "'" + _CANAL + "',\n"
+                    + "" + _ATRASO_MAXIMO + ",\n"
+                    + "'" + _CUENTA + "',\n"
+                    + "'" + _NUMERO_MARCADO + "',\n"
+                    + "" + _ID_ESTATUS_CUENTA + ",\n"
+                    + "" + _ID_ESTATUS_LLAMADA + ",\n"
+                    + "" + _ID_USUARIO + ",\n"
+                    + "'" + _GESTION + "',\n"
+                    + "'" + _DURACION + "',\n"
+                    + "'" + _RETASO + "',\n"
+                    + "" + _ID_PUESTO + ",\n"
+                    + "" + _PROMESA + ",\n"
+                    + "" + _F_PREDICTIVO + ",\n"
+                    + "" + _ID_EQUIPO + ");";
             System.out.println(sql);
-            ic.rs = ic.st.executeQuery(sql);
-            
+//            ic.rs = ic.st.executeQuery(sql);
+
             ic.st.close();
             ic.conn.close();
-            return "";
+            return jsonObject.toJSONString();
         } catch (SQLException e) {
             return "SQL: Error al insertar datos de gestion Code Error: " + e;
         } catch (org.json.simple.parser.ParseException ex) {
@@ -142,16 +158,15 @@ public class ModelDataCuentaAzteca {
             return "SQL: Falla en el parser de JSONObject";
         }
     }
-    
-    
-    public static String select_buscar_cuentas( String busqueda, int id_puesto) {
+
+    public static String select_buscar_cuentas(String busqueda, int id_puesto) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "call azteca_buscar_cuentas('%" + busqueda.replace(";", "") + "%');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listCuentas = new JSONArray();
-            
+
             while (ic.rs.next()) { //id_cuenta, CLIENTE_UNICO, NOMBRE_CTE, NOMBRE_AVAL, TELEFONO1, TELEFONO2, TELEFONO3, TELEFONO4, TELAVAL
                 JSONObject objCuenta = new JSONObject();
                 objCuenta.put("id_cuenta", ic.rs.getString("id_cuenta"));
@@ -164,20 +179,19 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TELEFONO4", ic.rs.getString("TELEFONO4"));
                 objCuenta.put("TELAVAL", ic.rs.getString("TELAVAL"));
                 listCuentas.add(objCuenta);
-                
+
             }
-            
+
             ic.st.close();
             ic.conn.close();
-            
+
             return listCuentas.toString();
         } catch (SQLException e) {
             return "SQL: Error al buscar ceuntas Code Error: " + e;
         }
     }
-    
-    
-    public static String select_datos_cuenta_relacionada( String cuenta) {
+
+    public static String select_datos_cuenta_relacionada(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -186,10 +200,10 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             System.out.println(objCuenta.toString());
-            
+
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
@@ -198,9 +212,8 @@ public class ModelDataCuentaAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
-    public static String select_telefonos_cr( String cuenta) {
+
+    public static String select_telefonos_cr(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -209,21 +222,20 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
-            
+
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
-    public static String select_gestiones_cuenta( String cuenta, String fecha_inico) {
+
+    public static String select_gestiones_cuenta(String cuenta, String fecha_inico) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -232,20 +244,19 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
-    public static String select_pagos_cuenta( String cuenta, String fecha_inico) {
+
+    public static String select_pagos_cuenta(String cuenta, String fecha_inico) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -254,21 +265,19 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
-   
-    public static String select_convenios_cuenta( String cuenta) {
+
+    public static String select_convenios_cuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -277,20 +286,19 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
-    public static String select_cuenta_siguiente( String id_usuario) {
+
+    public static String select_cuenta_siguiente(String id_usuario) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "SELECT * FROM azteca_base_genenral_original ORDER BY RAND() LIMIT 1;";
@@ -363,7 +371,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
@@ -374,24 +382,19 @@ public class ModelDataCuentaAzteca {
             return "SQL: Error al traer los datos de la cuenta siguiente azteca Code Error: " + e;
         }
     }
-    
-    
-    
-    
+
     public static String insertar_convenio(String objConvenio) {
         try {
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objConvenio);
 
             Object id_cuenta = jsonObject.get("id_cuenta");
-            
 
             StartConexion ic = new StartConexion();
             String sql = "guardar_gestion_azteca()";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-            
-            
+
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
@@ -403,9 +406,8 @@ public class ModelDataCuentaAzteca {
             return "SQL: Falla en el parser de JSONObject";
         }
     }
-    
-    
-    public static String select_saldos_gestores( String id_usuario, String id_equipo) {
+
+    public static String select_saldos_gestores(String id_usuario, String id_equipo) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -414,20 +416,19 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
-    public static String select_cuentas_de_estaus( String id_equipo, String estatus, String id_usuario) {
+
+    public static String select_cuentas_de_estaus(String id_equipo, String estatus, String id_usuario) {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
@@ -436,19 +437,18 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
+
     public static String select_llamadas_gestor(String id_usuario) {
         try {
             StartConexion ic = new StartConexion();
@@ -458,18 +458,16 @@ public class ModelDataCuentaAzteca {
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            
+
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
 
 }
