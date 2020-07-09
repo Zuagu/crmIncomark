@@ -32,7 +32,9 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
         System.out.println(action);
         
         if(action.equals("datos_cuenta_azteca")) {
-            String Respuesta = ModelDataCuentaAzteca.datosCuenta();
+            String Respuesta = ModelDataCuentaAzteca.datosCuenta(
+                    request.getParameter("cuenta")
+            );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
             writer.print(Respuesta);

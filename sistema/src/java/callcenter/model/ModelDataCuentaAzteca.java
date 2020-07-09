@@ -19,10 +19,10 @@ import org.json.simple.parser.JSONParser;
  */
 public class ModelDataCuentaAzteca {
 
-    public static String datosCuenta() {
+    public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "select * from basegeneral_banco_azteca_temporal where cliente_id = '1 - 51 - 6613 - 234779';";
+            String sql = "select * from azteca_base_genenral_original where CLIENTE_UNICO = '"+ cuenta +"';";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
@@ -88,6 +88,9 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("RANGO_DE_EDAD", ic.rs.getString("RANGO_DE_EDAD"));
                 objCuenta.put("IDENTIFICADOR2", ic.rs.getString("IDENTIFICADOR2"));
             }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
             System.out.println(objCuenta.toString());
             return objCuenta.toString();
         } catch (SQLException e) {
@@ -122,7 +125,9 @@ public class ModelDataCuentaAzteca {
             String sql = "guardar_gestion_azteca()";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-
+            
+            ic.st.close();
+            ic.conn.close();
             return "";
         } catch (SQLException e) {
             return "SQL: Error al insertar datos de gestion Code Error: " + e;
@@ -136,18 +141,32 @@ public class ModelDataCuentaAzteca {
     public static String select_buscar_cuentas( String busqueda, int id_puesto) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "";
+            String sql = "call azteca_buscar_cuentas('%" + busqueda.replace(";", "") + "%');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-            JSONObject objCuenta = new JSONObject();
-            while (ic.rs.next()) {
-                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+            JSONArray listCuentas = new JSONArray();
+            
+            while (ic.rs.next()) { //id_cuenta, CLIENTE_UNICO, NOMBRE_CTE, NOMBRE_AVAL, TELEFONO1, TELEFONO2, TELEFONO3, TELEFONO4, TELAVAL
+                JSONObject objCuenta = new JSONObject();
+                objCuenta.put("id_cuenta", ic.rs.getString("id_cuenta"));
+                objCuenta.put("CLIENTE_UNICO", ic.rs.getString("CLIENTE_UNICO"));
+                objCuenta.put("NOMBRE_CTE", ic.rs.getString("NOMBRE_CTE"));
+                objCuenta.put("NOMBRE_AVAL", ic.rs.getString("NOMBRE_AVAL"));
+                objCuenta.put("TELEFONO1", ic.rs.getString("TELEFONO1"));
+                objCuenta.put("TELEFONO2", ic.rs.getString("TELEFONO2"));
+                objCuenta.put("TELEFONO3", ic.rs.getString("TELEFONO3"));
+                objCuenta.put("TELEFONO4", ic.rs.getString("TELEFONO4"));
+                objCuenta.put("TELAVAL", ic.rs.getString("TELAVAL"));
+                listCuentas.add(objCuenta);
                 
             }
-            System.out.println(objCuenta.toString());
-            return objCuenta.toString();
+            
+            ic.st.close();
+            ic.conn.close();
+            
+            return listCuentas.toString();
         } catch (SQLException e) {
-            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+            return "SQL: Error al buscar ceuntas Code Error: " + e;
         }
     }
     
@@ -164,6 +183,10 @@ public class ModelDataCuentaAzteca {
                 
             }
             System.out.println(objCuenta.toString());
+            
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -182,7 +205,11 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -201,7 +228,10 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -220,7 +250,10 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -240,7 +273,10 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -318,6 +354,9 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("IDENTIFICADOR2", ic.rs.getString("IDENTIFICADOR2"));
                 
             }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
             System.out.println(objCuenta.toString());
             return objCuenta.toString();
         } catch (SQLException e) {
@@ -340,7 +379,11 @@ public class ModelDataCuentaAzteca {
             String sql = "guardar_gestion_azteca()";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-
+            
+            
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
             return "";
         } catch (SQLException e) {
             return "SQL: Error al insertar datos de gestion Code Error: " + e;
@@ -362,7 +405,10 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -381,7 +427,10 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -400,7 +449,10 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
                 
             }
-            System.out.println(objCuenta.toString());
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;

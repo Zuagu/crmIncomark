@@ -200,25 +200,26 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
         busqueda: _busqueda,
         id_puesto: _id_puesto
     };
+    console.log();
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (cuentas) {
-//            console.log(cuentas);
+            console.log(cuentas);
             $("#" + _div).empty();
             for (var i in cuentas) {
                 $("#" + _div).append('<div class="col s12 m12 l12 hoverable z-depth-2 div-res">' +
-                        '<input class="val_cuenta" type="hidden" value="' + cuentas[i].id_cuenta + ',' + cuentas[i].cuenta + '">' +
-                        '<span class="black-text cuentas_data "><b>Cuenta: </b><span>' + cuentas[i].cuenta + '</span></span>' +
-                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; Exp:</b> ' + cuentas[i].expediente + '</span> <br>' +
-                        '<span class="black-text cuentas_data"><b>Nombre:</b> ' + cuentas[i].nombre + '</span> <br>' +
-                        '<span class="black-text cuentas_data"><b>Asig:</b> ' + cuentas[i].asignacion + '</span>' +
-                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; Estatus:</b> ' + cuentas[i].ultimo_estatus_cuenta + '</span>' +
-                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; Codigo:</b> ' + cuentas[i].ultimo_estatus_llamada + '</span><br>' +
-                        '<span class="black-text cuentas_data"><b>Ref1:</b> ' + cuentas[i].referencia1 + '</span><br>' +
-                        '<span class="black-text cuentas_data"><b>:Ref2:</b> ' + cuentas[i].referencia2 + '</span>' +
+                        '<input class="val_cuenta" type="hidden" value="' + cuentas[i].CLIENTE_UNICO + ',' + cuentas[i].CLIENTE_UNICO + '">' +
+                        '<span class="black-text cuentas_data "><b>Cuenta: </b><span>' + cuentas[i].CLIENTE_UNICO + '</span></span>' +
+                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; Exp:</b> ' + cuentas[i].NOMBRE_AVAL + '</span> <br>' +
+                        '<span class="black-text cuentas_data"><b>Nombre:</b> ' + cuentas[i].NOMBRE_CTE + '</span> <br>' +
+                        '<span class="black-text cuentas_data"><b>TELAVAL:</b> ' + cuentas[i].TELAVAL + '</span>' +
+                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; TEL1: </b> ' + cuentas[i].TELEFONO1 + '</span>' +
+                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; TEL2: </b> ' + cuentas[i].TELEFONO2 + '</span><br>' +
+                        '<span class="black-text cuentas_data"><b>TEL3: </b> ' + cuentas[i].TELEFONO3 + '</span><br>' +
+                        '<span class="black-text cuentas_data"><b>TEL4: </b> ' + cuentas[i].TELEFONO4 + '</span>' +
                         '</div>');
             }
         }
@@ -255,12 +256,12 @@ $("#buscador_cuentas_gestor").click(function () {
 // funciones de datos cuenta
 function select_datos_cuenta(_cuenta) {
     var params = {
-        action: "select_datos_cuenta",
+        action: "datos_cuenta_azteca",
         cuenta: _cuenta
     };
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
@@ -278,11 +279,20 @@ function select_datos_cuenta(_cuenta) {
             $("#numero_marcado_deudor, #gestion").val("");
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
-            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
-            telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
-            var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
-            select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
-            select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
+
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefonos</b></span><br>' +
+                    '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                    '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                    '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                    '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                    '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
+                    '</div>');
+//            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
+//            telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
+//            var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
+//            select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
+//            select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
         }
     });
 }
@@ -434,8 +444,8 @@ $("#div_cuentas_encontradas").delegate(".div-res", "click", function () {
     if (cuenta[0] !== "0") {
         select_datos_cuenta(cuenta[0]);
     } else {
-//        alert(cuenta[1]);
-        select_datos_cuenta_relacionada(cuenta[1]);
+        alert(cuenta[1]);
+//        select_datos_cuenta_relacionada(cuenta[1]);
     }
     $(".div_search_gestor").addClass("s2 m2 l2");
     $(".div_search_gestor").removeClass("s3 m3 l3");
@@ -544,7 +554,7 @@ function select_convenios_cuenta(_cuenta, _div) {
         action: "select_convenios_cuenta",
         cuenta: _cuenta
     };
-    
+
     $.ajax({
         type: "POST",
         url: "/sistema/ControllerGestor",
@@ -629,9 +639,9 @@ function select_cuenta_siguiente(_id_usuario) {
         dataType: "json",
         success: function (datos_cuenta) {
             console.log(datos_cuenta);
-            if(datos_cuenta.id_cuenta === 0) {
+            if (datos_cuenta.id_cuenta === 0) {
                 alert("Sin cuentas");
-            }else {
+            } else {
                 $("#div_cuentas_encontradas").addClass("hide");
                 $("#div_telefonos_cuenta").removeClass("hide");
                 for (var dato in datos_cuenta) {
@@ -640,13 +650,13 @@ function select_cuenta_siguiente(_id_usuario) {
                 }
                 $("#estatus").empty();
                 $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta.status);
-//                $("#codigo_llamada").empty();
-//                $("#codigo_llamada").append(options_estatus_llamadas);
-//                $('select').formSelect();
-//                $("#div_telefonos_cuenta").empty();
-//                $("#numero_marcado_deudor, #gestion").val("");
-//                $("#tiempo_actual").val("00:00:00");
-//                $("#retraso_actual").val("00:00:00");
+                $("#codigo_llamada").empty();
+                $("#codigo_llamada").append(options_estatus_llamadas);
+                $('select').formSelect();
+                $("#div_telefonos_cuenta").empty();
+                $("#numero_marcado_deudor, #gestion").val("");
+                $("#tiempo_actual").val("00:00:00");
+                $("#retraso_actual").val("00:00:00");
 //                conteo_llamadas_cuenta_siguiente();
 //                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
 //                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
@@ -655,7 +665,7 @@ function select_cuenta_siguiente(_id_usuario) {
 //                select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
 //                $("#gestion").attr("readonly", "readonly");
             }
-            
+
         }
     });
 }
