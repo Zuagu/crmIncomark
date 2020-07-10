@@ -677,6 +677,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#numero_marcado_deudor, #gestion").val("");
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
+                $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE} ·#${datos_cuenta.NUM_EXT_CTE} colonia. ${datos_cuenta.COLONIA_CTE} ${datos_cuenta.COLONIA_CTE} C.P. ${datos_cuenta.CP_CTE} Estado ${datos_cuenta.ESTADO_CTE}`);
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                         '<span class="black-text"><b>Telefonos</b></span><br>' +
                         '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +

@@ -25,19 +25,19 @@
                     <input id="TERRITORIO" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
-                    <div id="info_gestor" class=" col s8 m8 l8 div_input_gestor_info  z-depth-1">
+                    <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1">
                         <div class="col s12 m12 l12">
                             <h6>Informacon General</h6>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="CLIENTE_UNICO">Cuenta</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="NOMBRE_CTE">Titular</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="GERENTE">Gerente</label>
                         </div>
@@ -58,35 +58,35 @@
                             <label for="">Direccion</label>
                         </div>
                     </div>
-                    <div id="info_gestor_secundario" class="col s4 m4 l4 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
+                    <div id="info_gestor_secundario" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
                         <div class="col s12 m12 l12">
                             <h6>Info. Economica</h6>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="ATRASO_MAXIMO">Semanas</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="DIA_DE_PAGO">Dia de Pago</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="IMP_ULTIMO_PAGO">Ult. Pago $</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="SALDO">Capital</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s3 m3 l3">
                             <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="MORATORIOS">Moratorios</label>
                         </div>
-                        <div class="input-field col s12 m12 l12">
+                        <div class="input-field col s3 m3 l3">
                             <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="SALDO_TOTAL">Saldo Total</label>
                         </div>
@@ -119,12 +119,11 @@
                     <div class=" col s12 m12 l12 div_tabs">
                         <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
                             <li class="tab col s1"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
-                            <li class="tab col s1"><a class="gestor_tab tooltipped " data-position="bottom" data-tooltip="Ref. Bancarias" href="#test-swipe-2" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">credit_card</i></a></li>
                             <li class="tab col s1"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
                             <li class="tab col s1"><a id="tab_pagos_diarios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos_diarios" href="#div_pagos_diarios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">attach_money</i></a></li>
+                            <li class="tab col s1"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
                             <li class="tab col s1"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
                             <li class="tab col s1"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
-                            <li class="tab col s1"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
                             <li class="tab col s1"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
                             <li class="tab col s1"><a id="tab_estadisticas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Estadisticas" href="#div_estadisticas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">poll</i></a></li>
                         </ul>
@@ -146,39 +145,6 @@
                             <tbody id="tbody_tabla_gestiones">
                             </tbody>
                         </table>
-                    </div>
-                    <div id="test-swipe-2" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
-                        <ul class="collection">
-                            <li class="collection-item avatar ref_banc">
-                                <img src="image/logo-bancos/banamex.fw.png" alt="" class="circle">
-                                <span class="title">Banamex</span>
-                                <input id="ref_bancaria1" type="text" class="validate" placeholder="" readonly="readonly">
-                            </li>
-                            <li class="collection-item avatar ref_banc">
-                                <img src="image/logo-bancos/bancomer.fw.png" alt="" class="circle">
-                                <span class="title">Bancomer</span>
-                                <h6 class="">182251</h6>
-                                <input id="ref_bancaria2" type="text" class="validate" placeholder="" readonly="readonly">
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="image/logo-bancos/hsbc.fw.png" alt="" class="circle">
-                                <span class="title">HSBC</span>
-                                <h6 class="">2904</h6>
-                                <input id="ref_bancaria3" type="text" class="validate" placeholder="" readonly="readonly">
-                            </li>
-                            <li class="collection-item avatar ref_banc">
-                                <img src="image/logo-bancos/banorte.fw.png" alt="" class="circle">
-                                <span class="title">Banorte</span>
-                                <h6 class="">37478</h6>
-                                <input id="ref_bancaria4" type="text" class="validate" placeholder="" readonly="readonly">
-                            </li>
-                            <li class="collection-item avatar ref_banc">
-                                <img src="image/logo-bancos/santander.fw.png" alt="" class="circle">
-                                <span class="title">Santander</span>
-                                <h6 class="">4565</h6>
-                                <input id="ref_bancaria5" type="text" class="validate" placeholder="" readonly="readonly">
-                            </li>
-                        </ul>
                     </div>
                     <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
                         <table class="highlight" id="tabla_pagos">
