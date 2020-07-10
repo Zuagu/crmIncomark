@@ -1,7 +1,7 @@
 var options_estatus_llamadas = "";
 var options_estatus_cuenta = "";
 $(document).ready(function () {
-    //iniciar el dropdown del menu
+//iniciar el dropdown del menu
     $('.fixed-action-btn').floatingActionButton();
     $('select').formSelect();
     $('.modal').modal();
@@ -34,10 +34,7 @@ $(document).ready(function () {
     });
     $("#tiempo_actual").val("00:00:00");
     $("#retraso_actual").val("00:00:00");
-
-
 });
-
 window.onload = function () {
     select_cuenta_siguiente(id_usuario);
 //    select_llamadas_gestor(id_usuario);
@@ -108,7 +105,6 @@ window.onload = function () {
 $("#cerrar").click(function () {
     Cerrar(id_usuario);
 });
-
 //actualizar el estatus de f_logeado al cerar pestaña
 function Cerrar(id) {
     $.ajax({
@@ -122,7 +118,6 @@ function Cerrar(id) {
 $(".img_log").click(function () {
     $('.sidenav').sidenav('open');
 });
-
 // funcion que pinta los submenus al dar click
 function verSubmenu(indice) {
     $("#contenido").empty();
@@ -141,14 +136,12 @@ function verSubmenu(indice) {
 $("#filtro").click(function () {
     $("#resultado_menu").removeClass("hide");
     $("#colect").empty();
-
     for (p in menu) {
         for (r in menu[p].submenus) {
             $("#colect").append('<a href="' + menu[p].jsp[r] + '" class="collection-item">' + menu[p].submenus[r] + '</a>');
         }
     }
 });
-
 function myFunction_buscar() {
     var query = $("#filtro").val();
     var li = document.querySelectorAll('#resultado_menu div a');
@@ -165,7 +158,6 @@ function myFunction_buscar() {
 $("#colect").delegate('.collection-item', 'click', function () {
     $("#resultado_menu").addClass("hide");
 });
-
 $(".row").click(function () {
     $("#resultado_menu").addClass("hide");
 });
@@ -174,17 +166,11 @@ $(".row").click(function () {
 $("#tab_pagos_diarios").click(function () {
     $(".rango_fechas_pagos_diarios").removeClass("hide");
     $(".div_tabla_pagos_diarios").addClass("hide");
-
-
 });
 $("#mostrar_pagos_diarios").click(function () {
     $(".rango_fechas_pagos_diarios").addClass("hide");
     $(".div_tabla_pagos_diarios").removeClass("hide");
-
-
 });
-
-
 //visitas tab
 $("#mostrar_visitas").click(function () {
     $(".rango-fechas-visitas").addClass("hide");
@@ -238,14 +224,14 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
         busqueda: _busqueda,
         id_puesto: _id_puesto
     };
-    console.log();
+//    console.log();
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (cuentas) {
-            console.log(cuentas);
+//            console.log(cuentas);
             $("#" + _div).empty();
             for (var i in cuentas) {
                 $("#" + _div).append('<div class="col s12 m12 l12 hoverable z-depth-2 div-res">' +
@@ -264,12 +250,11 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
     });
 }
 ;
-
 $("#buscador_cuentas_gestor").keyup(function (e) {
 
     if (e.keyCode === 13) {
         if ($("#buscador_cuentas_gestor").val().length > 5) {
-            //limipiar inputs info_gestor, info_gestor_secundario
+//limipiar inputs info_gestor, info_gestor_secundario
 //            $("#info_gestor input, #info_gestor_secundario input").val("");
 //            $("#tbody_tabla_convenios, #tbody_tabla_gestiones, #tbody_tabla_pagos").empty();
 
@@ -287,7 +272,6 @@ $("#buscador_cuentas_gestor").keyup(function (e) {
         }
     }
 });
-
 $("#buscador_cuentas_gestor").click(function () {
 //    $("#div_cuentas_encontradas").empty();
 });
@@ -317,7 +301,6 @@ function select_datos_cuenta(_cuenta) {
             $("#numero_marcado_deudor, #gestion").val("");
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
-
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                     '<span class="black-text"><b>Telefonos</b></span><br>' +
                     '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
@@ -413,7 +396,7 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
         cuenta: _cuenta,
         fecha_inico: _fecha_inico
     };
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
@@ -421,7 +404,6 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
         dataType: "json",
         success: function (gestiones) {
             $("#" + _div).empty();
-
             for (var i in gestiones) {
                 $("#" + _div).append('<tr>' +
                         '<td>' + gestiones[i].FECHA_LARGA + '</td>' +
@@ -439,7 +421,7 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
         }
-        
+
     });
 }
 function select_pagos_cuenta(_cuenta, _fecha_inico, _div) {
@@ -495,7 +477,6 @@ $("#div_cuentas_encontradas").delegate(".div-res", "click", function () {
     $("#div_cuentas_encontradas").addClass("hide");
     $("#div_telefonos_cuenta").removeClass("hide");
 });
-
 // funciones de pagos diarios gestor
 function mostrar_pagos_diarios(_desde, _hasta, _id_usuario, _div) {
     $("#" + _div).empty();
@@ -526,12 +507,10 @@ function mostrar_pagos_diarios(_desde, _hasta, _id_usuario, _div) {
                 for (var i in pagos_diarios) {
                     total_pagos = total_pagos + pagos_diarios[i].pago;
                     total_aplica = total_aplica + pagos_diarios[i].aplica;
-
                     if (actualAsignacion !== pagos_diarios[i].asignacion) {
                         totales.push(total_pagos, total_aplica);
                         total_pagos = total_pagos + pagos_diarios[i].pago;
                         total_aplica = total_aplica + pagos_diarios[i].aplica;
-
                         $("#" + _div).append('<tr>' +
                                 '<td></td>' +
                                 '<td>' + actualAsignacion + '</td>' +
@@ -548,7 +527,6 @@ function mostrar_pagos_diarios(_desde, _hasta, _id_usuario, _div) {
                     }
 
                     actualAsignacion = pagos_diarios[i].asignacion;
-
                     $("#" + _div).append('<tr>' +
                             '<td>' + pagos_diarios[i].fecha + '</td>' +
                             '<td>' + pagos_diarios[i].asignacion + '</td>' +
@@ -584,9 +562,7 @@ function mostrar_pagos_diarios(_desde, _hasta, _id_usuario, _div) {
 }
 $("#mostrar_pagos_diarios").click(function () {
     mostrar_pagos_diarios($("#desde_pagos_gestor").val(), $("#hasta_pagos_gestor").val(), id_usuario, "tbody_tabla_pagos_diarios");
-
 });
-
 // funciones de select convenios
 function select_convenios_cuenta(_cuenta, _div) {
     $("#" + _div).empty();
@@ -595,7 +571,6 @@ function select_convenios_cuenta(_cuenta, _div) {
         action: "select_convenios_cuenta",
         cuenta: _cuenta
     };
-
     $.ajax({
         type: "POST",
         url: "/sistema/ControllerGestor",
@@ -702,7 +677,6 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#numero_marcado_deudor, #gestion").val("");
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
-
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                         '<span class="black-text"><b>Telefonos</b></span><br>' +
                         '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
@@ -711,7 +685,6 @@ function select_cuenta_siguiente(_id_usuario) {
                         '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
                         '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
                         '</div>');
-
 //                conteo_llamadas_cuenta_siguiente();
 //                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
 //                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
@@ -728,7 +701,6 @@ function select_cuenta_siguiente(_id_usuario) {
 $("#cuenta_siguiente").click(function () {
     select_cuenta_siguiente(id_usuario);
 });
-
 // Funciones para insert Gestion
 
 //$(".limpiar_numero").keyup( function (evt) {
@@ -739,9 +711,7 @@ $(".limpiar_texto").keyup(function () {
     var cadena = $(this).val().replace(/[&\/\#,+()$~%'":*?<>{}|]/g, '');
     cadena = cadena.toUpperCase();
     $(this).val(cadena);
-
 });
-
 function insertar_gestion(myObj) {
 //    console.log(myObj);
 
@@ -755,23 +725,20 @@ function insertar_gestion(myObj) {
         data: params,
         dataType: "json",
         success: function (result) {
-//            console.log(result);
             alert("Gestion guardada");
-            
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $("#gestion").val("");
             $('select').formSelect();
             $("#numero_marcado_deudor").val("");
             $("#gestion").attr("readonly", "readonly");
-
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
 //            conteo_llamadas_guardar_gestion(myObj.id_estatus_llamada);
             select_gestiones_cuenta(myObj["_CUENTA"], '0000-00-00', "tbody_tabla_gestiones");
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -807,7 +774,6 @@ $("#guardar_gestion").click(function () {
                 '- Disposicion <br>- Codigo de llamada <br>- Numero marcado');
     }
 });
-
 $("#div_telefonos_cuenta").delegate(".tell", "click", function () {
     $("#numero_marcado_deudor").val($(this).text());
     $(".tell").removeClass("numero_marcado");
@@ -815,22 +781,22 @@ $("#div_telefonos_cuenta").delegate(".tell", "click", function () {
     $("#gestion").val($(this).text());
     $("#gestion").removeAttr("readonly");
 });
-
 // Insert Convenio 
 function insertar_convenio(_myObjConvenio, _myObjGestion) {
-//    console.log(_myObjConvenio);
+    console.log(_myObjConvenio);
+    console.log(_myObjGestion);
     var params = {
         action: "insertar_convenio",
         datos: JSON.stringify(_myObjConvenio)
     };
-//    console.log(params);
+    console.log(params);
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (respuesta) {
-//            console.log(respuesta);
+            console.log(respuesta);
             $("#alerta_convenio").empty();
             $("#alerta_convenio").append(respuesta.resultado);
             $("#importe_convenio").val("");
@@ -838,11 +804,9 @@ function insertar_convenio(_myObjConvenio, _myObjGestion) {
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
-
             if (respuesta.resultado !== "NO PERMITIDO" && respuesta.resultado !== "VERIFICA FECHA" && respuesta.resultado !== "VERIFIQUE IMPORTE Y LA FECHA DEL CONVENIO") {
                 insertar_gestion(_myObjGestion);
                 $("#modal_convenio").modal("close");
-
             }
         }
     });
@@ -889,35 +853,35 @@ $("#codigo_llamada").change(function () {
     }
 
 });
-
 $("#insert_convenio").click(function () {
     var myObjGestion = {
-        id_cuenta: $("#id_cuenta_deudor").val(),
-        id_asignacion: $("#id_asignacion_deudor").val(),
-        id_region: $("#id_region_deudor").val(),
-        id_cliente: $("#id_cliente_deudor").val(),
-        fecha_fin: $("#fecha_fin_deudor").val(),
-        fecha_inicio: $("#inicio_deudor").val(),
-        numero_marcado: $("#numero_marcado_deudor").val().replace(/ /gi, ""),
-        cuenta: $("#cuenta_deudor").val(),
-        id_estatus_cuenta: $("#estatus").val(),
-        id_estatus_llamada: $("#codigo_llamada").val(),
-        id_usuario: id_usuario,
-        id_puesto: id_puesto_usuario,
-        gestion: $("#gestion").val().replace(/"|,|'|-/gi, ""),
-        duracion: $("#tiempo_actual").val(),
-        retraso_llamada: $("#retraso_actual").val(),
-        expediente: $("#expediente_deudor").val(),
-        f_predictivo: 0
+        _ID_SUCURSAL: $('#ID_SUCURSAL').val(),
+        _ID_CLIENTE: $('#ID_CLIENTE').val(),
+        _TERRITORIO: $('#TERRITORIO').val(),
+        _CANAL: $('#CANAL').val(),
+        _ATRASO_MAXIMO: $('#ATRASO_MAXIMO').val(),
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        _NUMERO_MARCADO: $('#numero_marcado_deudor').val().replace(/ /gi, ""),
+        _ID_ESTATUS_CUENTA: $('#estatus').val(),
+        _ID_ESTATUS_LLAMADA: $('#codigo_llamada').val(),
+        _ID_USUARIO: id_usuario,
+        _GESTION: $('#gestion').val().replace(/"|,|'|-/gi, ""),
+        _DURACION: $('#tiempo_actual').val(),
+        _RETASO: $('#retraso_actual').val(),
+        _ID_PUESTO: id_puesto_usuario,
+        _PROMESA: 1,
+        _F_PREDICTIVO: 0,
+        _ID_EQUIPO: $('#ID_EQUIPO').val()
     };
-
     var myObjConvenio = {
-        convenio: $("#importe_convenio").val(),
-        fecha: $("#fecha_convenio").val(),
-        id_usuario: id_usuario,
-        cuenta: $("#cuenta_deudor").val(),
-        id_asignacion: $("#id_asignacion_deudor").val(),
-        id_region: $("#id_region_deudor").val()
+        CONVENIO: $("#importe_convenio").val(),
+        FECHA: $("#fecha_convenio").val(),
+        ID_USUARIO: id_usuario,
+        CUENTA: $('#CLIENTE_UNICO').val(),
+        TERRITORIO: $('#TERRITORIO').val(),
+        CANAL: $('#CANAL').val(),
+        ATRASO_MAXIMO: $('#ATRASO_MAXIMO').val(),
+        ID_EQUIPO: $('#ID_EQUIPO').val()
     };
     var validacion = 0;
     for (var obj in myObjConvenio) {
@@ -1053,7 +1017,6 @@ $("#tab_saldos").click(function () {
     $("#tabla_saldos_status").addClass("hide");
     $("#tabla_cuentas_status").addClass("hide");
 });
-
 $("#tbody_tabla_equipos_usuario").delegate('.equipo_usuario', 'dblclick', function () {
     select_saldos_gestores(id_usuario, $(this).closest("tr").attr("id"), 'tbody_tabla_saldos_status');
     $("#tabla_equipos_usuario").addClass("hide");
@@ -1073,20 +1036,16 @@ $("#tbody_tabla_cuentas_status").delegate('.saldos_status_cuenta', 'click', func
     $('.tabs').tabs();
     select_datos_cuenta_relacionada($(this).text());
 });
-
-
 // Controlar tiempos del gestor 
 function cronometro_retraso_actual() {
     var datos = $("#retraso_actual").val().split(":");
     var horas = datos[0];
     var minutos = datos[1];
     var segundos = datos[2];
-
     horas = parseInt(horas);
     minutos = parseInt(minutos);
     segundos = parseInt(segundos);
     segundos++;
-
     if (segundos >= 60) {
         segundos = 0;
         minutos++;
@@ -1101,7 +1060,6 @@ function cronometro_retraso_actual() {
         segundos = "0" + segundos;
     if (horas <= 9)
         horas = "0" + horas;
-
     $("#retraso_actual").val('');
     $("#retraso_actual").val(horas + ":" + minutos + ":" + segundos);
 }
@@ -1111,12 +1069,10 @@ function cronometro_llamada_actual() {
     var horas = datos[0];
     var minutos = datos[1];
     var segundos = datos[2];
-
     horas = parseInt(horas);
     minutos = parseInt(minutos);
     segundos = parseInt(segundos);
     segundos++;
-
     if (segundos >= 60) {
         segundos = 0;
         minutos++;
@@ -1138,14 +1094,12 @@ function cronometro_llamada_actual() {
         segundos = "0" + segundos;
     if (horas <= 9)
         horas = "0" + horas;
-
     $("#tiempo_actual").val('');
     $("#tiempo_actual").val(horas + ":" + minutos + ":" + segundos);
 }
 var tiempo_llamada_actual = setInterval(function () {
     cronometro_llamada_actual();
 }, 1000);
-
 // funciones de Agenda
 function insert_agenda() {
     var params = {

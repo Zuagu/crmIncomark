@@ -127,25 +127,8 @@ public class ModelDataCuentaAzteca {
             Object _ID_EQUIPO = jsonObject.get("_ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_insert_gestion("
-                    + "" + _ID_SUCURSAL + ",\n"
-                    + "" + _ID_CLIENTE + ",\n"
-                    + "'" + _TERRITORIO + "',\n"
-                    + "'" + _CANAL + "',\n"
-                    + "" + _ATRASO_MAXIMO + ",\n"
-                    + "'" + _CUENTA + "',\n"
-                    + "'" + _NUMERO_MARCADO + "',\n"
-                    + "" + _ID_ESTATUS_CUENTA + ",\n"
-                    + "" + _ID_ESTATUS_LLAMADA + ",\n"
-                    + "" + _ID_USUARIO + ",\n"
-                    + "'" + _GESTION + "',\n"
-                    + "'" + _DURACION + "',\n"
-                    + "'" + _RETASO + "',\n"
-                    + "" + _ID_PUESTO + ",\n"
-                    + "" + _PROMESA + ",\n"
-                    + "" + _F_PREDICTIVO + ",\n"
-                    + "" + _ID_EQUIPO + ");";
-
+            String sql = "call azteca_insert_gestion(" + _ID_SUCURSAL + ", " + _ID_CLIENTE + ", '" + _TERRITORIO + "', '" + _CANAL + "', " + _ATRASO_MAXIMO + ", '" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ", " + _ID_EQUIPO + ");";
+            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 
             JSONObject objRes = new JSONObject();
@@ -160,7 +143,7 @@ public class ModelDataCuentaAzteca {
             ic.conn.close();
             return objRes.toJSONString();
         } catch (SQLException e) {
-            return "SQL: Error al insertar datos de gestion Code Error: " + e;
+            return "SQL: Error: al insertar datos de gestion Code Error: " + e;
         } catch (org.json.simple.parser.ParseException ex) {
             Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
             return "SQL: Falla en el parser de JSONObject";
@@ -415,17 +398,30 @@ public class ModelDataCuentaAzteca {
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objConvenio);
 
-            Object id_cuenta = jsonObject.get("id_cuenta");
+            Object _CONVENIO = jsonObject.get("CONVENIO");
+            Object _FECHA = jsonObject.get("FECHA");
+            Object _ID_USUARIO = jsonObject.get("ID_USUARIO");
+            Object _CUENTA = jsonObject.get("CUENTA");
+            Object _TERRITORIO = jsonObject.get("TERRITORIO");
+            Object _CANAL = jsonObject.get("CANAL");
+            Object _ATRASO_MAXIMO = jsonObject.get("ATRASO_MAXIMO");
+            Object _ID_EQUIPO = jsonObject.get("ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "guardar_gestion_azteca()";
+            String sql = "CALL azteca_insert_convenio( "+ _CONVENIO +", '"+ _FECHA +"', "+ _ID_USUARIO +", '"+ _CUENTA +"', '"+ _TERRITORIO +"', '"+ _CANAL +"' , "+ _ATRASO_MAXIMO +", " + _ID_EQUIPO +");";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
+            // response
+            JSONObject objResp = new JSONObject();
+            while (ic.rs.next()) {
+                objResp.put("response", ic.rs.getString("response"));
+
+            }
 
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            return "";
+            return objResp.toJSONString();
         } catch (SQLException e) {
             return "SQL: Error al insertar datos de gestion Code Error: " + e;
         } catch (org.json.simple.parser.ParseException ex) {
