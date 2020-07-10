@@ -127,7 +127,7 @@ public class ModelDataCuentaAzteca {
             Object _ID_EQUIPO = jsonObject.get("_ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "guardar_gestion_azteca("
+            String sql = "call azteca_insert_gestion("
                     + "" + _ID_SUCURSAL + ",\n"
                     + "" + _ID_CLIENTE + ",\n"
                     + "'" + _TERRITORIO + "',\n"
@@ -145,12 +145,20 @@ public class ModelDataCuentaAzteca {
                     + "" + _PROMESA + ",\n"
                     + "" + _F_PREDICTIVO + ",\n"
                     + "" + _ID_EQUIPO + ");";
-            System.out.println(sql);
-//            ic.rs = ic.st.executeQuery(sql);
 
+            ic.rs = ic.st.executeQuery(sql);
+
+            JSONObject objRes = new JSONObject();
+            System.out.println(objRes);
+            while (ic.rs.next()) {
+                objRes.put("response", ic.rs.getString("response"));
+
+            }
+
+            ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            return jsonObject.toJSONString();
+            return objRes.toJSONString();
         } catch (SQLException e) {
             return "SQL: Error al insertar datos de gestion Code Error: " + e;
         } catch (org.json.simple.parser.ParseException ex) {
@@ -181,7 +189,7 @@ public class ModelDataCuentaAzteca {
                 listCuentas.add(objCuenta);
 
             }
-
+            ic.rs.close();
             ic.st.close();
             ic.conn.close();
 
@@ -238,21 +246,40 @@ public class ModelDataCuentaAzteca {
     public static String select_gestiones_cuenta(String cuenta, String fecha_inico) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "";
+            String sql = "CALL azteca_gestiones_cuenta('" + cuenta + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-            JSONObject objCuenta = new JSONObject();
+            JSONArray listGestion = new JSONArray();
             while (ic.rs.next()) {
-                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-
+                JSONObject objGestion = new JSONObject();
+                objGestion.put("ID_GESTION", ic.rs.getString("ID_GESTION"));
+                objGestion.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
+                objGestion.put("HORA", ic.rs.getString("HORA"));
+                objGestion.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objGestion.put("CANAL", ic.rs.getString("CANAL"));
+                objGestion.put("FECHA_LARGA", ic.rs.getString("FECHA_LARGA"));
+                objGestion.put("ATRASO_MAXIMO", ic.rs.getString("ATRASO_MAXIMO"));
+                objGestion.put("CUENTA", ic.rs.getString("CUENTA"));
+                objGestion.put("NUMERO_MARCADO", ic.rs.getString("NUMERO_MARCADO"));
+                objGestion.put("ID_ESTATUS_CUENTA", ic.rs.getString("ID_ESTATUS_CUENTA"));
+                objGestion.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
+                objGestion.put("ID_USUARIO", ic.rs.getString("ID_USUARIO"));
+                objGestion.put("GESTION", ic.rs.getString("GESTION"));
+                objGestion.put("DURACION", ic.rs.getString("DURACION"));
+                objGestion.put("RETASO", ic.rs.getString("RETASO"));
+                objGestion.put("ID_PUESTO", ic.rs.getString("ID_PUESTO"));
+                objGestion.put("PROMESA", ic.rs.getString("PROMESA"));
+                objGestion.put("F_PREDICTIVO", ic.rs.getString("F_PREDICTIVO"));
+                objGestion.put("ID_EQUIPO", ic.rs.getString("ID_EQUIPO"));
+                listGestion.add(objGestion);
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
 
-            return objCuenta.toString();
+            return listGestion.toString();
         } catch (SQLException e) {
-            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+            return "SQL: Error al traer las gestiones de la cuenta azteca Code Error: " + e;
         }
     }
 

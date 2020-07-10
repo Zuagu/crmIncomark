@@ -329,7 +329,7 @@ function select_datos_cuenta(_cuenta) {
 //            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
 //            telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
 //            var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
-//            select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
+            select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], "0000-00-00", "tbody_tabla_gestiones");
 //            select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
         }
     });
@@ -413,10 +413,10 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
         cuenta: _cuenta,
         fecha_inico: _fecha_inico
     };
-//    console.log(params);
+    console.log(params);
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (gestiones) {
@@ -424,19 +424,22 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
 
             for (var i in gestiones) {
                 $("#" + _div).append('<tr>' +
-                        '<td>' + gestiones[i].fecha + '</td>' +
-                        '<td>' + gestiones[i].hora + '</td>' +
-                        '<td>' + gestiones[i].numero_marcado + '</td>' +
-                        '<td>' + gestiones[i].gestor + '</td>' +
-                        '<td>' + gestiones[i].estatus_cuenta + '</td>' +
-                        '<td>' + gestiones[i].estatus_llamada + '</td>' +
-                        '<td>' + gestiones[i].gestion + '</td>' +
-                        '<td>' + gestiones[i].duracion + '</td>' +
+                        '<td>' + gestiones[i].FECHA_LARGA + '</td>' +
+                        '<td>' + gestiones[i].HORA + '</td>' +
+                        '<td>' + gestiones[i].NUMERO_MARCADO + '</td>' +
+                        '<td>' + gestiones[i].ID_USUARIO + '</td>' +
+                        '<td>' + gestiones[i].ID_ESTATUS_CUENTA + '</td>' +
+                        '<td>' + gestiones[i].ID_ESTATUS_LLAMADA + '</td>' +
+                        '<td>' + gestiones[i].GESTION + '</td>' +
+                        '<td>' + gestiones[i].DURACION + '</td>' +
                         '</tr>'
                         );
             }
-
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
         }
+        
     });
 }
 function select_pagos_cuenta(_cuenta, _fecha_inico, _div) {
@@ -617,6 +620,9 @@ function select_convenios_cuenta(_cuenta, _div) {
                         '</tr>'
                         );
             }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
         }
     });
 }
@@ -670,6 +676,7 @@ function select_cuenta_siguiente(_id_usuario) {
         action: "select_cuenta_siguiente",
         id_usuario: _id_usuario
     };
+    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
@@ -709,7 +716,7 @@ function select_cuenta_siguiente(_id_usuario) {
 //                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
 //                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
 //                var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
-//                select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
+                select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], '0000-00-00', "tbody_tabla_gestiones");
 //                select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
 //                $("#gestion").attr("readonly", "readonly");
             }
@@ -742,14 +749,14 @@ function insertar_gestion(myObj) {
         action: "guardar_gestion",
         datos: JSON.stringify(myObj)
     };
-    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
+            alert("Gestion guardada");
             
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
@@ -761,7 +768,7 @@ function insertar_gestion(myObj) {
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
 //            conteo_llamadas_guardar_gestion(myObj.id_estatus_llamada);
-//            select_gestiones_cuenta(myObj["cuenta"], f_inicio[0], "tbody_tabla_gestiones");
+            select_gestiones_cuenta(myObj["_CUENTA"], '0000-00-00', "tbody_tabla_gestiones");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -791,7 +798,7 @@ $("#guardar_gestion").click(function () {
             _F_PREDICTIVO: 0,
             _ID_EQUIPO: $('#ID_EQUIPO').val()
         };
-        console.log(myObjGestion);
+//        console.log(myObjGestion);
         insertar_gestion(myObjGestion);
     } else {
         $("#modal_alerta").modal("open");
