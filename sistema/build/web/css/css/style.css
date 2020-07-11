@@ -420,21 +420,26 @@ table.highlight>tbody>tr:hover {
 
 /* nav */
 #unico_filtro{
-    margin-left: 15rem;
 }
-    
+
 
 
 #unico_filtro .input-field{
     display: inline-block;
-    width: 8rem;
+    width: 7rem;
     color: white !important;
-    
+    margin-left: 2rem;
+
+
+
 }
 
 #unico_filtro .input-field input{
     color: white !important;
     
+    border-bottom: 1px solid #FFF;
+    box-shadow: 0 1px 0 0 #FFF;
+
 }
 
 #unico_filtro .input-field label{
@@ -519,7 +524,7 @@ nav input[type="text"]:not(.browser-default):focus:not([readonly]) {
 
 */.div_tabs {
     height: 25px;
-    
+
 }/*
 
 .nex,
@@ -620,20 +625,20 @@ color_icon{
 }
 .div_input_gestor_tiempos input[type="text"]:not(.browser-default)[readonly="readonly"]{
     border-radius: 4px;
-     
+
     color: black;
 
 }
 
 .div_input_gestor_tiempos input[type="text"]:not(.browser-default).validate + label {
-    
+
     color: black;   
 
 
 }
 .div_input_gestor_info input[type="text"]:not(.browser-default)[readonly="readonly"]{
     border-radius: 4px;
-     
+
     color: black;
 
 }
@@ -705,7 +710,7 @@ div_info_secundaria{
 }
 
 .btn_siguiente {
-     margin-top: 10px;
+    margin-top: 10px;
     background: linear-gradient(45deg,rgb(255, 82, 82), rgb(244, 143, 177));
 }
 
@@ -1069,25 +1074,25 @@ th,td {
 .selected {
     box-sizing: border-box;
     background: 
-    rgb(137, 222, 255) !important;
+        rgb(137, 222, 255) !important;
 }
 /*llego a tiempo*/
 .estatus_entrada1{ 
     background-image: linear-gradient(to top, rgba(61, 172, 89, 0.7), rgba(255,255,255, 0.7));
- }  
- /*llego tarde*/
+}  
+/*llego tarde*/
 .estatus_entrada2{ 
     background-image: linear-gradient(to top, rgba(254,148, 17, 0.7), rgba(255,255,255, 0.7));
- }  
- /*no llego*/
+}  
+/*no llego*/
 .estatus_entrada0{ 
     background-image: linear-gradient(to top, rgba(255, 0, 0, 0.7), rgba(255,255,255, 0.7));
- }  
- .f_llegada1{
-  color:black !important;   
- } 
- .f_llegada0{
-  color:white !important;
-  
- } 
+}  
+.f_llegada1{
+    color:black !important;   
+} 
+.f_llegada0{
+    color:white !important;
+
+} 
 

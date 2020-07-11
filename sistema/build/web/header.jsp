@@ -20,7 +20,7 @@
     <li><a href="index.jsp" id="cerrar">Cerrar Sesion</a></li>
 </ul>
 <ul id="dropdown_app" class="dropdown-content">
-    <li><a href="https://www.facebook.com/sicsacobranza/?ref=search&__tn__=%2Cd%2CP-R&eid=ARBzmVtC93taRRU_sstiWANxi7bZYBaTD4hJhfiPrrevKZ0r01Fnp8MqEMBelL_C7RR25fsXUWznu5iq"  class="center-align" target="_blank"><img class=" size_ul" src="image/facebook.png"></a></li>
+    <li><a href="https://web.whatsapp.com/"  class="center-align" target="_blank"><img class=" size_ul" src="image/whatsapp.png"></a></li>
     <li><a href="" class="center-align"><img class="size_ul" src="image/zoiper.png"></a></li>
     <li><a href="https://201.172.31.105:4446/"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel_pue.fw.png"></a></li>
     <li><a href="https://192.168.0.6/index.php?menu=userlist"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel_mty.fw.png"></a></li>
@@ -30,7 +30,7 @@
         <ul>
             <a href="#!" class="logo_principal"><img src="image/logoInco.fw.png" alt="image/logoInco.fw.png" class="img_log"></a> 
         </ul>    
-        <ul id="unico_filtro">
+        <ul id="unico_filtro" class="center-align">
             <input id="filtro" class="search center-align grey lighten-5" onkeyup="myFunction_buscar()" type="text" placeholder="Buscar" style="width:50%">
             <div id="resultado_menu" class="div-resultado hide">
                 <div id="colect" class="collection">
