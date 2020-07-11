@@ -17,7 +17,7 @@
         <jsp:include page="header.jsp"/>
         <div class="row" id="contenido">
             <div class="container-fluid">
-                <div class="col s10 m10 l10 contenido-datos">
+                <div class="col s9 m9 l9 contenido-datos">
                     <input id="id_cuenta" type="hidden">
                     <input id="numero_marcado_deudor" type="hidden">
                     <input id="ID_SUCURSAL" type="hidden">
@@ -88,41 +88,39 @@
                             <label for="SALDO_TOTAL">Saldo Total</label>
                         </div>
                     </div>
-
                     <div class=" col s12 m12 l12  div_gestor_gestion">
-                        <div class=" col s6 m6 l6 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
+                        <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
                             <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion"></textarea>
                         </div>
-                        <div class=" col s6 m6 l6">
+                    </div>
+                    <div class=" col s12 m12 l12  div_gestor_gestion">
                             <div class="input-field col s6 m6 l6">
-                                <div class=" input-field col s12 m12 l12  div_gestor_gestion">
+                                <div class=" input-field col s6 m6 l6 ">
                                     <select id="estatus">
                                         <option value="0" selected>Selecciona Estatus</option>
                                     </select>
+                                </div> 
+                                <div class=" input-field col s6 m6 l6 ">
                                     <select id="codigo_llamada"></select>
                                 </div> 
                             </div>
                             <div class="col s6 m6 l6 ">
-                                <div class="col s12 m12 l12 ">
+                                <div class="col s6 m6 l6 ">
                                     <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
                                 </div>
-                                <div class="col s12 m12 l12">
+                                <div class="col s6 m6 l6">
                                     <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Siguiente</a>
                                 </div>
                             </div>
-                        </div>
-
                     </div>
                     <div class=" col s12 m12 l12 div_tabs">
                         <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
                             <li class="tab col s1"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
                             <li class="tab col s1"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
-                            <li class="tab col s1"><a id="tab_pagos_diarios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos_diarios" href="#div_pagos_diarios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">attach_money</i></a></li>
                             <li class="tab col s1"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
                             <li class="tab col s1"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
                             <li class="tab col s1"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
                             <li class="tab col s1"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
-                            <li class="tab col s1"><a id="tab_estadisticas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Estadisticas" href="#div_estadisticas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">poll</i></a></li>
                         </ul>
                     </div>    
                     <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;"> 
@@ -159,30 +157,6 @@
                             <tbody id="tbody_tabla_pagos">
                             </tbody>
                         </table>
-                    </div>
-                    <div id="div_pagos_diarios" class="col s12 m12 l12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <div class="col s4 m4 l4 offset-s4 offset-m4 offset-l4 rango_fechas_pagos_diarios hide">
-                            <input id="desde_pagos_gestor" type="text" class="datepicker input_date center-align" placeholder="desde">
-                            <input id="hasta_pagos_gestor" type="text" class="datepicker input_date center-align" placeholder="hasta">
-                            <a id="mostrar_pagos_diarios" class="waves-effect waves-light btn btn_gestiones green center">enviar</a>
-                        </div>
-                        <div class="div_tabla_pagos_diarios hide">
-                            <table class="highlight striped" id="tabla_pagos_diarios">
-                                <thead class="blue">
-                                    <tr class="text-white">
-                                        <td><b>CUENTA</b></td>
-                                        <td><b>FECHA PAGO</b></td>
-                                        <td><b>ORIGEN</b></td>
-                                        <td><b>IMPORTE</b></td>
-                                        <td><b>FORMA</b></td>
-                                        <td><b>ESTATUS</b></td>
-                                        <td><b>FECHA APLICACION</b></td>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody_tabla_pagos_diarios">
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                     <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
                         <div class="col s2 m2 l2 rango-fechas-agendas hide ">
@@ -261,14 +235,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="div_estadisticas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <div class="col s2 m2 l2 rango-fechas-estadisticas hide">
-                            <input type="text" class="datepicker input_date center-align" placeholder="desde">
-                            <input type="text" class="datepicker input_date center-align" placeholder="hasta">
-                            <a id="mostrar_estadisticas" class="waves-effect waves-light btn btn_gestiones green center">enviar</a>
-                        </div>
-                        <div id="tabla_estadisticas" class="col s12 m12 l12">jkshaksjdhkasjh</div>
-                    </div>
                     <div id="div_input_gestor_tiempos" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1">
                         <div class="input-field col s2 m2 l2">
                             <input id="primera_llamada" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
@@ -297,7 +263,7 @@
                     </div>
 
                 </div>
-                <div class="col s2 m2 l2 z-depth-2 div_search_gestor inner">
+                <div class="col s3 m3 l3 z-depth-1 div_search_gestor inner">
                     <div class="input-field col s12 m12 l12">
                         <input id="buscador_cuentas_gestor" class="search_cuentas center-align" type="text" placeholder="Buscar">
                     </div>

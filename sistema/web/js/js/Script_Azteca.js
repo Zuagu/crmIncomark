@@ -267,10 +267,10 @@ $("#buscador_cuentas_gestor").keyup(function (e) {
 
             $("#div_cuentas_encontradas").removeClass("hide");
             $("#div_telefonos_cuenta").addClass("hide");
-            $(".div_search_gestor").addClass("s3 m3 l3");
-            $(".div_search_gestor").removeClass("s2 m2 l2");
-            $(".contenido-datos").addClass("s9 m9 l9");
-            $(".contenido-datos").removeClass("s10 m10 l10");
+//            $(".div_search_gestor").addClass("s3 m3 l3");
+//            $(".div_search_gestor").removeClass("s2 m2 l2");
+//            $(".contenido-datos").addClass("s9 m9 l9");
+//            $(".contenido-datos").removeClass("s10 m10 l10");
             buscar_cuentas_gestor($("#buscador_cuentas_gestor").val(), id_puesto_usuario, "div_cuentas_encontradas");
         } else {
             $("#modal_alerta").modal("open");

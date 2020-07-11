@@ -20,10 +20,9 @@
     <li><a href="index.jsp" id="cerrar">Cerrar Sesion</a></li>
 </ul>
 <ul id="dropdown_app" class="dropdown-content">
-    <li><a href="https://web.whatsapp.com/"  class="center-align" target="_blank"><img class=" size_ul" src="image/whatsapp.png"></a></li>
+    <li><a href="https://web.whatsapp.com/"  class="center-align" target="_blank"><img class=" size_ul" src="image/whatsapp_logo.png"></a></li>
     <li><a href="" class="center-align"><img class="size_ul" src="image/zoiper.png"></a></li>
-    <li><a href="https://201.172.31.105:4446/"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel_pue.fw.png"></a></li>
-    <li><a href="https://192.168.0.6/index.php?menu=userlist"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel_mty.fw.png"></a></li>
+    <li><a href="https://incomarkpbx.systelvoice.com/index.php"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel.png"></a></li>
 </ul>
 <nav class="header_nav blue darken-1">
     <div class="nav-wrapper icon_nav">
