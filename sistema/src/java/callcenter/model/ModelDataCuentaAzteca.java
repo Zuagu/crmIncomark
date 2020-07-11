@@ -290,19 +290,35 @@ public class ModelDataCuentaAzteca {
     public static String select_convenios_cuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "";
+            String sql = "call azteca_convenios_cuenta('" + cuenta + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-            JSONObject objCuenta = new JSONObject();
+            JSONArray listConvenios = new JSONArray();
             while (ic.rs.next()) {
-                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
-
+                JSONObject objConvenio = new JSONObject();
+                objConvenio.put("ID_CONVENIO", ic.rs.getString("ID_CONVENIO"));
+                objConvenio.put("CONVENIO", ic.rs.getString("CONVENIO"));
+                objConvenio.put("RESTO", ic.rs.getString("RESTO"));
+                objConvenio.put("APLICA", ic.rs.getString("APLICA"));
+                objConvenio.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objConvenio.put("CANAL", ic.rs.getString("CANAL"));
+                objConvenio.put("ATRASO_MAXIMO", ic.rs.getString("ATRASO_MAXIMO"));
+                objConvenio.put("FECHA", ic.rs.getString("FECHA"));
+                objConvenio.put("ID_USUARIO", ic.rs.getString("ID_USUARIO"));
+                objConvenio.put("CUENTA", ic.rs.getString("CUENTA"));
+                objConvenio.put("ID_ESTATUS", ic.rs.getString("ID_ESTATUS"));
+                objConvenio.put("FECHA_INSET", ic.rs.getString("FECHA_INSET"));
+                objConvenio.put("PAGOS", ic.rs.getString("PAGOS"));
+                objConvenio.put("FECHA_PAGO", ic.rs.getString("FECHA_PAGO"));
+                objConvenio.put("EFECTIVIDAD", ic.rs.getString("EFECTIVIDAD"));
+                objConvenio.put("ID_EQUIPO", ic.rs.getString("ID_EQUIPO"));
+                listConvenios.add(objConvenio);
             }
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
 
-            return objCuenta.toString();
+            return listConvenios.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
@@ -408,7 +424,7 @@ public class ModelDataCuentaAzteca {
             Object _ID_EQUIPO = jsonObject.get("ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_insert_convenio( "+ _CONVENIO +", '"+ _FECHA +"', "+ _ID_USUARIO +", '"+ _CUENTA +"', '"+ _TERRITORIO +"', '"+ _CANAL +"' , "+ _ATRASO_MAXIMO +", " + _ID_EQUIPO +");";
+            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ");";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             // response

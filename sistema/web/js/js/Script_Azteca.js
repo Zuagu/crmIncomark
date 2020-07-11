@@ -477,10 +477,10 @@ $("#div_cuentas_encontradas").delegate(".div-res", "click", function () {
         alert(cuenta[1]);
 //        select_datos_cuenta_relacionada(cuenta[1]);
     }
-    $(".div_search_gestor").addClass("s2 m2 l2");
-    $(".div_search_gestor").removeClass("s3 m3 l3");
-    $(".contenido-datos").addClass("s10 m10 l10");
-    $(".contenido-datos").removeClass("s9 m9 l9");
+//    $(".div_search_gestor").addClass("s2 m2 l2");
+//    $(".div_search_gestor").removeClass("s3 m3 l3");
+//    $(".contenido-datos").addClass("s10 m10 l10");
+//    $(".contenido-datos").removeClass("s9 m9 l9");
     $("#div_cuentas_encontradas").addClass("hide");
     $("#div_telefonos_cuenta").removeClass("hide");
 });
@@ -580,25 +580,25 @@ function select_convenios_cuenta(_cuenta, _div) {
     };
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (convenios) {
-//            console.log(convenios);
+            console.log(convenios);
             var color_status = ["", "yellow", "green", "red lighten-2"];
             $("#" + _div).empty();
             for (var i in convenios) {
-                $("#" + _div).append('<tr class="' + color_status[ convenios[i].id_estatus ] + '">' +
-                        '<td>' + convenios[i].cuenta + '</td>' +
-                        '<td>' + convenios[i].usuario + '</td>' +
-                        '<td>' + convenios[i].convenio + '</td>' +
-                        '<td>' + convenios[i].fecha_gestion + '</td>' +
-                        '<td>' + convenios[i].plazo + '</td>' +
-                        '<td>' + convenios[i].fecha_convenio + '</td>' +
-                        '<td>' + convenios[i].pagos + '</td>' +
-                        '<td>' + convenios[i].fecha_pago + '</td>' +
-                        '<td>' + convenios[i].efectividad + '</td>' +
-                        '<td>' + convenios[i].estatus + '</td>' +
+                $("#" + _div).append('<tr class="' + color_status[ convenios[i].ID_CONVENIO ] + '">' +
+                        '<td>' + convenios[i].CUENTA + '</td>' +
+                        '<td>' + convenios[i].ID_USUARIO + '</td>' +
+                        '<td>' + convenios[i].CONVENIO + '</td>' +
+                        '<td>' + convenios[i].FECHA_INSET + '</td>' +
+                        '<td>' + convenios[i].ATRASO_MAXIMO + '</td>' +
+                        '<td>' + convenios[i].FECHA + '</td>' +
+                        '<td>' + convenios[i].PAGOS + '</td>' +
+                        '<td>' + convenios[i].FECHA_PAGO + '</td>' +
+                        '<td>' + convenios[i].EFECTIVIDAD + '</td>' +
+                        '<td>' + convenios[i].ID_ESTATUS + '</td>' +
                         '</tr>'
                         );
             }
@@ -610,7 +610,7 @@ function select_convenios_cuenta(_cuenta, _div) {
 }
 $("#tab_convenios").click(function () {
     if ($("#cuenta_deudor").val() !== "") {
-        select_convenios_cuenta($("#cuenta_deudor").val(), "tbody_tabla_convenios");
+        select_convenios_cuenta($("#CLIENTE_UNICO").val(), "tbody_tabla_convenios");
     } else {
         $("#tbody_tabla_convenios").empty();
         $("#tbody_tabla_convenios").append("No hay una Cuenta Selecionada");
