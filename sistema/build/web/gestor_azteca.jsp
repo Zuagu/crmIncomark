@@ -25,68 +25,65 @@
                     <input id="TERRITORIO" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
-                    <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1">
+                    <div id="info_gestor" class=" col s8 m8 l8 div_input_gestor_info  z-depth-1">
                         <div class="col s12 m12 l12">
                             <h6>Informacon General</h6>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="CLIENTE_UNICO">Cuenta</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="NOMBRE_CTE">Titular</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="GERENTE">Gerente</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="RFC" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="RFC">RFC</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
                             <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="CAMPANIA">Producto</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
+                            <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="NOMBRE_CTE">Titular</label>
+                        </div>
+                        
+                        <div class="input-field col s6 m6 l6">
                             <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="SUBCAMPANA">Subprodcuto</label>
+                        </div>
+                        <div class="input-field col s3 m3 l3">
+                            <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="GERENTE">Gerente</label>
                         </div>
                         <div class="input-field col s12 m12 l12">
                             <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="">Direccion</label>
                         </div>
                     </div>
-                    <div id="info_gestor_secundario" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
+                    <div id="info_gestor_secundario" class="col s4 m4 l4 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
                         <div class="col s12 m12 l12">
                             <h6>Info. Economica</h6>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="ATRASO_MAXIMO">Semanas</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="DIA_DE_PAGO">Dia de Pago</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="IMP_ULTIMO_PAGO">Ult. Pago $</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="SALDO">Capital</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="MORATORIOS">Moratorios</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="SALDO_TOTAL">Saldo Total</label>
                         </div>
@@ -272,7 +269,7 @@
                         </div>
                         <div id="tabla_estadisticas" class="col s12 m12 l12">jkshaksjdhkasjh</div>
                     </div>
-                    <div class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1">
+                    <div id="div_input_gestor_tiempos" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1">
                         <div class="input-field col s2 m2 l2">
                             <input id="primera_llamada" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
                             <label for="primera_llamada">P.llamada</label>

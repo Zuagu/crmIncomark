@@ -419,6 +419,28 @@ table.highlight>tbody>tr:hover {
 }*/
 
 /* nav */
+#unico_filtro{
+    margin-left: 15rem;
+}
+    
+
+
+#unico_filtro .input-field{
+    display: inline-block;
+    width: 8rem;
+    color: white !important;
+    
+}
+
+#unico_filtro .input-field input{
+    color: white !important;
+    
+}
+
+#unico_filtro .input-field label{
+    color: black !important;
+}
+
 nav {
     height: 50px;
 }
@@ -528,9 +550,7 @@ nav input[type="text"]:not(.browser-default):focus:not([readonly]) {
 td {
     cursor: pointer;
 }*/
-.header_nav {
-    background: linear-gradient(45deg,rgb(207, 216, 220), rgb(84, 110, 122)) !important;
-}
+
 .sidenav {
     width: 60px;
     border-radius: 0 5px 5px 0;

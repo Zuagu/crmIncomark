@@ -25,12 +25,12 @@
     <li><a href="https://201.172.31.105:4446/"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel_pue.fw.png"></a></li>
     <li><a href="https://192.168.0.6/index.php?menu=userlist"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel_mty.fw.png"></a></li>
 </ul>
-<nav class="header_nav">
+<nav class="header_nav blue darken-1">
     <div class="nav-wrapper icon_nav">
         <ul>
             <a href="#!" class="logo_principal"><img src="image/logoInco.fw.png" alt="image/logoInco.fw.png" class="img_log"></a> 
         </ul>    
-        <ul>
+        <ul id="unico_filtro">
             <input id="filtro" class="search center-align grey lighten-5" onkeyup="myFunction_buscar()" type="text" placeholder="Buscar" style="width:50%">
             <div id="resultado_menu" class="div-resultado hide">
                 <div id="colect" class="collection">

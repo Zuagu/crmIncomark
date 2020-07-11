@@ -1,5 +1,10 @@
 var options_estatus_llamadas = "";
 var options_estatus_cuenta = "";
+$('#filtro').addClass('hide');
+$('#resultado_menu').addClass('hide');
+$('#unico_filtro').empty();
+$('#unico_filtro').append($('#div_input_gestor_tiempos').html());
+$('#div_input_gestor_tiempos').remove();
 $(document).ready(function () {
 //iniciar el dropdown del menu
     $('.fixed-action-btn').floatingActionButton();
@@ -99,7 +104,9 @@ window.onload = function () {
             <option value='36'>8.1 SIN CLASIFICAR</option>`;
     $("#estatus").append(options_estatus_cuenta);
     $('select').formSelect();
+
 }
+
 
 //funcion cerrar sesion con boton
 $("#cerrar").click(function () {
