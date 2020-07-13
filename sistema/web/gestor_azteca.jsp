@@ -286,6 +286,9 @@
                     <div class="input-field col s12 m4 l4 offset-m1 offset-l1">
                         <input id="fecha_convenio" type="text" class="datepicker" placeholder="Fecha del convenio">
                     </div>
+                    <div class="input-field col s12 m6 l6 offset-m3 offset-l3">
+                        <input id="password_convenio" type="password" class="" placeholder="Ingresa Password">
+                    </div>
                     <div class="col s12 center">
                         <br>
                         <a id="cancelar_convenio" class="waves-effect waves-light btn red modal-close btn_gestiones "><i class="material-icons right">cancel</i>Cancel</a>
