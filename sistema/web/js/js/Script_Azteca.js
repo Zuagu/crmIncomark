@@ -806,15 +806,16 @@ function insertar_convenio(_myObjConvenio, _myObjGestion) {
         success: function (respuesta) {
             console.log(respuesta);
             $("#alerta_convenio").empty();
-            $("#alerta_convenio").append(respuesta.resultado);
+            $("#alerta_convenio").append(`${respuesta.resultado} ${respuesta.mensaje}`);
             $("#importe_convenio").val("");
             $("#fecha_convenio").val("");
-            $("#codigo_llamada").empty();
-            $("#codigo_llamada").append(options_estatus_llamadas);
-            $('select').formSelect();
+
             if (respuesta.resultado !== "NO PERMITIDO" && respuesta.resultado !== "VERIFICA FECHA" && respuesta.resultado !== "VERIFIQUE IMPORTE Y LA FECHA DEL CONVENIO") {
                 insertar_gestion(_myObjGestion);
                 $("#modal_convenio").modal("close");
+                $("#codigo_llamada").empty();
+                $("#codigo_llamada").append(options_estatus_llamadas);
+                $('select').formSelect();
             }
         }
     });

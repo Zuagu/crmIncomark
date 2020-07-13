@@ -424,13 +424,14 @@ public class ModelDataCuentaAzteca {
             Object _ID_EQUIPO = jsonObject.get("ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ");";
+            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '123');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             // response
             JSONObject objResp = new JSONObject();
             while (ic.rs.next()) {
-                objResp.put("response", ic.rs.getString("response"));
+                objResp.put("resultado", ic.rs.getString("response"));
+                objResp.put("mensaje", ic.rs.getString("mensaje"));
 
             }
 
