@@ -422,9 +422,10 @@ public class ModelDataCuentaAzteca {
             Object _CANAL = jsonObject.get("CANAL");
             Object _ATRASO_MAXIMO = jsonObject.get("ATRASO_MAXIMO");
             Object _ID_EQUIPO = jsonObject.get("ID_EQUIPO");
+            Object _PASSwORD = jsonObject.get("PASSwORD");
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '123');";
+            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '"+ _PASSwORD +"');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             // response

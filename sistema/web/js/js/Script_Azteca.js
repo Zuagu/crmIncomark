@@ -890,7 +890,8 @@ $("#insert_convenio").click(function () {
         TERRITORIO: $('#TERRITORIO').val(),
         CANAL: $('#CANAL').val(),
         ATRASO_MAXIMO: $('#ATRASO_MAXIMO').val(),
-        ID_EQUIPO: $('#ID_EQUIPO').val()
+        ID_EQUIPO: $('#ID_EQUIPO').val(),
+        PASSwORD: $('#password_convenio').val()
     };
     var validacion = 0;
     for (var obj in myObjConvenio) {
