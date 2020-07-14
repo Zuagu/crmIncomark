@@ -46,13 +46,25 @@
                             <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="SUBCAMPANA">Subprodcuto</label>
                         </div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s6 m6 l6">
                             <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                             <label for="GERENTE">Gerente</label>
                         </div>
-                        <div class="input-field col s12 m12 l12">
+                        <div class="input-field col s6 m6 l6">
                             <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="">Direccion</label>
+                            <label for="DIRECCION">Direccion</label>
+                        </div>
+                         <div class="input-field col s5 m5 l5">
+                            <input id="COLONIA_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="COLONIA_CTE">Colonia</label>
+                        </div>
+                        <div class="input-field col s4 m4 l4">
+                            <input id="ESTADO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="ESTADO_CTE">Estado</label>
+                        </div>
+                        <div class="input-field col s3 m3 l3">
+                            <input id="CP_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                            <label for="CP_CTE">C.P.</label>
                         </div>
                     </div>
                     <div id="info_gestor_secundario" class="col s4 m4 l4 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
@@ -60,12 +72,12 @@
                             <h6>Info. Economica</h6>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="ATRASO_MAXIMO">Semanas</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
                             <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="DIA_DE_PAGO">Dia de Pago</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                            <label for="ATRASO_MAXIMO">Semanas</label>
                         </div>
                         <div class="input-field col s6 m6 l6">
                             <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
@@ -83,7 +95,7 @@
                             <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="MORATORIOS">Moratorios</label>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s12 m12 l12">
                             <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                             <label for="SALDO_TOTAL">Saldo Total</label>
                         </div>

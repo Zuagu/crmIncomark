@@ -309,11 +309,23 @@ function select_datos_cuenta(_cuenta) {
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefonos</b></span><br>' +
+                    '<span class="black-text"><b>Telefono 1</b></span><br>' +
                     '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono 2</b></span><br>' +
                     '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono 3</b></span><br>' +
                     '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono 4</b></span><br>' +
                     '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono Aval</b></span><br>' +
                     '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
                     '</div>');
 //            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
@@ -684,13 +696,36 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#numero_marcado_deudor, #gestion").val("");
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
-                $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE} ·#${datos_cuenta.NUM_EXT_CTE} colonia. ${datos_cuenta.COLONIA_CTE} ${datos_cuenta.COLONIA_CTE} C.P. ${datos_cuenta.CP_CTE} Estado ${datos_cuenta.ESTADO_CTE}`);
+                $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                        '<span class="black-text"><b>Telefonos</b></span><br>' +
-                        '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                        '<span class="black-text"><b>TELEFONO 1:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><i class="material-icons">add</i><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono 2</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono 3</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono 4</b></span><span class="black-text"><b>Telefono 4</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono Aval</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre Aval"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
                         '</div>');
 //                conteo_llamadas_cuenta_siguiente();

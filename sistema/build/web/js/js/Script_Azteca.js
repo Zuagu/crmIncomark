@@ -309,11 +309,23 @@ function select_datos_cuenta(_cuenta) {
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefonos</b></span><br>' +
+                    '<span class="black-text"><b>Telefono 1</b></span><br>' +
                     '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono 2</b></span><br>' +
                     '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono 3</b></span><br>' +
                     '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono 4</b></span><br>' +
                     '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                    '</div>');
+            $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                    '<span class="black-text"><b>Telefono Aval</b></span><br>' +
                     '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
                     '</div>');
 //            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
@@ -477,10 +489,10 @@ $("#div_cuentas_encontradas").delegate(".div-res", "click", function () {
         alert(cuenta[1]);
 //        select_datos_cuenta_relacionada(cuenta[1]);
     }
-    $(".div_search_gestor").addClass("s2 m2 l2");
-    $(".div_search_gestor").removeClass("s3 m3 l3");
-    $(".contenido-datos").addClass("s10 m10 l10");
-    $(".contenido-datos").removeClass("s9 m9 l9");
+//    $(".div_search_gestor").addClass("s2 m2 l2");
+//    $(".div_search_gestor").removeClass("s3 m3 l3");
+//    $(".contenido-datos").addClass("s10 m10 l10");
+//    $(".contenido-datos").removeClass("s9 m9 l9");
     $("#div_cuentas_encontradas").addClass("hide");
     $("#div_telefonos_cuenta").removeClass("hide");
 });
@@ -580,25 +592,25 @@ function select_convenios_cuenta(_cuenta, _div) {
     };
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (convenios) {
-//            console.log(convenios);
+            console.log(convenios);
             var color_status = ["", "yellow", "green", "red lighten-2"];
             $("#" + _div).empty();
             for (var i in convenios) {
-                $("#" + _div).append('<tr class="' + color_status[ convenios[i].id_estatus ] + '">' +
-                        '<td>' + convenios[i].cuenta + '</td>' +
-                        '<td>' + convenios[i].usuario + '</td>' +
-                        '<td>' + convenios[i].convenio + '</td>' +
-                        '<td>' + convenios[i].fecha_gestion + '</td>' +
-                        '<td>' + convenios[i].plazo + '</td>' +
-                        '<td>' + convenios[i].fecha_convenio + '</td>' +
-                        '<td>' + convenios[i].pagos + '</td>' +
-                        '<td>' + convenios[i].fecha_pago + '</td>' +
-                        '<td>' + convenios[i].efectividad + '</td>' +
-                        '<td>' + convenios[i].estatus + '</td>' +
+                $("#" + _div).append('<tr class="' + color_status[ convenios[i].ID_CONVENIO ] + '">' +
+                        '<td>' + convenios[i].CUENTA + '</td>' +
+                        '<td>' + convenios[i].ID_USUARIO + '</td>' +
+                        '<td>' + convenios[i].CONVENIO + '</td>' +
+                        '<td>' + convenios[i].FECHA_INSET + '</td>' +
+                        '<td>' + convenios[i].ATRASO_MAXIMO + '</td>' +
+                        '<td>' + convenios[i].FECHA + '</td>' +
+                        '<td>' + convenios[i].PAGOS + '</td>' +
+                        '<td>' + convenios[i].FECHA_PAGO + '</td>' +
+                        '<td>' + convenios[i].EFECTIVIDAD + '</td>' +
+                        '<td>' + convenios[i].ID_ESTATUS + '</td>' +
                         '</tr>'
                         );
             }
@@ -610,7 +622,7 @@ function select_convenios_cuenta(_cuenta, _div) {
 }
 $("#tab_convenios").click(function () {
     if ($("#cuenta_deudor").val() !== "") {
-        select_convenios_cuenta($("#cuenta_deudor").val(), "tbody_tabla_convenios");
+        select_convenios_cuenta($("#CLIENTE_UNICO").val(), "tbody_tabla_convenios");
     } else {
         $("#tbody_tabla_convenios").empty();
         $("#tbody_tabla_convenios").append("No hay una Cuenta Selecionada");
@@ -684,13 +696,36 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#numero_marcado_deudor, #gestion").val("");
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
-                $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE} ·#${datos_cuenta.NUM_EXT_CTE} colonia. ${datos_cuenta.COLONIA_CTE} ${datos_cuenta.COLONIA_CTE} C.P. ${datos_cuenta.CP_CTE} Estado ${datos_cuenta.ESTADO_CTE}`);
+                $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                        '<span class="black-text"><b>Telefonos</b></span><br>' +
-                        '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                        '<span class="black-text"><b>TELEFONO 1:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><i class="material-icons">add</i><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono 2</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono 3</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono 4</b></span><span class="black-text"><b>Telefono 4</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                        '</div>');
+                $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
+                        '<span class="black-text"><b>Telefono Aval</b></span><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Nombre Aval"  value=""><br>' +
+                        '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
                         '</div>');
 //                conteo_llamadas_cuenta_siguiente();
@@ -806,15 +841,16 @@ function insertar_convenio(_myObjConvenio, _myObjGestion) {
         success: function (respuesta) {
             console.log(respuesta);
             $("#alerta_convenio").empty();
-            $("#alerta_convenio").append(respuesta.resultado);
+            $("#alerta_convenio").append(`${respuesta.resultado} ${respuesta.mensaje}`);
             $("#importe_convenio").val("");
             $("#fecha_convenio").val("");
-            $("#codigo_llamada").empty();
-            $("#codigo_llamada").append(options_estatus_llamadas);
-            $('select').formSelect();
+
             if (respuesta.resultado !== "NO PERMITIDO" && respuesta.resultado !== "VERIFICA FECHA" && respuesta.resultado !== "VERIFIQUE IMPORTE Y LA FECHA DEL CONVENIO") {
                 insertar_gestion(_myObjGestion);
                 $("#modal_convenio").modal("close");
+                $("#codigo_llamada").empty();
+                $("#codigo_llamada").append(options_estatus_llamadas);
+                $('select').formSelect();
             }
         }
     });
@@ -889,7 +925,8 @@ $("#insert_convenio").click(function () {
         TERRITORIO: $('#TERRITORIO').val(),
         CANAL: $('#CANAL').val(),
         ATRASO_MAXIMO: $('#ATRASO_MAXIMO').val(),
-        ID_EQUIPO: $('#ID_EQUIPO').val()
+        ID_EQUIPO: $('#ID_EQUIPO').val(),
+        PASSwORD: $('#password_convenio').val()
     };
     var validacion = 0;
     for (var obj in myObjConvenio) {
