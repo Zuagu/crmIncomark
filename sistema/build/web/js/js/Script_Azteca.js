@@ -309,24 +309,35 @@ function select_datos_cuenta(_cuenta) {
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefono 1</b></span><br>' +
-                    '<span class="">TELEFONO 1: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><br>' +
+                    '<span class="black-text"><b>TELEFONO 1:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO1"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO1"] + '</a></span><i class="material-icons">add</i><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                    ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefono 2</b></span><br>' +
-                    '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                    '<span class="black-text"><b>TELEFONO 2:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><i class="material-icons">add</i><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                    ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefono 3</b></span><br>' +
-                    '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                    '<span class="black-text"><b>TELEFONO 3:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><i class="material-icons">add</i><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                    ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefono 4</b></span><br>' +
-                    '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                    '<span class="black-text"><b>TELEFONO 4:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><i class="material-icons">add</i><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                    ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                    '<span class="black-text"><b>Telefono Aval</b></span><br>' +
-                    '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
+                    '<span class="black-text"><b>TELAVAL:</b><a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span><i class="material-icons">add</i><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Nombre Aval"  value=""><br>' +
+                    '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
+                    ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
 //            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
 //            telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
@@ -702,31 +713,31 @@ function select_cuenta_siguiente(_id_usuario) {
                         '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
                         '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
                         '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
-
+                        ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                         '</div>');
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                        '<span class="black-text"><b>Telefono 2</b></span><br>' +
+                        '<span class="black-text"><b>TELEFONO 2:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><i class="material-icons">add</i><br>' +
                         '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
                         '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
-                        '<span class="">TELEFONO 2: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><br>' +
+                        ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                         '</div>');
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                        '<span class="black-text"><b>Telefono 3</b></span><br>' +
+                        '<span class="black-text"><b>TELEFONO 3:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><i class="material-icons">add</i><br>' +
                         '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
                         '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
-                        '<span class="">TELEFONO 3: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><br>' +
+                        ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                         '</div>');
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                        '<span class="black-text"><b>Telefono 4</b></span><span class="black-text"><b>Telefono 4</b></span><br>' +
+                        '<span class="black-text"><b>TELEFONO 4:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><i class="material-icons">add</i><br>' +
                         '<input id="" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
                         '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
-                        '<span class="">TELEFONO 4: <a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><br>' +
+                        ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                         '</div>');
                 $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
-                        '<span class="black-text"><b>Telefono Aval</b></span><br>' +
+                        '<span class="black-text"><b>TELAVAL:</b><a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span><i class="material-icons">add</i><br>' +
                         '<input id="" type="text" class="validate" placeholder="Nombre Aval"  value=""><br>' +
                         '<input id="" type="text" class="validate" placeholder="Tipo"  value=""><br>' +
-                        '<span class="">TELAVAL: <a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span>' +
+                        ' <a id="" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                         '</div>');
 //                conteo_llamadas_cuenta_siguiente();
 //                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
