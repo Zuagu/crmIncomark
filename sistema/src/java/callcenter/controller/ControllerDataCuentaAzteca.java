@@ -167,6 +167,51 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        } else if (action.equals("actualizar_telefono_1")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_1(
+                    request.getParameter("objContacto")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("actualizar_telefono_2")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_2(
+                    request.getParameter("objContacto")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("actualizar_telefono_3")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_3(
+                    request.getParameter("objContacto")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("actualizar_telefono_4")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_4(
+                    request.getParameter("objContacto")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("actualizar_telefono_5")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_5(
+                    request.getParameter("objContacto")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
         
         

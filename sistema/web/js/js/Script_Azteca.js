@@ -351,46 +351,91 @@ function select_datos_cuenta(_cuenta) {
         }
     });
 }
-$("#div_telefonos_cuenta").on('click','#guardar_tel_1', function(){
-    let params = {
-        nom_tel_1:$('#nom_tel_1').val(), 
+
+function actualizar_contacto(params) {
+    console.log(params);
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: params,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+        }
+    })
+}
+
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_1', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_1: $('#nom_tel_1').val(),
         tipo_contact_tel_1: $('#tipo_contact_tel_1').val(),
-        act_tel_1:$('#act_tel_1').val(),
-        action:"actualizar_telefono_1"
+        act_tel_1: $('#act_tel_1').val()
     };
-});
-$("#div_telefonos_cuenta").on('click','#guardar_tel_2', function(){
     let params = {
-        nom_tel_1:$('#nom_tel_2').val(), 
-        tipo_contact_tel_1: $('#tipo_contact_tel_2').val(),
-        act_tel_1:$('#act_tel_2').val(),
-        action:"actualizar_telefono_2"
+        action: "actualizar_telefono_1",
+        objContacto: JSON.stringify(_objContacto)
     };
+    actualizar_contacto(params);
 });
-$("#div_telefonos_cuenta").on('click','#guardar_tel_3', function(){
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_2', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_2: $('#nom_tel_2').val(),
+        tipo_contact_tel_2: $('#tipo_contact_tel_2').val(),
+        act_tel_2: $('#act_tel_2').val()
+    };
     let params = {
-        nom_tel_1:$('#nom_tel_3').val(), 
-        tipo_contact_tel_1: $('#tipo_contact_tel_3').val(),
-        act_tel_1:$('#act_tel_3').val(),
-        action:"actualizar_telefono_3"
+        action: "actualizar_telefono_2",
+        objContacto: JSON.stringify(_objContacto)
     };
+    actualizar_contacto(params);
 });
-$("#div_telefonos_cuenta").on('click','#guardar_tel_4', function(){
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_3', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_3: $('#nom_tel_3').val(),
+        tipo_contact_tel_3: $('#tipo_contact_tel_3').val(),
+        act_tel_3: $('#act_tel_3').val()
+    };
     let params = {
-        nom_tel_1:$('#nom_tel_4').val(), 
-        tipo_contact_tel_1: $('#tipo_contact_tel_4').val(),
-        act_tel_1:$('#act_tel_4').val(),
-        action:"actualizar_telefono_4"
+        action: "actualizar_telefono_3",
+        objContacto: JSON.stringify(_objContacto)
     };
+    actualizar_contacto(params);
 });
-("#div_telefonos_cuenta").on('click','#guardar_tel_5', function(){
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_4', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_4: $('#nom_tel_4').val(),
+        tipo_contact_tel_4: $('#tipo_contact_tel_4').val(),
+        act_tel_4: $('#act_tel_4').val()
+    };
+
     let params = {
-        nom_tel_1:$('#nom_tel_5').val(), 
-        tipo_contact_tel_1: $('#tipo_contact_tel_5').val(),
-        act_tel_1:$('#act_tel_5').val(),
-        action:"actualizar_telefono_5"
+        action: "actualizar_telefono_4",
+        objContacto: JSON.stringify(_objContacto)
     };
+    actualizar_contacto(params);
 });
+
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_aval', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_aval: $('#nom_tel_aval').val(),
+        tipo_contact_tel_aval: $('#tipo_contact_tel_aval').val(),
+        act_tel_aval: $('#act_tel_aval').val()
+    };
+    let params = {
+        action: "actualizar_telefono_5",
+        objContacto: JSON.stringify(_objContacto)
+    };
+    actualizar_contacto(params);
+});
+
 function select_datos_cuenta_relacionada(_cuenta) {
     var params = {
         action: "select_datos_cuenta_relacionada",

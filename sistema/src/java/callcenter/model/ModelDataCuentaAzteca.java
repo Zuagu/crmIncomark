@@ -425,7 +425,7 @@ public class ModelDataCuentaAzteca {
             Object _PASSwORD = jsonObject.get("PASSwORD");
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '"+ _PASSwORD +"');";
+            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '" + _PASSwORD + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             // response
@@ -511,4 +511,187 @@ public class ModelDataCuentaAzteca {
         }
     }
 
+    public static String actualizar_telefono_1(String objContacto) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(objContacto);
+
+            Object _CUENTA = jsonObject.get("_CUENTA");
+            Object nom_tel_1 = jsonObject.get("nom_tel_1");
+            Object tipo_contact_tel_1 = jsonObject.get("tipo_contact_tel_1");
+            Object act_tel_1 = jsonObject.get("act_tel_1");
+
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
+                    + "NOM_TEL1 = '" + nom_tel_1 + "',\n"
+                    + "TIPO_CONTACTO1 = '" + tipo_contact_tel_1 + "',\n"
+                    + "TELEFONO1 = '" + act_tel_1 + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
+            System.out.println(sql);
+//            ic.rs = ic.st.executeQuery(sql);
+//            JSONObject objCuenta = new JSONObject();
+//            while (ic.rs.next()) {
+////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+//
+//            }
+//            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return jsonObject.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } catch (org.json.simple.parser.ParseException ex) {
+            Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
+            return "SQL: Falla en el parser de JSONObject";
+        }
+
+    }
+
+    public static String actualizar_telefono_2(String objContacto) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(objContacto);
+
+            Object _CUENTA = jsonObject.get("_CUENTA");
+            Object nom_tel_2 = jsonObject.get("nom_tel_2");
+            Object tipo_contact_tel_2 = jsonObject.get("tipo_contact_tel_2");
+            Object act_tel_2 = jsonObject.get("act_tel_2");
+
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
+                    + "NOM_TEL2 = '" + nom_tel_2 + "',\n"
+                    + "TIPO_CONTACTO2 = '" + tipo_contact_tel_2 + "',\n"
+                    + "TELEFONO2 = '" + act_tel_2 + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
+            System.out.println(sql);
+//            ic.rs = ic.st.executeQuery(sql);
+//            JSONObject objCuenta = new JSONObject();
+//            while (ic.rs.next()) {
+////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+//
+//            }
+//            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return jsonObject.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } catch (org.json.simple.parser.ParseException ex) {
+            Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
+            return "SQL: Falla en el parser de JSONObject";
+        }
+
+    }
+
+    public static String actualizar_telefono_3(String objContacto) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(objContacto);
+
+            Object _CUENTA = jsonObject.get("_CUENTA");
+            Object nom_tel_3 = jsonObject.get("nom_tel_3");
+            Object tipo_contact_tel_3 = jsonObject.get("tipo_contact_tel_3");
+            Object act_tel_3 = jsonObject.get("act_tel_3");
+
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
+                    + "NOM_TEL3 = '" + nom_tel_3 + "',\n"
+                    + "TIPO_CONTACTO3 = '" + tipo_contact_tel_3 + "',\n"
+                    + "TELEFONO3 = '" + act_tel_3 + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
+            System.out.println(sql);
+//            ic.rs = ic.st.executeQuery(sql);
+//            JSONObject objCuenta = new JSONObject();
+//            while (ic.rs.next()) {
+////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+//
+//            }
+//            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return jsonObject.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } catch (org.json.simple.parser.ParseException ex) {
+            Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
+            return "SQL: Falla en el parser de JSONObject";
+        }
+
+    }
+
+    public static String actualizar_telefono_4(String objContacto) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(objContacto);
+
+            Object _CUENTA = jsonObject.get("_CUENTA");
+            Object nom_tel_4 = jsonObject.get("nom_tel_4");
+            Object tipo_contact_tel_4 = jsonObject.get("tipo_contact_tel_4");
+            Object act_tel_4 = jsonObject.get("act_tel_4");
+
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
+                    + "NOM_TEL4 = '" + nom_tel_4 + "',\n"
+                    + "TIPO_CONTACTO4 = '" + tipo_contact_tel_4 + "',\n"
+                    + "TELEFONO4 = '" + act_tel_4 + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
+            System.out.println(sql);
+//            ic.rs = ic.st.executeQuery(sql);
+//            JSONObject objCuenta = new JSONObject();
+//            while (ic.rs.next()) {
+////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+//
+//            }
+//            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return jsonObject.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } catch (org.json.simple.parser.ParseException ex) {
+            Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
+            return "SQL: Falla en el parser de JSONObject";
+        }
+
+    }
+
+    public static String actualizar_telefono_5(String objContacto) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(objContacto);
+
+            Object _CUENTA = jsonObject.get("_CUENTA");
+            Object nom_tel_aval = jsonObject.get("nom_tel_aval");
+            Object tipo_contact_tel_aval = jsonObject.get("tipo_contact_tel_aval");
+            Object act_tel_aval = jsonObject.get("act_tel_aval");
+
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
+                    + "NOMBRE_AVAL = '" + nom_tel_aval + "',\n"
+                    + "TELAVAL = '" + act_tel_aval + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
+            System.out.println(sql);
+//            ic.rs = ic.st.executeQuery(sql);
+//            JSONObject objCuenta = new JSONObject();
+//            while (ic.rs.next()) {
+////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+//
+//            }
+//            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return jsonObject.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } catch (org.json.simple.parser.ParseException ex) {
+            Logger.getLogger(ModelGestor.class.getName()).log(Level.SEVERE, null, ex);
+            return "SQL: Falla en el parser de JSONObject";
+        }
+
+    }
 }
