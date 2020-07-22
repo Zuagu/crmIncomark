@@ -1283,3 +1283,12 @@ function select_agenda_disponible() {
         }
     });
 }
+
+
+$("#TIPO_CONVENIO").change( function () {
+    if ( $(this).val() === "3"  ) {
+        $("#CAJA_SEMANAS_PAGO").removeClass("hide")
+    } else {
+        $("#CAJA_SEMANAS_PAGO").addClass("hide")
+    }
+});
