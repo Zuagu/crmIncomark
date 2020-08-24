@@ -92,6 +92,15 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
+                
+                objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
+                objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
+                objCuenta.put("NOM_TEL3", ic.rs.getString("NOM_TEL3"));
+                objCuenta.put("NOM_TEL4", ic.rs.getString("NOM_TEL4"));
+                objCuenta.put("TIPO_CONTACTO1", ic.rs.getString("TIPO_CONTACTO1"));
+                objCuenta.put("TIPO_CONTACTO2", ic.rs.getString("TIPO_CONTACTO2"));
+                objCuenta.put("TIPO_CONTACTO3", ic.rs.getString("TIPO_CONTACTO3"));
+                objCuenta.put("TIPO_CONTACTO4", ic.rs.getString("TIPO_CONTACTO4"));
             }
             ic.rs.close();
             ic.st.close();
@@ -397,6 +406,15 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
+                
+                objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
+                objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
+                objCuenta.put("NOM_TEL3", ic.rs.getString("NOM_TEL3"));
+                objCuenta.put("NOM_TEL4", ic.rs.getString("NOM_TEL4"));
+                objCuenta.put("TIPO_CONTACTO1", ic.rs.getString("TIPO_CONTACTO1"));
+                objCuenta.put("TIPO_CONTACTO2", ic.rs.getString("TIPO_CONTACTO2"));
+                objCuenta.put("TIPO_CONTACTO3", ic.rs.getString("TIPO_CONTACTO3"));
+                objCuenta.put("TIPO_CONTACTO4", ic.rs.getString("TIPO_CONTACTO4"));
 
             }
             ic.rs.close();
@@ -528,7 +546,7 @@ public class ModelDataCuentaAzteca {
                     + "TELEFONO1 = '" + act_tel_1 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
             System.out.println(sql);
-//            ic.rs = ic.st.executeQuery(sql);
+            ic.st.executeUpdate(sql);
 //            JSONObject objCuenta = new JSONObject();
 //            while (ic.rs.next()) {
 ////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
@@ -565,7 +583,7 @@ public class ModelDataCuentaAzteca {
                     + "TELEFONO2 = '" + act_tel_2 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
             System.out.println(sql);
-//            ic.rs = ic.st.executeQuery(sql);
+            ic.st.executeUpdate(sql);
 //            JSONObject objCuenta = new JSONObject();
 //            while (ic.rs.next()) {
 ////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
@@ -602,7 +620,7 @@ public class ModelDataCuentaAzteca {
                     + "TELEFONO3 = '" + act_tel_3 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
             System.out.println(sql);
-//            ic.rs = ic.st.executeQuery(sql);
+            ic.st.executeUpdate(sql);
 //            JSONObject objCuenta = new JSONObject();
 //            while (ic.rs.next()) {
 ////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
@@ -639,7 +657,7 @@ public class ModelDataCuentaAzteca {
                     + "TELEFONO4 = '" + act_tel_4 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
             System.out.println(sql);
-//            ic.rs = ic.st.executeQuery(sql);
+            ic.st.executeUpdate(sql);
 //            JSONObject objCuenta = new JSONObject();
 //            while (ic.rs.next()) {
 ////                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
