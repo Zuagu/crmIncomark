@@ -317,30 +317,30 @@ function select_datos_cuenta(_cuenta) {
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                     '<span class="black-text"><b>TELEFONO 2:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO2"] + '</a></span><i class="material-icons">phone_iphone</i><br>' +
-                    '<input id="nom_tel_2" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
-                    '<input id="tipo_contact_tel_2" type="text" class="validate" placeholder="Tipo Contacto"  value=""><br>' +
-                    '<input id="act_tel_2" type="text" class="validate" placeholder="Numero"  value=""><br>' +
+                    '<input id="nom_tel_2" type="text" class="validate" placeholder="Nombre"  value="' + datos_cuenta["NOM_TEL2"] + '"><br>' +
+                    '<input id="tipo_contact_tel_2" type="text" class="validate" placeholder="Tipo Contacto"  value="' + datos_cuenta["TIPO_CONTACTO2"] + '"><br>' +
+                    '<input id="act_tel_2" type="text" class="validate" placeholder="Numero"  value="' + datos_cuenta["TELEFONO2"].replace(/ /g, "") + '"><br>' +
                     ' <a id="guardar_tel_2" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                     '<span class="black-text"><b>TELEFONO 3:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO3"] + '</a></span><i class="material-icons">phone_iphone</i><br>' +
-                    '<input id="nom_tel_3" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
-                    '<input id="tipo_contact_tel_3" type="text" class="validate" placeholder="Tipo Contacto"  value=""><br>' +
-                    '<input id="act_tel_3" type="text" class="validate" placeholder="Numero"  value=""><br>' +
+                    '<input id="nom_tel_3" type="text" class="validate" placeholder="Nombre"  value="' + datos_cuenta["NOM_TEL3"] + '"><br>' +
+                    '<input id="tipo_contact_tel_3" type="text" class="validate" placeholder="Tipo Contacto"  value="' + datos_cuenta["TIPO_CONTACTO3"] + '"><br>' +
+                    '<input id="act_tel_3" type="text" class="validate" placeholder="Numero"  value="' + datos_cuenta["TELEFONO3"].replace(/ /g, "") + '"><br>' +
                     ' <a id="guardar_tel_3" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                     '<span class="black-text"><b>TELEFONO 4:</b><a class="tell" href="zoiper://' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '">' + datos_cuenta["TELEFONO4"] + '</a></span><i class="material-icons">phone_iphone</i><br>' +
-                    '<input id="nom_tel_4" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
-                    '<input id="tipo_contact_tel_4" type="text" class="validate" placeholder="Tipo Contacto"  value=""><br>' +
-                    '<input id="act_tel_4" type="text" class="validate" placeholder="Numero"  value=""><br>' +
+                    '<input id="nom_tel_4" type="text" class="validate" placeholder="Nombre"  value="' + datos_cuenta["NOM_TEL4"] + '"><br>' +
+                    '<input id="tipo_contact_tel_4" type="text" class="validate" placeholder="Tipo Contacto"  value="' + datos_cuenta["TIPO_CONTACTO4"] + '"><br>' +
+                    '<input id="act_tel_4" type="text" class="validate" placeholder="Numero"  value="' + datos_cuenta["TELEFONO4"].replace(/ /g, "") + '"><br>' +
                     ' <a id="guardar_tel_4" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
             $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1 card">' +
                     '<span class="black-text"><b>TELAVAL:</b><a class="tell" href="zoiper://' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '">' + datos_cuenta["TELAVAL"] + '</a></span><i class="material-icons">phone_iphone</i><br>' +
-                    '<input id="nom_tel_aval" type="text" class="validate" placeholder="Nombre"  value=""><br>' +
-                    '<input id="tipo_contact_tel_aval" type="text" class="validate" placeholder="Tipo Contacto"  value=""><br>' +
-                    '<input id="act_tel_aval" type="text" class="validate" placeholder="Numero"  value=""><br>' +
+                    '<input id="nom_tel_aval" type="text" class="validate" placeholder="Nombre"  value="' + datos_cuenta["NOMBRE_AVAL"] + '"><br>' +
+                    '<input id="tipo_contact_tel_aval" type="text" class="validate" placeholder="Tipo Contacto"  value="AVAL"><br>' +
+                    '<input id="act_tel_aval" type="text" class="validate" placeholder="Numero"  value="' + datos_cuenta["TELAVAL"].replace(/ /g, "") + '"><br>' +
                     ' <a id="guardar_tel_aval" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</a>' +
                     '</div>');
 //            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
@@ -841,6 +841,9 @@ function select_cuenta_siguiente(_id_usuario) {
 //                $("#gestion").attr("readonly", "readonly");
             }
 
+        },
+        error: function (err) {
+            console.log(err.responseText);
         }
     });
 }
