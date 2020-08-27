@@ -20,7 +20,7 @@
                 background-color: rgba(0, 0, 0, 0.13);
                 margin: 0.5rem;
                 width: 200px;
-                display: inline-block;
+                display: none;
                 text-align: center;
                 padding: 4px;
                 border-radius: 3px;
@@ -35,7 +35,7 @@
             <div class="col s12 m12 l12">
                 <div class="col s12 m12 l12">
                     
-                    <div class="encabezados_csv center-align">
+                    <div class="encabezados_csv center-align hide">
                         <h4>Encabezados del archivo CSV</h4>
                         <span>cliente_id</span>
                         <span>PLAN</span>
