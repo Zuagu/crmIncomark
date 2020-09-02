@@ -717,4 +717,21 @@ public class ModelDataCuentaAzteca {
         }
 
     }
+    
+    public static String update_time_gestor(String id_cuenta) {
+        try { 
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_tiempos_usuarios SET tiempo_conectado = ADDTIME(tiempo_conectado, '59') WHERE id_usuario = "+ id_cuenta +" AND fecha = CURDATE();";
+            System.out.println(sql);
+            
+            ic.st.executeUpdate(sql);
+            ic.st.close();
+            ic.conn.close();
+
+            return "{\"menssage\":\"tiempo actualizado\"}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
 }

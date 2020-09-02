@@ -1181,6 +1181,29 @@ function cronometro_retraso_actual() {
     $("#retraso_actual").val(horas + ":" + minutos + ":" + segundos);
 }
 
+function update_time_gestor() {
+    let params = {
+        action: "update_time_gestor",
+        id_gestor: id_usuario 
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+        }
+    });
+}
+
+var time_gestor = setInterval(function () {
+    update_time_gestor();
+}, 59000);
+
 function cronometro_llamada_actual() {
     var datos = $("#tiempo_actual").val().split(":");
     var horas = datos[0];

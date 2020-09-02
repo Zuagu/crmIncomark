@@ -65,8 +65,8 @@ public class ControllerUploadFiles extends HttpServlet {
                     if (!item.isFormField()) {
                         fileName = new File(item.getName()).getName();
                         //System.out.println("paso por qui " + fileName );
-                        filePath = uploadPath + File.separator + "webapps/sistema/excel/" + fileName;
-//                        filePath = "C:\\\\Users\\\\Public\\\\" + fileName;
+//                        filePath = uploadPath + File.separator + "webapps/sistema/excel/" + fileName;
+                        filePath = "C:\\\\Users\\\\Public\\\\" + fileName;
                         
                         File storeFile = new File(filePath);
                         if (storeFile.delete()){

@@ -212,6 +212,15 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        }  else if (action.equals("update_time_gestor")) {
+            String Respuesta = ModelDataCuentaAzteca.update_time_gestor(
+                    request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
         
         
