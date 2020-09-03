@@ -356,6 +356,10 @@
         <servlet-name>ControllerDataCuentaAzteca</servlet-name>
         <servlet-class>callcenter.controller.ControllerDataCuentaAzteca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerReportesAzteca</servlet-name>
+        <servlet-class>callcenter.controller.ControllerReportesAzteca</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -699,6 +703,10 @@
     <servlet-mapping>
         <servlet-name>ControllerDataCuentaAzteca</servlet-name>
         <url-pattern>/ControllerDataCuentaAzteca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerReportesAzteca</servlet-name>
+        <url-pattern>/ControllerReportesAzteca</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

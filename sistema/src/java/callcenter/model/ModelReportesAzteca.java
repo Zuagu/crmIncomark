@@ -18,11 +18,11 @@ import org.json.simple.parser.JSONParser;
  */
 public class ModelReportesAzteca {
 
-    public static String reporte_convenios_tabla() {
+    public static String reporte_convenios_tabla(String desde, String hasta, String territrio) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_reporte_convenios();";
+            String sql = "call azteca_reporte_convenios('"+desde+"', '"+hasta+"', '"+territrio+"');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listConvenios = new JSONArray();
@@ -58,11 +58,11 @@ public class ModelReportesAzteca {
 
     }
 
-    public static String reporte_gestiones_tabla() {
+    public static String reporte_gestiones_tabla(String desde, String hasta, String territrio) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_reporte_gestiones();";
+            String sql = "call azteca_reporte_gestiones('"+desde+"', '"+hasta+"', '"+territrio+"');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listGestiones = new JSONArray();
