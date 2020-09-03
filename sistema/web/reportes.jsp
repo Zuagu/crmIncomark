@@ -54,13 +54,22 @@
                                 <table class="highlight" id="tabla_pagos">
                                     <thead class="blue">
                                         <tr class="text-white">
+                                            <td><b>ID_GESTION</b></td>
+                                            <td><b>HORA</b></td>
+                                            <td><b>TERRITORIO</b></td>
+                                            <td><b>CANAL</b></td>
+                                            <td><b>FECHA_LARGA</b></td>
+                                            <td><b>ATRASO_MAXIMO</b></td>
                                             <td><b>CUENTA</b></td>
-                                            <td><b>FECHA PAGO</b></td>
-                                            <td><b>ORIGEN</b></td>
-                                            <td><b>IMPORTE</b></td>
-                                            <td><b>FORMA</b></td>
-                                            <td><b>ESTATUS</b></td>
-                                            <td><b>FECHA APLICACION</b></td>
+                                            <td><b>NUMERO_MARCADO</b></td>
+                                            <td><b>ID_ESTATUS_CUENTA</b></td>
+                                            <td><b>ID_ESTATUS_LLAMADA</b></td>
+                                            <td><b>USUARIO</b></td>
+                                            <td><b>GESTION</b></td>
+                                            <td><b>DURACION</b></td>
+                                            <td><b>RETASO</b></td>
+                                            <td><b>PROMESA</b></td>
+                                            <td><b>F_PREDICTIVO</b></td>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_gestiones">
@@ -90,13 +99,22 @@
                                 <table class="highlight" id="tabla_pagos">
                             <thead class="blue">
                                 <tr class="text-white">
-                                    <td><b>CUENTA</b></td>
-                                    <td><b>FECHA PAGO</b></td>
-                                    <td><b>ORIGEN</b></td>
-                                    <td><b>IMPORTE</b></td>
-                                    <td><b>FORMA</b></td>
-                                    <td><b>ESTATUS</b></td>
-                                    <td><b>FECHA APLICACION</b></td>
+                                      <td><b>ID_CONVENIO</b></td>
+                                            <td><b>CONVENIO</b></td>
+                                            <td><b>RESTO</b></td>
+                                            <td><b>APLICA</b></td>
+                                            <td><b>TERRITORIO</b></td>
+                                            <td><b>CANAL</b></td>
+                                            <td><b>ATRASO_MAXIMO</b></td>
+                                            <td><b>FECHA</b></td>
+                                            <td><b>USUARIO</b></td>
+                                            <td><b>CUENTA</b></td>
+                                            <td><b>ID_ESTATUS</b></td>
+                                            <td><b>FECHA_INSET</b></td>
+                                            <td><b>PAGOS</b></td>
+                                            <td><b>FECHA_PAGO</b></td>
+                                            <td><b>EFECTIVIDAD</b></td>
+                                            <td><b>ID_EQUIPO</b></td>
                                 </tr>
                             </thead>
                             <tbody id="tbody_tabla_convenios">
