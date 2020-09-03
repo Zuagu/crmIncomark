@@ -50,7 +50,23 @@
 
                                 </div>
                             </div>
-                            <div id="datos_tabla" class="col s12 z-depth-2"></div>
+                            <div id="datos_tabla" class="col s12 z-depth-2">
+                                <table class="highlight" id="tabla_pagos">
+                                    <thead class="blue">
+                                        <tr class="text-white">
+                                            <td><b>CUENTA</b></td>
+                                            <td><b>FECHA PAGO</b></td>
+                                            <td><b>ORIGEN</b></td>
+                                            <td><b>IMPORTE</b></td>
+                                            <td><b>FORMA</b></td>
+                                            <td><b>ESTATUS</b></td>
+                                            <td><b>FECHA APLICACION</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_tabla_gestiones">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div id="test-swipe-2" class="col s12" style="margin-top:10px;"> 
@@ -70,7 +86,23 @@
 
                                 </div>
                             </div>
-                            <div id="datos_tabla" class="col s12 z-depth-2"></div>
+                            <div id="datos_tabla" class="col s12 z-depth-2">
+                                <table class="highlight" id="tabla_pagos">
+                            <thead class="blue">
+                                <tr class="text-white">
+                                    <td><b>CUENTA</b></td>
+                                    <td><b>FECHA PAGO</b></td>
+                                    <td><b>ORIGEN</b></td>
+                                    <td><b>IMPORTE</b></td>
+                                    <td><b>FORMA</b></td>
+                                    <td><b>ESTATUS</b></td>
+                                    <td><b>FECHA APLICACION</b></td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_tabla_convenios">
+                            </tbody>
+                        </table>
+                            </div>
                         </div>
                     </div>
                     <div id="test-swipe-3" class="col s12" style="margin-top:10px;"> 
@@ -90,7 +122,23 @@
 
                                 </div>
                             </div>
-                            <div id="datos_tabla" class="col s12 z-depth-2"></div>
+                            <div id="datos_tabla" class="col s12 z-depth-2">
+                                <table class="highlight" id="tabla_pagos">
+                            <thead class="blue">
+                                <tr class="text-white">
+                                    <td><b>CUENTA</b></td>
+                                    <td><b>FECHA PAGO</b></td>
+                                    <td><b>ORIGEN</b></td>
+                                    <td><b>IMPORTE</b></td>
+                                    <td><b>FORMA</b></td>
+                                    <td><b>ESTATUS</b></td>
+                                    <td><b>FECHA APLICACION</b></td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_tabla_pagos">
+                            </tbody>
+                        </table>
+                            </div>
                         </div>
                     </div>
 
