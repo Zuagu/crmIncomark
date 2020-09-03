@@ -108,8 +108,8 @@ public class ModelProcesadorCsv {
                     + "FECHA_INSERT=@col81,\n"
                     + "FECHA_REACT=@col82,\n"
                     + "FECHA_RETIRADA=@col83;";
-            ic.st.executeUpdate("truncate azteca_base_genenral_original;");
-            System.out.println(sql_import_csv);
+            ic.st.executeUpdate("truncate azteca_carga_diaria;");
+//            System.out.println(sql_import_csv);
             ic.st.executeUpdate(sql_import_csv);
 
             ic.st.close();
