@@ -152,5 +152,6 @@
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/menu.js"></script>
+        <script type="text/javascript" src="js/js/reportes.js"></script>
     </body>
 </html>
