@@ -67,6 +67,7 @@ function reporte_gestiones_tabla() {
         success: function (response) {
 //            console.log(response);
             $('#tbody_tabla_gestiones').empty();
+            let cantidad = 0;
             for (let item of response) {
                 $('#tbody_tabla_gestiones').append(`<tr>
                     <td>${item.ID_GESTION}</td>
@@ -86,7 +87,10 @@ function reporte_gestiones_tabla() {
                     <td>${item.PROMESA}</td>
                     <td>${item.F_PREDICTIVO}</td>
                     </tr>`);
+                cantidad = cantidad + 1;
             }
+            $('#cantidad_gestiones').empty();
+            $('#cantidad_gestiones').append(cantidad + ' Cuentas');
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -109,6 +113,7 @@ function azteca_reporte_convenios() {
         success: function (response) {
 //            console.log(response);
             $('#tbody_tabla_convenios').empty();
+            let cantidad = 0;
             for (let item of response) {
                 $('#tbody_tabla_convenios').append(`<tr>
                     <td>${item.ID_CONVENIO}</td>
@@ -128,7 +133,10 @@ function azteca_reporte_convenios() {
                     <td>${item.EFECTIVIDAD}</td>
                     <td>${item.ID_EQUIPO}</td>
                     </tr>`);
+                cantidad = cantidad + 1;
             }
+            $('#cantidad_convenios').empty();
+            $('#cantidad_convenios').append(cantidad + ' Cuentas');
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);

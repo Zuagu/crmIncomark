@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Cargar Cartera Banco Azteca</title>
+        <title>Reportes Azteca</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/css/style.css">
@@ -47,7 +47,7 @@
                                     <label class="" for="hasta_gestiones"></label>
                                     <a id="enviar_gestiones" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla', 'GESTIONES')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
-
+                                    <a id="cantidad_gestiones"></a>
                                 </div>
                             </div>
                             <div id="datos_tabla" class="col s12 z-depth-2">
@@ -92,7 +92,7 @@
                                     <label class="" for="hasta_convenios"></label>
                                     <a id="enviar_convenios" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla', 'CONVENIOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
-
+                                    <a id="cantidad_convenios"></a>
                                 </div>
                             </div>
                             <div id="datos_tabla" class="col s12 z-depth-2">
