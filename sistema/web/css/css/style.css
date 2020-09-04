@@ -474,7 +474,7 @@ nav {
     padding:0;
     position:absolute;
     font-size:2.1rem;
-    height: 40px;
+    height: 30px;
 }
 
 .ul_margin_top{
@@ -482,12 +482,12 @@ nav {
 }
 
 .size_ul{
-    height: 40px !important;
+    height: 30px !important;
     line-height: 40px !important;
 }
 
 .img_log{
-    width: 40px;
+    width: 30px;
     margin: 12%;  
     margin-top: 5px;
 }
@@ -612,19 +612,18 @@ color_icon{
 .search_cuentas{
     width:100% !important;
     border-radius: 20px !important;
-    height: 1.75rem !important;
     line-height: 40px !important;
     border: 1px solid #2196f3 !important;
 }
 .div_search_gestor{
-    height: 92vh;
-    transition: 0.8s;
     overflow: auto;
 }
 .contenido-datos {
+    margin-top: 5px !important;
     transition: 0.8s;
 }
 .div_input_gestor_tiempos input[type="text"]:not(.browser-default)[readonly="readonly"]{
+    height: 30px;
     border-radius: 4px;
 
     color: black;
@@ -674,7 +673,7 @@ color_icon{
 }
 
 .div_gestor_gestion{
-    height: 10vh;
+    
 }
 .div_tabs{
     margin-top: 8px;
@@ -1099,4 +1098,26 @@ th,td {
 
 .modal{
     overflow: visible!important; 
+}
+
+input{
+    height: 1.5rem !important;
+}
+.gestor_font{
+    font-size: 14px !important;
+}
+
+.input-field {  
+    margin-top: 0.1rem;
+}
+h6{
+    margin-bottom: 10px;
+}
+
+nav {
+    height: 33px !important;
+}
+
+.temp{
+    height: 30px !important;
 }

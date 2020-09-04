@@ -29,7 +29,7 @@
         <ul>
             <a href="#!" class="logo_principal"><img src="image/logoInco.fw.png" alt="image/logoInco.fw.png" class="img_log"></a> 
         </ul>    
-        <ul id="unico_filtro" class="center-align">
+        <ul id="unico_filtro" class="center-align temp ">
             <input id="filtro" class="search center-align grey lighten-5" onkeyup="myFunction_buscar()" type="text" placeholder="Buscar" style="width:50%">
             <div id="resultado_menu" class="div-resultado hide">
                 <div id="colect" class="collection">
