@@ -119,5 +119,41 @@ public class ModelProcesadorCsv {
             return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
         }
     }
+    
+    public static String cargar_pagos_azteca(String dirFile) {
+        try {
+            // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
+            StartConexion ic = new StartConexion();
+            String sql_import_csv = "LOAD DATA LOCAL INFILE '" + dirFile + "' INTO TABLE azteca_pagos_temporal \n"
+                    + "FIELDS TERMINATED BY ',' \n"
+                    + "LINES TERMINATED BY '\\n' \n"
+                    + "IGNORE 1 ROWS (@col1, @col2, @col3, @col4, @col5, @col6, @col7, @col8, @col9, @col10,\n"
+                    + "@col11, @col12, @col13)\n"
+                    + "set \n"
+                    + "ANIO=@col1,\n"
+                    + "SEMANA=@col2,\n"
+                    + "DIA=str_to_date(@col3, '%d/%m/%Y'),\n"
+                    + "PAIS=@col4,\n"
+                    + "CANAL=@col5,\n"
+                    + "SUCURSAL=@col6,\n"
+                    + "FOLIO=@col7,\n"
+                    + "RECUPERACION_CAPITAL=@col8,\n"
+                    + "RECUPERACION_MORATORIOS=@col9,\n"
+                    + "SALDO_ACTUAL=@col10,\n"
+                    + "MORATORIO=@col11,\n"
+                    + "FECHA_GESTION=str_to_date(@col12, '%d/%m/%Y'),\n"
+                    + "CARGO_AUTOMATICO=@col13,"
+                    + "CLIENTE_UNICO=concat(@col4,' - ',@col5,' - ',@col6,' - ',@col7)\n";
+            ic.st.executeUpdate("truncate azteca_pagos_temporal;");
+//            System.out.println(sql_import_csv);
+            ic.st.executeUpdate(sql_import_csv);
+
+            ic.st.close();
+            ic.conn.close();
+            return "La base a sido cargada corectamente";
+        } catch (SQLException e) {
+            return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
+        }
+    }
 
 }

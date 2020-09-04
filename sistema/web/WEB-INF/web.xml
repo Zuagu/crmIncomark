@@ -360,6 +360,10 @@
         <servlet-name>ControllerReportesAzteca</servlet-name>
         <servlet-class>callcenter.controller.ControllerReportesAzteca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerUploadFilesPagos</servlet-name>
+        <servlet-class>callcenter.controller.ControllerUploadFilesPagos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -707,6 +711,10 @@
     <servlet-mapping>
         <servlet-name>ControllerReportesAzteca</servlet-name>
         <url-pattern>/ControllerReportesAzteca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerUploadFilesPagos</servlet-name>
+        <url-pattern>/ControllerUploadFilesPagos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

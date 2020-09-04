@@ -36,7 +36,7 @@
                 <h5>Carga de pagos</h5>
             </div>
             <div class="col s12 m12 l12">
-                <form method="POST" action="ControllerUploadFiles" enctype="multipart/form-data">
+                <form method="POST" action="ControllerUploadFilesPagos" enctype="multipart/form-data">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Archivo csv</span>

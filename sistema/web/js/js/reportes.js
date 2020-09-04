@@ -17,6 +17,11 @@ $('#enviar_convenios').click( function () {
 });
 
 
+$('#enviar_pagos').click( function () {
+    azteca_reporte_pagos();
+});
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -132,6 +137,46 @@ function azteca_reporte_convenios() {
                     <td>${item.FECHA_PAGO}</td>
                     <td>${item.EFECTIVIDAD}</td>
                     <td>${item.ID_EQUIPO}</td>
+                    </tr>`);
+                cantidad = cantidad + 1;
+            }
+            $('#cantidad_convenios').empty();
+            $('#cantidad_convenios').append(cantidad + ' Cuentas');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+        }
+    });
+}
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function azteca_reporte_pagos() {
+    let params = {
+        action:'azteca_reporte_pagos',
+        desde:$('#desde_pagos').val(),
+        hasta:$('#hasta_pagos').val(),
+        territorio:$('#id_ter_pagos').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+//            console.log(response);
+            $('#tbody_tabla_pagos').empty();
+            let cantidad = 0;
+            for (let item of response) {
+                $('#tbody_tabla_pagos').append(`<tr>
+                    <td>${item.CLIENTE_UNICO}</td>
+                    <td>${item.ANIO}</td>
+                    <td>${item.SEMANA}</td>
+                    <td>${item.DIA}</td>
+                    <td>${item.RECUPERACION_CAPITAL}</td>
+                    <td>${item.RECUPERACION_MORATORIOS}</td>
+                    <td>${item.SALDO_ACTUAL}</td>
+                    <td>${item.MORATORIO}</td>
+                    <td>${item.FECHA_GESTION}</td>
+                    <td>${item.CARGO_AUTOMATICO}</td>
                     </tr>`);
                 cantidad = cantidad + 1;
             }

@@ -97,6 +97,49 @@ public class ModelReportesAzteca {
         } 
 
     }
+    
+    
+    
+    public static String azteca_reporte_pagos() {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT * FROM azteca_pagos;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listPagos = new JSONArray();
+
+            while (ic.rs.next()) {
+                JSONObject objPago = new JSONObject();
+                objPago.put("ID_PAGO", ic.rs.getString("ID_PAGO"));
+                objPago.put("ANIO", ic.rs.getString("ANIO"));
+                objPago.put("SEMANA", ic.rs.getString("SEMANA"));
+                objPago.put("DIA", ic.rs.getString("DIA"));
+                objPago.put("PAIS", ic.rs.getString("PAIS"));
+                objPago.put("CANAL", ic.rs.getString("CANAL"));
+                objPago.put("SUCURSAL", ic.rs.getString("SUCURSAL"));
+                objPago.put("FOLIO", ic.rs.getString("FOLIO"));
+                objPago.put("RECUPERACION_CAPITAL", ic.rs.getString("RECUPERACION_CAPITAL"));
+                objPago.put("RECUPERACION_MORATORIOS", ic.rs.getString("RECUPERACION_MORATORIOS"));
+                objPago.put("SALDO_ACTUAL", ic.rs.getString("SALDO_ACTUAL"));
+                objPago.put("MORATORIO", ic.rs.getString("MORATORIO"));
+                objPago.put("FECHA_GESTION", ic.rs.getString("FECHA_GESTION"));
+                objPago.put("CARGO_AUTOMATICO", ic.rs.getString("CARGO_AUTOMATICO"));
+                objPago.put("CLIENTE_UNICO", ic.rs.getString("CLIENTE_UNICO"));
+                objPago.put("ZONA", ic.rs.getString("ZONA"));
+                objPago.put("GERENTE", ic.rs.getString("GERENTE"));
+                objPago.put("ID_GESTOR", ic.rs.getString("ID_GESTOR"));
+                listPagos.add(objPago);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listPagos.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } 
+
+    }
 
     public static String select_options_territorios() {
         try {

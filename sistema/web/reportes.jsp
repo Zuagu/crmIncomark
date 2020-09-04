@@ -144,13 +144,16 @@
                                 <table class="highlight" id="tabla_pagos">
                             <thead class="blue">
                                 <tr class="text-white">
-                                    <td><b>CUENTA</b></td>
-                                    <td><b>FECHA PAGO</b></td>
-                                    <td><b>ORIGEN</b></td>
-                                    <td><b>IMPORTE</b></td>
-                                    <td><b>FORMA</b></td>
-                                    <td><b>ESTATUS</b></td>
-                                    <td><b>FECHA APLICACION</b></td>
+                                    <td><b>CLIENTE UNICO</b></td>
+                                    <td><b>AÑO</b></td>
+                                    <td><b>SEMANA</b></td>
+                                    <td><b>DIA</b></td>
+                                    <td><b>RECUPERACION_CAPITAL</b></td>
+                                    <td><b>RECUPERACION_MORATORIOS</b></td>
+                                    <td><b>SALDO_ACTUAL</b></td>
+                                    <td><b>MORATORIO</b></td>
+                                    <td><b>FECHA_GESTION</b></td>
+                                    <td><b>CARGO_AUTOMATICO</b></td>
                                 </tr>
                             </thead>
                             <tbody id="tbody_tabla_pagos">
