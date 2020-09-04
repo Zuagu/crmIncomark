@@ -98,7 +98,30 @@ public class ModelReportesAzteca {
 
     }
 
-    public static String ejemoplo(String objContacto) {
+    public static String select_options_territorios() {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "CALL azteca_reporte_convenios();";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject objCuenta = new JSONObject();
+            while (ic.rs.next()) {
+//                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return "{}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } 
+        
+
+    }
+
+    public static String select_options_territorios(String objContacto) {
         try {
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objContacto);

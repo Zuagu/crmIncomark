@@ -58,6 +58,14 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("select_options_territorios")) {
+            String Respuesta = ModelReportesAzteca.select_options_territorios();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         
     }
     
