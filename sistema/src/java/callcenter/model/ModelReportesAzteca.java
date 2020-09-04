@@ -101,11 +101,12 @@ public class ModelReportesAzteca {
     public static String select_options_territorios() {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_reporte_convenios();";
+            String sql = "SELECT TERRITORIO FROM azteca_base_genenral_original GROUP BY TERRITORIO;";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
-            JSONObject objCuenta = new JSONObject();
+            JSONArray territorios = new JSONArray();
             while (ic.rs.next()) {
+                territorios.add(ic.rs.getString("TERRITORIO"));
 //                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
 
             }
@@ -113,7 +114,7 @@ public class ModelReportesAzteca {
             ic.st.close();
             ic.conn.close();
 
-            return "{}";
+            return territorios.toJSONString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         } 
