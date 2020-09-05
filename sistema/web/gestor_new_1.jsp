@@ -17,17 +17,6 @@
         <jsp:include page="header.jsp"/>
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
-                <div class="col s12 m12 l12 ">
-                    <div class="col s4 m4 l4 contenido-datos">
-                        <input id="buscador_cuentas_gestor" class="search_cuentas center-align" type="text" placeholder="Buscar">
-                    </div>
-                    <div class="col s1 m1 l1 contenido-datos">
-                         <a id="enviar_cuenta" class="waves-effect waves-light btn-small green"><i class="material-icons center">save</i></a>
-                    </div>
-                     <div class="col s1 m1 l1 contenido-datos">
-                         <a id="enviar_cuenta" class="waves-effect waves-light btn-small blue"><i class="material-icons center">save</i></a>
-                    </div>
-                </div>
                 <div class="col s12 m12 l12 contenido-datos">
                     <input id="id_cuenta" type="hidden">
                     <input id="numero_marcado_deudor" type="hidden">
@@ -36,199 +25,213 @@
                     <input id="TERRITORIO" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
-                    <div id="info_gestor" class=" col s7 m7 l7 div_input_gestor_info  z-depth-1">
-                        <div class="col s12 m12 l12">
-                            <h6>Informacon General</h6>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="CLIENTE_UNICO">Cuenta</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="CAMPANIA">Producto</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="NOMBRE_CTE">Titular</label>
-                        </div>
-
-                        <div class="input-field col s6 m6 l6">
-                            <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="SUBCAMPANA">Subprodcuto</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="GERENTE">Gerente</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="DIRECCION">Direccion</label>
-                        </div>
-                        <div class="input-field col s5 m5 l5">
-                            <input id="COLONIA_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="COLONIA_CTE">Colonia</label>
-                        </div>
-                        <div class="input-field col s4 m4 l4">
-                            <input id="ESTADO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="ESTADO_CTE">Estado</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="CP_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                            <label for="CP_CTE">C.P.</label>
-                        </div>
-                    </div>
-                    <div id="info_gestor_secundario" class="col s5 m5 l5 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
-                        <div class="col s12 m12 l12">
-                            <h6>Info. Economica</h6>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="DIA_DE_PAGO">Dia de Pago</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="ATRASO_MAXIMO">Semanas</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="IMP_ULTIMO_PAGO">Ult. Pago $</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="SALDO">Capital</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="MORATORIOS">Moratorios</label>
-                        </div>
-                        <div class="input-field col s12 m12 l12">
-                            <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                            <label for="SALDO_TOTAL">Saldo Total</label>
-                        </div>
-                    </div>
-                    <div class=" col s7 m7 l7  div_gestor_gestion">
-                        <div class=" col s12 m12 l12  div_gestor_gestion">
-                            <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
-                                <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion"></textarea>
+                    <div class=" col s7 m7 l7">
+                        <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1">
+                            <div class="col s8 m8 l8 contenido-datos">
+                                <input id="buscador_cuentas_gestor" class="search_cuentas center-align" type="text" placeholder="Buscar">
                             </div>
-                        </div>
-                        <div class=" col s12 m12 l12  div_gestor_gestion">
+                            <div class="col s4 m4 l4">
+                                <h6>Informacon General</h6>
+                            </div>
                             <div class="input-field col s6 m6 l6">
-                                <div class=" input-field col s6 m6 l6 ">
-                                    <select id="estatus">
-                                        <option value="0" selected>Selecciona Estatus</option>
-                                    </select>
-                                </div> 
-                                <div class=" input-field col s6 m6 l6 ">
-                                    <select id="codigo_llamada"></select>
-                                </div> 
+                                <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CLIENTE_UNICO">Cuenta</label>
                             </div>
-                            <div class="col s6 m6 l6 ">
-                                <div class="col s6 m6 l6 ">
-                                    <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
-                                </div>
-                                <div class="col s6 m6 l6">
-                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Siguiente</a>
-                                </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CAMPANIA">Producto</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="NOMBRE_CTE">Titular</label>
+                            </div>
+
+                            <div class="input-field col s6 m6 l6">
+                                <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="SUBCAMPANA">Subprodcuto</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="GERENTE">Gerente</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="DIRECCION">Direccion</label>
+                            </div>
+                            <div class="input-field col s5 m5 l5">
+                                <input id="COLONIA_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="COLONIA_CTE">Colonia</label>
+                            </div>
+                            <div class="input-field col s4 m4 l4">
+                                <input id="ESTADO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ESTADO_CTE">Estado</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="CP_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CP_CTE">C.P.</label>
                             </div>
                         </div>
-                    </div>   
-                    <div class="col s5 m5 l5 z-depth-1 div_search_gestor inner">
-                         <div class="col s12 m12 l12">
-                            <h6>Referencias</h6>
+                    </div>
+                    <div class=" col s5 m5 l5">
+                        <div id="info_gestor_secundario" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
+                            <div class="col s12 m12 l12">
+                                <h6>Info. Economica</h6>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DIA_DE_PAGO">Dia de Pago</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="ATRASO_MAXIMO">Semanas</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="IMP_ULTIMO_PAGO">Ult. Pago $</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="SALDO">Capital</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="MORATORIOS">Moratorios</label>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="SALDO_TOTAL">Saldo Total</label>
+                            </div>
                         </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="cont1" type="text" class="validate" placeholder=""  value="">
-                            <label for="cont1">Contacto 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_1_cont_1" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_1_cont_1">Tel. 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_2_cont_1" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_1">Tel. 2</label>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <input id="cont2" type="text" class="validate" placeholder=""  value="">
-                            <label for="cont2">Contacto 2</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_1_cont_2" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_1_cont_2">Tel. 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_2_cont_2" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_2">Tel. 2</label>
-                        </div>
-                         <div class="input-field col s6 m6 l6">
-                            <input id="cont3" type="text" class="validate" placeholder=""  value="">
-                            <label for="cont3">Contacto 3</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_1_cont_3" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_1_cont_3">Tel. 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_2_cont_3" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_3">Tel. 2</label>
-                        </div>
-                         <div class="input-field col s6 m6 l6">
-                            <input id="cont4" type="text" class="validate" placeholder=""  value="">
-                            <label for="cont4">Contacto 4</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_1_cont_4" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_1_cont_4">Tel. 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_2_cont_4" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_4">Tel. 2</label>
-                        </div>
-                         <div class="input-field col s6 m6 l6">
-                            <input id="cont5" type="text" class="validate" placeholder=""  value="">
-                            <label for="cont5">Contacto 5</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_1_cont_5" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_1_cont_5">Tel. 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_2_cont_5" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_5">Tel. 2</label>
-                        </div>
-                         <div class="input-field col s6 m6 l6">
-                            <input id="contAval" type="text" class="validate" placeholder=""  value="">
-                            <label for="cont_aval">Contacto Aval</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_1_cont_aval" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_1_cont_aval">Tel. 1</label>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <input id="tel_2_cont_2" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_aval">Tel. 2</label>
-                        </div>
-                        <div class="input-field col s12 m12 l12">
-                            <input id="tel_2_cont_2" type="text" class="validate" placeholder=""  value="">
-                            <label for="tel_2_cont_aval">Direccion Aval </label>
-                        </div>
-                    </div> 
-                    <div class=" col s12 m12 l12 div_tabs">
-                        <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
-                            <li class="tab col s1"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
-                            <li class="tab col s1"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
-                            <li class="tab col s1"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
-                            <li class="tab col s1"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
-                            <li class="tab col s1"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
-                            <li class="tab col s1"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
-                        </ul>
+                    </div>
+                    <div class=" col s7 m7 l7">
+                        <div class=" col s12 m12 l12  div_gestor_gestion z-depth-1">
+                            <div class="col s12 m12 l12">
+                                <h6>Gestion</h6>
+                            </div>
+                            <div class=" col s12 m12 l12  div_gestor_gestion">
+                                <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
+                                    <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion"></textarea>
+                                </div>
+                            </div>
+                            <div class=" col s12 m12 l12  div_gestor_gestion">
+                                <div class="input-field col s12 m12 l12">
+                                    <div class=" input-field col s6 m6 l6 ">
+                                        <select id="estatus">
+                                            <option value="0" selected>Selecciona Estatus</option>
+                                        </select>
+                                    </div> 
+                                    <div class=" input-field col s6 m6 l6 ">
+                                        <select id="codigo_llamada"></select>
+                                    </div> 
+                                </div>
+                                <div class="col s12 m12 l12 ">
+                                    <div class="col s6 m6 l6 ">
+                                        <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
+                                    </div>
+                                    <div class="col s6 m6 l6">
+                                        <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Siguiente</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                     </div>    
+                    <div class="col s5 m5 l5">
+                        <div class="col s12 m12 l12 z-depth-1 div_search_gestor inner">
+                            <div class="col s12 m12 l12">
+                                <h6>Referencias</h6>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="cont1" type="text" class="validate" placeholder=""  value="">
+                                <label for="cont1">Contacto 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_1_cont_1" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_1_cont_1">Tel. 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_2_cont_1" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_1">Tel. 2</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="cont2" type="text" class="validate" placeholder=""  value="">
+                                <label for="cont2">Contacto 2</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_1_cont_2" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_1_cont_2">Tel. 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_2_cont_2" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_2">Tel. 2</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="cont3" type="text" class="validate" placeholder=""  value="">
+                                <label for="cont3">Contacto 3</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_1_cont_3" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_1_cont_3">Tel. 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_2_cont_3" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_3">Tel. 2</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="cont4" type="text" class="validate" placeholder=""  value="">
+                                <label for="cont4">Contacto 4</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_1_cont_4" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_1_cont_4">Tel. 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_2_cont_4" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_4">Tel. 2</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="cont5" type="text" class="validate" placeholder=""  value="">
+                                <label for="cont5">Contacto 5</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_1_cont_5" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_1_cont_5">Tel. 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_2_cont_5" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_5">Tel. 2</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="contAval" type="text" class="validate" placeholder=""  value="">
+                                <label for="cont_aval">Contacto Aval</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_1_cont_aval" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_1_cont_aval">Tel. 1</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="tel_2_cont_2" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_aval">Tel. 2</label>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <input id="tel_2_cont_2" type="text" class="validate" placeholder=""  value="">
+                                <label for="tel_2_cont_aval">Direccion Aval </label>
+                            </div>
+                        </div> 
+                    </div>
+                        <div class=" col s12 m12 l12 div_tabs">
+                            <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
+                                <li class="tab col s1"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
+                                <li class="tab col s1"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
+                                <li class="tab col s1"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
+                                <li class="tab col s1"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
+                                <li class="tab col s1"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
+                                <li class="tab col s1"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
+                            </ul>
+                        </div> 
                     <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;"> 
                         <table class="highlight" id="tabla_gestiones">
                             <thead class="blue">
@@ -365,6 +368,10 @@
                         <div class="input-field col s2 m2 l2">
                             <input id="convenios" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
                             <label for="convenios">Convenios</label>
+                        </div>
+                        <div class="input-field col s2 m2 l2">
+                            <input id="estatus" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                            <label for="estatus">Estatus</label>
                         </div>
                     </div>
                 </div>

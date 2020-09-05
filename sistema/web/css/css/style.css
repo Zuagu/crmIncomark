@@ -616,6 +616,7 @@ color_icon{
     border: 1px solid #2196f3 !important;
 }
 .div_search_gestor{
+     border-radius: 4px;
     overflow: auto;
 }
 .contenido-datos {
@@ -637,7 +638,7 @@ color_icon{
 
 }
 .div_input_gestor_info input[type="text"]:not(.browser-default)[readonly="readonly"]{
-    border-radius: 4px;
+    border-radius: 2px;
 
     color: black;
 
@@ -651,8 +652,13 @@ color_icon{
 .div_input_gestor_info{
     border-radius: 4px;
     display: none;
+    margin-bottom: 4px;
 }
 
+.div_info_secundaria{
+    border-radius: 4px !important;
+    margin-bottom: 4px;
+}
 .icon_gestor_tab{
     color:#2196f3;
 
@@ -673,16 +679,16 @@ color_icon{
 }
 
 .div_gestor_gestion{
-    
+ border-radius: 4px;
 }
 .div_tabs{
-    margin-top: 8px;
+    margin-top: 2px;
 }
 div_info_secundaria{
     height: 26vh; 
 }
 .ul_tabs{
-    height: 5vh;
+    height: 4vh;
 }
 .div_gestor_textarea{
     height: 14vh;
@@ -1120,4 +1126,12 @@ nav {
 
 .temp{
     height: 30px !important;
+}
+.btn-small {
+    height: 25.4px;
+    line-height: 25.4px;
+}
+
+input{
+    font-size: 14px !important;
 }
