@@ -20,8 +20,6 @@
     <li><a href="index.jsp" id="cerrar">Cerrar Sesion</a></li>
 </ul>
 <ul id="dropdown_app" class="dropdown-content">
-    <li><a href="https://web.whatsapp.com/"  class="center-align" target="_blank"><img class=" size_ul" src="image/whatsapp_logo.png"></a></li>
-    <li><a href="" class="center-align"><img class="size_ul" src="image/zoiper.png"></a></li>
     <li><a href="https://incomarkpbx.systelvoice.com/index.php"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel.png"></a></li>
 </ul>
 <nav class="header_nav blue darken-1">
@@ -37,8 +35,8 @@
             </div>
         </ul>
         <ul class="right size_ul ul_margin_top">      
-            <li><a class="size_ul dropdown-trigger" href="#!" data-target="dropdown_app"><i class="material-icons size_ul">apps</i></a></li>
-            <li><a class="size_ul dropdown-trigger" href="#!" data-target="dropdown1"><img id="foto_perfil" class="circle size_ul" src="image/icon-user.png"></a></li>
+            <li><a class="size_ul dropdown-trigger" href="#!" data-target="dropdown_app"><i class="material-icons size_ul margin_13_top">apps</i></a></li>
+            <li><a class="size_ul dropdown-trigger" href="#!" data-target="dropdown1"><img id="foto_perfil" class="circle size_ul margin_17_top" src="image/icon-user.png"></a></li>
         </ul>
     </div>
 </nav>

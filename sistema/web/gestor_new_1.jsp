@@ -119,24 +119,35 @@
                             </div>
                             <div class=" col s12 m12 l12  div_gestor_gestion">
                                 <div class="input-field col s12 m12 l12">
-                                    <div class=" input-field col s6 m6 l6 ">
+                                    <div class=" input-field col s6 m6 l6">
                                         <select id="estatus">
                                             <option value="0" selected>Selecciona Estatus</option>
                                         </select>
                                     </div> 
-                                    <div class=" input-field col s6 m6 l6 ">
+                                    <div class=" input-field col s6 m6 l6">
                                         <select id="codigo_llamada"></select>
+                                    </div> 
+                                    <div class=" input-field offset-l6 col s3 m3 l3">
+                                        <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
+                                    </div> 
+                                    <div class=" input-field col s3 m3 l3">
+                                        <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Sig.</a>
                                     </div> 
                                 </div>
                                 <div class="col s12 m12 l12 ">
-                                    <div class="col s6 m6 l6 ">
-                                        <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar.</a>
-                                    </div>
-                                    <div class="col s6 m6 l6">
-                                        <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Siguiente</a>
-                                    </div>
+                                    <div class=" col s12 m12 l12 div_tabs">
+                                        <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
+                                            <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
+                                            <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
+                                            <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
+                                            <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
+                                            <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
+                                            <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
+                                        </ul>
+                                    </div> 
                                 </div>
                             </div>
+
                         </div> 
                     </div>    
                     <div class="col s5 m5 l5">
@@ -222,16 +233,6 @@
                             </div>
                         </div> 
                     </div>
-                        <div class=" col s12 m12 l12 div_tabs">
-                            <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
-                                <li class="tab col s1"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
-                                <li class="tab col s1"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
-                                <li class="tab col s1"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
-                                <li class="tab col s1"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
-                                <li class="tab col s1"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
-                                <li class="tab col s1"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
-                            </ul>
-                        </div> 
                     <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;"> 
                         <table class="highlight" id="tabla_gestiones">
                             <thead class="blue">
