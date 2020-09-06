@@ -489,7 +489,7 @@ nav {
 .img_log{
     width: 30px;
     margin: 12%;  
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .margin-icon{
@@ -523,10 +523,7 @@ nav input[type="text"]:not(.browser-default):focus:not([readonly]) {
     margin-bottom: 1.5rem;
 }
 
-*/.div_tabs {
-    height: 25px;
 
-}/*
 
 .nex,
 .prev {
@@ -611,7 +608,7 @@ color_icon{
 
 .search_cuentas{
     width:100% !important;
-    border-radius: 20px !important;
+    border-radius: 8px !important;
     line-height: 40px !important;
     border: 1px solid #2196f3 !important;
 }
@@ -688,7 +685,7 @@ div_info_secundaria{
     height: 26vh; 
 }
 .ul_tabs{
-    height: 4vh;
+    height: 6vh;
 }
 .div_gestor_textarea{
     height: 14vh;
@@ -711,12 +708,12 @@ div_info_secundaria{
 }
 
 .btn_guardar_gestiones{
-    margin-top: 6vh;
+    margin-top: 1vh;
     background: linear-gradient(45deg,rgb(67, 160, 71), rgb(29, 233, 182));
 }
 
 .btn_siguiente {
-    margin-top: 6vh;
+    margin-top: 1vh;
     background: linear-gradient(45deg,rgb(255, 82, 82), rgb(244, 143, 177));
 }
 
@@ -949,7 +946,12 @@ th,td {
 .margin_20_down{
     margin-bottom: 20px;   
 }
-
+.margin_17_top{
+    margin-top: 17px;   
+}
+.margin_13_top{
+    margin-top: 13px;   
+}
 .date_picks_dash_sup{
     width: 50% !important;
     border-radius:8px !important;
