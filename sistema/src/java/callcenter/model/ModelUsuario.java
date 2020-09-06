@@ -177,6 +177,30 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
+    
+    //==========================================================================
+    public static String select_usuarios(String filtro) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "SELECT * FROM arcade_usuarios WHERE f_active = 1 AND f_administrativo = 0";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            JSONArray gestores = new JSONArray();
+            while (inicioConexion.rs.next()) {
+                JSONObject gestor = new JSONObject();
+                gestor.put("id", inicioConexion.rs.getInt("id"));
+                gestor.put("nombre", inicioConexion.rs.getString("nombre"));
+                gestores.add(gestor);
+            }
+            inicioConexion.conn.close();
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            return gestores.toJSONString();
+        } catch (SQLException ex) {
+            return "SQL Code: " + ex;
+        }
+    }
+    
     //==========================================================================
     //==========================================================================
     public static String select_usuarios_cargo_filtro(int puesto, int puesto2, int puesto3, String filtro) {

@@ -81,6 +81,16 @@ public class ControllerUsuario extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("select_usuarios")) {
+            String Respuesta = ModelUsuario.select_usuarios(
+                    request.getParameter("filtro")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
 
     }
 }

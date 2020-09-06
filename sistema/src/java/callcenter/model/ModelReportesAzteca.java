@@ -100,10 +100,10 @@ public class ModelReportesAzteca {
     
     
     
-    public static String azteca_reporte_pagos() {
+    public static String azteca_reporte_pagos(String desde, String hasta, String zona) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "SELECT * FROM azteca_pagos;";
+            String sql = "call azteca_reporte_pagos('"+desde+"', '"+hasta+"',  '"+zona+"')";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listPagos = new JSONArray();
@@ -162,7 +162,29 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         } 
         
+    }
 
+    public static String select_options_zona() {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT ZONA FROM azteca_pagos GROUP BY ZONA;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray territorios = new JSONArray();
+            while (ic.rs.next()) {
+                territorios.add(ic.rs.getString("ZONA"));
+//                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return territorios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        } 
+        
     }
 
     public static String select_options_territorios(String objContacto) {

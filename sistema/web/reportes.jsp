@@ -19,6 +19,10 @@
                 padding: 4px;
                 border-radius: 3px;
             }
+            .dt {
+                overflow: auto;
+                height: 75vh;
+            }
         </style>
     </head>
     <body>
@@ -46,11 +50,11 @@
                                     <input id="hasta_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
                                     <label class="" for="hasta_gestiones"></label>
                                     <a id="enviar_gestiones" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
-                                    <a onclick="tableToExcel('datos_tabla', 'GESTIONES')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
+                                    <a onclick="tableToExcel('datos_tabla_gestiones', 'GESTIONES')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
                                     <a id="cantidad_gestiones"></a>
                                 </div>
                             </div>
-                            <div id="datos_tabla" class="col s12 z-depth-2">
+                            <div id="datos_tabla_gestiones" class="col s12 z-depth-2 dt">
                                 <table class="highlight" id="tabla_pagos">
                                     <thead class="blue">
                                         <tr class="text-white">
@@ -91,15 +95,15 @@
                                     <input id="hasta_convenios" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
                                     <label class="" for="hasta_convenios"></label>
                                     <a id="enviar_convenios" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
-                                    <a onclick="tableToExcel('datos_tabla', 'CONVENIOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
+                                    <a onclick="tableToExcel('datos_tabla_convenios', 'CONVENIOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
                                     <a id="cantidad_convenios"></a>
                                 </div>
                             </div>
-                            <div id="datos_tabla" class="col s12 z-depth-2">
+                            <div id="datos_tabla_convenios" class="col s12 z-depth-2 dt">
                                 <table class="highlight" id="tabla_pagos">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                      <td><b>ID_CONVENIO</b></td>
+                                    <thead class="blue">
+                                        <tr class="text-white">
+                                            <td><b>ID_CONVENIO</b></td>
                                             <td><b>CONVENIO</b></td>
                                             <td><b>RESTO</b></td>
                                             <td><b>APLICA</b></td>
@@ -115,11 +119,11 @@
                                             <td><b>FECHA_PAGO</b></td>
                                             <td><b>EFECTIVIDAD</b></td>
                                             <td><b>ID_EQUIPO</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_convenios">
-                            </tbody>
-                        </table>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_tabla_convenios">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -128,7 +132,7 @@
                             <div class="col s10 offset-s1 hide_print">
                                 <div class="input-field col s3 offset-l2" >
                                     <select id="id_ter_pagos" name="id_region"></select>
-                                    <label>Territorio</label>
+                                    <label>ZONA</label>
                                 </div>
                                 <div class="input-field col s5" >
                                     <input id="desde_pagos" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
@@ -136,29 +140,31 @@
                                     <input id="hasta_pagos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
                                     <label class="" for="hasta_pagos"></label>
                                     <a id="enviar_pagos" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
-                                    <a onclick="tableToExcel('datos_tabla', 'PAGOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
-
+                                    <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
+                                    <a id="cantidad_pagos"></a>
                                 </div>
                             </div>
-                            <div id="datos_tabla" class="col s12 z-depth-2">
+                            <div id="datos_tabla_pagos" class="col s12 z-depth-2 dt">
                                 <table class="highlight" id="tabla_pagos">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td><b>CLIENTE UNICO</b></td>
-                                    <td><b>AÑO</b></td>
-                                    <td><b>SEMANA</b></td>
-                                    <td><b>DIA</b></td>
-                                    <td><b>RECUPERACION_CAPITAL</b></td>
-                                    <td><b>RECUPERACION_MORATORIOS</b></td>
-                                    <td><b>SALDO_ACTUAL</b></td>
-                                    <td><b>MORATORIO</b></td>
-                                    <td><b>FECHA_GESTION</b></td>
-                                    <td><b>CARGO_AUTOMATICO</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_pagos">
-                            </tbody>
-                        </table>
+                                    <thead class="blue">
+                                        <tr class="text-white">
+                                            <td><b>CLIENTE UNICO</b></td>
+                                            <td><b>AÑO</b></td>
+                                            <td><b>SEMANA</b></td>
+                                            <td><b>DIA</b></td>
+                                            <td><b>RECUPERACION_CAPITAL</b></td>
+                                            <td><b>RECUPERACION_MORATORIOS</b></td>
+                                            <td><b>SALDO_ACTUAL</b></td>
+                                            <td><b>MORATORIO</b></td>
+                                            <td><b>FECHA_GESTION</b></td>
+                                            <td><b>CARGO_AUTOMATICO</b></td>
+                                            <td><b>ZONA</b></td>
+                                            <td><b>GERENTE</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_tabla_pagos">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

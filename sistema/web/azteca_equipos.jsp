@@ -311,12 +311,13 @@
             <input id="nuevo_equipo" type="hidden" value="">
             <!--END PAGE WRAPPER-->
         </div>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/highcharts-more.js"></script>
-        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+        
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/asignacion_equipos.js"></script>
+        
+        <script type="text/javascript" src="js/js/menu.js"></script>
+        <script type="text/javascript" src="js/js/equipos_azteca.js"></script>
         <script type="text/javascript" src="js/arcade-excel.js"></script>
         <!--<script type="text/javascript" src="js/js/script.js"></script>-->
 
