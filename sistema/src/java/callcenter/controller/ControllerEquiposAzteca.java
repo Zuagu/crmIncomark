@@ -31,7 +31,18 @@ public class ControllerEquiposAzteca extends HttpServlet {
         String action = request.getParameter("action");
         System.out.println(action);
         if (action.equals("select_equipo_tabla")) {
-            String Respuesta = "";
+            String Respuesta = ModelEquipoAzteca.select_equipos();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("agregar_gestor_a_equipo")) {
+            String Respuesta = ModelEquipoAzteca.agregar_gestor_a_equipo(
+                    request.getParameter("id_gestor"),
+                    request.getParameter("id_equipo")
+            );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
             writer.print(Respuesta);

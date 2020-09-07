@@ -364,6 +364,10 @@
         <servlet-name>ControllerUploadFilesPagos</servlet-name>
         <servlet-class>callcenter.controller.ControllerUploadFilesPagos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerEquiposAzteca</servlet-name>
+        <servlet-class>callcenter.controller.ControllerEquiposAzteca</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -715,6 +719,10 @@
     <servlet-mapping>
         <servlet-name>ControllerUploadFilesPagos</servlet-name>
         <url-pattern>/ControllerUploadFilesPagos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerEquiposAzteca</servlet-name>
+        <url-pattern>/ControllerEquiposAzteca</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

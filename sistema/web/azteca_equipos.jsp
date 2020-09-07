@@ -22,8 +22,7 @@
                 margin-right: 10px;
             }
 
-            .equipo_gestores{
-            }
+
             .equipo_gestores_selected{
                 box-sizing: border-box;
                 background: rgb(137, 222, 255) !important;
@@ -97,6 +96,10 @@
                 outline: 1px solid slategrey;
                 border-radius: 5px;
             }
+            table tbody tr:hover {
+                transition: 0.6s;
+                background-color: rgba(51, 230, 255, 0.4) !important;
+            }
 
         </style>
     </head>
@@ -109,8 +112,18 @@
             <!--BEGIN CONTENT-->
             <div class="row">
                 <div class="col s12 m12 l12">  
-                   
+                    <div class="col s10 m10 l10 offset-l1 offset-m1 offset-s1">
+                        <div class="col s12 m12 l12">
+                            <div class="col s6 m6 l6">
+                                <p>Gestor: </p> <b id="id_ges_select">Nombre Gestor Selecionado</b>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <p>Equipo: </p> <b id="id_equi_select">Nombre del Equipo Selecionado</b>
+                            </div>  
+                        </div>                          
+                    </div>
                     <div class="col s6 m6 l6">
+
                         <div class="col s12 m12 l12  center-align div_gestores_disp_asig">
                             <h5>Gestores Equipo Activo</h5>
                             <div class="tabla_gestores_disp_asig z-depth-1 blue-grey lighten-5 ">
@@ -143,21 +156,21 @@
                             </div> 
                         </div>    
                     </div>
-                     <input id="id_equipo" type="hidden" value="0">
+                    <input id="id_equipo" type="hidden" value="0">
                     <div class="col s6 m6 l6">
                         <div class="col s12 m12 l12 center-align">
                             <h5>Equipos</h5>
                         </div>
 
                         <div class="col s12 m12 l12 tabla_equipos_asig z-depth-1 blue-grey lighten-5">
-                            <table class="striped highlight ">
+                            <table class="striped highlight">
                                 <thead>
                                     <tr>
+                                        <td>Id Equipo</td>
                                         <td>Equipo</td>
-                                        <td>Asignacion</td>
-                                        <td>Equipo</td>
+                                        <td>Descripcion</td>
                                         <td>Cuentas</td>
-                                        <td>Importe</td>
+                                        <td>Valor</td>
                                     </tr>
                                 </thead>
                                 <tbody id="div_equipos"></tbody>
@@ -311,11 +324,11 @@
             <input id="nuevo_equipo" type="hidden" value="">
             <!--END PAGE WRAPPER-->
         </div>
-        
+
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/asignacion_equipos.js"></script>
-        
+
         <script type="text/javascript" src="js/js/menu.js"></script>
         <script type="text/javascript" src="js/js/equipos_azteca.js"></script>
         <script type="text/javascript" src="js/arcade-excel.js"></script>
