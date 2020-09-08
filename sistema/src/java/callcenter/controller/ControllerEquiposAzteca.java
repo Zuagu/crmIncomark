@@ -49,6 +49,78 @@ public class ControllerEquiposAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("select_usarios_equipo")) {
+            String Respuesta = ModelEquipoAzteca.select_usarios_equipo(
+                    request.getParameter("id_equipo")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("eliminar_gestor_de_equipo")) {
+            String Respuesta = ModelEquipoAzteca.eliminar_gestor_de_equipo(
+                    request.getParameter("id_gestor"),
+                    request.getParameter("id_equipo")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_territorio_options")) {
+            String Respuesta = ModelEquipoAzteca.select_territorio_options();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_gerente_options")) {
+            String Respuesta = ModelEquipoAzteca.select_gerente_options(
+                    request.getParameter("territorio")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_etapas_options")) {
+            String Respuesta = ModelEquipoAzteca.select_etapas_options(
+                    request.getParameter("territorio"),
+                    request.getParameter("gerente")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("crear_equipo")) {
+            String Respuesta = ModelEquipoAzteca.crear_equipo(
+                    request.getParameter("nombre_equipo")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("agregar_cuentas_equipo")) {
+            String Respuesta = ModelEquipoAzteca.agregar_cuentas_equipo(
+                    request.getParameter("territorio"),
+                    request.getParameter("gerente"),
+                    request.getParameter("etapa")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
     }
 
     @Override

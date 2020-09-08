@@ -100,6 +100,19 @@
                 transition: 0.6s;
                 background-color: rgba(51, 230, 255, 0.4) !important;
             }
+            .eliminar_gestor {
+                cursor: pointer;
+            }
+            .filtro_equipo {
+                margin-bottom: 6rem;
+            }
+            input {
+                height: 2.5rem !important;
+            }
+            .cont_nom_equipo {
+                margin-top: 1rem;
+                margin-bottom: 2rem;
+            }
 
         </style>
     </head>
@@ -130,8 +143,9 @@
                                 <table class="striped highlight">
                                     <thead>
                                         <tr>
-                                            <td>Id</td>
-                                            <td>Nombre</td>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody id="listado_gestores_equipo" class="datagrid sombra" style="overflow: auto;">
@@ -182,44 +196,37 @@
                     </div>
                 </div>
                 <div id="modal_asignar_cuentas" class="modal bottom-sheet estatico">
-                    <div class="modal-content">
+                    <div class="modal-content filtro_equipo">
                         <h4>Filtro De Cuentas</h4>
-                        <div class="col s12 m12">
-                            <input type="hidden" value="" id="cadena_ciclos" style="width: 300px;">
-                            <input type="hidden" value="" id="cadena_estados" style="width: 300px;">
-                            <input type="hidden" value="" id="cadena_estatus" style="width: 300px;">
+                        <div class="input-field col s6 m3 l3">
+                            <select id="op_territorio" multiple>
+                                <option value="0" disabled selected>Selecciona</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Territorio</label>
                         </div>
-                        <div>
-                            <div class="input-field col s2 m2 l2">
-                                <select id="select_region_f"></select>
-                                <label>Region</label>
-                            </div>
-                            <div class="input-field col s2 m2 l2 hide" id="div_asignacion_f" >
-                                <select id="select_asignacion_f" ></select>
-                                <label>Asignacion</label>
-                            </div>
-
-                            <div class="col s2 m2 l2 div_chek" id="div_ciclos_f">Ciclos</div>
-
-                            <div class="col s2 m2 l2 div_chek" id="div_estados_f">Estados</div>
-
-                            <div class="col s2 m2 l2 div_chek" id="div_estatus_f">Estatus</div>
-                            <div class="col div_chek div_chek2 center-align">
-                                <div class="col s10 m12 l12" >
-                                    <select id="select_cr_f">
-                                        <option value="0">No</option>
-                                        <option value="1">Si</option>
-                                        <option value="0,1">Ambos</option>
-                                    </select>
-                                </div>
-                                <div class="col s10 m12 l12" id="div_monto_f">
-                                    <input id="input_monto_f" type="number">
-                                </div>
-
-                                <div class="col s10 m12 l12">
-                                    <a id="ver_cuentas_equipo" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Generar</a>
-                                </div>
-                            </div>
+                        <div class="input-field col s6 m3 l3">
+                            <select id="op_gerente" multiple>
+                                <option value="0" disabled selected>Selecciona</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Gerente</label>
+                        </div>
+                        <div class="input-field col s6 m3 l3">
+                            <select id="op_etapa" multiple>
+                                <option value="0" disabled selected>Selecciona</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Etapa</label>
+                        </div>
+                        <div class="input-field col s6 m3 l3">
+                            <a id="crear_equipo" class="btn-small waves-effect">Crear Equipo</a>
                         </div>
 
                     </div>
@@ -249,6 +256,20 @@
 
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="nombre_equipo" class="modal col s10 offset-s1 m4 offset-m4 l4 offset-l4">
+                    <div class="modal-content">
+                        <h4 class="col s12">Nombre Equipo</h4>
+
+                        <div class="input-field col s12 cont_nom_equipo">
+                            <input id="nom_equipo" type="text" class="validate">
+                            <label for="nom_equipo">Nombre del Equipo</label>
+                            <div class="col s12 center">
+                                <a id="crear_equipo_enviar" class="btn waves-effect">Aceptar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -327,7 +348,6 @@
 
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/js/asignacion_equipos.js"></script>
 
         <script type="text/javascript" src="js/js/menu.js"></script>
         <script type="text/javascript" src="js/js/equipos_azteca.js"></script>
