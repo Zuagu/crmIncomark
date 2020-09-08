@@ -113,6 +113,12 @@
                 margin-top: 1rem;
                 margin-bottom: 2rem;
             }
+            .margen_boton {
+                margin-top: 0.7rem;
+            }
+            #cont_message {
+                margin: 2rem 1rem;
+            }
 
         </style>
     </head>
@@ -135,7 +141,7 @@
                             </div>  
                         </div>                          
                     </div>
-                    <div class="col s6 m6 l6">
+                    <div class="col s12 m5 l5">
 
                         <div class="col s12 m12 l12  center-align div_gestores_disp_asig">
                             <h5>Gestores Equipo Activo</h5>
@@ -161,8 +167,8 @@
                                 <table class="striped highlight">
                                     <thead>
                                         <tr>
-                                            <td>Id</td>
-                                            <td>Nombre</td>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
                                         </tr>
                                     </thead>
                                     <tbody id="listado_gestores" class="datagrid sombra" style="overflow: auto;"></tbody>
@@ -171,7 +177,7 @@
                         </div>    
                     </div>
                     <input id="id_equipo" type="hidden" value="0">
-                    <div class="col s6 m6 l6">
+                    <div class="col s12 m7 l7">
                         <div class="col s12 m12 l12 center-align">
                             <h5>Equipos</h5>
                         </div>
@@ -180,11 +186,11 @@
                             <table class="striped highlight">
                                 <thead>
                                     <tr>
-                                        <td>Id Equipo</td>
-                                        <td>Equipo</td>
-                                        <td>Descripcion</td>
-                                        <td>Cuentas</td>
-                                        <td>Valor</td>
+                                        <th>Id Equipo</th>
+                                        <th>Equipo</th>
+                                        <th>Descripcion</th>
+                                        <th>Cuentas</th>
+                                        <th>Valor</th>
                                     </tr>
                                 </thead>
                                 <tbody id="div_equipos"></tbody>
@@ -225,8 +231,9 @@
                             </select>
                             <label>Etapa</label>
                         </div>
-                        <div class="input-field col s6 m3 l3">
-                            <a id="crear_equipo" class="btn-small waves-effect">Crear Equipo</a>
+                        <div class="input-field col s6 m3 l3 margen_boton">
+                            <a id="crear_equipo" class="btn blue waves-effect">Crear Equipo</a>
+                            <a id="agregar_mas_cuentas_equipo" class="btn blue waves-effect">Agregar Cuentas Equipo</a>
                         </div>
 
                     </div>
@@ -268,8 +275,19 @@
                             <input id="nom_equipo" type="text" class="validate">
                             <label for="nom_equipo">Nombre del Equipo</label>
                             <div class="col s12 center">
-                                <a id="crear_equipo_enviar" class="btn waves-effect">Aceptar</a>
+                                <a class="modal-close waves-effect waves-yellow btn red">Cancelar</a>
+                                <a id="crear_equipo_enviar" class="btn waves-effect blue">Aceptar</a>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="alerta_message" class="modal col s10 offset-s1 m6 offset-m3 l6 offset-l3">
+                    <div class="modal-content">
+                        <h4 class="col s12 center" id="title_message"></h4>
+
+                        <div class="input-field col s12 center">
+                            <h5 id="cont_message"></h5>
                         </div>
                     </div>
                 </div>

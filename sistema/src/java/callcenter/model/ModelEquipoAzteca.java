@@ -18,7 +18,7 @@ public class ModelEquipoAzteca {
     public static String select_equipos() {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String sql = "SELECT * FROM azteca_equipos;";
+            String sql = "SELECT ID_EQUIPO, NOMBRE_EQUIPO, IFNULL(CUENTAS, 0) AS CUENTAS, IFNULL(VALOR,0) VALOR, DESCRIPCION, F_DELETE FROM azteca_equipos;";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             JSONArray equipos = new JSONArray();
@@ -205,7 +205,7 @@ public class ModelEquipoAzteca {
     public static String agregar_cuentas_equipo(String territorios, String gerentes, String etapa) {
         try {
             StartConexion inicioConexion = new StartConexion();
-            
+            String sql_act_data_equipo = "CALL azteca_actualizar_datos_equipos();";
             String sql_ob_equi_max = "SELECT ID_EQUIPO FROM azteca_equipos order by ID_EQUIPO desc limit 1;";
             int id_max = 0; 
             System.out.println(sql_ob_equi_max);
@@ -227,11 +227,44 @@ public class ModelEquipoAzteca {
             System.out.println(sql);
             inicioConexion.st.executeUpdate(sql);
             
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql_act_data_equipo);
+            
             inicioConexion.rs.close();
             inicioConexion.st.close();
             inicioConexion.conn.close();
 
             return gerencia.toString();
+        } catch (SQLException e) {
+            return "sql code" + e;
+        }
+    }
+    
+    public static String agregar_nuevas_cuentas_equipo(String territorios, String gerentes, String etapa, String id_equipo) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            
+            String sql_act_data_equipo = "CALL azteca_actualizar_datos_equipos();";
+            System.out.println(sql_act_data_equipo);
+            
+            JSONObject response = new JSONObject();
+            
+            String sql = "UPDATE azteca_base_genenral_original SET \n"
+                    + "ID_EQUIPO = "+ id_equipo +"\n"
+                    + "WHERE TERRITORIO IN (" + territorios.replace("\"", "'") + ") \n"
+                    + "	AND GERENTE IN (" + gerentes.replace("\"", "'") + ") \n"
+                    + "    AND ETAPA IN (" + etapa.replace("\"", "'") + ");";
+            System.out.println(sql);
+            inicioConexion.st.executeUpdate(sql);
+            
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql_act_data_equipo);
+            
+            response.put("response", "ok");
+            
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            inicioConexion.conn.close();
+
+            return response.toString();
         } catch (SQLException e) {
             return "sql code" + e;
         }

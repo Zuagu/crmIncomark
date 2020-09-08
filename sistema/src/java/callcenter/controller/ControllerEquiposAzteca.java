@@ -121,6 +121,19 @@ public class ControllerEquiposAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("agregar_nuevas_cuentas_equipo")) {
+            String Respuesta = ModelEquipoAzteca.agregar_nuevas_cuentas_equipo(
+                    request.getParameter("territorio"),
+                    request.getParameter("gerente"),
+                    request.getParameter("etapa"),
+                    request.getParameter("id_equipo")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
     }
 
     @Override
