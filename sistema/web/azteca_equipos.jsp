@@ -119,6 +119,9 @@
             #cont_message {
                 margin: 2rem 1rem;
             }
+            th, td {
+                font-size: 14px;
+            }
 
         </style>
     </head>
@@ -281,7 +284,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="alerta_message" class="modal col s10 offset-s1 m6 offset-m3 l6 offset-l3">
                     <div class="modal-content">
                         <h4 class="col s12 center" id="title_message"></h4>

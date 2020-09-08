@@ -9,9 +9,9 @@ window.onload = function () {
     select_usuarios('listado_gestores');
     select_equipo_tabla('div_equipos');
     select_territorio_options();
-//    select_gerente_options();
-//    select_etapas_options()
+    
     $('#id_equipo').val(0);
+    $('#filtro').addClass('hide');
 };
 
 
