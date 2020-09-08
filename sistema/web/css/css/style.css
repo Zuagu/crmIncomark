@@ -456,16 +456,16 @@ nav {
 }
 
 .icon_nav {
-    line-height: 50px !important;
+    line-height: 30px !important;
     margin-left: 5px;
 }
 
 .search {
     width: 50% !important;
-    height: 2.3rem !important;
-    margin-left: 25% !important;
+    height: 1.6rem !important;
+    margin-left: 0% !important;
     line-height: 40px !important;
-    border-radius: 25px !important;
+    border-radius: 4px !important;
     color: #000000 !important;
 }
 

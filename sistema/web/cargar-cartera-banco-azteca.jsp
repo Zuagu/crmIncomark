@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="col s12 m12 l12">
-                    
+
                     <div class="encabezados_csv center-align hide">
                         <h4>Encabezados del archivo CSV</h4>
                         <span>cliente_id</span>
@@ -83,23 +83,28 @@
                         <span>FECHA_REINGRESO</span>
                     </div>
                 </div>
-                <div class="col s12 m10 l10 offset-m1 offset-l1">
+                <div class="col s4 m4 l4 z-depth-2 margin_17_top">
                     <form method="POST" action="ControllerUploadFiles" enctype="multipart/form-data">
                         <div class="file-field input-field">
-                            <div class="btn">
-                                <span>Archivo csv</span>
-                                <input type="file" name="uploadFile" accept=".csv">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                            <div>
+                            <div class="col s12 m12 l12">
+                                <h6>Carga de Cuentas</h6>
+                            </div>    
+                            <div class="col s12 m12 l12 margin_20_down margin_17_top">
+                                <div class="btn blue">
+                                    <span>CSV</span>
+                                    <input type="file" name="uploadFile" accept=".csv">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>    
+                            <div class="col s4 m14 l14 offset-l4 offset-m4 margin_20_down">
                                 <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
                             </div>
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
 
