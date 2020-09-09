@@ -83,7 +83,7 @@
                         <span>FECHA_REINGRESO</span>
                     </div>
                 </div>
-                <div class="col s4 m4 l4 z-depth-2 margin_17_top">
+                <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2 margin_17_top">
                     <form method="POST" action="ControllerUploadFiles" enctype="multipart/form-data">
                         <div class="file-field input-field">
                             <div class="col s12 m12 l12">
