@@ -11,6 +11,18 @@
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <style>
+            .marcacion_directa .collection .collection-item a {
+                margin-left: 1rem;
+            }
+            .marcacion_directa .collection .collection-item {
+                padding: 3px 20px;
+            }
+            .marcacion_directa .small {
+                font-size: 0.9rem;
+                margin-right: 0.5rem;
+            }
+        </style>
     </head>
 
     <body style="background: #fafafa">
@@ -151,7 +163,23 @@
                         </div> 
                     </div>    
                     <div class="col s5 m5 l5">
-                        <div class="col s12 m12 l12 z-depth-1 div_search_gestor inner">
+                        <div class="col s12 l12 m12 marcacion_directa">
+                            <ul id="datos_marcacion_directa" class="collection">
+                                <label>Referencia 1</label>
+                                <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056">8132457056</a> <a class="right" href="zoiper://8132457056">8132457056</a></li>
+                                <label>Referencia 2</label>
+                                <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056">8132457056</a> <a class="right" href="zoiper://8132457056">8132457056</a></li>
+                                <label>Referencia 3</label>
+                                <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056"><i class="material-icons small">local_phone</i>8132457056</a> <a class="right" href="zoiper://8132457056"><i class="material-icons small">phone_iphone</i>8132457056</a></li>
+                                <label>Referencia 4</label>
+                                <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056">8132457056</a> <a class="right" href="zoiper://8132457056">8132457056</a></li>
+                                <label>Referencia 5</label>
+                                <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056">8132457056</a> <a class="right" href="zoiper://8132457056">8132457056</a></li>
+                                <label>Aval</label>
+                                <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056">8132457056</a> <a class="right" href="zoiper://8132457056">8132457056</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s12 m12 l12 z-depth-1 div_search_gestor inner hide">
                             <div class="col s12 m12 l12">
                                 <h6>Referencias</h6>
                             </div>
@@ -371,8 +399,8 @@
                             <label for="convenios">Convenios</label>
                         </div>
                         <div class="input-field col s2 m2 l2">
-                            <input id="estatus" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
-                            <label for="estatus">Estatus</label>
+                            <input id="ul_estatus" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                            <label for="ul_estatus">Estatus</label>
                         </div>
                     </div>
                 </div>
