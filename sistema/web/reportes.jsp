@@ -23,6 +23,13 @@
                 overflow: auto;
                 height: 75vh;
             }
+            .div_resumen {
+                overflow: auto;
+                height: 50vh;
+            }
+            .div_resumen table {
+                margin-top: 0.7rem;
+            }
         </style>
     </head>
     <body>
@@ -44,16 +51,99 @@
                                     <select id="id_ter_gestion" name="id_region"></select>
                                     <label>Territorio</label>
                                 </div>
-                                <div class="input-field col s5" >
+                                <div class="input-field col s7" >
                                     <input id="desde_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
                                     <label class="" for="desde_gestiones"></label>
                                     <input id="hasta_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
                                     <label class="" for="hasta_gestiones"></label>
                                     <a id="enviar_gestiones" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_gestiones', 'GESTIONES')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
-                                    <a id="cantidad_gestiones"></a>
+                                    <a id="ver_resumen_gestion" class="btn-small blue">ver resumen</a>
+                                    <a id="ver_lista_gestion" class="btn-small blue hide">lista gestiones</a>
                                 </div>
                             </div>
+                            <div id="resumen_gestiones" class="col s12 m12 l12 hide">
+                                <h5 id="cantidad_gestiones" class="right-align"></h5>
+                                <div class="col s12 m2 z-depth-2 div_resumen">
+                                    <table>
+                                        <thead>
+                                            <tr class="green accent-2">
+                                                <th>Territorio</th>
+                                                <th>N#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_territorio">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col s12 m2 z-depth-2 div_resumen">
+                                    <table>
+                                        <thead>
+                                            <tr class="green accent-2">
+                                                <th>Canal</th>
+                                                <th>N#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_canal">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col s12 m2 z-depth-2 div_resumen">
+                                    <table>
+                                        <thead>
+                                            <tr class="green accent-2">
+                                                <th>Atraso_maximo</th>
+                                                <th>N#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_atraso_maximo">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col s12 m2 z-depth-2 div_resumen">
+                                    <table>
+                                        <thead>
+                                            <tr class="green accent-2">
+                                                <th>Gestor</th>
+                                                <th>N#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_gestor">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col s12 m2 z-depth-2 div_resumen">
+                                    <table>
+                                        <thead>
+                                            <tr class="green accent-2">
+                                                <th>Estatus cuenta</th>
+                                                <th>N#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_estatus_cuenta">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col s12 m2 z-depth-2 div_resumen">
+                                    <table>
+                                        <thead>
+                                            <tr class="green accent-2">
+                                                <th>Estatus llamda</th>
+                                                <th>N#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_estatus_llamda">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                             <div id="datos_tabla_gestiones" class="col s12 z-depth-2 dt">
                                 <table class="highlight" id="tabla_pagos">
                                     <thead class="blue">
@@ -130,19 +220,40 @@
                     <div id="test-swipe-3" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 offset-s1 hide_print">
-                                <div class="input-field col s3 offset-l2" >
+                                <div class="input-field col s2 offset-l2" >
                                     <select id="id_ter_pagos" name="id_region"></select>
                                     <label>ZONA</label>
                                 </div>
-                                <div class="input-field col s5" >
+                                <div class="input-field col s7" >
                                     <input id="desde_pagos" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
                                     <label class="" for="desde_pagos"></label>
                                     <input id="hasta_pagos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
                                     <label class="" for="hasta_pagos"></label>
                                     <a id="enviar_pagos" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
-                                    <a id="cantidad_pagos"></a>
+                                    <a id="ver_resumen_pagos" class="btn-small blue">ver resumen</a>
+                                    <a id="ver_lista_pagos" class="btn-small blue hide">lista gestiones</a>
                                 </div>
+                            </div>
+                            
+                            <div id="resumen_pagos" class="col s12 z-depth-2 hide">
+                                <h5 id="cantidad_pagos" class="right-align"></h5>
+                                <table>
+                                    <thead>
+                                        <tr class="green accent-2">
+                                            <th>ZONA</th>
+                                            <th>GERENTES</th>
+                                            <th>PAGOS</th>
+                                            <th>RECUPERACION CAPITAL</th>
+                                            <th>RECUPERACION MORATORIOS</th>
+                                            <th>SALDO ACTUAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tb_resumen_pagos">
+                                        
+                                    </tbody>
+                                    
+                                </table>
                             </div>
                             <div id="datos_tabla_pagos" class="col s12 z-depth-2 dt">
                                 <table class="highlight" id="tabla_pagos">
