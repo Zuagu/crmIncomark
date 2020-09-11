@@ -110,6 +110,9 @@
                             <div class="input-field col s6 m6 l6 center-align">
                                 <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
                             </div>
+                            <div class="input-field col s6 m6 l6 center-align">
+                                <a id="save_num" class="waves-effect waves-light btn red"><i class="material-icons right">save</i>Guardar</a>
+                            </div>
                         </div>
                     </div>
                     <div class=" col s7 m7 l7">
