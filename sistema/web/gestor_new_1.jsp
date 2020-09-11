@@ -12,16 +12,6 @@
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/css/style.css">
         <style>
-            .marcacion_directa .collection .collection-item a {
-                margin-left: 1rem;
-            }
-            .marcacion_directa .collection .collection-item {
-                padding: 3px 20px;
-            }
-            .marcacion_directa .small {
-                font-size: 0.9rem;
-                margin-right: 0.5rem;
-            }
         </style>
     </head>
 
@@ -113,9 +103,12 @@
                                 <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="MORATORIOS">Moratorios</label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s6 m6 l6">
                                 <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="SALDO_TOTAL">Saldo Total</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6 center-align">
+                                 <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
                             </div>
                         </div>
                     </div>
