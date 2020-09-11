@@ -108,7 +108,7 @@
                                 <label for="SALDO_TOTAL">Saldo Total</label>
                             </div>
                             <div class="input-field col s6 m6 l6 center-align">
-                                 <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
+                                <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
                             </div>
                         </div>
                     </div>
@@ -496,7 +496,7 @@
                     </h5>
                 </div>
             </div>
-            
+
             <div id="modal_agregar_agenda" class="modal">
                 <div class="modal-content">
                     <h3 class="center">Nuevo Recordatorio</h3>
@@ -519,14 +519,23 @@
                         </div>
                         <div class="col s12 div_btn right-align">
                             <a class="btn red waves-effect modal-close">Cancelar</a>
-                            <a class="btn blue waves-effect">Aceptar</a>
+                            <a id="insertar_agenda" class="btn blue waves-effect">Aceptar</a>
                         </div>
 
                     </div>
                 </div>
             </div>
-            
-            
+            <div id="modal_gestion" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Gestion</h3>
+                    <div class="col s12 ">
+                        <h6 id="mod_gestion">
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="fixed-action-btn">
                 <a class="btn-floating btn-large red">
                     <i class="large material-icons">mode_edit</i>
