@@ -1148,3 +1148,12 @@ input{
     font-size: 0.9rem;
     margin-right: 0.5rem;
 }
+.div_btn {
+    margin-bottom: 1rem;
+}
+.modal input {
+    height: 3rem !important;
+}
+#datos_marcacion_directa {
+    margin: .5rem 0 0.2rem 0 !important;
+}

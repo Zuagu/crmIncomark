@@ -172,7 +172,7 @@
                                 <li class="collection-item black-text">Emmanuel Medina <a class="right" href="zoiper://8132457056">8132457056</a> <a class="right" href="zoiper://8132457056">8132457056</a></li>
                             </ul>
                         </div>
-                        <div class="col s12 m12 l12 z-depth-1 div_search_gestor inner hide">
+                        <div id="editar_marcacion_directa" class="col s12 m12 l12 z-depth-1 div_search_gestor inner hide">
                             <div class="col s12 m12 l12">
                                 <h6>Referencias</h6>
                             </div>
@@ -289,13 +289,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <div class="col s2 m2 l2 rango-fechas-agendas hide ">
-                            <input type="text" class="datepicker input_date center-align" placeholder="Fecha">
-                            <input type="text" class="timepicker input_date center-align" placeholder="Hora">
-                            <a id="mostrar_agendas" class="waves-effect waves-light btn btn_gestiones green center">enviar</a>
+                    <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
+                        <div class="col s12">
+                            <a id="new_agenda" class="btn-small green waves-effect waves-light">Agregar</a>
                         </div>
-                        <div id="tabla_agendas" class="col s12 m12 l12">jkshaksjdhkasjh</div>
+
+                        <div id="tabla_agendas" class="col s12 m12 l12"></div>
                     </div>
                     <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
                         <div class="col s2 m2 l2 rango-fechas-visitas hide">
@@ -497,6 +496,37 @@
                     </h5>
                 </div>
             </div>
+            
+            <div id="modal_agregar_agenda" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Nuevo Recordatorio</h3>
+                    <div class="col s12">
+                        <div class="input-field col s6">
+                            <input id="cliente_unico_agenda" type="text" class="validate">
+                            <label for="cliente_unico_agenda">Numero de Cuenta</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="descripcion_agenda" type="text" class="validate">
+                            <label for="descripcion_agenda">Descripcion</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="fecha_agenda" type="text" class="datepicker">
+                            <label for="fecha_agenda">Fecha</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="hora_agenda" type="text" class="timepicker">
+                            <label for="hora_agenda">Hora</label>
+                        </div>
+                        <div class="col s12 div_btn right-align">
+                            <a class="btn red waves-effect modal-close">Cancelar</a>
+                            <a class="btn blue waves-effect">Aceptar</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            
             <div class="fixed-action-btn">
                 <a class="btn-floating btn-large red">
                     <i class="large material-icons">mode_edit</i>

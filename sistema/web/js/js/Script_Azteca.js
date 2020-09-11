@@ -134,6 +134,24 @@ $(".row").click(function () {
     $("#resultado_menu").addClass("hide");
 });
 // funciones del pantalla del gestor
+$("#new_agenda").click(function () {
+    $('#modal_agregar_agenda').modal('open');
+});
+
+
+$("#edit_num").click(function () {
+    if( $('#editar_marcacion_directa').hasClass('hide') ) {
+        $('#datos_marcacion_directa').addClass('hide');
+        $('#editar_marcacion_directa').removeClass('hide');
+    } else {
+        $('#datos_marcacion_directa').removeClass('hide');
+        $('#editar_marcacion_directa').addClass('hide');
+    }
+    
+});
+
+
+
 //pagos_diarios tab
 $("#tab_pagos_diarios").click(function () {
     $(".rango_fechas_pagos_diarios").removeClass("hide");
