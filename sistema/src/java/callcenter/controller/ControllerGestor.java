@@ -183,6 +183,28 @@ public class ControllerGestor extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        } else if (action.equals("insertar_agenda")) {
+            String Respuesta = ModelGestor.insertar_agenda(
+                    request.getParameter("cliente_unico"),
+                    request.getParameter("id_usuario"),
+                    request.getParameter("descripcion"),
+                    request.getParameter("fecha"),
+                    request.getParameter("hora")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("select_agendas")) {
+            String Respuesta = ModelGestor.select_agendas(
+                    request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
 
     }

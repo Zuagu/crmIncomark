@@ -35,7 +35,7 @@ public class ModelGestor {
             inicioConexion.rs.close();
             inicioConexion.st.close();
             inicioConexion.conn.close();
-            
+
             return cuentas.toString();
         } catch (SQLException e) {
             return "sql code" + e.getMessage();
@@ -527,7 +527,7 @@ public class ModelGestor {
         }
         return null;
     }
-    
+
     public static String select_saldos_gestores(String id_usuario, String id_equipo) {
         try {
             StartConexion inicioConexion = new StartConexion();
@@ -558,11 +558,11 @@ public class ModelGestor {
             return "sql code" + e;
         }
     }
-    
+
     public static String select_cuentas_de_estaus(String id_equipo, String id_status, String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String sql = "call sic_select_cuentas_estatus_gestor(" + id_usuario + ", "+ id_equipo +", " + id_status + ");";
+            String sql = "call sic_select_cuentas_estatus_gestor(" + id_usuario + ", " + id_equipo + ", " + id_status + ");";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             JSONArray grupos = new JSONArray();
@@ -586,7 +586,7 @@ public class ModelGestor {
             return "sql code" + e;
         }
     }
-    
+
     public static String select_equipos_usuario(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
@@ -615,6 +615,7 @@ public class ModelGestor {
             return "sql code" + e;
         }
     }
+
     public static String select_llamadas_gestor(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
@@ -624,16 +625,74 @@ public class ModelGestor {
             JSONObject llamada = new JSONObject();
             // llamadas, cuentas, convenios, hora
             while (inicioConexion.rs.next()) {
-                llamada.putIfAbsent("llamadas", inicioConexion.rs.getInt("llamadas"));
-                llamada.putIfAbsent("cuentas", inicioConexion.rs.getInt("cuentas"));
-                llamada.putIfAbsent("convenios", inicioConexion.rs.getInt("convenios"));
-                llamada.putIfAbsent("hora", inicioConexion.rs.getString("hora"));
+                llamada.put("llamadas", inicioConexion.rs.getInt("llamadas"));
+                llamada.put("cuentas", inicioConexion.rs.getInt("cuentas"));
+                llamada.put("convenios", inicioConexion.rs.getInt("convenios"));
+                llamada.put("hora", inicioConexion.rs.getString("hora"));
             }
             inicioConexion.rs.close();
             inicioConexion.st.close();
             inicioConexion.conn.close();
 
             return llamada.toString();
+        } catch (SQLException e) {
+            return "sql code" + e;
+        }
+    }
+
+    public static String insertar_agenda(String cliente_unico, String id_usuario, String descripcion, String fecha, String hora) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "call azteca_insertar_agenda('" + cliente_unico + "', " + id_usuario + ", '" + descripcion + "', '" + fecha + "', '" + hora + ":00');";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            JSONObject reponse = new JSONObject();
+            // llamadas, cuentas, convenios, hora
+            while (inicioConexion.rs.next()) {
+                reponse.put("response", inicioConexion.rs.getString("response"));
+            }
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            inicioConexion.conn.close();
+
+            return reponse.toString();
+        } catch (SQLException e) {
+            return "sql code" + e;
+        }
+    }
+
+    public static String select_agendas(String id_gestor) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "SELECT \n"
+                    + "	ID_REGISTRO, \n"
+                    + "	CLIENTE_UNICO, \n"
+                    + "    DESCRIPCION, \n"
+                    + "    DATE(FECHA_AGENDA) AS FECHA, \n"
+                    + "    TIME(FECHA_AGENDA) AS HORA, \n"
+                    + "    TIMEDIFF(FECHA_AGENDA, NOW()) AS H_EJECUTAR,\n"
+                    + "    F_ACTIVE \n"
+                    + "FROM azteca_registro_agenda WHERE ID_GESTOR = " + id_gestor + " AND F_ACTIVE = 1;";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            JSONArray listAgenda = new JSONArray();
+            // llamadas, cuentas, convenios, hora
+            while (inicioConexion.rs.next()) {
+                JSONObject agenda = new JSONObject();
+                agenda.put("ID_REGISTRO", inicioConexion.rs.getString("ID_REGISTRO"));
+                agenda.put("CLIENTE_UNICO", inicioConexion.rs.getString("CLIENTE_UNICO"));
+                agenda.put("DESCRIPCION", inicioConexion.rs.getString("DESCRIPCION"));
+                agenda.put("FECHA", inicioConexion.rs.getString("FECHA"));
+                agenda.put("HORA", inicioConexion.rs.getString("HORA"));
+                agenda.put("H_EJECUTAR", inicioConexion.rs.getString("H_EJECUTAR"));
+                agenda.put("F_ACTIVE", inicioConexion.rs.getString("F_ACTIVE"));
+                listAgenda.add(agenda);
+            }
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            inicioConexion.conn.close();
+
+            return listAgenda.toString();
         } catch (SQLException e) {
             return "sql code" + e;
         }

@@ -105,7 +105,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ESTATUS_POSIBLES_TXT", ic.rs.getString("ESTATUS_POSIBLES_TXT"));
                 
                 objCuenta.put("NOM_TEL5", ic.rs.getString("NOM_TEL5"));
-                 objCuenta.put("TELEFONO1_2", ic.rs.getString("TELEFONO1_2"));
+                objCuenta.put("TELEFONO1_2", ic.rs.getString("TELEFONO1_2"));
                 objCuenta.put("TIPOTEL1_2", ic.rs.getString("TIPOTEL1_2"));
                 objCuenta.put("TELEFONO2_2", ic.rs.getString("TELEFONO2_2"));
                 objCuenta.put("TIPOTEL2_2", ic.rs.getString("TIPOTEL2_2"));
@@ -433,6 +433,19 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPO_CONTACTO4", ic.rs.getString("TIPO_CONTACTO4"));
                 
                 objCuenta.put("ESTATUS_POSIBLES_TXT", ic.rs.getString("ESTATUS_POSIBLES_TXT"));
+                
+                objCuenta.put("NOM_TEL5", ic.rs.getString("NOM_TEL5"));
+                objCuenta.put("TELEFONO1_2", ic.rs.getString("TELEFONO1_2"));
+                objCuenta.put("TIPOTEL1_2", ic.rs.getString("TIPOTEL1_2"));
+                objCuenta.put("TELEFONO2_2", ic.rs.getString("TELEFONO2_2"));
+                objCuenta.put("TIPOTEL2_2", ic.rs.getString("TIPOTEL2_2"));
+                objCuenta.put("TELEFONO3_2", ic.rs.getString("TELEFONO3_2"));
+                objCuenta.put("TIPOTEL3_2", ic.rs.getString("TIPOTEL3_2"));
+                objCuenta.put("TELEFONO4_2", ic.rs.getString("TELEFONO4_2"));
+                objCuenta.put("TIPOTEL4_2", ic.rs.getString("TIPOTEL4_2"));
+                objCuenta.put("TELEFONO5_2", ic.rs.getString("TELEFONO5_2"));
+                objCuenta.put("TIPOTEL5_2", ic.rs.getString("TIPOTEL5_2"));
+                
 
             }
             ic.rs.close();
@@ -742,6 +755,63 @@ public class ModelDataCuentaAzteca {
             ic.conn.close();
 
             return "{\"menssage\":\"tiempo actualizado\"}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
+    
+    public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String nom_tel4, String tel4_1, String tel4_2, String nom_tel5, String tel5_1, String tel5_2, String nom_tel_aval, String tel_aval_1, String tel_aval_2, String cuenta) {
+        try {
+            StartConexion ic = new StartConexion();
+            /*
+            nom_tel1
+            tel1_1
+            tel1_2
+            nom_tel2
+            tel2_1
+            tel2_2
+            nom_tel3
+            tel3_1
+            tel3_2
+            nom_tel4
+            tel4_1
+            tel4_2
+            nom_tel5
+            tel5_1
+            tel5_2
+            nom_tel_aval
+            tel_aval_1
+            tel_aval_2
+             */
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
+                    + "NOM_TEL1 = '" + nom_tel1 + "',\n"
+                    + "TELEFONO1 = '" + tel1_1 + "',\n"
+                    + "TELEFONO1_2 = '" + tel1_2 + "',\n"
+                    + "NOM_TEL2 = '" + nom_tel2 + "',\n"
+                    + "TELEFONO2 = '" + tel2_1 + "',\n"
+                    + "TELEFONO2_2 = '" + tel2_2 + "',\n"
+                    + "NOM_TEL3 = '" + nom_tel3 + "',\n"
+                    + "TELEFONO3 = '" + tel3_1 + "',\n"
+                    + "TELEFONO3_2 = '" + tel3_2 + "',\n"
+                    + "NOM_TEL4 = '" + nom_tel4 + "',\n"
+                    + "TELEFONO4 = '" + tel4_1 + "',\n"
+                    + "TELEFONO4_2 = '" + tel4_2 + "',\n"
+                    + "NOM_TEL5 = '" + nom_tel5 + "',\n"
+                    + "TELEFONO5 = '" + tel5_1 + "',\n"
+                    + "TELEFONO5_2 = '" + tel5_2 + "',\n"
+                    
+                    + "NOMBRE_AVAL = '" + nom_tel_aval + "',\n"
+                    + "TELAVAL = '" + tel_aval_1 + "',\n"
+                    + "TELAVAL2 = '" + tel_aval_2 + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + cuenta + "';";
+            System.out.println(sql);
+
+            ic.st.executeUpdate(sql);
+            ic.st.close();
+            ic.conn.close();
+
+            return "{\"menssage\":\"Datos del contacto Actualizado\"}";
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }

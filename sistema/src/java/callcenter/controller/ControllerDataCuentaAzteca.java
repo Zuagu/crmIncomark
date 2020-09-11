@@ -23,26 +23,27 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                // Usamos el metodo del get para generar la pantalla del predictivo
+        // Usamos el metodo del get para generar la pantalla del predictivo
         String cuenta = request.getParameter("cuenta");
-        
+
         String telefono = request.getParameter("telefono");
         String id_usuario = request.getParameter("id_usuario");
-        System.out.println("cuenta: " + cuenta + " id_usuario: " + id_usuario  + " telefono: " + telefono);
-        
+        System.out.println("cuenta: " + cuenta + " id_usuario: " + id_usuario + " telefono: " + telefono);
+
         request.setAttribute("telefono", telefono);
         request.setAttribute("id_usuario", id_usuario);
         request.setAttribute("cuenta", cuenta);
         getServletContext().getRequestDispatcher("/predictivo_azteca.jsp").forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String action = request.getParameter("action");
         System.out.println(action);
-        
-        if(action.equals("datos_cuenta_azteca")) {
+
+        if (action.equals("datos_cuenta_azteca")) {
             String Respuesta = ModelDataCuentaAzteca.datosCuenta(
                     request.getParameter("cuenta")
             );
@@ -117,7 +118,7 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-            
+
         } else if (action.equals("guardar_gestion")) {
             String Respuesta = ModelDataCuentaAzteca.guardarGestion(
                     request.getParameter("datos")
@@ -136,7 +137,7 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-            
+
         } else if (action.equals("select_saldos_gestores")) {
             String Respuesta = ModelDataCuentaAzteca.select_saldos_gestores(
                     request.getParameter("id_usuario"),
@@ -212,7 +213,7 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-        }  else if (action.equals("update_time_gestor")) {
+        } else if (action.equals("update_time_gestor")) {
             String Respuesta = ModelDataCuentaAzteca.update_time_gestor(
                     request.getParameter("id_gestor")
             );
@@ -221,9 +222,35 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        } else if (action.equals("actualizar_informacion_contacto")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_informacion_contacto(
+                    request.getParameter("nom_tel1"),
+                    request.getParameter("tel1_1"),
+                    request.getParameter("tel1_2"),
+                    request.getParameter("nom_tel2"),
+                    request.getParameter("tel2_1"),
+                    request.getParameter("tel2_2"),
+                    request.getParameter("nom_tel3"),
+                    request.getParameter("tel3_1"),
+                    request.getParameter("tel3_2"),
+                    request.getParameter("nom_tel4"),
+                    request.getParameter("tel4_1"),
+                    request.getParameter("tel4_2"),
+                    request.getParameter("nom_tel5"),
+                    request.getParameter("tel5_1"),
+                    request.getParameter("tel5_2"),
+                    request.getParameter("nom_tel_aval"),
+                    request.getParameter("tel_aval_1"),
+                    request.getParameter("tel_aval_2"),
+                    request.getParameter("cuenta")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
-        
-        
+
     }
 
     @Override
