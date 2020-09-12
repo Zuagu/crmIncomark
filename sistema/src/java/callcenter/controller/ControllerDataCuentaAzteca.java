@@ -138,16 +138,6 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.flush();
             writer.close();
 
-        } else if (action.equals("select_saldos_gestores")) {
-            String Respuesta = ModelDataCuentaAzteca.select_saldos_gestores(
-                    request.getParameter("id_usuario"),
-                    request.getParameter("id_equipo")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
         } else if (action.equals("select_cuentas_de_estaus")) {
             String Respuesta = ModelDataCuentaAzteca.select_cuentas_de_estaus(
                     request.getParameter("id_equipo"),
@@ -159,9 +149,36 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-        } else if (action.equals("select_llamadas_gestor")) {
-            String Respuesta = ModelDataCuentaAzteca.select_llamadas_gestor(
-                    request.getParameter("id_usuario")
+        } else if (action.equals("select_primera_llamada_gestor")) {
+            String Respuesta = ModelDataCuentaAzteca.select_primera_llamada_gestor(
+                    request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }else if (action.equals("select_numero_llamadas_gestor")) {
+            String Respuesta = ModelDataCuentaAzteca.select_numero_llamadas_gestor(
+                    request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }else if (action.equals("select_numero_convenios_gestor")) {
+            String Respuesta = ModelDataCuentaAzteca.select_numero_convenios_gestor(
+                    request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("select_numero_cuentas_tocadas_gestor")) {
+            String Respuesta = ModelDataCuentaAzteca.select_numero_cuentas_tocadas_gestor(
+                    request.getParameter("id_gestor")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -170,42 +187,6 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.close();
         } else if (action.equals("actualizar_telefono_1")) {
             String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_1(
-                    request.getParameter("objContacto")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
-        } else if (action.equals("actualizar_telefono_2")) {
-            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_2(
-                    request.getParameter("objContacto")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
-        } else if (action.equals("actualizar_telefono_3")) {
-            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_3(
-                    request.getParameter("objContacto")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
-        } else if (action.equals("actualizar_telefono_4")) {
-            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_4(
-                    request.getParameter("objContacto")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
-        } else if (action.equals("actualizar_telefono_5")) {
-            String Respuesta = ModelDataCuentaAzteca.actualizar_telefono_5(
                     request.getParameter("objContacto")
             );
             response.setContentType("text/html; charset=UTF-8");

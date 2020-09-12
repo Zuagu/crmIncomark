@@ -394,8 +394,8 @@
                             <label for="convenios">Convenios</label>
                         </div>
                         <div class="input-field col s2 m2 l2">
-                            <input id="ul_estatus" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
-                            <label for="ul_estatus">Estatus</label>
+                            <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                            <label for="CRM">Estatus</label>
                         </div>
                     </div>
                 </div>

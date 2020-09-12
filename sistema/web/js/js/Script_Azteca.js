@@ -44,28 +44,37 @@ window.onload = function () {
     select_cuenta_siguiente(id_usuario);
 //    select_agendas();
 //    select_llamadas_gestor(id_usuario);
-    options_estatus_llamadas = '<option value="0"  selected>Selecciona Codigo</option>' +
-            '<option value="1">1A (promesa de Pago)</option>' +
-            '<option value="2">3D (Contacto con Titular)</option>' +
-            '<option value="3">3A (Contacto con Familiar)</option>' +
-            '<option value="4">3B (No Contacto)</option>' +
-            '<option value="5">3E (Llamada Entrante)</option>' +
-            '<option value="6">2A (Gestion de Visita)</option>' +
-            '<option value="7">1B (Pago Parcial)</option>' +
-            '<option value="8">1C (Cuenta Liquidada)</option>' +
-            '<option value="9">1D (Pendiente Reactivar)</option>' +
-            '<option value="10">3C (No Gestion)</option>' +
-            '<option value="11">4A (Buzon Voz)</option>' +
-            '<option value="12">4B (Tel No Existe)</option>' +
-            '<option value="13">4C (Tel Suspendido)</option>' +
-            '<option value="14">4D (No Conoce a Titular)</option>' +
-            '<option value="15">4F (Cambio Domicilio)</option>' +
-            '<option value="16">4G (Ilocalizable)</option>' +
-            '<option value="17">4E (A Peticion de Famsa)</option>' +
-            '<option value="18">4H (Dictaminada)</option>' +
-            '<option value="19">4J (No Contesta Predictivo)</option>' +
-            '<option value="20">2B (Segunda Gestion Visita)</option>' +
-            '<option value="21">3F (Tercera Gestion Visita)</option>';
+    options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
+        <option value="1">SIN CLASIFICAR</option>
+        <option value="2">SIN DATOS</option>
+        <option value="3">NO EXISTE</option>
+        <option value="4">NO DISPONIBLE</option>
+        <option value="5">NO CONTESTA</option>
+        <option value="6">NUMERO OCUPADO</option>
+        <option value="7">NO LO CONOCE</option>
+        <option value="8">FUERA DE SERVICIO</option>
+        <option value="9">CUELGA LLAMADA</option>
+        <option value="10">CLIENTE NO VIVE AHÍ</option>
+        <option value="11">MENSAJE EN BUZON</option>
+        <option value="12">MENSAJE TERCERO</option>
+        <option value="13">MENSAJE FAMILIAR</option>
+        <option value="14">CLIENTE COLGO</option>
+        <option value="15">NEGATIVA DE PAGO</option>
+        <option value="16">SEGUIMIENTO</option>
+        <option value="17">AVAL NO DEFINE</option>
+        <option value="18">CLIENTE NO DEFINE</option>
+        <option value="19">LIQUIDACION</option>
+        <option value="20">REESTRUCTURA</option>
+        <option value="21">PLAN ACTIVO</option>
+        <option value="22">PROMESA RECURRENTE</option>
+        <option value="23">PROMESA PAGO PARCIAL</option>
+        <option value="24">PROMESA PAGO INICIAL</option>
+        <option value="25">PROMESA DE PAGO</option>
+        <option value="26">PLAN CANCELADO</option>
+        <option value="27">PLAN INCUMPLIDO</option>
+        <option value="28">PROMESA INCUMPLIDA</option>
+        <option value="29">DEFUNCION</option>
+        <option value="30">CUENTA LIQUIDADA</option>`;
     $("#codigo_llamada").append(options_estatus_llamadas);
     options_estatus_cuenta = ``;
     $("#estatus").append(options_estatus_cuenta);
@@ -256,7 +265,7 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
         }
     });
 }
-;
+
 $("#buscador_cuentas_gestor").keyup(function (e) {
 
     if (e.keyCode === 13) {
@@ -308,21 +317,27 @@ function select_datos_cuenta(_cuenta) {
             $("#datos_marcacion_directa").empty();
             $("#datos_marcacion_directa").append(`
                 <label>Referencia 1</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
                 <label>Referencia 2</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
                 <label>Referencia 3</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
                 <label>Referencia 4</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Aval</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
 
             select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], "0000-00-00", "tbody_tabla_gestiones");
-//            select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
+
+            if ($('#primera_llamada').val() === '00:00:00') {
+                select_primera_llamada_gestor();
+            }
+            select_numero_llamadas_gestor();
+            select_numero_cuentas_tocadas_gestor();
+            select_numero_convenios_gestor();
         }
     });
 }
@@ -445,43 +460,8 @@ function select_datos_cuenta_relacionada(_cuenta) {
     });
 }
 
-function pintar_telefonos_cuenta(telefonos) {
-    $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1">' +
-            '<span class="black-text"><b>Telefonos</b></span><br>' +
-            '<span class="">T1: <a class="tell" href="zoiper://' + telefonos["T1"].replace(/ /g, "") + '">' + telefonos["T1"] + '</a></span><br>' +
-            '<span class="">T2: <a class="tell" href="zoiper://' + telefonos["T2"].replace(/ /g, "") + '">' + telefonos["T2"] + '</a></span>' +
-            '</div>');
-    var tel_ref1 = telefonos["R1"].split(":");
-    var tel_ref2 = telefonos["R2"].split(":");
-    $("#div_telefonos_cuenta").append('<div class="div-telefonos hoverable z-depth-1">' +
-            '<span class="black-text"><b>Referencias</b></span><br>' +
-            '<span class="">' + tel_ref1[0] + '<br><a class="tell" href="zoiper://' + tel_ref1[1].replace(/ /g, "") + '">' + tel_ref1[1] + '</a></span><br>' +
-            '<span class="">' + tel_ref2[0] + '<br><a class="tell" href="zoiper://' + tel_ref2[1].replace(/ /g, "") + '">' + tel_ref2[1] + '</a></span>' +
-            '</div>');
-}
-function telefonos_relacionados(_cuenta) {
-    var params = {
-        action: "select_telefonos_cr",
-        cuenta: _cuenta
-    };
-    $.ajax({
-        type: "POST",
-        url: "/sistema/ControllerGestor",
-        data: params,
-        dataType: "json",
-        success: function (tels_cr) {
-//            console.log(tels_cr);
 
-            var crs = '<div class="div-telefonos hoverable z-depth-1"><b>Relacionadas</b><br>';
-            for (var i in tels_cr) {
-                crs += '<span class="">' + tels_cr[i].nombre + ':</span><br>';
-                crs += '<span class=""><a class="tell" href="zoiper://' + tels_cr[i].telefono.replace(/ /g, "") + '">' + tels_cr[i].telefono + '</a></span><br>';
-            }
-            crs += '</div>';
-            $("#div_telefonos_cuenta").append(crs);
-        }
-    });
-}
+
 function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
     $("#" + _div).empty();
     $("#" + _div).append("<img src='image/preloader_lineal.gif' width='40%'>");
@@ -572,91 +552,8 @@ $("#div_cuentas_encontradas").delegate(".div-res", "click", function () {
     $("#div_telefonos_cuenta").removeClass("hide");
 });
 // funciones de pagos diarios gestor
-function mostrar_pagos_diarios(_desde, _hasta, _id_usuario, _div) {
-    $("#" + _div).empty();
-    $("#" + _div).append("<img src='image/preloader_lineal.gif' width='40%'>");
-    var params = {
-        action: "mostrar_pagos_diarios",
-        desde: _desde,
-        hasta: _hasta,
-        id_usuario: _id_usuario
-    };
-//    console.log(params);
-    $.ajax({
-        type: "POST",
-        url: "/sistema/ControllerGestor",
-        data: params,
-        dataType: "json",
-        success: function (pagos_diarios) {
-            $("#" + _div).empty();
-//            console.log(pagos_diarios.length);
-            if (pagos_diarios.length === 0) {
-                $("#" + _div).append("No hay");
-            } else {
 
-                var totales = [];
-                var total_pagos = 0;
-                var total_aplica = 0;
-                var actualAsignacion = pagos_diarios[0].asignacion;
-                for (var i in pagos_diarios) {
-                    total_pagos = total_pagos + pagos_diarios[i].pago;
-                    total_aplica = total_aplica + pagos_diarios[i].aplica;
-                    if (actualAsignacion !== pagos_diarios[i].asignacion) {
-                        totales.push(total_pagos, total_aplica);
-                        total_pagos = total_pagos + pagos_diarios[i].pago;
-                        total_aplica = total_aplica + pagos_diarios[i].aplica;
-                        $("#" + _div).append('<tr>' +
-                                '<td></td>' +
-                                '<td>' + actualAsignacion + '</td>' +
-                                '<td></td>' +
-                                '<td>' + pagos_diarios[i].id_equipo + '</td>' +
-                                '<td>' + pagos_diarios[i - 1].nombre_equipo + '</td>' +
-                                '<td></td>' +
-                                '<td></td>' +
-                                '<td>' + total_pagos.toFixed(2) + '</td>' +
-                                '<td>' + total_aplica.toFixed(2) + '</td>' +
-                                '<td></td>' +
-                                '</tr>'
-                                );
-                    }
 
-                    actualAsignacion = pagos_diarios[i].asignacion;
-                    $("#" + _div).append('<tr>' +
-                            '<td>' + pagos_diarios[i].fecha + '</td>' +
-                            '<td>' + pagos_diarios[i].asignacion + '</td>' +
-                            '<td>' + pagos_diarios[i].cuenta + '</td>' +
-                            '<td>' + pagos_diarios[i].id_equipo + '</td>' +
-                            '<td>' + pagos_diarios[i].nombre_equipo + '</td>' +
-                            '<td>' + pagos_diarios[i].vencido.toFixed(2) + '</td>' +
-                            '<td>' + pagos_diarios[i].resto.toFixed(2) + '</td>' +
-                            '<td>' + pagos_diarios[i].pago.toFixed(2) + '</td>' +
-                            '<td>' + pagos_diarios[i].aplica.toFixed(2) + '</td>' +
-                            '<td>' + pagos_diarios[i].resto_actual.toFixed(2) + '</td>' +
-                            '</tr>'
-                            );
-                }
-                $("#" + _div).append('<tr>' +
-                        '<td></td>' +
-                        '<td>' + pagos_diarios[i].asignacion + '</td>' +
-                        '<td>' + +'</td>' +
-                        '<td>' + pagos_diarios[i].id_equipo + '</td>' +
-                        '<td>' + pagos_diarios[i].nombre_equipo + '</td>' +
-                        '<td></td>' +
-                        '<td></td>' +
-                        '<td>' + total_pagos.toFixed(2) + '</td>' +
-                        '<td>' + total_aplica.toFixed(2) + '</td>' +
-                        '<td></td>' +
-                        '</tr>'
-                        );
-//                console.log(totales);
-            }
-
-        }
-    });
-}
-$("#mostrar_pagos_diarios").click(function () {
-    mostrar_pagos_diarios($("#desde_pagos_gestor").val(), $("#hasta_pagos_gestor").val(), id_usuario, "tbody_tabla_pagos_diarios");
-});
 // funciones de select convenios
 function select_convenios_cuenta(_cuenta, _div) {
     $("#" + _div).empty();
@@ -721,24 +618,6 @@ function select_llamadas_gestor(_id_usuario) {
     });
 }
 
-function conteo_llamadas_guardar_gestion(_id_status_llamada) {
-    console.log(_id_status_llamada);
-    var llamadas = parseInt($("#llamadas_realizadas").val());
-    llamadas++;
-    $("#llamadas_realizadas").val(llamadas);
-    if (_id_status_llamada === "1") {
-        var convenios = parseInt($("#convenios").val());
-        convenios++;
-        $("#convenios").val(convenios);
-    }
-}
-function conteo_llamadas_cuenta_siguiente() {
-    var cuentas_tocadas = parseInt($("#cuentas_tocadas").val());
-    cuentas_tocadas++;
-    $("#cuentas_tocadas").val(cuentas_tocadas);
-}
-
-
 // funciones de select Cuenta siguete
 function select_cuenta_siguiente(_id_usuario) {
     var params = {
@@ -781,25 +660,26 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#datos_marcacion_directa").empty();
                 $("#datos_marcacion_directa").append(`
                 <label>Referencia 1</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://8132457056"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
                 <label>Referencia 2</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://8132457056"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
                 <label>Referencia 3</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://8132457056"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
                 <label>Referencia 4</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://8132457056"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://8132457056"><i class="material-icons small">local_phone</i> </a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Aval</label>
-                <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://8132457056"><i class="material-icons small">local_phone</i>8132457056</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
-//                conteo_llamadas_cuenta_siguiente();
-//                pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
-//                telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
-//                var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
+
                 select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], '0000-00-00', "tbody_tabla_gestiones");
-//                select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
-//                $("#gestion").attr("readonly", "readonly");
+                if ($('#primera_llamada').val() === '00:00:00') {
+                    select_primera_llamada_gestor();
+                }
+                select_numero_llamadas_gestor();
+                select_numero_cuentas_tocadas_gestor();
+                select_numero_convenios_gestor();
             }
 
         },
@@ -845,7 +725,7 @@ function insertar_gestion(myObj) {
             $("#gestion").attr("readonly", "readonly");
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
-//            conteo_llamadas_guardar_gestion(myObj.id_estatus_llamada);
+
             select_gestiones_cuenta(myObj["_CUENTA"], '0000-00-00', "tbody_tabla_gestiones");
         },
         error: function (error) {
@@ -925,7 +805,7 @@ function insertar_convenio(_myObjConvenio, _myObjGestion) {
 }
 
 $("#codigo_llamada").change(function () {
-    if ($("#codigo_llamada").val() === "1") {
+    if ($("#codigo_llamada").val() === "22" || $("#codigo_llamada").val() === "23" || $("#codigo_llamada").val() === "24" || $("#codigo_llamada").val() === "25" || $("#codigo_llamada").val() === "19") {
         var validacion = 0;
         var myObjGestion = {
             id_cuenta: $("#id_cuenta_deudor").val(),
@@ -951,7 +831,7 @@ $("#codigo_llamada").change(function () {
                 validacion++;
             }
         }
-        if ($("#codigo_llamada").val() === "1" && validacion === 0 && $("#estatus").val() !== "0") {
+        if (validacion === 0 && $("#estatus").val() !== "0") {
             $("#modal_convenio").modal("open");
         } else {
             $("#modal_alerta").modal("open");
@@ -1214,7 +1094,7 @@ function cronometro_llamada_actual() {
         minutos++;
     }
     if (minutos >= 60) {
-//        select_llamadas_gestor(_id_usuario);
+
         minutos = 0;
         horas++;
     }
@@ -1364,3 +1244,66 @@ function actualizar_informacion_contacto() {
         }
     });
 }
+
+function select_primera_llamada_gestor() {
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: {action: 'select_primera_llamada_gestor', id_gestor: id_usuario},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            $('#primera_llamada').val(result.HORA);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+function select_numero_llamadas_gestor() {
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: {action: 'select_numero_llamadas_gestor', id_gestor: id_usuario},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            $('#llamadas_realizadas').val(result.NUM_GESTIONES);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function select_numero_convenios_gestor() {
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: {action: 'select_numero_convenios_gestor', id_gestor: id_usuario},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            $('#convenios').val(result.NUM_CONVENIOS);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+function select_numero_cuentas_tocadas_gestor() {
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: {action: 'select_numero_cuentas_tocadas_gestor', id_gestor: id_usuario},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            $('#cuentas_tocadas').val(result.NUM_CUENTAS);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
