@@ -574,14 +574,67 @@
                     <i class="large material-icons">mode_edit</i>
                 </a>
                 <ul>
-                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-                    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                    <li><a class="btn-floating red tooltipped" data-position="right" data-tooltip="Mensaje con familiar"><i class="material-icons">insert_chart</i></a></li>
+                    <li><a class="btn-floating yellow darken-1 tooltipped" data-position="right" data-tooltip="Mensaje a Tercero"><i class="material-icons">format_quote</i></a></li>
+                    <li><a class="btn-floating green tooltipped" data-position="right" data-tooltip="Mensaje a Aval"><i class="material-icons">publish</i></a></li>
+                    <li><a class="btn-floating blue tooltipped" data-position="right" data-tooltip="Mensaje a Cliente"><i class="material-icons">attach_file</i></a></li>
                 </ul>
             </div>
+            <div id="modal_mensaje_familiar" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Mensaje a Familiar</h3>
+                    <div class="col s12 m12 l12">
+                        <h6>•	¿Con quién tengo el gusto?</h6>
+                        <h6>•	¿Que parentesco tiene con el tt?</h6>
+                        <h6>•	¿A qué hora puedo localizarlo?</h6>
+                        <h6>•	¿Algún teléfono para comunicarme directamente con  él?</h6>
+                        <h6>•	¿Usted sabe cuál es el motivo  por el cuál ha incumplido en su contrato?</h6>
+                        <h6>•	¿Se encuentra trabajando actualmente?</h6>
+                        <h6>•	¿Conoce si tiene  alternativas de pago ? (tarjetas de crédito, débito o transferencia)</h6>
+                        <h6>•	¿Usted sabe si actualmente vive en?</h6>
+                    </div>
+                </div>
+            </div>
+            <div id="modal_mensaje_tercero" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Mensaje Tercero</h3>
+                    <div class="col s12 m12 l12">
+                        <h6>•	¿Es usted familiar de el tt. o solamente es  conocido?</h6>
+                        <h6>•	¿Hace cuánto  tiempo lo conoce ?</h6>
+                        <h6>•	En que horario se le puede localizar</h6>
+                        <h6>•	¿Tiene manera de comunicármelo más tarde?</h6>
+                        <h6>•	¿Me podría proporcionar un teléfono para comunicarme directamente con él?</h6>
+                        <h6>•	¿Usted sabe si actualmente vive en?</h6>
+                    </div>
+                </div>
+            </div>
+            <div id="modal_mensaje_aval" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Contacto con Aval / Aval No Define</h3>
+                    <div class="col s12 m12 l12">
+                        <h6>•	¿Qué parentesco tiene  con el tt?</h6>
+                        <h6>•	Sabe usted es el obligado solidario de esta cuenta.</h6>
+                        <h6>•	Sabe que con la falta de pago del tt la deuda es responsabilidad de usted?</h6>
+                        <h6>•	Proporcióneme algún teléfono donde me pueda comunicar directamente con el tt.</h6>
+                        <h6>•	¿Cuál fue el motivo por el cuál aceptó ser aval del TT?</h6>
+                        <h6>•	Esta consciente de que su persona esta involucrada en un proceso de demanda por la falta de pago del tt?</h6>
+                    </div>
+                </div>
+            </div>
+             <div id="modal_mensaje_tt" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Contacto con TT / Cliente No Define</h3>
+                    <div class="col s12 m12 l12">
+                        <h6>•	¿Cual fue el motivo por el cual dejo de pagar?</h6>
+                        <h6>•	¿Algún teléfono adicional donde me pueda comunicar con usted?</h6>
+                        <h6>•	¿Maneja alguna tarjeta de debito o cuenta de guardadito?</h6>
+                        <h6>•	Sabe que tiene la posibilidad de aperturar un plan de pagos para liquidación ?</h6>
+                    </div>
+                </div>
+            </div>
+            
+            
             <div id="div_cuentas_encontradas" class=" col s12 m12 l12 hide">
-
             </div>
 
         </div>	
