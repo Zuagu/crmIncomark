@@ -168,6 +168,13 @@ $("#save_num").click(function () {
     actualizar_informacion_contacto();
 });
 
+$("#buscar_cuentas").click(function () {
+    let campo_buscar = $('#buscador_cuentas_gestor').val();
+    
+    $('#modal_busqueda').modal('open');
+    buscar_cuentas_gestor(campo_buscar, id_usuario, 'tb_cont_busqueda');
+});
+
 
 
 $('#tbody_tabla_gestiones').on('dblclick', '.tb_gestion_cuenta', function () {
@@ -247,21 +254,19 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
         data: params,
         dataType: "json",
         success: function (cuentas) {
-//            console.log(cuentas);
-            $("#" + _div).empty();
-            for (var i in cuentas) {
-                $("#" + _div).append('<div class="col s12 m12 l12 hoverable z-depth-2 div-res">' +
-                        '<input class="val_cuenta" type="hidden" value="' + cuentas[i].CLIENTE_UNICO + ',' + cuentas[i].CLIENTE_UNICO + '">' +
-                        '<span class="black-text cuentas_data "><b>Cuenta: </b><span>' + cuentas[i].CLIENTE_UNICO + '</span></span>' +
-                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; Exp:</b> ' + cuentas[i].NOMBRE_AVAL + '</span> <br>' +
-                        '<span class="black-text cuentas_data"><b>Nombre:</b> ' + cuentas[i].NOMBRE_CTE + '</span> <br>' +
-                        '<span class="black-text cuentas_data"><b>TELAVAL:</b> ' + cuentas[i].TELAVAL + '</span>' +
-                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; TEL1: </b> ' + cuentas[i].TELEFONO1 + '</span>' +
-                        '<span class="black-text cuentas_data"><b>&nbsp;&nbsp;&nbsp; TEL2: </b> ' + cuentas[i].TELEFONO2 + '</span><br>' +
-                        '<span class="black-text cuentas_data"><b>TEL3: </b> ' + cuentas[i].TELEFONO3 + '</span><br>' +
-                        '<span class="black-text cuentas_data"><b>TEL4: </b> ' + cuentas[i].TELEFONO4 + '</span>' +
-                        '</div>');
+            $('#' + _div).empty();
+            for( let item of cuentas) {
+                $('#' + _div).append(`<tr>
+                <td>${item.CLIENTE_UNICO}</td>
+                <td>${item.NOMBRE_CTE}</td>
+                <td>${item.NOMBRE_AVAL}</td>
+                <td>${item.ID_ESTATUS_CUENTA}</td>
+                </tr>`);
             }
+            console.log(cuentas);
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }

@@ -195,6 +195,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TELEFONO3", ic.rs.getString("TELEFONO3"));
                 objCuenta.put("TELEFONO4", ic.rs.getString("TELEFONO4"));
                 objCuenta.put("TELAVAL", ic.rs.getString("TELAVAL"));
+                objCuenta.put("ID_ESTATUS_CUENTA", ic.rs.getString("ID_ESTATUS_CUENTA"));
                 listCuentas.add(objCuenta);
 
             }

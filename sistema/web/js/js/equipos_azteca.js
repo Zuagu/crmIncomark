@@ -310,8 +310,8 @@ function select_gerente_options(_territorio) {
             $('select').formSelect();
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
 
         }
     });

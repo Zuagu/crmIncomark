@@ -29,8 +29,11 @@
                     <input id="ID_EQUIPO" type="hidden">
                     <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1">
-                            <div class="col s8 m8 l8 contenido-datos">
+                            <div class="col s6 m6 l6 contenido-datos">
                                 <input id="buscador_cuentas_gestor" class="search_cuentas center-align" type="text" placeholder="Buscar">
+                            </div>
+                            <div class="input-field col s2 m2 l2">
+                                <a id="buscar_cuentas" class="btn-small col s12"><i class="material-icons">search</i></a>
                             </div>
                             <div class="col s4 m4 l4">
                                 <h6>Informacon General</h6>
@@ -528,12 +531,35 @@
                     </div>
                 </div>
             </div>
+            
             <div id="modal_gestion" class="modal">
                 <div class="modal-content">
                     <h3 class="center">Gestion</h3>
                     <div class="col s12 ">
                         <h6 id="mod_gestion">
                         </h6>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="modal_busqueda" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Resutado</h3>
+                    <div class="col s12 tabla_resultado_busqueda">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cliente Unico</th>
+                                    <th>Nombre</th>
+                                    <th>Nombre Aval</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb_cont_busqueda">
+                                
+                            </tbody>
+                        </table>
+                        
                     </div>
                 </div>
             </div>
