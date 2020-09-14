@@ -531,7 +531,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="modal_gestion" class="modal">
                 <div class="modal-content">
                     <h3 class="center">Gestion</h3>
@@ -541,10 +541,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="modal_busqueda" class="modal">
                 <div class="modal-content">
                     <h3 class="center">Resutado</h3>
+                    <div class="input-field col s5 offset-s3">
+                        <input id="buqueda_relacionada" type="text" class="validate">
+                        <label for="buqueda_relacionada">Busqueda </label>
+                    </div>
                     <div class="col s12 tabla_resultado_busqueda">
                         <table>
                             <thead>
@@ -556,10 +560,10 @@
                                 </tr>
                             </thead>
                             <tbody id="tb_cont_busqueda">
-                                
+
                             </tbody>
                         </table>
-                        
+
                     </div>
                 </div>
             </div>

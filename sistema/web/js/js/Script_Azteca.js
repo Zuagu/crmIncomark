@@ -169,10 +169,13 @@ $("#save_num").click(function () {
 });
 
 $("#buscar_cuentas").click(function () {
-    let campo_buscar = $('#buscador_cuentas_gestor').val();
     
     $('#modal_busqueda').modal('open');
     buscar_cuentas_gestor(campo_buscar, id_usuario, 'tb_cont_busqueda');
+});
+
+$('#buqueda_relacionada').keyup( function () {
+    
 });
 
 
