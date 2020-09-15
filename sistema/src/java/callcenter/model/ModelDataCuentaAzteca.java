@@ -5,6 +5,9 @@
  */
 package callcenter.model;
 
+import arcade.data.StartConn;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +25,7 @@ public class ModelDataCuentaAzteca {
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql2 = "select * from azteca_base_genenral_original as bg left join azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '"+ cuenta +"';";
+            String sql2 = "select * from azteca_base_genenral_original as bg left join azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
             System.out.println(sql2);
             ic.rs = ic.st.executeQuery(sql2);
             JSONObject objCuenta = new JSONObject();
@@ -92,7 +95,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
-                
+
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
                 objCuenta.put("NOM_TEL3", ic.rs.getString("NOM_TEL3"));
@@ -101,9 +104,9 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPO_CONTACTO2", ic.rs.getString("TIPO_CONTACTO2"));
                 objCuenta.put("TIPO_CONTACTO3", ic.rs.getString("TIPO_CONTACTO3"));
                 objCuenta.put("TIPO_CONTACTO4", ic.rs.getString("TIPO_CONTACTO4"));
-                
+
                 objCuenta.put("ESTATUS_POSIBLES_TXT", ic.rs.getString("ESTATUS_POSIBLES_TXT"));
-                
+
                 objCuenta.put("NOM_TEL5", ic.rs.getString("NOM_TEL5"));
                 objCuenta.put("TELEFONO1_2", ic.rs.getString("TELEFONO1_2"));
                 objCuenta.put("TIPOTEL1_2", ic.rs.getString("TIPOTEL1_2"));
@@ -115,9 +118,9 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPOTEL4_2", ic.rs.getString("TIPOTEL4_2"));
                 objCuenta.put("TELEFONO5_2", ic.rs.getString("TELEFONO5_2"));
                 objCuenta.put("TIPOTEL5_2", ic.rs.getString("TIPOTEL5_2"));
-                
+
                 objCuenta.put("CRM", ic.rs.getString("CRM"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
@@ -425,7 +428,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
-                
+
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
                 objCuenta.put("NOM_TEL3", ic.rs.getString("NOM_TEL3"));
@@ -434,9 +437,9 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPO_CONTACTO2", ic.rs.getString("TIPO_CONTACTO2"));
                 objCuenta.put("TIPO_CONTACTO3", ic.rs.getString("TIPO_CONTACTO3"));
                 objCuenta.put("TIPO_CONTACTO4", ic.rs.getString("TIPO_CONTACTO4"));
-                
+
                 objCuenta.put("ESTATUS_POSIBLES_TXT", ic.rs.getString("ESTATUS_POSIBLES_TXT"));
-                
+
                 objCuenta.put("NOM_TEL5", ic.rs.getString("NOM_TEL5"));
                 objCuenta.put("TELEFONO1_2", ic.rs.getString("TELEFONO1_2"));
                 objCuenta.put("TIPOTEL1_2", ic.rs.getString("TIPOTEL1_2"));
@@ -448,9 +451,8 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPOTEL4_2", ic.rs.getString("TIPOTEL4_2"));
                 objCuenta.put("TELEFONO5_2", ic.rs.getString("TELEFONO5_2"));
                 objCuenta.put("TIPOTEL5_2", ic.rs.getString("TIPOTEL5_2"));
-                
+
                 objCuenta.put("CRM", ic.rs.getString("CRM"));
-                
 
             }
             ic.rs.close();
@@ -502,8 +504,6 @@ public class ModelDataCuentaAzteca {
         }
     }
 
-
-    
     public static String select_cuentas_de_estaus(String id_equipo, String estatus, String id_usuario) {
         try {
             StartConexion ic = new StartConexion();
@@ -528,7 +528,7 @@ public class ModelDataCuentaAzteca {
     public static String select_primera_llamada_gestor(String id_gestor) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "SELECT TIME(FECHA_LARGA) AS HORA FROM azteca_gestiones where ID_USUARIO = '"+id_gestor+"' and DATE(FECHA_LARGA) = CURDATE() ORDER BY FECHA_LARGA ASC LIMIT 1;";
+            String sql = "SELECT TIME(FECHA_LARGA) AS HORA FROM azteca_gestiones where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_LARGA) = CURDATE() ORDER BY FECHA_LARGA ASC LIMIT 1;";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
@@ -545,11 +545,11 @@ public class ModelDataCuentaAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
+
     public static String select_numero_llamadas_gestor(String id_gestor) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "SELECT COUNT(ID_GESTION) AS NUM_GESTIONES FROM azteca_gestiones where ID_USUARIO = '"+id_gestor+"' and DATE(FECHA_LARGA) = CURDATE();";
+            String sql = "SELECT COUNT(ID_GESTION) AS NUM_GESTIONES FROM azteca_gestiones where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_LARGA) = CURDATE();";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
@@ -566,12 +566,11 @@ public class ModelDataCuentaAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
+
     public static String select_numero_cuentas_tocadas_gestor(String id_gestor) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "SELECT COUNT(distinct CUENTA) AS NUM_CUENTAS FROM azteca_gestiones where ID_USUARIO = '"+id_gestor+"' and DATE(FECHA_LARGA) = CURDATE();";
+            String sql = "SELECT COUNT(distinct CUENTA) AS NUM_CUENTAS FROM azteca_gestiones where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_LARGA) = CURDATE();";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
@@ -588,11 +587,11 @@ public class ModelDataCuentaAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
+
     public static String select_numero_convenios_gestor(String id_gestor) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "SELECT COUNT(ID_CONVENIO) AS NUM_CONVENIOS FROM azteca_convenios where ID_USUARIO = '"+id_gestor+"' and DATE(FECHA_INSET) = CURDATE();";
+            String sql = "SELECT COUNT(ID_CONVENIO) AS NUM_CONVENIOS FROM azteca_convenios where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_INSET) = CURDATE();";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
@@ -648,11 +647,11 @@ public class ModelDataCuentaAzteca {
     }
 
     public static String update_time_gestor(String id_cuenta) {
-        try { 
+        try {
             StartConexion ic = new StartConexion();
-            String sql = "UPDATE azteca_tiempos_usuarios SET tiempo_conectado = ADDTIME(tiempo_conectado, '59') WHERE id_usuario = "+ id_cuenta +" AND fecha = CURDATE();";
+            String sql = "UPDATE azteca_tiempos_usuarios SET tiempo_conectado = ADDTIME(tiempo_conectado, '59') WHERE id_usuario = " + id_cuenta + " AND fecha = CURDATE();";
             System.out.println(sql);
-            
+
             ic.st.executeUpdate(sql);
             ic.st.close();
             ic.conn.close();
@@ -663,7 +662,7 @@ public class ModelDataCuentaAzteca {
         }
 
     }
-    
+
     public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String nom_tel4, String tel4_1, String tel4_2, String nom_tel5, String tel5_1, String tel5_2, String nom_tel_aval, String tel_aval_1, String tel_aval_2, String cuenta) {
         try {
             StartConexion ic = new StartConexion();
@@ -688,7 +687,6 @@ public class ModelDataCuentaAzteca {
                     + "NOM_TEL5 = '" + nom_tel5 + "',\n"
                     + "TELEFONO5 = '" + tel5_1 + "',\n"
                     + "TELEFONO5_2 = '" + tel5_2 + "',\n"
-                    
                     + "NOMBRE_AVAL = '" + nom_tel_aval + "',\n"
                     + "TELAVAL = '" + tel_aval_1 + "',\n"
                     + "TELAVAL2 = '" + tel_aval_2 + "'\n"
@@ -705,4 +703,6 @@ public class ModelDataCuentaAzteca {
         }
 
     }
+
+    
 }

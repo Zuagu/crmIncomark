@@ -169,13 +169,30 @@ $("#save_num").click(function () {
 });
 
 $("#buscar_cuentas").click(function () {
-    
     $('#modal_busqueda').modal('open');
-    buscar_cuentas_gestor(campo_buscar, id_usuario, 'tb_cont_busqueda');
+    $('#tb_cont_busqueda').empty();
 });
 
-$('#buqueda_relacionada').keyup( function () {
-    
+$('#buqueda_relacionada').keyup(function (e) {
+    if (e.keyCode === 13 ) {
+        let busqueda = $(this).val();
+        if (busqueda.length > 6) {
+            buscar_cuentas_gestor(busqueda, id_usuario, 'tb_cont_busqueda');
+        } else {
+            $('#modal_alerta').modal('open');
+            $('#mensaje_alerta').empty();
+            $('#mensaje_alerta').append(`El criterio de busqueda es muy corto ingrese mas de 6 letras`);
+
+        }
+
+    }
+});
+
+$('#tb_cont_busqueda').on('click', '.cuenta_encontrada', function (){
+//    console.log( $('.cuenta_en_CLIENTE_UNICO',this).text() );
+    let cuenta = $('.cuenta_en_CLIENTE_UNICO',this).text();
+    select_datos_cuenta(cuenta);
+     $('#modal_busqueda').modal('close');
 });
 
 
@@ -258,9 +275,9 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
         dataType: "json",
         success: function (cuentas) {
             $('#' + _div).empty();
-            for( let item of cuentas) {
-                $('#' + _div).append(`<tr>
-                <td>${item.CLIENTE_UNICO}</td>
+            for (let item of cuentas) {
+                $('#' + _div).append(`<tr class="cuenta_encontrada">
+                <td class="cuenta_en_CLIENTE_UNICO">${item.CLIENTE_UNICO}</td>
                 <td>${item.NOMBRE_CTE}</td>
                 <td>${item.NOMBRE_AVAL}</td>
                 <td>${item.ID_ESTATUS_CUENTA}</td>

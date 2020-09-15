@@ -54,6 +54,10 @@ $('#ver_lista_pagos').click(function () {
     $('#datos_tabla_pagos').removeClass('hide');
 });
 
+$('#descargar_base').click(function () {
+    descargar_base();
+});
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -363,6 +367,24 @@ function azteca_reporte_pagos() {
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function descargar_base() {
+    let params = {
+        action: 'descargar_base'
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            window.open("excel/BaseAztecaCrm.csv");
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
