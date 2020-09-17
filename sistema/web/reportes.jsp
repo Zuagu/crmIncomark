@@ -43,6 +43,7 @@
                         <li class="tab col s3"><a class="active" href="#test-swipe-1" style="color:#db040e">Gestiones</a></li>
                         <li class="tab col s3"><a class="active" href="#test-swipe-2" style="color:#db040e">Convenios</a></li>
                         <li class="tab col s3"><a class="active" href="#test-swipe-3" style="color:#db040e">Pagos</a></li>
+                        <li class="tab col s3"><a class="active" href="#test-swipe-4" style="color:#db040e">Base General</a></li>
                     </ul>
                     <div id="test-swipe-1" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
@@ -277,6 +278,17 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div id="test-swipe-4" class="col s12" style="margin-top:10px;"> 
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h4>Descarga de Base General</h4>
+                            </div>
+                            <div class="col s12 m12 l12">
+                                <a id="descargar_base" class="btn waves-effect waves-teal">Descargar Base</a>
+                            </div>
+                            
                         </div>
                     </div>
 
