@@ -1315,3 +1315,26 @@ function select_numero_cuentas_tocadas_gestor() {
     });
 }
 
+$("#m_familiar").click(function () {
+    
+    $('#modal_mensaje_familiar').modal('open');
+   
+});
+
+$("#m_tercero").click(function () {
+    
+    $('#modal_mensaje_tercero').modal('open');
+   
+});
+
+$("#m_aval").click(function () {
+    
+    $('#modal_mensaje_aval').modal('open');
+   
+});
+
+$("#m_tt").click(function () {
+    
+    $('#modal_mensaje_tt').modal('open');
+   
+});
