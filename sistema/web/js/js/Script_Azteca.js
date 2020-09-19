@@ -283,7 +283,7 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
                 <td>${item.ID_ESTATUS_CUENTA}</td>
                 </tr>`);
             }
-            console.log(cuentas);
+//            console.log(cuentas);
         },
         error: function (error) {
             console.log(error);
@@ -318,12 +318,13 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
+//            console.log(datos_cuenta);
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
             }
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
+            $("#CANAL2").val(datos_cuenta.CANAL);
             $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
             $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);
@@ -368,7 +369,7 @@ function select_datos_cuenta(_cuenta) {
 }
 
 function actualizar_contacto(params) {
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
@@ -593,7 +594,7 @@ function select_convenios_cuenta(_cuenta, _div) {
         data: params,
         dataType: "json",
         success: function (convenios) {
-            console.log(convenios);
+//            console.log(convenios);
             var color_status = ["", "yellow", "green", "red lighten-2"];
             $("#" + _div).empty();
             for (var i in convenios) {
@@ -634,7 +635,7 @@ function select_llamadas_gestor(_id_usuario) {
         data: {action: "select_llamadas_gestor", id_usuario: _id_usuario},
         dataType: 'json',
         success: function (respuesta) {
-            console.log(respuesta);
+//            console.log(respuesta);
             $("#primera_llamada").val(respuesta.hora.substr(11, 15));
             $("#cuentas_tocadas").val(respuesta.cuentas);
             $("#llamadas_realizadas").val(respuesta.llamadas);
@@ -649,14 +650,14 @@ function select_cuenta_siguiente(_id_usuario) {
         action: "select_cuenta_siguiente",
         id_usuario: _id_usuario
     };
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
+//            console.log(datos_cuenta);
             if (datos_cuenta.id_cuenta === 0) {
                 alert("Sin cuentas");
             } else {
@@ -667,6 +668,7 @@ function select_cuenta_siguiente(_id_usuario) {
                     $("#" + dato).val(datos_cuenta[dato]);
                 }
                 $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
+                $("#CANAL2").val(datos_cuenta.CANAL);
                 $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
                 $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);
@@ -799,20 +801,20 @@ $("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
 });
 // Insert Convenio 
 function insertar_convenio(_myObjConvenio, _myObjGestion) {
-    console.log(_myObjConvenio);
-    console.log(_myObjGestion);
+//    console.log(_myObjConvenio);
+//    console.log(_myObjGestion);
     var params = {
         action: "insertar_convenio",
         datos: JSON.stringify(_myObjConvenio)
     };
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (respuesta) {
-            console.log(respuesta);
+//            console.log(respuesta);
             $("#alerta_convenio").empty();
             $("#alerta_convenio").append(`${respuesta.resultado} ${respuesta.mensaje}`);
             $("#importe_convenio").val("");
@@ -1048,7 +1050,7 @@ $("#tbody_tabla_saldos_status").delegate('.grupos_estatus', 'dblclick', function
     }
 });
 $("#tbody_tabla_cuentas_status").delegate('.saldos_status_cuenta', 'click', function () {
-    console.log($(this).text());
+//    console.log($(this).text());
     $("#tab_saldos").removeClass("active");
     $("#tab_gestiones").addClass("active");
     $('.tabs').tabs();
@@ -1093,7 +1095,7 @@ function update_time_gestor() {
         data: params,
         dataType: "json",
         success: function (response) {
-            console.log(response);
+//            console.log(response);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -1262,7 +1264,7 @@ function actualizar_informacion_contacto() {
         data: params,
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
         },
         error: function (error) {
             console.log(error);
@@ -1277,7 +1279,7 @@ function select_primera_llamada_gestor() {
         data: {action: 'select_primera_llamada_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#primera_llamada').val(result.HORA);
         },
         error: function (error) {
@@ -1292,7 +1294,7 @@ function select_numero_llamadas_gestor() {
         data: {action: 'select_numero_llamadas_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#llamadas_realizadas').val(result.NUM_GESTIONES);
         },
         error: function (error) {
@@ -1308,7 +1310,7 @@ function select_numero_convenios_gestor() {
         data: {action: 'select_numero_convenios_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#convenios').val(result.NUM_CONVENIOS);
         },
         error: function (error) {
@@ -1323,7 +1325,7 @@ function select_numero_cuentas_tocadas_gestor() {
         data: {action: 'select_numero_cuentas_tocadas_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#cuentas_tocadas').val(result.NUM_CUENTAS);
         },
         error: function (error) {

@@ -41,7 +41,7 @@ $(document).ready(function () {
     $("#retraso_actual").val("00:00:00");
 });
 window.onload = function () {
-    select_datos_cuenta( $("#ID_CLIENTE").val() );
+    select_datos_cuenta( $("#ID_CLIENTE_CLIENTE_UNICO").val() );
 //    select_agendas();
 //    select_llamadas_gestor(id_usuario);
     options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
@@ -283,7 +283,7 @@ function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
                 <td>${item.ID_ESTATUS_CUENTA}</td>
                 </tr>`);
             }
-            console.log(cuentas);
+//            console.log(cuentas);
         },
         error: function (error) {
             console.log(error);
@@ -303,9 +303,9 @@ $("#buscador_cuentas_gestor").keyup(function (e) {
         }
     }
 });
-$("#buscador_cuentas_gestor").click(function () {
-//    $("#div_cuentas_encontradas").empty();
-});
+
+
+
 // funciones de datos cuenta
 function select_datos_cuenta(_cuenta) {
     var params = {
@@ -318,7 +318,7 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
+//            console.log(datos_cuenta);
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
@@ -335,8 +335,7 @@ function select_datos_cuenta(_cuenta) {
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
-
-            $("#numero_marcado_deudor, #gestion").val("");
+            
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
@@ -364,12 +363,15 @@ function select_datos_cuenta(_cuenta) {
             select_numero_llamadas_gestor();
             select_numero_cuentas_tocadas_gestor();
             select_numero_convenios_gestor();
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
 
 function actualizar_contacto(params) {
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
@@ -378,113 +380,12 @@ function actualizar_contacto(params) {
         success: function (data, textStatus, jqXHR) {
             console.log(data);
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
         }
     })
 }
 
-$("#div_telefonos_cuenta").on('click', '#guardar_tel_1', function () {
-    let _objContacto = {
-        _CUENTA: $('#CLIENTE_UNICO').val(),
-        nom_tel_1: $('#nom_tel_1').val(),
-        tipo_contact_tel_1: $('#tipo_contact_tel_1').val(),
-        act_tel_1: $('#act_tel_1').val()
-    };
-    let params = {
-        action: "actualizar_telefono_1",
-        objContacto: JSON.stringify(_objContacto)
-    };
-    actualizar_contacto(params);
-});
-$("#div_telefonos_cuenta").on('click', '#guardar_tel_2', function () {
-    let _objContacto = {
-        _CUENTA: $('#CLIENTE_UNICO').val(),
-        nom_tel_2: $('#nom_tel_2').val(),
-        tipo_contact_tel_2: $('#tipo_contact_tel_2').val(),
-        act_tel_2: $('#act_tel_2').val()
-    };
-    let params = {
-        action: "actualizar_telefono_2",
-        objContacto: JSON.stringify(_objContacto)
-    };
-    actualizar_contacto(params);
-});
-$("#div_telefonos_cuenta").on('click', '#guardar_tel_3', function () {
-    let _objContacto = {
-        _CUENTA: $('#CLIENTE_UNICO').val(),
-        nom_tel_3: $('#nom_tel_3').val(),
-        tipo_contact_tel_3: $('#tipo_contact_tel_3').val(),
-        act_tel_3: $('#act_tel_3').val()
-    };
-    let params = {
-        action: "actualizar_telefono_3",
-        objContacto: JSON.stringify(_objContacto)
-    };
-    actualizar_contacto(params);
-});
-$("#div_telefonos_cuenta").on('click', '#guardar_tel_4', function () {
-    let _objContacto = {
-        _CUENTA: $('#CLIENTE_UNICO').val(),
-        nom_tel_4: $('#nom_tel_4').val(),
-        tipo_contact_tel_4: $('#tipo_contact_tel_4').val(),
-        act_tel_4: $('#act_tel_4').val()
-    };
-
-    let params = {
-        action: "actualizar_telefono_4",
-        objContacto: JSON.stringify(_objContacto)
-    };
-    actualizar_contacto(params);
-});
-
-$("#div_telefonos_cuenta").on('click', '#guardar_tel_aval', function () {
-    let _objContacto = {
-        _CUENTA: $('#CLIENTE_UNICO').val(),
-        nom_tel_aval: $('#nom_tel_aval').val(),
-        tipo_contact_tel_aval: $('#tipo_contact_tel_aval').val(),
-        act_tel_aval: $('#act_tel_aval').val()
-    };
-    let params = {
-        action: "actualizar_telefono_5",
-        objContacto: JSON.stringify(_objContacto)
-    };
-    actualizar_contacto(params);
-});
-
-function select_datos_cuenta_relacionada(_cuenta) {
-    var params = {
-        action: "select_datos_cuenta_relacionada",
-        cuenta: _cuenta
-    };
-    $.ajax({
-        type: "POST",
-        url: "/sistema/ControllerGestor",
-        data: params,
-        dataType: "json",
-        success: function (datos_cuenta) {
-//            console.log(datos_cuenta);
-            for (var dato in datos_cuenta) {
-                $("#" + dato).empty();
-                $("#" + dato).val(datos_cuenta[dato]);
-            }
-            $("#estatus").empty();
-            $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta.status);
-            $("#codigo_llamada").empty();
-            $("#codigo_llamada").append(options_estatus_llamadas);
-            $('select').formSelect();
-            $("#div_telefonos_cuenta").empty();
-            $("#numero_marcado_deudor, #gestion").val("");
-            $("#tiempo_actual").val("00:00:00");
-            $("#retraso_actual").val("00:00:00");
-            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
-            telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
-            var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
-            select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
-            select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
-        }
-    });
-}
 
 
 
@@ -518,8 +419,8 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
                         );
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
         }
 
     });
@@ -558,26 +459,12 @@ function select_pagos_cuenta(_cuenta, _fecha_inico, _div) {
                 }
             }
 
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
-$("#div_cuentas_encontradas").delegate(".div-res", "click", function () {
-    var cuenta = $(".val_cuenta", this).val().split(",");
-//    console.log(cuenta);
-    if (cuenta[0] !== "0") {
-        select_datos_cuenta(cuenta[0]);
-    } else {
-        alert(cuenta[1]);
-//        select_datos_cuenta_relacionada(cuenta[1]);
-    }
-//    $(".div_search_gestor").addClass("s2 m2 l2");
-//    $(".div_search_gestor").removeClass("s3 m3 l3");
-//    $(".contenido-datos").addClass("s10 m10 l10");
-//    $(".contenido-datos").removeClass("s9 m9 l9");
-    $("#div_cuentas_encontradas").addClass("hide");
-    $("#div_telefonos_cuenta").removeClass("hide");
-});
-// funciones de pagos diarios gestor
 
 
 // funciones de select convenios
@@ -594,7 +481,7 @@ function select_convenios_cuenta(_cuenta, _div) {
         data: params,
         dataType: "json",
         success: function (convenios) {
-            console.log(convenios);
+//            console.log(convenios);
             var color_status = ["", "yellow", "green", "red lighten-2"];
             $("#" + _div).empty();
             for (var i in convenios) {
@@ -613,8 +500,8 @@ function select_convenios_cuenta(_cuenta, _div) {
                         );
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -635,11 +522,14 @@ function select_llamadas_gestor(_id_usuario) {
         data: {action: "select_llamadas_gestor", id_usuario: _id_usuario},
         dataType: 'json',
         success: function (respuesta) {
-            console.log(respuesta);
+//            console.log(respuesta);
             $("#primera_llamada").val(respuesta.hora.substr(11, 15));
             $("#cuentas_tocadas").val(respuesta.cuentas);
             $("#llamadas_realizadas").val(respuesta.llamadas);
             $("#convenios").val(respuesta.convenios);
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -650,14 +540,14 @@ function select_cuenta_siguiente(_id_usuario) {
         action: "select_cuenta_siguiente",
         id_usuario: _id_usuario
     };
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
+//            console.log(datos_cuenta);
             if (datos_cuenta.id_cuenta === 0) {
                 alert("Sin cuentas");
             } else {
@@ -679,8 +569,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#codigo_llamada").empty();
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
-
-                $("#numero_marcado_deudor, #gestion").val("");
+                
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
                 $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
@@ -711,7 +600,7 @@ function select_cuenta_siguiente(_id_usuario) {
 
         },
         error: function (err) {
-            console.log(err.responseText);
+            console.log(err);
         }
     });
 }
@@ -780,7 +669,7 @@ $("#guardar_gestion").click(function () {
             _RETASO: $('#retraso_actual').val(),
             _ID_PUESTO: id_puesto_usuario,
             _PROMESA: 0,
-            _F_PREDICTIVO: 0,
+            _F_PREDICTIVO: 1,
             _ID_EQUIPO: $('#ID_EQUIPO').val()
         };
 //        console.log(myObjGestion);
@@ -801,20 +690,20 @@ $("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
 });
 // Insert Convenio 
 function insertar_convenio(_myObjConvenio, _myObjGestion) {
-    console.log(_myObjConvenio);
-    console.log(_myObjGestion);
+//    console.log(_myObjConvenio);
+//    console.log(_myObjGestion);
     var params = {
         action: "insertar_convenio",
         datos: JSON.stringify(_myObjConvenio)
     };
-    console.log(params);
+//    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (respuesta) {
-            console.log(respuesta);
+//            console.log(respuesta);
             $("#alerta_convenio").empty();
             $("#alerta_convenio").append(`${respuesta.resultado} ${respuesta.mensaje}`);
             $("#importe_convenio").val("");
@@ -827,6 +716,9 @@ function insertar_convenio(_myObjConvenio, _myObjGestion) {
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
             }
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -851,7 +743,7 @@ $("#codigo_llamada").change(function () {
             duracion: $("#tiempo_actual").val(),
             retraso_llamada: $("#retraso_actual").val(),
             expediente: $("#expediente_deudor").val(),
-            f_predictivo: 0
+            f_predictivo: 1
         };
         for (var obj in myObjGestion) {
             if (myObjGestion[obj] === "") {
@@ -889,7 +781,7 @@ $("#insert_convenio").click(function () {
         _RETASO: $('#retraso_actual').val(),
         _ID_PUESTO: id_puesto_usuario,
         _PROMESA: 1,
-        _F_PREDICTIVO: 0,
+        _F_PREDICTIVO: 1,
         _ID_EQUIPO: $('#ID_EQUIPO').val()
     };
     var myObjConvenio = {
@@ -963,6 +855,9 @@ function select_equipos_usuario(_id_usuario, _div) {
 //            console.log(totales);
             $("#" + _div).append('<tr id="' + _id_usuario + '" class="equipo_usuario green">' +
                     '<td></td> <td>' + totales.descripcion + '</td><td>' + totales.suma_cuentas + '</td><td>' + totales.suma_asignado + '</td></tr>');
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -995,6 +890,9 @@ function select_saldos_gestores(_id_usuario, _id_equipo, _div) {
                         '</tr>'
                         );
             }
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -1026,6 +924,9 @@ function select_cuentas_de_estaus(_id_usuario, _id_equipo, _id_status, _div) {
                         '</tr>'
                         );
             }
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -1158,6 +1059,9 @@ function insert_agenda() {
         dataType: "json",
         success: function (result) {
 //            console.log(saldos);
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -1174,6 +1078,9 @@ function select_agenda_disponible() {
         dataType: "json",
         success: function (result) {
 //            console.log(saldos);
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -1279,7 +1186,7 @@ function select_primera_llamada_gestor() {
         data: {action: 'select_primera_llamada_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#primera_llamada').val(result.HORA);
         },
         error: function (error) {
@@ -1294,7 +1201,7 @@ function select_numero_llamadas_gestor() {
         data: {action: 'select_numero_llamadas_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#llamadas_realizadas').val(result.NUM_GESTIONES);
         },
         error: function (error) {
@@ -1310,7 +1217,7 @@ function select_numero_convenios_gestor() {
         data: {action: 'select_numero_convenios_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#convenios').val(result.NUM_CONVENIOS);
         },
         error: function (error) {
@@ -1325,7 +1232,7 @@ function select_numero_cuentas_tocadas_gestor() {
         data: {action: 'select_numero_cuentas_tocadas_gestor', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#cuentas_tocadas').val(result.NUM_CUENTAS);
         },
         error: function (error) {

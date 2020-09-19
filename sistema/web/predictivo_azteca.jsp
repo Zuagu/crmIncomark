@@ -20,10 +20,11 @@
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
                 <div class="col s12 m12 l12 contenido-datos">
-                    <input id="id_cuenta" type="hidden" value="${cuenta}">
-                    <input id="numero_marcado_deudor" type="hidden">
+                    <input id="id_cuenta" type="hidden">
+                    <input id="numero_marcado_deudor" type="hidden" value="${telefono}">
                     <input id="ID_SUCURSAL" type="hidden">
                     <input id="ID_CLIENTE" type="hidden">
+                    <input id="ID_CLIENTE_CLIENTE_UNICO" type="hidden"  value="${cuenta}">
                     <input id="TERRITORIO" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
@@ -52,8 +53,8 @@
                             </div>
 
                             <div class="input-field col s6 m6 l6">
-                                <input id="SUBCAMPANA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="SUBCAMPANA">Subprodcuto</label>
+                                <input id="CANAL2" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CANAL2">Subprodcuto</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
@@ -125,7 +126,7 @@
                             </div>
                             <div class=" col s12 m12 l12  div_gestor_gestion">
                                 <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
-                                    <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion"></textarea>
+                                    <textarea id="gestion" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion">${telefono} </textarea>
                                 </div>
                             </div>
                             <div class=" col s12 m12 l12  div_gestor_gestion">
@@ -572,10 +573,10 @@
                     <i class="large material-icons">mode_edit</i>
                 </a>
                 <ul>
-                    <li><a id="m_familiar" class="btn-floating red tooltipped" data-position="right" data-tooltip="Mensaje con familiar"><i class="material-icons">insert_chart</i></a></li>
-                    <li><a id="m_tercero" class="btn-floating yellow darken-1 tooltipped" data-position="right" data-tooltip="Mensaje a Tercero"><i class="material-icons">format_quote</i></a></li>
-                    <li><a id="m_aval" class="btn-floating green tooltipped" data-position="right" data-tooltip="Mensaje a Aval"><i class="material-icons">publish</i></a></li>
-                    <li><a id="m_tt"class="btn-floating blue tooltipped" data-position="right" data-tooltip="Mensaje a Cliente"><i class="material-icons">attach_file</i></a></li>
+                    <li><a id="m_familiar" class="btn-floating red tooltipped" data-position="left" data-tooltip="Mensaje con familiar"><i class="material-icons">insert_chart</i></a></li>
+                    <li><a id="m_tercero" class="btn-floating yellow darken-1 tooltipped" data-position="left" data-tooltip="Mensaje a Tercero"><i class="material-icons">format_quote</i></a></li>
+                    <li><a id="m_aval" class="btn-floating green tooltipped" data-position="left" data-tooltip="Mensaje a Aval"><i class="material-icons">publish</i></a></li>
+                    <li><a id="m_tt"class="btn-floating blue tooltipped" data-position="left" data-tooltip="Mensaje a Cliente"><i class="material-icons">attach_file</i></a></li>
                 </ul>
             </div>
             <div id="modal_mensaje_familiar" class="modal">

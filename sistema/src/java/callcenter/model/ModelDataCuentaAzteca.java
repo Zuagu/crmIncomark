@@ -26,7 +26,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql2 = "select * from azteca_base_genenral_original as bg left join azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
-            System.out.println(sql2);
+//            System.out.println(sql2);
             ic.rs = ic.st.executeQuery(sql2);
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
@@ -125,7 +125,7 @@ public class ModelDataCuentaAzteca {
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            System.out.println(objCuenta.toString());
+//            System.out.println(objCuenta.toString());
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
@@ -157,11 +157,11 @@ public class ModelDataCuentaAzteca {
 
             StartConexion ic = new StartConexion();
             String sql = "call azteca_insert_gestion(" + _ID_SUCURSAL + ", " + _ID_CLIENTE + ", '" + _TERRITORIO + "', '" + _CANAL + "', " + _ATRASO_MAXIMO + ", '" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ", " + _ID_EQUIPO + ");";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 
             JSONObject objRes = new JSONObject();
-            System.out.println(objRes);
+//            System.out.println(objRes);
             while (ic.rs.next()) {
                 objRes.put("response", ic.rs.getString("response"));
 
@@ -183,7 +183,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "call azteca_buscar_cuentas('%" + busqueda.replace(";", "") + "%');";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listCuentas = new JSONArray();
 
@@ -216,14 +216,14 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
                 objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
 
             }
-            System.out.println(objCuenta.toString());
+//            System.out.println(objCuenta.toString());
 
             ic.rs.close();
             ic.st.close();
@@ -238,7 +238,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
@@ -260,7 +260,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "CALL azteca_gestiones_cuenta('" + cuenta + "');";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listGestion = new JSONArray();
             while (ic.rs.next()) {
@@ -300,7 +300,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
@@ -321,7 +321,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "call azteca_convenios_cuenta('" + cuenta + "');";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listConvenios = new JSONArray();
             while (ic.rs.next()) {
@@ -359,7 +359,7 @@ public class ModelDataCuentaAzteca {
             StartConexion ic = new StartConexion();
 //            String sql = "SELECT * FROM azteca_base_genenral_original ORDER BY RAND() LIMIT 1;";
             String sql = "select * from azteca_base_genenral_original as bg left join azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta ORDER BY RAND() LIMIT 1;";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
@@ -458,7 +458,7 @@ public class ModelDataCuentaAzteca {
             ic.rs.close();
             ic.st.close();
             ic.conn.close();
-            System.out.println(objCuenta.toString());
+//            System.out.println(objCuenta.toString());
             return objCuenta.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta siguiente azteca Code Error: " + e;
@@ -482,7 +482,7 @@ public class ModelDataCuentaAzteca {
 
             StartConexion ic = new StartConexion();
             String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '" + _PASSwORD + "');";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             // response
             JSONObject objResp = new JSONObject();
@@ -508,7 +508,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
             while (ic.rs.next()) {
@@ -529,7 +529,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "SELECT TIME(FECHA_LARGA) AS HORA FROM azteca_gestiones where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_LARGA) = CURDATE() ORDER BY FECHA_LARGA ASC LIMIT 1;";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
             while (ic.rs.next()) {
@@ -550,7 +550,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "SELECT COUNT(ID_GESTION) AS NUM_GESTIONES FROM azteca_gestiones where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_LARGA) = CURDATE();";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
             while (ic.rs.next()) {
@@ -571,7 +571,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "SELECT COUNT(distinct CUENTA) AS NUM_CUENTAS FROM azteca_gestiones where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_LARGA) = CURDATE();";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
             while (ic.rs.next()) {
@@ -592,7 +592,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "SELECT COUNT(ID_CONVENIO) AS NUM_CONVENIOS FROM azteca_convenios where ID_USUARIO = '" + id_gestor + "' and DATE(FECHA_INSET) = CURDATE();";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject obj = new JSONObject();
             while (ic.rs.next()) {
@@ -625,7 +625,7 @@ public class ModelDataCuentaAzteca {
                     + "TIPO_CONTACTO1 = '" + tipo_contact_tel_1 + "',\n"
                     + "TELEFONO1 = '" + act_tel_1 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + _CUENTA + "';";
-            System.out.println(sql);
+//            System.out.println(sql);
             ic.st.executeUpdate(sql);
 //            JSONObject objCuenta = new JSONObject();
 //            while (ic.rs.next()) {
@@ -650,7 +650,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "UPDATE azteca_tiempos_usuarios SET tiempo_conectado = ADDTIME(tiempo_conectado, '59') WHERE id_usuario = " + id_cuenta + " AND fecha = CURDATE();";
-            System.out.println(sql);
+//            System.out.println(sql);
 
             ic.st.executeUpdate(sql);
             ic.st.close();
@@ -669,7 +669,7 @@ public class ModelDataCuentaAzteca {
             /*
             nom_tel1            tel1_1            tel1_2            nom_tel2            tel2_1            tel2_2
             nom_tel3            tel3_1            tel3_2            nom_tel4            tel4_1            tel4_2
-            nom_tel5            tel5_1            tel5_2            nom_tel_aval            tel_aval_1            tel_aval_2
+            nom_tel5            tel5_1            tel5_2            nom_tel_aval        tel_aval_1        tel_aval_2
              */
             String sql = "UPDATE azteca_base_genenral_original SET\n"
                     + "NOM_TEL1 = '" + nom_tel1 + "',\n"
@@ -691,7 +691,7 @@ public class ModelDataCuentaAzteca {
                     + "TELAVAL = '" + tel_aval_1 + "',\n"
                     + "TELAVAL2 = '" + tel_aval_2 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + cuenta + "';";
-            System.out.println(sql);
+//            System.out.println(sql);
 
             ic.st.executeUpdate(sql);
             ic.st.close();
