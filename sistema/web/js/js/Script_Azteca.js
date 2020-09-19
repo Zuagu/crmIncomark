@@ -1190,6 +1190,10 @@ $('#insertar_agenda').click(function () {
     insertar_agenda();
 });
 
+$('#tab_agendas').click(function () {
+    select_agendas();
+});
+
 function insertar_agenda() {
     let params = {
         action: 'insertar_agenda',
@@ -1199,6 +1203,7 @@ function insertar_agenda() {
         fecha: $('#fecha_agenda').val(),
         hora: $('#hora_agenda').val()
     };
+    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerGestor",
@@ -1211,9 +1216,10 @@ function insertar_agenda() {
             $('#fecha_agenda').val('');
             $('#hora_agenda').val('');
             $('#modal_agregar_agenda').modal('close');
+            select_agendas();
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (err) {
+            console.log(err);
         }
     });
 
@@ -1227,6 +1233,15 @@ function select_agendas() {
         dataType: "json",
         success: function (result) {
             console.log(result);
+            $('#tb_list_agenda').empty();
+            for(let item of result) {
+                $('#tb_list_agenda').append(`<tr>
+                <td>${item.CLIENTE_UNICO}</td>
+                <td>${item.DESCRIPCION}</td>
+                <td>${item.FECHA}</td>
+                <td>${item.HORA}</td>
+                </tr>`);
+            }
         },
         error: function (error) {
             console.log(error);

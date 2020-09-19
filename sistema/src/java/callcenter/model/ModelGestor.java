@@ -672,7 +672,7 @@ public class ModelGestor {
                     + "    TIME(FECHA_AGENDA) AS HORA, \n"
                     + "    TIMEDIFF(FECHA_AGENDA, NOW()) AS H_EJECUTAR,\n"
                     + "    F_ACTIVE \n"
-                    + "FROM azteca_registro_agenda WHERE ID_GESTOR = " + id_gestor + " AND F_ACTIVE = 1;";
+                    + "FROM azteca_registro_agenda WHERE ID_GESTOR = " + id_gestor + " AND F_ACTIVE = 1 AND DATE(FECHA_AGENDA) = CURDATE() ;";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             JSONArray listAgenda = new JSONArray();

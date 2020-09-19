@@ -296,8 +296,28 @@
                         </table>
                     </div>
                     <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
-                        <div class="col s12">
-                            <a id="new_agenda" class="btn-small green waves-effect waves-light">Agregar</a>
+                        
+                        <div class="col s12 m9 l9">
+                            <table>
+                                <thead>
+                                    <tr class="blue">
+                                        <th>CLIENTE_UNICO</th>
+                                        <th>DESCRIPCION</th>
+                                        <th>FECHA</th>
+                                        <th>HORA</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tb_list_agenda">
+                                    
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        <div class="col s12 m3 l3 div_btn">
+                            <a id="new_agenda" class="btn green waves-effect waves-light">Agregar</a>
+                        </div>
+                        <div class="col s12 m3 l3 div_btn">
+                            <a id="delete_agenda" class="btn red waves-effect waves-light">Eliminar</a>
                         </div>
 
                         <div id="tabla_agendas" class="col s12 m12 l12"></div>
