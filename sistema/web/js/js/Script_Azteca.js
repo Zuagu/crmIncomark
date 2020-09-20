@@ -174,7 +174,7 @@ $("#buscar_cuentas").click(function () {
 });
 
 $('#buqueda_relacionada').keyup(function (e) {
-    if (e.keyCode === 13 ) {
+    if (e.keyCode === 13) {
         let busqueda = $(this).val();
         if (busqueda.length > 6) {
             buscar_cuentas_gestor(busqueda, id_usuario, 'tb_cont_busqueda');
@@ -188,11 +188,11 @@ $('#buqueda_relacionada').keyup(function (e) {
     }
 });
 
-$('#tb_cont_busqueda').on('click', '.cuenta_encontrada', function (){
+$('#tb_cont_busqueda').on('click', '.cuenta_encontrada', function () {
 //    console.log( $('.cuenta_en_CLIENTE_UNICO',this).text() );
-    let cuenta = $('.cuenta_en_CLIENTE_UNICO',this).text();
+    let cuenta = $('.cuenta_en_CLIENTE_UNICO', this).text();
     select_datos_cuenta(cuenta);
-     $('#modal_busqueda').modal('close');
+    $('#modal_busqueda').modal('close');
 });
 
 
@@ -1234,19 +1234,60 @@ function select_agendas() {
         success: function (result) {
             console.log(result);
             $('#tb_list_agenda').empty();
-            for(let item of result) {
+            for (let item of result) {
                 $('#tb_list_agenda').append(`<tr>
                 <td>${item.CLIENTE_UNICO}</td>
                 <td>${item.DESCRIPCION}</td>
                 <td>${item.FECHA}</td>
                 <td>${item.HORA}</td>
                 </tr>`);
+                if (parseInt(item.H_EJECUTAR) > 0) {
+                    console.log(parseInt(item.H_EJECUTAR));
+                    setTimeout(() => {
+                        select_list_agendas_modal(item.CLIENTE_UNICO, item.DESCRIPCION, item.FECHA, item.HORA);
+                        $('#modal_ver_agenda').modal('open');
+                    }, parseInt(item.H_EJECUTAR) * 1000 );
+                }
             }
         },
         error: function (error) {
             console.log(error);
         }
     });
+}
+
+$("#cuenta_agenda_datos").click( function () {
+    let cliente_unico = $("#agenta_cliente_unico").val();
+    select_datos_cuenta(cliente_unico);
+});
+
+// tb_cont_agenda
+function select_list_agendas_modal(_cuenta, _descripcion, _fecha, _hora){
+    $("#agenta_cliente_unico").val(_cuenta);
+    $("#agenta_descripcion").val(_descripcion);
+    $("#agenta_fecha").val(_fecha);
+    $("#agenta_hora").val(_hora);
+//    $.ajax({
+//        type: "POST",
+//        url: "ControllerGestor",
+//        data: {action: 'select_agendas', id_gestor: id_usuario},
+//        dataType: "json",
+//        success: function (result) {
+//            $('#tb_cont_agenda').empty();
+//            for (let item of result) {
+//                $('#tb_cont_agenda').append(`<tr class='${item.HORA}'>
+//                <td>${item.CLIENTE_UNICO}</td>
+//                <td>${item.DESCRIPCION}</td>
+//                <td>${item.FECHA}</td>
+//                <td>${item.HORA}</td>
+//                </tr>`);
+//            }
+//            
+//        },
+//        error: function (error) {
+//            console.log(error);
+//        }
+//    });
 }
 
 
@@ -1350,25 +1391,25 @@ function select_numero_cuentas_tocadas_gestor() {
 }
 
 $("#m_familiar").click(function () {
-    
+
     $('#modal_mensaje_familiar').modal('open');
-   
+
 });
 
 $("#m_tercero").click(function () {
-    
+
     $('#modal_mensaje_tercero').modal('open');
-   
+
 });
 
 $("#m_aval").click(function () {
-    
+
     $('#modal_mensaje_aval').modal('open');
-   
+
 });
 
 $("#m_tt").click(function () {
-    
+
     $('#modal_mensaje_tt').modal('open');
-   
+
 });

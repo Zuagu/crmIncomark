@@ -670,7 +670,7 @@ public class ModelGestor {
                     + "    DESCRIPCION, \n"
                     + "    DATE(FECHA_AGENDA) AS FECHA, \n"
                     + "    TIME(FECHA_AGENDA) AS HORA, \n"
-                    + "    TIMEDIFF(FECHA_AGENDA, NOW()) AS H_EJECUTAR,\n"
+                    + "    time_to_sec(TIMEDIFF(FECHA_AGENDA, NOW())) AS H_EJECUTAR,\n"
                     + "    F_ACTIVE \n"
                     + "FROM azteca_registro_agenda WHERE ID_GESTOR = " + id_gestor + " AND F_ACTIVE = 1 AND DATE(FECHA_AGENDA) = CURDATE() ;";
             System.out.println(sql);

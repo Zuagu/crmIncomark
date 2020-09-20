@@ -296,7 +296,7 @@
                         </table>
                     </div>
                     <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
-                        
+
                         <div class="col s12 m9 l9">
                             <table>
                                 <thead>
@@ -308,10 +308,10 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tb_list_agenda">
-                                    
+
                                 </tbody>
                             </table>
-                            
+
                         </div>
                         <div class="col s12 m3 l3 div_btn">
                             <a id="new_agenda" class="btn green waves-effect waves-light">Agregar</a>
@@ -565,7 +565,7 @@
             <div id="modal_busqueda" class="modal">
                 <div class="modal-content">
                     <h3 class="center">Resutado</h3>
-                    <div class="input-field col s5 offset-s3">
+                    <div class="input-field col s6 offset-s3">
                         <input id="buqueda_relacionada" type="text" class="validate">
                         <label for="buqueda_relacionada">Busqueda </label>
                     </div>
@@ -573,10 +573,10 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Cliente Unico</th>
-                                    <th>Nombre</th>
-                                    <th>Nombre Aval</th>
-                                    <th>Estatus</th>
+                                    <th>CLIENTE_UNICO</th>
+                                    <th>DESCRIPCION</th>
+                                    <th>FECHA</th>
+                                    <th>HORA</th>
                                 </tr>
                             </thead>
                             <tbody id="tb_cont_busqueda">
@@ -641,7 +641,7 @@
                     </div>
                 </div>
             </div>
-             <div id="modal_mensaje_tt" class="modal">
+            <div id="modal_mensaje_tt" class="modal">
                 <div class="modal-content">
                     <h3 class="center">Contacto con TT / Cliente No Define</h3>
                     <div class="col s12 m12 l12">
@@ -652,9 +652,36 @@
                     </div>
                 </div>
             </div>
-            
-            
-            <div id="div_cuentas_encontradas" class=" col s12 m12 l12 hide">
+
+            <div id="modal_ver_agenda" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Alerta de Agenda</h3>
+
+                    <div class="col s12 tabla_resultado_busqueda">
+                        <div class="col s12 div_btn right-align"></div>
+                        <div class="input-field col s6">
+                            <input id="agenta_cliente_unico" type="text" placeholder=" " class="validate">
+                            <label for="agenta_cliente_unico">Cliente unico </label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="agenta_descripcion" type="text" placeholder=" " class="validate">
+                            <label for="agenta_descripcion">Descripcion </label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="agenta_fecha" type="text" placeholder=" " class="validate">
+                            <label for="agenta_fecha">Fecha </label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="agenta_hora" type="text" placeholder=" " class="validate">
+                            <label for="agenta_hora">Hora </label>
+                        </div>
+                        <div class="col s12 div_btn center-align">
+                            <a class="btn red waves-effect modal-close">Cancelar</a>
+                            <a id="cuenta_agenda_datos" class="btn blue waves-effect">Buscar datos Ceunta</a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>	
