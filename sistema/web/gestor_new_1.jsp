@@ -296,7 +296,7 @@
                         </table>
                     </div>
                     <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
-
+                        <input id="id_reg_agenda" type="hidden">
                         <div class="col s12 m9 l9">
                             <table>
                                 <thead>
@@ -318,6 +318,9 @@
                         </div>
                         <div class="col s12 m3 l3 div_btn">
                             <a id="delete_agenda" class="btn red waves-effect waves-light">Eliminar</a>
+                        </div>
+                        <div class="col s12 m3 l3 div_btn">
+                            <a id="ver_modal_agendas" class="btn blue waves-effect">Ver Agendas</a>
                         </div>
 
                         <div id="tabla_agendas" class="col s12 m12 l12"></div>
@@ -657,7 +660,7 @@
                 <div class="modal-content">
                     <h3 class="center">Alerta de Agenda</h3>
 
-                    <div class="col s12 tabla_resultado_busqueda">
+                    <div class="col s12">
                         <div class="col s12 div_btn right-align"></div>
                         <div class="input-field col s6">
                             <input id="agenta_cliente_unico" type="text" placeholder=" " class="validate">
@@ -676,8 +679,8 @@
                             <label for="agenta_hora">Hora </label>
                         </div>
                         <div class="col s12 div_btn center-align">
-                            <a class="btn red waves-effect modal-close">Cancelar</a>
-                            <a id="cuenta_agenda_datos" class="btn blue waves-effect">Buscar datos Ceunta</a>
+                            <a class="btn red waves-effect modal-close">Posponer</a>
+                            <a id="cuenta_agenda_datos" class="btn blue waves-effect modal-close">Buscar datos Ceunta</a>
                         </div>
                     </div>
 
@@ -685,9 +688,7 @@
             </div>
 
         </div>	
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/highcharts-more.js"></script>
-        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+        
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/Script_Azteca.js"></script>

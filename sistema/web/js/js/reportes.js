@@ -225,8 +225,8 @@ function reporte_gestiones_tabla() {
             $('#cantidad_gestiones').empty();
             $('#cantidad_gestiones').append(cantidad + ' Gestiones');
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -234,9 +234,9 @@ function reporte_gestiones_tabla() {
 function azteca_reporte_convenios() {
     let params = {
         action: 'azteca_reporte_convenios',
-        desde: $('#desde_gestiones').val(),
-        hasta: $('#hasta_gestiones').val(),
-        territorio: $('#id_ter_gestion').val()
+        desde: $('#desde_convenios').val(),
+        hasta: $('#hasta_convenios').val(),
+        territorio: $('#id_ter_convenio').val()
     };
     $.ajax({
         type: "POST",
@@ -271,8 +271,8 @@ function azteca_reporte_convenios() {
             $('#cantidad_convenios').empty();
             $('#cantidad_convenios').append(cantidad + ' Cuentas');
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (error) {
+            console.log(error);
         }
     });
 }

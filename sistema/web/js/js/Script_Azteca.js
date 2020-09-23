@@ -12,7 +12,7 @@ $(document).ready(function () {
     $('.modal').modal();
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
-    document.getElementById('foto_perfil').src = "http://gruposicsa.com/fotos/" + id_usuario + ".jpg";
+//    document.getElementById('foto_perfil').src = "http://gruposicsa.com/fotos/" + id_usuario + ".jpg";
     $(".sidenav").empty();
     // funcion que pinta el menu
     for (indice in menu) {
@@ -1235,7 +1235,7 @@ function select_agendas() {
             console.log(result);
             $('#tb_list_agenda').empty();
             for (let item of result) {
-                $('#tb_list_agenda').append(`<tr>
+                $('#tb_list_agenda').append(`<tr id='row_agenda_${item.ID_REGISTRO}' class='row_reg_agenda ${item.F_ACTIVE}'>
                 <td>${item.CLIENTE_UNICO}</td>
                 <td>${item.DESCRIPCION}</td>
                 <td>${item.FECHA}</td>
@@ -1248,6 +1248,7 @@ function select_agendas() {
                         $('#modal_ver_agenda').modal('open');
                     }, parseInt(item.H_EJECUTAR) * 1000 );
                 }
+                
             }
         },
         error: function (error) {
@@ -1256,9 +1257,19 @@ function select_agendas() {
     });
 }
 
+$("#tb_list_agenda").on("click", ".row_reg_agenda", function (){
+    $(".row_reg_agenda").removeClass("selected");
+    $("#id_reg_agenda").val( $(this).attr("id").replace("row_agenda_", "") );
+    $(this).addClass("selected");
+});
+
 $("#cuenta_agenda_datos").click( function () {
     let cliente_unico = $("#agenta_cliente_unico").val();
     select_datos_cuenta(cliente_unico);
+});
+
+$("#ver_modal_agendas").click( function () {
+    $('#modal_ver_agenda').modal('open');
 });
 
 // tb_cont_agenda
