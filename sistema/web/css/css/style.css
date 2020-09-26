@@ -771,6 +771,10 @@ div_info_secundaria{
     display: none;
 }
 
+span img[alt="MX"] {
+    display: none;
+}
+
 th,td {
     padding: 3px 3px;
     font-size: 12px;

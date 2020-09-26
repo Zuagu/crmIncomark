@@ -166,6 +166,9 @@ $("#save_num").click(function () {
     $('#datos_marcacion_directa').removeClass('hide');
     $('#editar_marcacion_directa').addClass('hide');
     actualizar_informacion_contacto();
+    if ($("#CLIENTE_UNICO").val().length > 5) {
+        select_datos_cuenta($("#CLIENTE_UNICO").val());
+    }
 });
 
 $("#buscar_cuentas").click(function () {
@@ -1211,12 +1214,18 @@ function insertar_agenda() {
         dataType: "json",
         success: function (result) {
 //            console.log(result);
-            $('#cliente_unico_agenda').val('');
-            $('#descripcion_agenda').val('');
-            $('#fecha_agenda').val('');
-            $('#hora_agenda').val('');
-            $('#modal_agregar_agenda').modal('close');
-            select_agendas();
+            if (result.response === 'OK') {
+                $('#cliente_unico_agenda').val('');
+                $('#descripcion_agenda').val('');
+                $('#fecha_agenda').val('');
+                $('#hora_agenda').val('');
+                $('#modal_agregar_agenda').modal('close');
+                select_agendas();
+            } else {
+                $('#mensaje_error_agenda').empty();
+                $('#mensaje_error_agenda').append(result.response);
+
+            }
         },
         error: function (err) {
             console.log(err);
@@ -1246,9 +1255,9 @@ function select_agendas() {
                     setTimeout(() => {
                         select_list_agendas_modal(item.CLIENTE_UNICO, item.DESCRIPCION, item.FECHA, item.HORA);
                         $('#modal_ver_agenda').modal('open');
-                    }, parseInt(item.H_EJECUTAR) * 1000 );
+                    }, parseInt(item.H_EJECUTAR) * 1000);
                 }
-                
+
             }
         },
         error: function (error) {
@@ -1257,23 +1266,27 @@ function select_agendas() {
     });
 }
 
-$("#tb_list_agenda").on("click", ".row_reg_agenda", function (){
+$('#agenta_hora').click( function () {
+    $('#mensaje_error_agenda').empty();
+});
+
+$("#tb_list_agenda").on("click", ".row_reg_agenda", function () {
     $(".row_reg_agenda").removeClass("selected");
-    $("#id_reg_agenda").val( $(this).attr("id").replace("row_agenda_", "") );
+    $("#id_reg_agenda").val($(this).attr("id").replace("row_agenda_", ""));
     $(this).addClass("selected");
 });
 
-$("#cuenta_agenda_datos").click( function () {
+$("#cuenta_agenda_datos").click(function () {
     let cliente_unico = $("#agenta_cliente_unico").val();
     select_datos_cuenta(cliente_unico);
 });
 
-$("#ver_modal_agendas").click( function () {
+$("#ver_modal_agendas").click(function () {
     $('#modal_ver_agenda').modal('open');
 });
 
 // tb_cont_agenda
-function select_list_agendas_modal(_cuenta, _descripcion, _fecha, _hora){
+function select_list_agendas_modal(_cuenta, _descripcion, _fecha, _hora) {
     $("#agenta_cliente_unico").val(_cuenta);
     $("#agenta_descripcion").val(_descripcion);
     $("#agenta_fecha").val(_fecha);

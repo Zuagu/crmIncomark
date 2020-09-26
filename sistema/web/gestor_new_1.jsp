@@ -661,7 +661,7 @@
                     <h3 class="center">Alerta de Agenda</h3>
 
                     <div class="col s12">
-                        <div class="col s12 div_btn right-align"></div>
+                        <div class="col s12 div_btn right-align"><p id="mensaje_error_agenda" class="red-text"></p></div>
                         <div class="input-field col s6">
                             <input id="agenta_cliente_unico" type="text" placeholder=" " class="validate">
                             <label for="agenta_cliente_unico">Cliente unico </label>
