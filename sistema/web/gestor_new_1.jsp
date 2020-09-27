@@ -301,6 +301,7 @@
                             <table>
                                 <thead>
                                     <tr class="blue">
+                                        <th>ID</th>
                                         <th>CLIENTE_UNICO</th>
                                         <th>DESCRIPCION</th>
                                         <th>FECHA</th>
@@ -530,6 +531,7 @@
                 <div class="modal-content">
                     <h3 class="center">Nuevo Recordatorio</h3>
                     <div class="col s12">
+                        <div class="col s12 div_btn right-align"><p id="mensaje_error_agenda" class="red-text"></p></div>
                         <div class="input-field col s6">
                             <input id="cliente_unico_agenda" type="text" class="validate">
                             <label for="cliente_unico_agenda">Numero de Cuenta</label>
@@ -661,7 +663,7 @@
                     <h3 class="center">Alerta de Agenda</h3>
 
                     <div class="col s12">
-                        <div class="col s12 div_btn right-align"><p id="mensaje_error_agenda" class="red-text"></p></div>
+                        <input id="id_agenda_gestor" value="0" type="hidden">
                         <div class="input-field col s6">
                             <input id="agenta_cliente_unico" type="text" placeholder=" " class="validate">
                             <label for="agenta_cliente_unico">Cliente unico </label>

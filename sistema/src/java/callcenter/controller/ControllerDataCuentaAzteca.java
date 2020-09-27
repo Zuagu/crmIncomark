@@ -90,16 +90,6 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-        } else if (action.equals("select_pagos_cuenta")) {
-            String Respuesta = ModelDataCuentaAzteca.select_pagos_cuenta(
-                    request.getParameter("cuenta"),
-                    request.getParameter("fecha_inico")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
         } else if (action.equals("select_convenios_cuenta")) {
             String Respuesta = ModelDataCuentaAzteca.select_convenios_cuenta(
                     request.getParameter("cuenta")
@@ -223,6 +213,15 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
                     request.getParameter("nom_tel_aval"),
                     request.getParameter("tel_aval_1"),
                     request.getParameter("tel_aval_2"),
+                    request.getParameter("cuenta")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("select_pagos_cuenta")) {
+            String Respuesta = ModelDataCuentaAzteca.select_pagos_cuenta(
                     request.getParameter("cuenta")
             );
             response.setContentType("text/html; charset=UTF-8");

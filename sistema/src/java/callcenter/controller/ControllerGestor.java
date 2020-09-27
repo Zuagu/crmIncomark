@@ -71,16 +71,6 @@ public class ControllerGestor extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
-        } else if (action.equals("select_pagos_cuenta")) {
-            String Respuesta = ModelGestor.select_pagos_cuenta(
-                    request.getParameter("cuenta"),
-                    request.getParameter("fecha_inico")
-            );
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter writer = response.getWriter();
-            writer.print(Respuesta);
-            writer.flush();
-            writer.close();
         } else if (action.equals("mostrar_pagos_diarios")) {
             String Respuesta = ModelGestor.mostrar_pagos_diarios(
                     request.getParameter("desde"),
@@ -199,6 +189,15 @@ public class ControllerGestor extends HttpServlet {
         } else if (action.equals("select_agendas")) {
             String Respuesta = ModelGestor.select_agendas(
                     request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("descartar_agenda_gestor")) {
+            String Respuesta = ModelGestor.descartar_agenda_gestor(
+                    request.getParameter("id_reg")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();

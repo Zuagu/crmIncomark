@@ -354,7 +354,7 @@ function select_datos_cuenta(_cuenta) {
                 <label>Referencia 4</label>
                 <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
                 <label>Aval</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
@@ -455,41 +455,6 @@ $("#div_telefonos_cuenta").on('click', '#guardar_tel_aval', function () {
     actualizar_contacto(params);
 });
 
-function select_datos_cuenta_relacionada(_cuenta) {
-    var params = {
-        action: "select_datos_cuenta_relacionada",
-        cuenta: _cuenta
-    };
-    $.ajax({
-        type: "POST",
-        url: "/sistema/ControllerGestor",
-        data: params,
-        dataType: "json",
-        success: function (datos_cuenta) {
-//            console.log(datos_cuenta);
-            for (var dato in datos_cuenta) {
-                $("#" + dato).empty();
-                $("#" + dato).val(datos_cuenta[dato]);
-            }
-            $("#estatus").empty();
-            $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta.status);
-            $("#codigo_llamada").empty();
-            $("#codigo_llamada").append(options_estatus_llamadas);
-            $('select').formSelect();
-            $("#div_telefonos_cuenta").empty();
-            $("#numero_marcado_deudor, #gestion").val("");
-            $("#tiempo_actual").val("00:00:00");
-            $("#retraso_actual").val("00:00:00");
-            pintar_telefonos_cuenta(datos_cuenta["telefonos"]);
-            telefonos_relacionados(datos_cuenta["cuenta_deudor"]);
-            var f_inicio = datos_cuenta["inicio_deudor"].split(" ");
-            select_gestiones_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_gestiones");
-            select_pagos_cuenta(datos_cuenta["cuenta_deudor"], f_inicio[0], "tbody_tabla_pagos");
-        }
-    });
-}
-
-
 
 function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
     $("#" + _div).empty();
@@ -527,40 +492,47 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
 
     });
 }
-function select_pagos_cuenta(_cuenta, _fecha_inico, _div) {
-    $("#" + _div).empty();
-    $("#" + _div).append("<img src='image/preloader_lineal.gif' width='40%'>");
+
+$('#tab_pagos').click( function () {
+    let id_cliente = $('#CLIENTE_UNICO').val();
+    select_pagos_cuenta(id_cliente, 'tbody_tabla_pagos');
+});
+
+function select_pagos_cuenta(_cuenta, _div) {
+    
     var params = {
         action: "select_pagos_cuenta",
-        cuenta: _cuenta,
-        fecha_inico: _fecha_inico
+        cuenta: _cuenta
     };
-//    console.log(params);
+    console.log(params);
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (pagos) {
             $("#" + _div).empty();
-//            console.log(pagos.length);
+            console.log(pagos);
             if (pagos.length === 0) {
                 $("#" + _div).append("Esta cuenta no tiene ningun pago");
             } else {
-                for (var i in pagos) {
-                    $("#" + _div).append('<tr>' +
-                            '<td>' + pagos[i].cuenta + '</td>' +
-                            '<td>' + pagos[i].fecha_pago + '</td>' +
-                            '<td>' + pagos[i].origen + '</td>' +
-                            '<td>' + pagos[i].importe + '</td>' +
-                            '<td>' + pagos[i].forma + '</td>' +
-                            '<td>' + pagos[i].status + '</td>' +
-                            '<td>' + pagos[i].fecha_aplicacion + '</td>' +
-                            '</tr>'
-                            );
+                for (var item of pagos) {
+                    $("#" + _div).append(`<tr>
+                        <td>${item.ID_PAGO}</td>
+                        <td>${item.CLIENTE_UNICO}</td>
+                        <td>${item.ZONA}</td>
+                        <td>${item.GERENTE}</td>
+                        <td>${item.FECHA_GESTION}</td>
+                        <td>${item.RECUPERACION_CAPITAL}</td>
+                        <td>${item.RECUPERACION_MORATORIOS}</td>
+                        </tr>`
+                        );
                 }
             }
 
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }
@@ -698,7 +670,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 <label>Referencia 4</label>
                 <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
                 <label>Aval</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
@@ -1213,7 +1185,7 @@ function insertar_agenda() {
         data: params,
         dataType: "json",
         success: function (result) {
-//            console.log(result);
+            console.log(result);
             if (result.response === 'OK') {
                 $('#cliente_unico_agenda').val('');
                 $('#descripcion_agenda').val('');
@@ -1245,6 +1217,7 @@ function select_agendas() {
             $('#tb_list_agenda').empty();
             for (let item of result) {
                 $('#tb_list_agenda').append(`<tr id='row_agenda_${item.ID_REGISTRO}' class='row_reg_agenda ${item.F_ACTIVE}'>
+                <td>${item.ID_REGISTRO}</td>
                 <td>${item.CLIENTE_UNICO}</td>
                 <td>${item.DESCRIPCION}</td>
                 <td>${item.FECHA}</td>
@@ -1253,7 +1226,7 @@ function select_agendas() {
                 if (parseInt(item.H_EJECUTAR) > 0) {
                     console.log(parseInt(item.H_EJECUTAR));
                     setTimeout(() => {
-                        select_list_agendas_modal(item.CLIENTE_UNICO, item.DESCRIPCION, item.FECHA, item.HORA);
+                        select_list_agendas_modal(item.CLIENTE_UNICO, item.DESCRIPCION, item.FECHA, item.HORA, item.ID_REGISTRO);
                         $('#modal_ver_agenda').modal('open');
                     }, parseInt(item.H_EJECUTAR) * 1000);
                 }
@@ -1278,7 +1251,9 @@ $("#tb_list_agenda").on("click", ".row_reg_agenda", function () {
 
 $("#cuenta_agenda_datos").click(function () {
     let cliente_unico = $("#agenta_cliente_unico").val();
+    let id_reg_agenda = $("#id_agenda_gestor").val();
     select_datos_cuenta(cliente_unico);
+    descartar_agenda_gestor(id_reg_agenda);
 });
 
 $("#ver_modal_agendas").click(function () {
@@ -1286,11 +1261,12 @@ $("#ver_modal_agendas").click(function () {
 });
 
 // tb_cont_agenda
-function select_list_agendas_modal(_cuenta, _descripcion, _fecha, _hora) {
+function select_list_agendas_modal(_cuenta, _descripcion, _fecha, _hora, _id_reg_agenda) {
     $("#agenta_cliente_unico").val(_cuenta);
     $("#agenta_descripcion").val(_descripcion);
     $("#agenta_fecha").val(_fecha);
     $("#agenta_hora").val(_hora);
+    $("#id_agenda_gestor").val(_id_reg_agenda);
 //    $.ajax({
 //        type: "POST",
 //        url: "ControllerGestor",
@@ -1415,25 +1391,32 @@ function select_numero_cuentas_tocadas_gestor() {
 }
 
 $("#m_familiar").click(function () {
-
     $('#modal_mensaje_familiar').modal('open');
-
 });
 
 $("#m_tercero").click(function () {
-
     $('#modal_mensaje_tercero').modal('open');
-
 });
 
 $("#m_aval").click(function () {
-
     $('#modal_mensaje_aval').modal('open');
-
 });
 
 $("#m_tt").click(function () {
-
     $('#modal_mensaje_tt').modal('open');
-
 });
+
+function descartar_agenda_gestor(_id_registro) {
+    $.ajax({
+        type: "POST",
+        url: "ControllerGestor",
+        data: {action: 'descartar_agenda_gestor', id_reg: _id_registro},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}

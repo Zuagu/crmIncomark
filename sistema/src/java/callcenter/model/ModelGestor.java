@@ -670,7 +670,7 @@ public class ModelGestor {
                     + "    DESCRIPCION, \n"
                     + "    DATE(FECHA_AGENDA) AS FECHA, \n"
                     + "    TIME(FECHA_AGENDA) AS HORA, \n"
-                    + "    time_to_sec(TIMEDIFF(FECHA_AGENDA, NOW())) AS H_EJECUTAR,\n"
+                    + "    if( time_to_sec(TIMEDIFF(FECHA_AGENDA, NOW())) < 0, 3, time_to_sec(TIMEDIFF(FECHA_AGENDA, NOW())) ) AS H_EJECUTAR, \n"
                     + "    if(time_to_sec(TIMEDIFF(FECHA_AGENDA, NOW())) < 0 and F_ACTIVE = 1,'yellow','green') as F_ACTIVE \n"
                     + "FROM azteca_registro_agenda WHERE ID_GESTOR = " + id_gestor + " AND F_ACTIVE = 1 AND DATE(FECHA_AGENDA) = CURDATE() ;";
             System.out.println(sql);
@@ -693,6 +693,24 @@ public class ModelGestor {
             inicioConexion.conn.close();
 
             return listAgenda.toString();
+        } catch (SQLException e) {
+            return "sql code" + e;
+        }
+    }
+
+    public static String descartar_agenda_gestor(String id_reg) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "UPDATE azteca_registro_agenda SET F_ACTIVE = '0' WHERE (`ID_REGISTRO` = '" + id_reg + "');";
+            System.out.println(sql);
+            
+            inicioConexion.st.executeUpdate(sql);
+            
+//            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            inicioConexion.conn.close();
+
+            return "{\"response\":\"Registro de agenda Actualializada\"}";
         } catch (SQLException e) {
             return "sql code" + e;
         }
