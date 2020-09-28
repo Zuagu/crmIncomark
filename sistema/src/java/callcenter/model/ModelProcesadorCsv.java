@@ -155,5 +155,31 @@ public class ModelProcesadorCsv {
             return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
         }
     }
+    
+    public static String cargar_gestiones_azteca(String dirFile) {
+        try {
+            // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
+            StartConexion ic = new StartConexion();
+            String sql_import_csv = "LOAD DATA LOCAL INFILE '" + dirFile + "' INTO TABLE azteca_gestiones \n"
+                    + "FIELDS TERMINATED BY ',' \n"
+                    + "LINES TERMINATED BY '\\n' \n"
+                    + "IGNORE 1 ROWS (@col1, @col2, @col3, @col4, @col5, @col6)\n"
+                    + "set \n"
+                    + "CUENTA=@col1,\n"
+                    + "GESTION=@col2,\n"
+                    + "TERRITORIO=@col3,\n"
+                    + "ALIAS_GESTOR=@col4,\n"
+                    + "FECHA_LARGA=@col5,\n"
+                    + "NUMERO_MARCADO=@col6 \n";
+//            System.out.println(sql_import_csv);
+            ic.st.executeUpdate(sql_import_csv);
+
+            ic.st.close();
+            ic.conn.close();
+            return "La base a sido cargada corectamente";
+        } catch (SQLException e) {
+            return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
+        }
+    }
 
 }

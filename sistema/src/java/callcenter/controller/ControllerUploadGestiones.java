@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package callcenter.controller;
-import callcenter.model.ModelProcesadorCsv;
 
+import callcenter.model.ModelProcesadorCsv;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,10 +20,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
- * @author zuagu
+ * @author Emmanuel Medina
  */
-public class ControllerUploadFiles extends HttpServlet {
-    
+public class ControllerUploadGestiones extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "upload";
     private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
     private static final int MAX_FILE_SIZE = 1024 * 1024 * 500; // 40MB
@@ -31,8 +30,7 @@ public class ControllerUploadFiles extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
+            throws ServletException, IOException {}
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -82,14 +80,14 @@ public class ControllerUploadFiles extends HttpServlet {
                 }
             }
             if(status_file) {
-                responseDb = ModelProcesadorCsv.cargar_base_azteca(filePath);
+                responseDb = ModelProcesadorCsv.cargar_gestiones_azteca(filePath);
                 request.setAttribute("message_db", responseDb);
                 //System.out.println(responseDb);
             }
         } catch (Exception ex) {
             request.setAttribute("message", "Hubo un error en la ruta: " + filePath + " al cargar el archivo: " + ex.getMessage());
             request.setAttribute("message_db", responseDb);
-            request.setAttribute("jsp_redirecion", "cargar-cartera-banco-azteca.jsp");
+            request.setAttribute("jsp_redirecion", "cargar-gestiones-azteca.jsp");
         }
         getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
     }

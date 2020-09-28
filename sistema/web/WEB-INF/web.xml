@@ -368,6 +368,10 @@
         <servlet-name>ControllerEquiposAzteca</servlet-name>
         <servlet-class>callcenter.controller.ControllerEquiposAzteca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerUploadGestiones</servlet-name>
+        <servlet-class>callcenter.controller.ControllerUploadGestiones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -723,6 +727,10 @@
     <servlet-mapping>
         <servlet-name>ControllerEquiposAzteca</servlet-name>
         <url-pattern>/ControllerEquiposAzteca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerUploadGestiones</servlet-name>
+        <url-pattern>/ControllerUploadGestiones</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

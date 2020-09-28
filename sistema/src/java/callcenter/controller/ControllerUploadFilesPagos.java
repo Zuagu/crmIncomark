@@ -27,8 +27,8 @@ public class ControllerUploadFilesPagos extends HttpServlet {
     
     private static final String UPLOAD_DIRECTORY = "upload";
     private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 300; // 40MB
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 300; // 50MB
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 500; // 40MB
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 500; // 50MB
 
     
     @Override
@@ -93,6 +93,7 @@ public class ControllerUploadFilesPagos extends HttpServlet {
         } catch (Exception ex) {
             request.setAttribute("message", "Hubo un error en la ruta: " + filePath + " al cargar el archivo: " + ex.getMessage());
             request.setAttribute("message_db", responseDb);
+            request.setAttribute("jsp_redirecion", "carga-pagos-azteca.jsp");
         }
         getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
         
