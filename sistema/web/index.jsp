@@ -21,7 +21,7 @@
                         <div class="inner ">
                             <div class="col s12 m12 l12">
                                 <div id="box_image" class="col s12 m6 l6  offset-m3 offset-l3 padding_40 back">
-                                    <img class="width_100" src="image/karina.png">
+                                    <img class="width_100" src="image/incomark.png">
                                 </div>
                                 <form id="login" class="back" style="" name="login" action="/sistema/main.jsp" method="post">
                                     <div class="col s12 m6 l6  offset-m3 offset-l3 padding_40 back">
@@ -29,7 +29,7 @@
 
                                         <div class="input-field width_100 color_true">
                                             <i class="material-icons prefix icon-white ">account_circle</i>
-                                            <input id="id_usuario" type="text" name="id_usuario" class="validate input_color" onkeypress="return isNumberKey(event)">
+                                            <input id="id_usuario" type="text" name="id_usuario" class="validate input_color">
                                             <label class="width_50" for="id_usuario">ID</label>
                                         </div>
                                         <div class="input-field width_100">

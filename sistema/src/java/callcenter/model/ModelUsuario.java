@@ -6,12 +6,12 @@ import org.json.simple.JSONArray;
 
 /**
  *
- * @author zuagu
+ * @author zuagux
  */
 public class ModelUsuario {
 
     //==========================================================================
-    public static int iniciar_sesion(int id_perfil, int id_usuario, String password, String ip) {
+    public static int iniciar_sesion(int id_perfil, String id_usuario, String password, String ip) {
         try {
             StartConexion inicioConexion = new StartConexion();
             int resultado = 0;
@@ -50,10 +50,10 @@ public class ModelUsuario {
     }
     //==========================================================================
 
-    public static String jsp_puesto(int id_empleado) {
+    public static String jsp_puesto(String id_empleado) {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String sql = "call sic_jsp_puesto(" + id_empleado + ");";
+            String sql = "call sic_jsp_puesto('" + id_empleado + "');";
             String resultado = "";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
@@ -72,11 +72,11 @@ public class ModelUsuario {
     }
 
     /* ====================================================================== */
-    public static String cargar_menu(int id_perfil, int id_usuario) {
+    public static String cargar_menu(int id_perfil, String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
             String resultado = "";
-            String sql = "call cargar_menu(" + id_perfil + "," + id_usuario + ");";
+            String sql = "call cargar_menu(" + id_perfil + ",'" + id_usuario + "');";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {
@@ -92,11 +92,11 @@ public class ModelUsuario {
     }
 
     //==========================================================================
-    public static String id_puesto(int id_usuario) {
+    public static String id_puesto(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
             String resultado = "";
-            String sql = "select id_puesto_usuario(" + id_usuario + ");";
+            String sql = "select id_puesto_usuario('" + id_usuario + "');";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {
@@ -112,11 +112,11 @@ public class ModelUsuario {
     }
 
     //==========================================================================
-    public static String id_puesto2(int id_usuario) {
+    public static String id_puesto2(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
             String resultado = "";
-            String sql = "select id_puesto2 from arcade_usuarios where id = " + id_usuario + ";";
+            String sql = "select id_puesto2 from arcade_usuarios where alias = '" + id_usuario + "';";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {
@@ -132,11 +132,30 @@ public class ModelUsuario {
     }
 
     //==========================================================================
-    public static String id_puesto3(int id_usuario) {
+    public static String id_puesto3(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
             String resultado = "";
-            String sql = "select id_puesto3 from arcade_usuarios where id = " + id_usuario + ";";
+            String sql = "select id_puesto3 from arcade_usuarios where alias = '" + id_usuario + "';";
+//            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            while (inicioConexion.rs.next()) {
+                resultado = inicioConexion.rs.getString(1);
+            }
+            inicioConexion.conn.close();
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            return resultado;
+        } catch (SQLException ex) {
+            return "SQL Code: " + ex;
+        }
+    }
+    //==========================================================================
+    public static String real_id(String id_usuario) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String resultado = "";
+            String sql = "select id from arcade_usuarios where alias = '"+id_usuario+"';";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {

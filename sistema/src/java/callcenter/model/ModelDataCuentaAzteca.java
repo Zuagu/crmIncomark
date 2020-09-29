@@ -338,7 +338,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
 //            String sql = "SELECT * FROM azteca_base_genenral_original ORDER BY RAND() LIMIT 1;";
-            String sql = "select * from azteca_base_genenral_original as bg left join azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.IDENTIFICADOR != '0' ORDER BY RAND() LIMIT 1;";
+            String sql = "call azteca_cuenta_siguente("+id_usuario+");";
 //            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();

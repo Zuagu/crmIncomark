@@ -99,6 +99,44 @@ public class ModelReportesAzteca {
         }
 
     }
+    
+    public static String azteca_reporte_operacion(String desde, String hasta) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT \n"
+                    + "	tu.id_usuario,\n"
+                    + "    u.nombre,\n"
+                    + "    tu.fecha,\n"
+                    + "    tu.hora_inicial,\n"
+                    + "    tu.tiempo_conectado,\n"
+                    + "    week(tu.fecha) as semana\n"
+                    + "FROM azteca_tiempos_usuarios tu\n"
+                    + "left join arcade_usuarios u on tu.id_usuario = u.id\n"
+                    + "where  fecha between '" + desde + "' and '" + hasta + "';";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listUsu = new JSONArray();
+
+            while (ic.rs.next()) {
+                JSONObject usu = new JSONObject();
+                usu.put("id_usuario", ic.rs.getString("id_usuario"));
+                usu.put("nombre", ic.rs.getString("nombre"));
+                usu.put("fecha", ic.rs.getString("fecha"));
+                usu.put("hora_inicial", ic.rs.getString("hora_inicial"));
+                usu.put("tiempo_conectado", ic.rs.getString("tiempo_conectado"));
+                usu.put("semana", ic.rs.getString("semana"));
+                listUsu.add(usu);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listUsu.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
 
     public static String azteca_reporte_pagos(String desde, String hasta, String zona) {
         try {

@@ -27,7 +27,7 @@ public class ControllerUsuario extends HttpServlet {
         if (action.equals("iniciar_sesion")) {
             int Respuesta = ModelUsuario.iniciar_sesion(
                     Integer.parseInt(request.getParameter("id_perfil")),
-                    Integer.parseInt(request.getParameter("id_usuario")),
+                    request.getParameter("id_usuario"),
                     request.getParameter("password"),
                     request.getParameter("ip")
             );
@@ -48,7 +48,7 @@ public class ControllerUsuario extends HttpServlet {
         } //====================================================================
         else if (action.equals("select_id_puesto")) {
             String Respuesta = ModelUsuario.id_puesto(
-                    Integer.parseInt(request.getParameter("id_usuario"))
+                    request.getParameter("id_usuario")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();

@@ -8,7 +8,7 @@ window.onload = function () {
     select_options_territorios();
     select_options_zona();
 };
-var reporte_estiones = [];
+//var reporte_estiones = [];
 
 $('#enviar_gestiones').click(function () {
     reporte_gestiones_tabla();
@@ -21,6 +21,10 @@ $('#enviar_convenios').click(function () {
 
 $('#enviar_pagos').click(function () {
     azteca_reporte_pagos();
+});
+
+$('#enviar_tiempos').click(function () {
+    azteca_reporte_operacion();
 });
 
 $('#ver_resumen_gestion').click(function () {
@@ -184,12 +188,12 @@ function reporte_gestiones_tabla() {
                     </tr>`);
                 cantidad = cantidad + 1;
             }
-            reporte_estiones.push(canal);
-            reporte_estiones.push(atraso_maximo);
-            reporte_estiones.push(gestor);
-            reporte_estiones.push(estatus_cuenta);
-            reporte_estiones.push(estatus_llamda);
-            reporte_estiones.push(territorio);
+//            reporte_estiones.push(canal);
+//            reporte_estiones.push(atraso_maximo);
+//            reporte_estiones.push(gestor);
+//            reporte_estiones.push(estatus_cuenta);
+//            reporte_estiones.push(estatus_llamda);
+//            reporte_estiones.push(territorio);
 //            console.log(reporte_estiones);
             $('#tb_territorio').empty();
             for( let item in territorio){
@@ -270,6 +274,38 @@ function azteca_reporte_convenios() {
             }
             $('#cantidad_convenios').empty();
             $('#cantidad_convenios').append(cantidad + ' Cuentas');
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function azteca_reporte_operacion() {
+    let params = {
+        action: 'azteca_reporte_operacion',
+        desde: $('#desde_tiempos').val(),
+        hasta: $('#hasta_tiempos').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+//            console.log(response);
+            $('#tbody_tabla_tiempos').empty();
+            for (let item of response) {
+                $('#tbody_tabla_tiempos').append(`<tr>
+                    <td>${item.id_usuario}</td>
+                    <td>${item.nombre}</td>
+                    <td>${item.fecha}</td>
+                    <td>${item.hora_inicial}</td>
+                    <td>${item.tiempo_conectado}</td>
+                    <td>${item.semana}</td>
+                    </tr>`);
+            }
+            
         },
         error: function (error) {
             console.log(error);

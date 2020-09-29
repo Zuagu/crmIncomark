@@ -42,8 +42,9 @@
                     <ul id="tabs-swipe-demo" class="tabs hide_print">
                         <li class="tab col s3"><a class="active" href="#test-swipe-1" style="color:#db040e">Gestiones</a></li>
                         <li class="tab col s3"><a class="active" href="#test-swipe-2" style="color:#db040e">Convenios</a></li>
-                        <li class="tab col s3"><a class="active" href="#test-swipe-3" style="color:#db040e">Pagos</a></li>
-                        <li class="tab col s3"><a class="active" href="#test-swipe-4" style="color:#db040e">Base General</a></li>
+                        <li class="tab col s2"><a class="active" href="#test-swipe-3" style="color:#db040e">Pagos</a></li>
+                        <li class="tab col s2"><a class="active" href="#test-swipe-4" style="color:#db040e">Base General</a></li>
+                        <li class="tab col s2"><a class="active" href="#test-swipe-5" style="color:#db040e">Tiempos</a></li>
                     </ul>
                     <div id="test-swipe-1" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
@@ -236,7 +237,7 @@
                                     <a id="ver_lista_pagos" class="btn-small blue hide">lista gestiones</a>
                                 </div>
                             </div>
-                            
+
                             <div id="resumen_pagos" class="col s12 z-depth-2 hide">
                                 <h5 id="cantidad_pagos" class="right-align"></h5>
                                 <table>
@@ -251,9 +252,9 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tb_resumen_pagos">
-                                        
+
                                     </tbody>
-                                    
+
                                 </table>
                             </div>
                             <div id="datos_tabla_pagos" class="col s12 z-depth-2 dt">
@@ -288,7 +289,40 @@
                             <div class="col s12 m12 l12">
                                 <a id="descargar_base" class="btn waves-effect waves-teal">Descargar Base</a>
                             </div>
-                            
+
+                        </div>
+                    </div>
+
+                    <div id="test-swipe-5" class="col s12" style="margin-top:10px;"> 
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h4>Reporte de horas Gestor</h4>
+                            </div>
+                            <div class="input-field col s12" >
+                                <input id="desde_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
+                                <label class="" for="desde_tiempos"></label>
+                                <input id="hasta_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
+                                <label class="" for="hasta_tiempos"></label>
+                                <a id="enviar_tiempos" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
+                                <a onclick="tableToExcel('datos_tabla_tiempos', 'PAGOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
+                            </div>
+                            <div id="datos_tabla_tiempos" class="col s12 m12 l12">
+                                <table class="highlight" id="tabla_pagos">
+                                    <thead class="blue">
+                                        <tr class="text-white">
+                                            <td><b>ID USUARIO</b></td>
+                                            <td><b>NOMBRE</b></td>
+                                            <td><b>FECHA</b></td>
+                                            <td><b>HORA INICIAL</b></td>
+                                            <td><b>TIEMPO CONECTADO</b></td>
+                                            <td><b>SEMANA</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_tabla_tiempos">
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
 

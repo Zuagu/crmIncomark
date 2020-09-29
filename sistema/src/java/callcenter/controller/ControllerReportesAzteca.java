@@ -94,6 +94,17 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("azteca_reporte_operacion")) {
+            String Respuesta = ModelReportesAzteca.azteca_reporte_operacion(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         
     }
     
