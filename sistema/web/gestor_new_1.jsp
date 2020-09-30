@@ -285,7 +285,7 @@
                                     <td><b>FOLIO</b></td>
                                     <td><b>CLIENTE UNICO</b></td>
                                     <td><b>ZONA</b></td>
-                                    <td><b>GERNETE</b></td>
+                                    <td><b>GERENTE</b></td>
                                     <td><b>FECHA GESTION</b></td>
                                     <td><b>RECUPERACION CAPITAL</b></td>
                                     <td><b>RECUPERACION MORATORIOS</b></td>
@@ -327,12 +327,7 @@
                         <div id="tabla_agendas" class="col s12 m12 l12"></div>
                     </div>
                     <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <div class="col s2 m2 l2 rango-fechas-visitas hide">
-                            <input type="text" class="datepicker input_date center-align" placeholder="desde">
-                            <input type="text" class="timepicker input_date center-align" placeholder="hasta">
-                            <a id="mostrar_visitas" class="waves-effect waves-light btn btn_gestiones green center">enviar</a>
-                        </div>
-                        <div id="tabla_visitas" class="col s12 m12 l12">jkshaksjdhkasjh</div>
+                        
                     </div>
                     <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
                         <table class="highlight" id="tabla_convenios">
@@ -355,45 +350,7 @@
                         </table>
                     </div>
                     <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <table class="highlight" id="tabla_equipos_usuario">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td><b>ASIGNACION</b></td>
-                                    <td><b>EQUIPO</b></td>
-                                    <td><b>CUENTAS</b></td>
-                                    <td><b>ASIGNADO</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_equipos_usuario">
-                            </tbody>
-                        </table>
-                        <table class="highlight hide" id="tabla_saldos_status">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td><b>REGION</b></td>
-                                    <td><b>ESTATUS</b></td>
-                                    <td><b>CUENTAS</b></td>
-                                    <td><b>VALOR</b></td>
-                                    <td><b>ULTIMO TOQUE</b></td>
-                                    <td><b>GRUPO</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_saldos_status">
-                            </tbody>
-                        </table>
-                        <table class="highlight hide" id="tabla_cuentas_status">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td><b>REGION</b></td>
-                                    <td><b>CUENTA</b></td>
-                                    <td><b>ESTATUS</b></td>
-                                    <td><b>RESTO</b></td>
-                                    <td><b>ULTIMO TOQUE</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_cuentas_status">
-                            </tbody>
-                        </table>
+                        
                     </div>
                     <div id="div_input_gestor_tiempos" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1">
                         <div class="input-field col s2 m2 l2">

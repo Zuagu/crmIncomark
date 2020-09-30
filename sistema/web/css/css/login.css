@@ -38,7 +38,7 @@ body {
 }
 
 .back{	
-    background-color:rgba(255,255,255,0.7) !important;
+    background-color:rgba(255,255,255,0.9) !important;
 }
 
 .padding_40 input[type="text"]:not(.browser-default){

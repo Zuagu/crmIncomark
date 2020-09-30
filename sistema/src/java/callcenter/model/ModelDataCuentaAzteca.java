@@ -183,7 +183,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
             String sql = "call azteca_buscar_cuentas('%" + busqueda.replace(";", "") + "%');";
-//            System.out.println(sql);
+            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listCuentas = new JSONArray();
 
