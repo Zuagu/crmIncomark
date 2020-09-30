@@ -79,6 +79,14 @@
                                 <input id="CP_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="CP_CTE">C.P.</label>
                             </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="TIPO_CTE">TIPO</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="CANAL_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CANAL_CTE">CANAL</label>
+                            </div>
                         </div>
                     </div>
                     <div class=" col s5 m5 l5">
@@ -120,6 +128,7 @@
                             <div class="input-field col s6 m6 l6 center-align">
                                 <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
                             </div>
+                            
                         </div>
                     </div>
                     <div class=" col s7 m7 l7">
