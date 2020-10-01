@@ -674,6 +674,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 <label>Aval Direcion:${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
+                $('#cuenta_siguiente').removeClass('disabled');
 
                 select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], '0000-00-00', "tbody_tabla_gestiones");
                 if ($('#primera_llamada').val() === '00:00:00') {
@@ -692,7 +693,9 @@ function select_cuenta_siguiente(_id_usuario) {
 }
 
 $("#cuenta_siguiente").click(function () {
+    $('#cuenta_siguiente').addClass('disabled');
     select_cuenta_siguiente(id_usuario);
+    
 });
 // Funciones para insert Gestion
 
@@ -727,9 +730,11 @@ function insertar_gestion(myObj) {
             $("#gestion").attr("readonly", "readonly");
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
+            $('#guardar_gestion').removeClass('disabled');
 
             select_gestiones_cuenta(myObj["_CUENTA"], '0000-00-00', "tbody_tabla_gestiones");
         },
+        
         error: function (error) {
             console.log(error);
         }
@@ -758,6 +763,8 @@ $("#guardar_gestion").click(function () {
             _F_PREDICTIVO: 0,
             _ID_EQUIPO: $('#ID_EQUIPO').val()
         };
+        
+        $('#guardar_gestion').addClass('disabled');
 //        console.log(myObjGestion);
         insertar_gestion(myObjGestion);
     } else {
