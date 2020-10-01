@@ -802,6 +802,9 @@ function insertar_convenio(_myObjConvenio, _myObjGestion) {
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
             }
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }

@@ -41,7 +41,7 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        System.out.println(action);
+//        System.out.println(action);
 
         if (action.equals("datos_cuenta_azteca")) {
             String Respuesta = ModelDataCuentaAzteca.datosCuenta(

@@ -118,6 +118,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPOTEL4_2", ic.rs.getString("TIPOTEL4_2"));
                 objCuenta.put("TELEFONO5_2", ic.rs.getString("TELEFONO5_2"));
                 objCuenta.put("TIPOTEL5_2", ic.rs.getString("TIPOTEL5_2"));
+                objCuenta.put("TELEFONO5", ic.rs.getString("TELEFONO5"));
 
                 objCuenta.put("CRM", ic.rs.getString("CRM"));
 
@@ -431,6 +432,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TIPOTEL4_2", ic.rs.getString("TIPOTEL4_2"));
                 objCuenta.put("TELEFONO5_2", ic.rs.getString("TELEFONO5_2"));
                 objCuenta.put("TIPOTEL5_2", ic.rs.getString("TIPOTEL5_2"));
+                objCuenta.put("TELEFONO5", ic.rs.getString("TELEFONO5"));
 
                 objCuenta.put("CRM", ic.rs.getString("CRM"));
 
