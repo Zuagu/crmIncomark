@@ -455,14 +455,19 @@ public class ModelDataCuentaAzteca {
             Object _ID_USUARIO = jsonObject.get("ID_USUARIO");
             Object _CUENTA = jsonObject.get("CUENTA");
             Object _TERRITORIO = jsonObject.get("TERRITORIO");
+            Object _GERENCIA = jsonObject.get("GERENCIA");
+            Object _GERENTE = jsonObject.get("GERENTE");
+            Object _NOMBRE = jsonObject.get("NOMBRE_CTE");
+            Object _ID_ESTATUS_LLAMADA = jsonObject.get("ID_ESTATUS_LLAMADA");
+            Object _TIPO_CONVENIO = jsonObject.get("TIPO_CONVENIO");
             Object _CANAL = jsonObject.get("CANAL");
             Object _ATRASO_MAXIMO = jsonObject.get("ATRASO_MAXIMO");
             Object _ID_EQUIPO = jsonObject.get("ID_EQUIPO");
             Object _PASSwORD = jsonObject.get("PASSwORD");
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '" + _PASSwORD + "');";
-//            System.out.println(sql);
+            String sql = "CALL azteca_insert_convenio( " + _CONVENIO + ", '" + _FECHA + "', " + _ID_USUARIO + ", '" + _CUENTA + "', '" + _TERRITORIO + "', '" + _CANAL + "' , " + _ATRASO_MAXIMO + ", " + _ID_EQUIPO + ", '" + _PASSwORD + "', '" + _GERENCIA + "', '" + _GERENTE + "', '" + _ID_ESTATUS_LLAMADA + "', '" + _TIPO_CONVENIO + "', '" + _NOMBRE + "');";
+            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             // response
             JSONObject objResp = new JSONObject();

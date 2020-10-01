@@ -52,8 +52,16 @@
                             </div>
 
                             <div class="input-field col s6 m6 l6">
-                                <input id="CANAL2" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CANAL2">Subprodcuto</label>
+                                <input id="" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="">Subproducto</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="TIPO_CTE">Tipo</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="GERENCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="GERENCIA">Gerencia</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
@@ -63,6 +71,7 @@
                                 <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="DIRECCION">Direccion</label>
                             </div>
+                            
                             <div class="input-field col s4 m4 l4">
                                 <input id="COLONIA_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="COLONIA_CTE">Colonia</label>
@@ -72,21 +81,14 @@
                                 <label for="ESTADO_CTE">Estado</label>
                             </div>
                             <div class="input-field col s3 m3 l3">
-                                <input id="CIUDAD_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CIUDAD_CTE">Ciudad</label>
+                                <input id="POBLACION_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="POBLACION_CTE">Ciudad</label>
                             </div>
                             <div class="input-field col s2 m2 l2">
                                 <input id="CP_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="CP_CTE">C.P.</label>
                             </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="TIPO_CTE">TIPO</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="CANAL_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CANAL_CTE">CANAL</label>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class=" col s5 m5 l5">
