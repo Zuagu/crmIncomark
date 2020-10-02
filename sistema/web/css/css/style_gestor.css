@@ -40,16 +40,34 @@ nav .btn-flat {
     margin: 0px !important;
     height: 1rem !important;
     font-size: 14px;
-    font-weight: 200;
+    color: #000;
+    font-weight: bold;
 }
 
 #info_gestor .input-field {
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.2rem;
 }
 
 input.invalid[type="text"]:not(.browser-default) {
     border-bottom: 1px solid #000;
     -webkit-box-shadow: 0 1px 0 0 #000;
-    box-shadow: 0 1px 0 0 #000;
+    box-shadow: 0 0px 0 0 #000;
+}
+
+input[type="text"]:not(.browser-default).validate + label {
+    color: #000;
+}
+
+#info_gestor_secundario input{
+    margin: 0px !important;
+    height: 1rem !important;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+
+#info_gestor_secundario .input-field {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
 }
