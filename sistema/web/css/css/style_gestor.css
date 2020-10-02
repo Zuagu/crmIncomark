@@ -1,0 +1,55 @@
+
+.img_log, #foto_perfil{
+    width: 27px;
+    margin: 12%;  
+    margin-top: 0px;
+}
+nav{
+    height: 35px;
+    line-height: 33px;
+}
+nav .nav-wrapper i {
+    height: 30px;
+    line-height: 33px;
+}
+
+#buscador_cuentas_gestor {
+
+}
+
+.contenedor_buscar {
+    display: inline-block;
+    line-height: 1.7rem;
+    margin-top: 4px;
+    margin-left:10px !important; 
+    border-radius: 4px !important;
+    width: 350px;
+}
+.contenedor_buscar input{
+    height: 1.7rem !important;
+    width:100% !important;
+    border: 1px solid #2196f3 !important;
+    margin: 0px !important;
+
+}
+nav .btn-flat {
+    padding: 0px 0px !important;
+}
+
+#info_gestor input{
+    margin: 0px !important;
+    height: 1rem !important;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+#info_gestor .input-field {
+    margin-top: 0.4rem;
+    margin-bottom: 0.2rem;
+}
+
+input.invalid[type="text"]:not(.browser-default) {
+    border-bottom: 1px solid #000;
+    -webkit-box-shadow: 0 1px 0 0 #000;
+    box-shadow: 0 1px 0 0 #000;
+}

@@ -1,10 +1,8 @@
 var options_estatus_llamadas = "";
 var options_estatus_cuenta = "";
-$('#filtro').addClass('hide');
+//$('#filtro').addClass('hide');
 $('#resultado_menu').addClass('hide');
-$('#unico_filtro').empty();
-$('#unico_filtro').append($('#div_input_gestor_tiempos').html());
-$('#div_input_gestor_tiempos').remove();
+//$('#unico_filtro').empty();
 $(document).ready(function () {
 //iniciar el dropdown del menu
     $('.fixed-action-btn').floatingActionButton();

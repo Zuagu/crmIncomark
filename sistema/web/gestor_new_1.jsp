@@ -10,12 +10,12 @@
         <link rel="shortcut icon" href="image/logoInco.fw.png">
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
         <style>
         </style>
     </head>
 
-    <body style="background: #fafafa">
+    <body style="background: #fafafa" style="font-size: 12px">
         <jsp:include page="header.jsp"/>
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
@@ -29,17 +29,12 @@
                     <input id="ID_EQUIPO" type="hidden">
                     <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1">
-                            <div class="col s6 m6 l6 contenido-datos">
-                                <input id="buscador_cuentas_gestor" class="search_cuentas center-align" type="text" placeholder="Buscar">
-                            </div>
-                            <div class="input-field col s2 m2 l2">
-                                <a id="buscar_cuentas" class="btn-small col s12"><i class="material-icons">search</i></a>
-                            </div>
-                            <div class="col s4 m4 l4">
-                                <h6>Informacon General</h6>
+                            
+                            <div class="col s12 m12 l12 grey lighten-3">
+                                <h6>Informacion del cliente</h6>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="111 - 4545 - 21212 - 654">
                                 <label for="CLIENTE_UNICO">Cuenta</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
@@ -71,7 +66,7 @@
                                 <input id="DIRECCION" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="DIRECCION">Direccion</label>
                             </div>
-                            
+
                             <div class="input-field col s4 m4 l4">
                                 <input id="COLONIA_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="COLONIA_CTE">Colonia</label>
@@ -88,7 +83,7 @@
                                 <input id="CP_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="CP_CTE">C.P.</label>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class=" col s5 m5 l5">
@@ -130,7 +125,7 @@
                             <div class="input-field col s6 m6 l6 center-align">
                                 <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class=" col s7 m7 l7">
@@ -160,18 +155,7 @@
                                         <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Sig.</a>
                                     </div> 
                                 </div>
-                                <div class="col s12 m12 l12 ">
-                                    <div class=" col s12 m12 l12 div_tabs">
-                                        <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
-                                            <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
-                                            <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
-                                            <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
-                                            <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
-                                            <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
-                                            <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
-                                        </ul>
-                                    </div> 
-                                </div>
+
                             </div>
 
                         </div> 
@@ -275,124 +259,137 @@
                             </div>
                         </div> 
                     </div>
-                    <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;"> 
-                        <table class="highlight" id="tabla_gestiones">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td> <b>FECHA</b></td>
-                                    <td> <b>HORA</b></td>
-                                    <td> <b>NUMERO</b></td>
-                                    <td> <b>AGENTE</b></td>
-                                    <td> <b>ESTATUS</b></td>
-                                    <td> <b>CODIGO</b></td>
-                                    <td> <b>DISPOCISION</b></td>
-                                    <td> <b>TIEMPO</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_gestiones">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <table class="highlight" id="tabla_pagos">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td><b>FOLIO</b></td>
-                                    <td><b>CLIENTE UNICO</b></td>
-                                    <td><b>ZONA</b></td>
-                                    <td><b>GERENTE</b></td>
-                                    <td><b>FECHA GESTION</b></td>
-                                    <td><b>RECUPERACION CAPITAL</b></td>
-                                    <td><b>RECUPERACION MORATORIOS</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_pagos">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
-                        <input id="id_reg_agenda" type="hidden">
-                        <div class="col s12 m9 l9">
-                            <table>
-                                <thead>
-                                    <tr class="blue">
-                                        <th>ID</th>
-                                        <th>CLIENTE_UNICO</th>
-                                        <th>DESCRIPCION</th>
-                                        <th>FECHA</th>
-                                        <th>HORA</th>
+                    <div class="col s7 m7 l7 ">
+                        <div class=" col s12 m12 l12 div_tabs">
+                            <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
+                                <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
+                                <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
+                                <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
+                                <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
+                                <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
+                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
+                            </ul>
+                        </div> 
+
+                        <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;"> 
+                            <table class="highlight" id="tabla_gestiones">
+                                <thead class="blue">
+                                    <tr class="text-white">
+                                        <td> <b>FECHA</b></td>
+                                        <td> <b>HORA</b></td>
+                                        <td> <b>NUMERO</b></td>
+                                        <td> <b>AGENTE</b></td>
+                                        <td> <b>ESTATUS</b></td>
+                                        <td> <b>CODIGO</b></td>
+                                        <td> <b>DISPOCISION</b></td>
+                                        <td> <b>TIEMPO</b></td>
                                     </tr>
                                 </thead>
-                                <tbody id="tb_list_agenda">
-
+                                <tbody id="tbody_tabla_gestiones">
                                 </tbody>
                             </table>
+                        </div>
+                        <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
+                            <table class="highlight" id="tabla_pagos">
+                                <thead class="blue">
+                                    <tr class="text-white">
+                                        <td><b>FOLIO</b></td>
+                                        <td><b>CLIENTE UNICO</b></td>
+                                        <td><b>ZONA</b></td>
+                                        <td><b>GERENTE</b></td>
+                                        <td><b>FECHA GESTION</b></td>
+                                        <td><b>RECUPERACION CAPITAL</b></td>
+                                        <td><b>RECUPERACION MORATORIOS</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_tabla_pagos">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
+                            <input id="id_reg_agenda" type="hidden">
+                            <div class="col s12 m9 l9">
+                                <table>
+                                    <thead>
+                                        <tr class="blue">
+                                            <th>ID</th>
+                                            <th>CLIENTE_UNICO</th>
+                                            <th>DESCRIPCION</th>
+                                            <th>FECHA</th>
+                                            <th>HORA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tb_list_agenda">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="col s12 m3 l3 div_btn">
+                                <a id="new_agenda" class="btn green waves-effect waves-light">Agregar</a>
+                            </div>
+                            <div class="col s12 m3 l3 div_btn">
+                                <a id="delete_agenda" class="btn red waves-effect waves-light">Eliminar</a>
+                            </div>
+                            <div class="col s12 m3 l3 div_btn">
+                                <a id="ver_modal_agendas" class="btn blue waves-effect">Ver Agendas</a>
+                            </div>
+
+                            <div id="tabla_agendas" class="col s12 m12 l12"></div>
+                        </div>
+                        <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
 
                         </div>
-                        <div class="col s12 m3 l3 div_btn">
-                            <a id="new_agenda" class="btn green waves-effect waves-light">Agregar</a>
+                        <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
+                            <table class="highlight" id="tabla_convenios">
+                                <thead class="blue">
+                                    <tr class="text-white">
+                                        <td><b>CUENTA</b></td>
+                                        <td><b>GESTOR</b></td>
+                                        <td><b>CONVENIO</b></td>
+                                        <td><b>FECHA GESTION</b></td>
+                                        <td><b>PLAZO</b></td>
+                                        <td><b>FECHA</b></td>
+                                        <td><b>PAGOS</b></td>
+                                        <td><b>FECHA PAGOS</b></td>
+                                        <td><b>EFECTIVIDAD</b></td>
+                                        <td><b>STATUS</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_tabla_convenios">
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col s12 m3 l3 div_btn">
-                            <a id="delete_agenda" class="btn red waves-effect waves-light">Eliminar</a>
-                        </div>
-                        <div class="col s12 m3 l3 div_btn">
-                            <a id="ver_modal_agendas" class="btn blue waves-effect">Ver Agendas</a>
-                        </div>
+                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
 
-                        <div id="tabla_agendas" class="col s12 m12 l12"></div>
+                        </div>
                     </div>
-                    <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        
-                    </div>
-                    <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        <table class="highlight" id="tabla_convenios">
-                            <thead class="blue">
-                                <tr class="text-white">
-                                    <td><b>CUENTA</b></td>
-                                    <td><b>GESTOR</b></td>
-                                    <td><b>CONVENIO</b></td>
-                                    <td><b>FECHA GESTION</b></td>
-                                    <td><b>PLAZO</b></td>
-                                    <td><b>FECHA</b></td>
-                                    <td><b>PAGOS</b></td>
-                                    <td><b>FECHA PAGOS</b></td>
-                                    <td><b>EFECTIVIDAD</b></td>
-                                    <td><b>STATUS</b></td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_tabla_convenios">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
-                        
-                    </div>
-                    <div id="div_input_gestor_tiempos" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1">
-                        <div class="input-field col s2 m2 l2">
+                    <div id="div_input_gestor_tiempos" class="col s5 m5 l5 div_input_gestor_tiempos z-depth-1">
+                        <div class="input-field col l6 m6 l6">
                             <input id="primera_llamada" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
                             <label for="primera_llamada">P.llamada</label>
                         </div>
-                        <div class="input-field col s2 m2 l2">
+                        <div class="input-field col l6 m6 l6">
                             <input id="tiempo_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
                             <label for="tiempo_actual">Actual</label>
                         </div>
-                        <div class="input-field col s2 m2 l2">
+                        <div class="input-field col l6 m6 l6">
                             <input id="retraso_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
                             <label for="retraso_actual">R. Actual</label>
                         </div>
-                        <div class="input-field col s2 m2 l2">
+                        <div class="input-field col l6 m6 l6">
                             <input id="cuentas_tocadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
                             <label for="cuentas_tocadas">Cuentas</label>
                         </div>
-                        <div class="input-field col s2 m2 l2">
+                        <div class="input-field col l6 m6 l6">
                             <input id="llamadas_realizadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
                             <label for="llamadas_realizadas" class="centro">Llamadas</label>
                         </div>
-                        <div class="input-field col s2 m2 l2">
+                        <div class="input-field col l6 m6 l6">
                             <input id="convenios" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
                             <label for="convenios">Convenios</label>
                         </div>
-                        <div class="input-field col s2 m2 l2">
+                        <div class="input-field col l6 m6 l6">
                             <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
                             <label for="CRM">Estatus</label>
                         </div>
@@ -662,7 +659,7 @@
             </div>
 
         </div>	
-        
+
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/Script_Azteca.js"></script>

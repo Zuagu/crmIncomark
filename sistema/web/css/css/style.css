@@ -621,7 +621,6 @@ color_icon{
     transition: 0.8s;
 }
 .div_input_gestor_tiempos input[type="text"]:not(.browser-default)[readonly="readonly"]{
-    height: 30px;
     border-radius: 4px;
 
     color: black;
