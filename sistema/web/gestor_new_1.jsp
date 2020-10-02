@@ -73,22 +73,6 @@
                                 <h6>Informacion Economica</h6>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="DIA_DE_PAGO">Dia de Pago</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="ATRASO_MAXIMO">Semanas</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="IMP_ULTIMO_PAGO">Ult. Pago $</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
                                 <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="SALDO">Capital</label>
                             </div>
@@ -97,15 +81,26 @@
                                 <label for="MORATORIOS">Moratorios</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
+                                <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="ATRASO_MAXIMO">Semanas</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DIA_DE_PAGO">Día de Pago</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="IMP_ULTIMO_PAGO">Ultimo Pago</label>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
                                 <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="SALDO_TOTAL">Saldo Total</label>
                             </div>
-                            <div class="input-field col s6 m6 l6 center-align">
-                                <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
-                            </div>
-                            <div class="input-field col s6 m6 l6 center-align">
-                                <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
-                            </div>
+                            
 
                         </div>
                     </div>
@@ -113,6 +108,12 @@
                         <div class=" col s12 m12 l12  div_gestor_gestion z-depth-1">
                             <div class="col s12 m12 l12">
                                 <h6>Gestion</h6>
+                            </div>
+                            <div class="input-field col s6 m6 l6 center-align">
+                                <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
+                            </div>
+                            <div class="input-field col s6 m6 l6 center-align">
+                                <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
                             </div>
                             <div class=" col s12 m12 l12  div_gestor_gestion">
                                 <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
