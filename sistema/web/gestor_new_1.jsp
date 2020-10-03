@@ -15,7 +15,7 @@
         </style>
     </head>
 
-    <body style="background: #fafafa" style="font-size: 12px">
+    <body class="grey lighten-3" style="font-size: 12px">
         <jsp:include page="header.jsp"/>
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
@@ -28,7 +28,7 @@
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
                     <div class=" col s7 m7 l7">
-                        <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1">
+                        <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
 
                             <div class="col s12 m12 l12">
                                 <h6>Informacion del cliente</h6>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class=" col s5 m5 l5">
-                        <div id="info_gestor_secundario" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1 div_info_secundaria">
+                        <div id="info_gestor_secundario" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1 div_info_secundaria white">
                             <div class="col s12 m12 l12">
                                 <h6>Informacion Economica</h6>
                             </div>
@@ -92,9 +92,13 @@
                                 <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="IMP_ULTIMO_PAGO">Ultimo Pago</label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s6 m6 l6">
                                 <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="CRM∫">estatus</label>
                             </div>
                             <div class="input-field col s12 m12 l12">
                                 <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
@@ -105,35 +109,30 @@
                         </div>
                     </div>
                     <div class=" col s7 m7 l7">
-                        <div class=" col s12 m12 l12  div_gestor_gestion z-depth-1">
+                        <div id="div_gestor_gestion" class=" col s12 m12 l12  div_gestor_gestion z-depth-1 white">
                             <div class="col s12 m12 l12">
                                 <h6>Gestion</h6>
                             </div>
-                            <div class="input-field col s6 m6 l6 center-align">
-                                <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
-                            </div>
-                            <div class="input-field col s6 m6 l6 center-align">
-                                <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
-                            </div>
-                            <div class=" col s12 m12 l12  div_gestor_gestion">
+                            
+                            <div class=" col s7 m7 l7  div_gestor_gestion">
                                 <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
-                                    <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Gestion"></textarea>
+                                    <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="1000" placeholder="Gestion"></textarea>
                                 </div>
                             </div>
-                            <div class=" col s12 m12 l12  div_gestor_gestion">
+                            <div class=" col s5 m5 l5  div_gestor_gestion">
                                 <div class="input-field col s12 m12 l12">
-                                    <div class=" input-field col s6 m6 l6">
+                                    <div class=" input-field col s12 m12 l12">
                                         <select id="estatus">
                                             <option value="0" selected>Selecciona Estatus</option>
                                         </select>
                                     </div> 
-                                    <div class=" input-field col s6 m6 l6">
+                                    <div class=" input-field col s12 m12 l12">
                                         <select id="codigo_llamada"></select>
                                     </div> 
-                                    <div class=" input-field offset-l6 col s3 m3 l3">
+                                    <div class=" input-field  col s6 m6 l6">
                                         <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
                                     </div> 
-                                    <div class=" input-field col s3 m3 l3">
+                                    <div class=" input-field col s6 m6 l6">
                                         <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Sig.</a>
                                     </div> 
                                 </div>
@@ -143,7 +142,7 @@
                         </div> 
                     </div>    
                     <div class="col s5 m5 l5">
-                        <div class="col s12 l12 m12 marcacion_directa">
+                        <div class="col s12 l12 m12 marcacion_directa white">
                             <ul id="datos_marcacion_directa" class="collection">
                                 <label>Referencia 1</label>
                                 <li class="collection-item black-text">. <a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
@@ -238,6 +237,12 @@
                             <div class="input-field col s12 m12 l12">
                                 <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
                                 <label for="CALLEAVAL">Direccion Aval </label>
+                            </div>
+                            <div class="input-field col s6 m6 l6 center-align">
+                                <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
+                            </div>
+                            <div class="input-field col s6 m6 l6 center-align">
+                                <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
                             </div>
                         </div> 
                     </div>
@@ -371,10 +376,7 @@
                             <input id="convenios" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
                             <label for="convenios">Convenios</label>
                         </div>
-                        <div class="input-field col l6 m6 l6">
-                            <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
-                            <label for="CRM">Estatus</label>
-                        </div>
+
                     </div>
                 </div>
             </div>
