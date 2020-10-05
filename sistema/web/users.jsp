@@ -13,7 +13,8 @@
     </head>
 
     <body>
-        <nav class="grey darken-4">
+        <jsp:include page="header.jsp"/>
+<!--        <nav class="grey darken-4">
             <div class="nav-wrapper icon_nav">
                 <a href="#!" id="menu"  class="brand-logo left"><i class="material-icons icon_nav icon_menu">menu</i></a>
                 <input id="filtro" class="search center-align grey darken-2" type="text" placeholder="Buscar">
@@ -21,7 +22,7 @@
                     <a href="mobile.html"><i class="material-icons icon_nav">more_vert</i></a>
                 </ul>
             </div>
-        </nav>
+        </nav>-->
         <!--div lista de usuarios-->
         <div class="row">
             <div class="col s12 m10 offset-m1">

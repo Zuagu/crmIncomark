@@ -12,7 +12,7 @@ $(document).ready(function () {
     $(".sidenav").empty();
     $(".sidenav").append(`<li class="center"><img src="image/icon-user.png"><li>`);
     // funcion que pinta el menu
-   
+
     for (let indice in menu) {
         let submenu_text = '';
         for (let i in menu[indice].submenus) {
@@ -201,7 +201,7 @@ $("#save_num").click(function () {
     $('#datos_marcacion_directa').removeClass('hide');
     $('#editar_marcacion_directa').addClass('hide');
     let cliente_unico = $("#CLIENTE_UNICO").val();
-    
+
     if ($("#CLIENTE_UNICO").val().length > 5) {
         actualizar_informacion_contacto();
     }
@@ -340,7 +340,7 @@ function select_datos_cuenta(_cuenta) {
                 <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
             `);
             $("#datos_marcacion_aval").empty();
-            $("#datos_marcacion_aval").append(`<label>Aval Direcion:${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
+            $("#datos_marcacion_aval").append(`<label>Aval Direcion: ${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
             `);
 
@@ -644,7 +644,7 @@ function select_cuenta_siguiente(_id_usuario) {
                     <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
                 `);
                 $("#datos_marcacion_aval").empty();
-                $("#datos_marcacion_aval").append(`<label>Aval Direcion:${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
+                $("#datos_marcacion_aval").append(`<label>Aval Direcion: ${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                     <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
 
@@ -757,8 +757,14 @@ $("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
     $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
     $(".num_phone").removeClass("numero_marcado");
     $(this).addClass("numero_marcado");
-    $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
-    $("#gestion").removeAttr("readonly");
+    let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
+    if (num.length === 10) {
+        $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+        $("#gestion").removeAttr("readonly");
+    } else {
+        alert("El dato selecionado no es numero");
+    }
+
 });
 // Insert Convenio 
 function insertar_convenio(_myObjConvenio, _myObjGestion) {

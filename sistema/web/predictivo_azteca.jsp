@@ -138,7 +138,7 @@
 
                             <ul class="collection coll_2 datos_marcacion_directa center">
                                 <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
-                                <a id="editar_info_aval" class="btn-small">editar</a>
+                                <a id="editar_info_aval" class="btn-small blue">editar</a>
                             </ul>
                         </div>
 
@@ -163,7 +163,7 @@
                                     <select id="codigo_llamada"></select>
                                 </div>
                                 <div class=" input-field  col s12 m12 l12 right-align">
-                                    <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
+                                    <a id="guardar_gestion" class="waves-effect waves-light btn green btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
                                 </div>
                             </div>
                         </div>
@@ -288,7 +288,7 @@
 
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
                                 <a id="edit_num" class="btn-small blue">editar</a>
-                                <a id="save_num" class="btn-small green hide">actualizar</a>
+                                <a id="save_num" class="btn-small blue hide">actualizar</a>
                             </div>
 
                         </div>

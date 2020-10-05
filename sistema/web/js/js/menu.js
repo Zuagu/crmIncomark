@@ -1,18 +1,35 @@
 $(document).ready(function () {
     //iniciar el dropdown del menu
+    $('.modal').modal({
+        dismissible: false,
+        opacity: 0.4,
+        inDuration: 500,
+        outDuration: 250
+    });
+    $('.tabs').tabs();
+    
     $('select').formSelect();
-    $('.modal').modal();
+    
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
-    document.getElementById('foto_perfil').src = "http://gruposicsa.com/fotos/" + id_usuario + ".jpg";
-    $(".sidenav").empty();
+    $(".sidenav").append(`<li class="center"><img src="image/icon-user.png"><li>`);
     // funcion que pinta el menu
-    for (indice in menu) {
-        $(".sidenav").append('<li><a onclick="verSubmenu(' + indice + ')"><i class="material-icons white-icon tooltipped" data-position="right"  data-tooltip="' + menu[indice].name + '">' + menu[indice].icono + '</i></a></li>');
+    for (let indice in menu) {
+        let submenu_text = '';
+        for (let i in menu[indice].submenus) {
+            submenu_text += `<a href="${menu[indice].jsp[i]}" class="collection-item"><i class="material-icons left">${menu[indice].iconosSubmenus[i]}</i>${menu[indice].submenus[i]}</a>`;
+        }
+        $(".sidenav").append(`<li>
+            <div class="collapsible-header"><i class="material-icons">${menu[indice].icono}</i>${menu[indice].name}</div>
+            <div class="collapsible-body collection">${submenu_text}</div>
+        </li>`);
     }
+    
+    
+    
     $('.tooltipped').tooltip({margin: 20});
     $("#info_gestor").fadeIn(1500);
-    $('.tabs').tabs();
+    
     $('.datepicker').datepicker({
         container: "body",
         selectMonths: true, // Creates a dropdown to control month
@@ -37,6 +54,7 @@ $(document).ready(function () {
         aftershow: function () {} //Function for after opening timepicker
     });
     $('select').formSelect();
+    $('.collapsible').collapsible();
 
 });
 

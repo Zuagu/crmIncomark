@@ -52,8 +52,7 @@ $(document).ready(function () {
     });
     $('.tabs').tabs();
     $('select').formSelect({container: "body"});
-    select_usuarios('table_user');
-    select_horarios();
+    
     $('.datepicker').datepicker({
         format: "yyyy-mm-dd",
         container: "body"
@@ -69,6 +68,10 @@ $(document).ready(function () {
     $('.collapsible').collapsible();
 
 });
+window.onload = function () {
+    select_usuarios('table_user');
+    select_horarios();
+};
 // pintar datos del usuarios en el modal =========================================================================================================
 function print_data_user_modal(index_pos) {
     $(".cont_img").css('background-image', 'url("http://201.172.31.105:8080/sistema/images/usuarios/' + users[index_pos].id + '-min.png")');
