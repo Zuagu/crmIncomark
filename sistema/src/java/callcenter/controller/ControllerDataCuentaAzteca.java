@@ -210,9 +210,19 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
                     request.getParameter("nom_tel5"),
                     request.getParameter("tel5_1"),
                     request.getParameter("tel5_2"),
+                    request.getParameter("cuenta")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("actualizar_informacion_aval")) {
+            String Respuesta = ModelDataCuentaAzteca.actualizar_informacion_aval(
                     request.getParameter("nom_tel_aval"),
                     request.getParameter("tel_aval_1"),
                     request.getParameter("tel_aval_2"),
+                    request.getParameter("calle_aval"),
                     request.getParameter("cuenta")
             );
             response.setContentType("text/html; charset=UTF-8");

@@ -119,6 +119,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TELEFONO5_2", ic.rs.getString("TELEFONO5_2"));
                 objCuenta.put("TIPOTEL5_2", ic.rs.getString("TIPOTEL5_2"));
                 objCuenta.put("TELEFONO5", ic.rs.getString("TELEFONO5"));
+                objCuenta.put("TELAVAL2", ic.rs.getString("TELAVAL2"));
 
                 objCuenta.put("CRM", ic.rs.getString("CRM"));
 
@@ -297,7 +298,6 @@ public class ModelDataCuentaAzteca {
         }
     }
 
-    
     public static String select_convenios_cuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
@@ -339,7 +339,7 @@ public class ModelDataCuentaAzteca {
         try {
             StartConexion ic = new StartConexion();
 //            String sql = "SELECT * FROM azteca_base_genenral_original ORDER BY RAND() LIMIT 1;";
-            String sql = "call azteca_cuenta_siguente("+id_usuario+");";
+            String sql = "call azteca_cuenta_siguente(" + id_usuario + ");";
 //            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONObject objCuenta = new JSONObject();
@@ -650,7 +650,7 @@ public class ModelDataCuentaAzteca {
 
     }
 
-    public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String nom_tel4, String tel4_1, String tel4_2, String nom_tel5, String tel5_1, String tel5_2, String nom_tel_aval, String tel_aval_1, String tel_aval_2, String cuenta) {
+    public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String nom_tel4, String tel4_1, String tel4_2, String nom_tel5, String tel5_1, String tel5_2, String cuenta) {
         try {
             StartConexion ic = new StartConexion();
             /*
@@ -673,8 +673,27 @@ public class ModelDataCuentaAzteca {
                     + "TELEFONO4_2 = '" + tel4_2 + "',\n"
                     + "NOM_TEL5 = '" + nom_tel5 + "',\n"
                     + "TELEFONO5 = '" + tel5_1 + "',\n"
-                    + "TELEFONO5_2 = '" + tel5_2 + "',\n"
+                    + "TELEFONO5_2 = '" + tel5_2 + "'\n"
+                    + "WHERE CLIENTE_UNICO = '" + cuenta + "';";
+//            System.out.println(sql);
+
+            ic.st.executeUpdate(sql);
+            ic.st.close();
+            ic.conn.close();
+
+            return "{\"menssage\":\"Datos del contacto Actualizado\"}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
+
+    public static String actualizar_informacion_aval(String nom_tel_aval, String tel_aval_1, String tel_aval_2, String calle_aval, String cuenta) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "UPDATE azteca_base_genenral_original SET\n"
                     + "NOMBRE_AVAL = '" + nom_tel_aval + "',\n"
+                    + "CALLEAVAL = '" + calle_aval + "',\n"
                     + "TELAVAL = '" + tel_aval_1 + "',\n"
                     + "TELAVAL2 = '" + tel_aval_2 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + cuenta + "';";
@@ -684,7 +703,7 @@ public class ModelDataCuentaAzteca {
             ic.st.close();
             ic.conn.close();
 
-            return "{\"menssage\":\"Datos del contacto Actualizado\"}";
+            return "{\"menssage\":\"Datos del aval Actualizado\"}";
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }

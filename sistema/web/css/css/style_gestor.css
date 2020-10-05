@@ -2,7 +2,7 @@
 .img_log, #foto_perfil{
     width: 27px;
     margin: 12%;  
-    margin-top: 0px;
+    margin-top: 3px;
 }
 nav{
     height: 35px;
@@ -13,8 +13,12 @@ nav .nav-wrapper i {
     line-height: 33px;
 }
 
-#buscador_cuentas_gestor {
+.sidenav li > a {
+    cursor: pointer !important; 
+}
 
+.sidenav .collection a.collection-item {
+    color: #707982 !important; 
 }
 
 .contenedor_buscar {
@@ -80,6 +84,23 @@ input[type="text"]:not(.browser-default).validate + label {
     font-weight: bold;
 }
 
+.div_data_aval .coll_2 {
+    border: 0px solid #e0e0e0;
+}
+
+.div_data_aval ul{
+    display: inline-block;
+}
+.div_data_aval ul .btn-small {
+     margin: 5px 0px;
+}
+.div_data_aval .coll_1 {
+    width: 80%;
+}
+.div_data_aval .coll_2 {
+    width: 19%;
+}
+
 #div_gestor_gestion .input-field {
     margin-top: 0.5rem !important;
     margin-bottom: 0.2rem !important;
@@ -87,13 +108,28 @@ input[type="text"]:not(.browser-default).validate + label {
 
 #div_gestor_gestion {
     margin-top: 7px;
+    height: 164px;
 }
 
 #gestion {
-    height: 80px;
+    height: 110px !important;
+    overflow: auto !important;
 }
 
-
+#div_input_gestor_tiempos input{
+    margin: 0px !important;
+    height: 1.43rem !important;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+.div_input_gestor_tiempos {
+    margin-top: 0px;
+}
+#div_input_gestor_tiempos .input-field {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.2rem !important;
+}
 
 
 
@@ -103,12 +139,70 @@ input[type="text"]:not(.browser-default).validate + label {
 }
 .marcacion_directa .collection .collection-item {
     padding: 1px 20px;
+    font-size: 14px;
 }
 .marcacion_directa .small {
     font-size: 0.9rem;
     margin-right: 0.5rem;
 }
 
-#datos_marcacion_directa {
+.marcacion_directa {
+    margin-top: 7px;
+}
+
+.datos_marcacion_directa {
     margin: .5rem 0 0.2rem 0 !important;
+}
+
+.div_btn_act_datos a {
+    margin: 11px 20px;
+}
+
+#editar_marcacion_directa input{
+    margin: 0px !important;
+    height: 1.43rem !important;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+#editar_marcacion_directa .input-field {
+    margin-top: 0.87rem !important;
+    margin-bottom: 0.2rem !important;
+}
+
+.div_data_aval .input-field {
+    margin-top: 0.3rem !important;
+    margin-bottom: 0.2rem !important;
+}
+.div_data_aval input{
+    margin: 0px !important;
+    height: 1.43rem !important;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+
+#Direccion {
+    font-weight: bold;
+}
+
+
+.margin_top_7px {
+    margin-top: 7px;
+}
+
+
+
+.div_tabs {
+    margin-top: 7px;
+}
+
+.div_gestor_contenido {
+    height: 235px;
+    overflow: auto;
+    padding: 0 1px !important;
+}
+
+.div_gestor_contenido td,.div_gestor_contenido th {
+    padding: 5px 5px;
 }

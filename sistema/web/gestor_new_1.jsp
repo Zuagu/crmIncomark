@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Cierre Asignacion</title>
+        <title>Gestor Azteca</title>
         <link rel="shortcut icon" href="image/logoInco.fw.png">
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
@@ -38,7 +38,7 @@
                                 <label for="NOMBRE_CTE">Titular</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="111 - 4545 - 21212 - 654">
+                                <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="CLIENTE_UNICO">Cuenta</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class=" col s5 m5 l5">
-                        <div id="info_gestor_secundario" class="col s12 m12 l12 div_input_gestor_tiempos z-depth-1 div_info_secundaria white">
+                        <div id="info_gestor_secundario" class="col s12 m12 l12 z-depth-1 div_info_secundaria white">
                             <div class="col s12 m12 l12">
                                 <h6>Informacion Economica</h6>
                             </div>
@@ -98,156 +98,80 @@
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="CRM∫">estatus</label>
+                                <label for="CRM">estatus</label>
                             </div>
                             <div class="input-field col s12 m12 l12">
                                 <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="SALDO_TOTAL">Saldo Total</label>
                             </div>
-                            
-
                         </div>
                     </div>
-                    <div class=" col s7 m7 l7">
+
+
+                    <div class="col s7 m7 l7">
+                        <!--componente de datos aval -->
+                        <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
+                            <ul id="datos_marcacion_aval" class="collection coll_1 datos_marcacion_directa">
+                                <label>Aval Calle: Num: Colonia: Municipio: Estado: </label>
+                                <li class="collection-item black-text">Nombre del Aval <a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
+                            </ul>
+
+                            <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOMBRE_AVAL">Contacto Aval</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELAVAL">Tel. 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELAVAL2">Tel. 2</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12">
+                                    <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="CALLEAVAL">Direccion Aval </label>
+                                </div>
+                            </div>
+
+                            <ul class="collection coll_2 datos_marcacion_directa center">
+                                <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
+                                <a id="editar_info_aval" class="btn-small">editar</a>
+                            </ul>
+                        </div>
+
+                        <!--componente de gestion-->
+
                         <div id="div_gestor_gestion" class=" col s12 m12 l12  div_gestor_gestion z-depth-1 white">
                             <div class="col s12 m12 l12">
                                 <h6>Gestion</h6>
                             </div>
-                            
-                            <div class=" col s7 m7 l7  div_gestor_gestion">
-                                <div class=" col s12 m12 l12 z-depth-1 div_gestor_textarea grey lighten-5 input_gestion">
-                                    <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="1000" placeholder="Gestion"></textarea>
-                                </div>
-                            </div>
-                            <div class=" col s5 m5 l5  div_gestor_gestion">
-                                <div class="input-field col s12 m12 l12">
-                                    <div class=" input-field col s12 m12 l12">
-                                        <select id="estatus">
-                                            <option value="0" selected>Selecciona Estatus</option>
-                                        </select>
-                                    </div> 
-                                    <div class=" input-field col s12 m12 l12">
-                                        <select id="codigo_llamada"></select>
-                                    </div> 
-                                    <div class=" input-field  col s6 m6 l6">
-                                        <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
-                                    </div> 
-                                    <div class=" input-field col s6 m6 l6">
-                                        <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Sig.</a>
-                                    </div> 
-                                </div>
 
+                            <div class=" col s7 m7 l7  div_gestor_gestion z-depth-1">
+                                <textarea id="gestion" readonly="" class="materialize-textarea limpiar_texto" data-length="1000" placeholder="Gestion"></textarea>
                             </div>
 
-                        </div> 
-                    </div>    
-                    <div class="col s5 m5 l5">
-                        <div class="col s12 l12 m12 marcacion_directa white">
-                            <ul id="datos_marcacion_directa" class="collection">
-                                <label>Referencia 1</label>
-                                <li class="collection-item black-text">. <a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 2</label>
-                                <li class="collection-item black-text">. <a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 3</label>
-                                <li class="collection-item black-text">. <a class="right" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right" href="zoiper://"><i class="material-icons small">phone_iphone</i></a></li>
-                                <label>Referencia 4</label>
-                                <li class="collection-item black-text">. <a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 5</label>
-                                <li class="collection-item black-text">. <a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Aval</label>
-                                <li class="collection-item black-text">. <a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                            </ul>
+                            <div class=" col s5 m5 l5 div_gestor_gestion">
+                                <div class=" input-field col s12 m12 l12">
+                                    <select id="estatus">
+                                        <option value="0" selected>Selecciona Estatus</option>
+                                    </select>
+                                </div> 
+                                <div class=" input-field col s12 m12 l12">
+                                    <select id="codigo_llamada"></select>
+                                </div>
+                                <div class=" input-field  col s6 m6 l6">
+                                    <a id="guardar_gestion" class="waves-effect waves-light btn btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
+                                </div> 
+                                <div class=" input-field col s6 m6 l6">
+                                    <a id="cuenta_siguiente" class="waves-effect waves-light btn btn_siguiente"><i class="material-icons right">send</i>Sig.</a>
+                                </div>
+                            </div>
                         </div>
-                        <div id="editar_marcacion_directa" class="col s12 m12 l12 z-depth-1 div_search_gestor inner hide">
-                            <div class="col s12 m12 l12">
-                                <h6>Referencias</h6>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
-                                <label for="NOM_TEL1">Contacto 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO1">Tel. 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO1_2">Tel. 2</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
-                                <label for="NOM_TEL2">Contacto 2</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO2">Tel. 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO2_2">Tel. 2</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
-                                <label for="NOM_TEL3">Contacto 3</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO3">Tel. 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO3_2">Tel. 2</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
-                                <label for="NOM_TEL4">Contacto 4</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO4">Tel. 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO4_2">Tel. 2</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
-                                <label for="NOM_TEL5">Contacto 5</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO5">Tel. 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELEFONO5_2">Tel. 2</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
-                                <label for="NOMBRE_AVAL">Contacto Aval</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELAVAL">Tel. 1</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
-                                <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
-                                <label for="TELAVAL2">Tel. 2</label>
-                            </div>
-                            <div class="input-field col s12 m12 l12">
-                                <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
-                                <label for="CALLEAVAL">Direccion Aval </label>
-                            </div>
-                            <div class="input-field col s6 m6 l6 center-align">
-                                <a id="edit_num" class="waves-effect waves-light btn blue"><i class="material-icons right">create</i>Editar</a>
-                            </div>
-                            <div class="input-field col s6 m6 l6 center-align">
-                                <a id="save_num" class="waves-effect waves-light btn red hide"><i class="material-icons right">save</i>Guardar</a>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="col s7 m7 l7 ">
-                        <div class=" col s12 m12 l12 div_tabs">
+
+                        <!--componente de vista de tabs-->
+                        <div class=" col s12 m12 l12 div_tabs white z-depth-1">
                             <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
                                 <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
                                 <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
@@ -256,9 +180,132 @@
                                 <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
                                 <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
                             </ul>
-                        </div> 
+                        </div>
 
-                        <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;"> 
+                    </div>
+
+                    <div class="col s5 m5 l5">
+
+                        <!--componente de datos de contactacion directa -->
+
+                        <div class="col s12 l12 m12 marcacion_directa white z-depth-1">
+                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa">
+                                <label>Referencia 1</label>
+                                <li class="collection-item black-text">Nombre 1<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                <label>Referencia 2</label>
+                                <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                <label>Referencia 3</label>
+                                <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                <label>Referencia 4</label>
+                                <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                <label>Referencia 5</label>
+                                <li class="collection-item black-text">Nombre 5<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                            </ul>
+
+                            <!--componente de editar_marcacion_directa-->
+                            <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
+                                <div class="col s12 m12 l12">
+                                    <h6>Referencias</h6>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOM_TEL1">Contacto 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO1">Tel. 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO1_2">Tel. 2</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOM_TEL2">Contacto 2</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO2">Tel. 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO2_2">Tel. 2</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOM_TEL3">Contacto 3</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO3">Tel. 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO3_2">Tel. 2</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOM_TEL4">Contacto 4</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO4">Tel. 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO4_2">Tel. 2</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOM_TEL5">Contacto 5</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO5">Tel. 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO5_2">Tel. 2</label>
+                                </div>
+
+                                <!--                                <div class="input-field col s6 m6 l6">
+                                                                    <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
+                                                                    <label for="NOMBRE_AVAL">Contacto Aval</label>
+                                                                </div>
+                                                                <div class="input-field col s3 m3 l3">
+                                                                    <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
+                                                                    <label for="TELAVAL">Tel. 1</label>
+                                                                </div>
+                                                                <div class="input-field col s3 m3 l3">
+                                                                    <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
+                                                                    <label for="TELAVAL2">Tel. 2</label>
+                                                                </div>
+                                                                <div class="input-field col s12 m12 l12">
+                                                                    <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
+                                                                    <label for="CALLEAVAL">Direccion Aval </label>
+                                                                </div>-->
+
+                            </div>
+
+
+                            <div class="col s12 m12 l12 div_btn_act_datos right-align">
+                                <a id="edit_num" class="btn-small blue">editar</a>
+                                <a id="save_num" class="btn-small green hide">actualizar</a>
+                            </div>
+
+                        </div>
+
+                        <!--componente de editar_marcacion_directa-->
+
+
+
+
+
+                    </div>
+
+                    <div class="col s12 m10 l10 margin_top_7px">
+                        <!--componente de secciones de las tabs de tabs-->
+                        <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido white"> 
                             <table class="highlight" id="tabla_gestiones">
                                 <thead class="blue">
                                     <tr class="text-white">
@@ -276,7 +323,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
+                        <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_pagos">
                                 <thead class="blue">
                                     <tr class="text-white">
@@ -293,7 +340,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido" style="margin-top:10px;">
+                        <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido white">
                             <input id="id_reg_agenda" type="hidden">
                             <div class="col s12 m9 l9">
                                 <table>
@@ -324,10 +371,10 @@
 
                             <div id="tabla_agendas" class="col s12 m12 l12"></div>
                         </div>
-                        <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
+                        <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
 
                         </div>
-                        <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
+                        <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_convenios">
                                 <thead class="blue">
                                     <tr class="text-white">
@@ -347,37 +394,44 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align" style="margin-top:10px;">
+                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
 
                         </div>
                     </div>
-                    <div id="div_input_gestor_tiempos" class="col s5 m5 l5 div_input_gestor_tiempos z-depth-1">
-                        <div class="input-field col l6 m6 l6">
-                            <input id="primera_llamada" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
-                            <label for="primera_llamada">P.llamada</label>
-                        </div>
-                        <div class="input-field col l6 m6 l6">
-                            <input id="tiempo_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
-                            <label for="tiempo_actual">Actual</label>
-                        </div>
-                        <div class="input-field col l6 m6 l6">
-                            <input id="retraso_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
-                            <label for="retraso_actual">R. Actual</label>
-                        </div>
-                        <div class="input-field col l6 m6 l6">
-                            <input id="cuentas_tocadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
-                            <label for="cuentas_tocadas">Cuentas</label>
-                        </div>
-                        <div class="input-field col l6 m6 l6">
-                            <input id="llamadas_realizadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
-                            <label for="llamadas_realizadas" class="centro">Llamadas</label>
-                        </div>
-                        <div class="input-field col l6 m6 l6">
-                            <input id="convenios" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
-                            <label for="convenios">Convenios</label>
-                        </div>
 
+                    <div class="col s2 m2 l2 margin_top_7px">
+                        <!--componente de tiempos -->
+                        <div id="div_input_gestor_tiempos" class="col s12 m12 l12 white z-depth-1 div_input_gestor_tiempos">
+                            <div class="col s12 m12 l12">
+                                <h6>Tiempos</h6>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="primera_llamada" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
+                                <label for="primera_llamada">P.llamada</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="tiempo_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
+                                <label for="tiempo_actual">Actual</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="retraso_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
+                                <label for="retraso_actual">R. Actual</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="cuentas_tocadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                                <label for="cuentas_tocadas">Cuentas</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="llamadas_realizadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                                <label for="llamadas_realizadas" class="centro">Llamadas</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="convenios" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                                <label for="convenios">Convenios</label>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div id="modal_convenio" class="modal scale-transition">

@@ -38,7 +38,7 @@
                                             <label class="width_50" for="password">Contraseña</label>
                                         </div>
                                         <a id="iniciar_sesion" class="waves-effect  waves-light btn width_100"><i class="material-icons right">send</i>Ingresar</a>
-                                        <div id="cargando" class="preloader-wrapper big active" style="display: none;">
+<!--                                        <div  class="preloader-wrapper big active" style="display: none;">
                                             <div class="spinner-layer spinner-blue-only">
                                                 <div class="circle-clipper left">
                                                     <div class="circle"></div>
@@ -48,6 +48,9 @@
                                                     <div class="circle"></div>
                                                 </div>
                                             </div>
+                                        </div>-->
+                                        <div id="cargando" class="progress" style="display: none;">
+                                            <div class="indeterminate"></div>
                                         </div>
                                         <p class="align_center white-text">Volver al menu principal</p>
                                     </div>

@@ -1,10 +1,6 @@
 var options_estatus_llamadas = "";
 var options_estatus_cuenta = "";
-$('#filtro').addClass('hide');
-$('#resultado_menu').addClass('hide');
-$('#unico_filtro').empty();
-$('#unico_filtro').append($('#div_input_gestor_tiempos').html());
-$('#div_input_gestor_tiempos').remove();
+
 $(document).ready(function () {
 //iniciar el dropdown del menu
     $('.fixed-action-btn').floatingActionButton();
@@ -12,12 +8,23 @@ $(document).ready(function () {
     $('.modal').modal();
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
-    document.getElementById('foto_perfil').src = "http://gruposicsa.com/fotos/" + id_usuario + ".jpg";
+
+
     $(".sidenav").empty();
+    $(".sidenav").append(`<li class="center"><img src="image/icon-user.png"><li>`);
     // funcion que pinta el menu
-    for (indice in menu) {
-        $(".sidenav").append('<li><a onclick="verSubmenu(' + indice + ')"><i class="material-icons white-icon tooltipped" data-position="right"  data-tooltip="' + menu[indice].name + '">' + menu[indice].icono + '</i></a></li>');
+    for (let indice in menu) {
+        let submenu_text = '';
+        for (let i in menu[indice].submenus) {
+            submenu_text += `<a href="${menu[indice].jsp[i]}" class="collection-item"><i class="material-icons left">${menu[indice].iconosSubmenus[i]}</i>${menu[indice].submenus[i]}</a>`;
+        }
+        $(".sidenav").append(`<li>
+            <div class="collapsible-header"><i class="material-icons">${menu[indice].icono}</i>${menu[indice].name}</div>
+            <div class="collapsible-body collection">${submenu_text}</div>
+        </li>`);
     }
+
+    $('.collapsible').collapsible();
     $('.tooltipped').tooltip({margin: 20});
     $("#info_gestor").fadeIn(1500);
     $('.tabs').tabs();
@@ -41,7 +48,7 @@ $(document).ready(function () {
     $("#retraso_actual").val("00:00:00");
 });
 window.onload = function () {
-    select_datos_cuenta( $("#ID_CLIENTE_CLIENTE_UNICO").val() );
+    select_datos_cuenta($("#ID_CLIENTE_CLIENTE_UNICO").val());
 //    select_agendas();
 //    select_llamadas_gestor(id_usuario);
     options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
@@ -80,7 +87,7 @@ window.onload = function () {
     $("#estatus").append(options_estatus_cuenta);
     $('select').formSelect();
 
-}
+};
 
 
 //funcion cerrar sesion con boton
@@ -149,6 +156,31 @@ $("#new_agenda").click(function () {
 });
 
 
+$("#editar_info_aval").click(function () {
+    $('#editar_info_aval').addClass('hide');
+    $('#save_info_aval').removeClass('hide');
+
+    $('#datos_marcacion_aval').addClass('hide');
+    $('#edit_datos_marcacion_aval').removeClass('hide');
+});
+
+$("#save_info_aval").click(function () {
+
+    $('#save_info_aval').addClass('hide');
+    $('#editar_info_aval').removeClass('hide');
+
+    $('#edit_datos_marcacion_aval').addClass('hide');
+    $('#datos_marcacion_aval').removeClass('hide');
+    let cliente_unico = $("#CLIENTE_UNICO").val();
+    console.log(cliente_unico.length);
+    if (cliente_unico.length > 5) {
+//        alert(cliente_unico);
+        actualizar_informacion_aval();
+    }
+
+});
+
+
 $("#edit_num").click(function () {
 
     $('#edit_num').addClass('hide');
@@ -165,7 +197,11 @@ $("#save_num").click(function () {
 
     $('#datos_marcacion_directa').removeClass('hide');
     $('#editar_marcacion_directa').addClass('hide');
-    actualizar_informacion_contacto();
+    let cliente_unico = $("#CLIENTE_UNICO").val();
+
+    if ($("#CLIENTE_UNICO").val().length > 5) {
+        actualizar_informacion_contacto();
+    }
 });
 
 $("#buscar_cuentas").click(function () {
@@ -174,7 +210,7 @@ $("#buscar_cuentas").click(function () {
 });
 
 $('#buqueda_relacionada').keyup(function (e) {
-    if (e.keyCode === 13 ) {
+    if (e.keyCode === 13) {
         let busqueda = $(this).val();
         if (busqueda.length > 6) {
             buscar_cuentas_gestor(busqueda, id_usuario, 'tb_cont_busqueda');
@@ -182,17 +218,15 @@ $('#buqueda_relacionada').keyup(function (e) {
             $('#modal_alerta').modal('open');
             $('#mensaje_alerta').empty();
             $('#mensaje_alerta').append(`El criterio de busqueda es muy corto ingrese mas de 6 letras`);
-
         }
-
     }
 });
 
-$('#tb_cont_busqueda').on('click', '.cuenta_encontrada', function (){
+$('#tb_cont_busqueda').on('click', '.cuenta_encontrada', function () {
 //    console.log( $('.cuenta_en_CLIENTE_UNICO',this).text() );
-    let cuenta = $('.cuenta_en_CLIENTE_UNICO',this).text();
+    let cuenta = $('.cuenta_en_CLIENTE_UNICO', this).text();
     select_datos_cuenta(cuenta);
-     $('#modal_busqueda').modal('close');
+    $('#modal_busqueda').modal('close');
 });
 
 
@@ -205,63 +239,12 @@ $('#tbody_tabla_gestiones').on('dblclick', '.tb_gestion_cuenta', function () {
 });
 
 
-//pagos_diarios tab
-$("#tab_pagos_diarios").click(function () {
-    $(".rango_fechas_pagos_diarios").removeClass("hide");
-    $(".div_tabla_pagos_diarios").addClass("hide");
-});
-$("#mostrar_pagos_diarios").click(function () {
-    $(".rango_fechas_pagos_diarios").addClass("hide");
-    $(".div_tabla_pagos_diarios").removeClass("hide");
-});
-//visitas tab
-$("#mostrar_visitas").click(function () {
-    $(".rango-fechas-visitas").addClass("hide");
-    $("#tabla_visitas").removeClass("s10 m10 l10");
-    $("#tabla_visitas").addClass("s12 m12 l12");
-});
-$("#tab_visitas").click(function () {
-    $(".rango-fechas-visitas").removeClass("hide");
-    $("#tabla_visitas").removeClass("s12 m12 l12");
-    $("#tabla_visitas").addClass("s10 m10 l10");
-});
-//convenios tab
-$("#mostrar_convenios").click(function () {
-    $(".rango-fechas-convenios").addClass("hide");
-    $("#tabla_convenios").removeClass("s10 m10 l10");
-    $("#tabla_convenios").addClass("s12 m12 l12");
-});
-$("#tab_convenios").click(function () {
-    $(".rango-fechas-convenios").removeClass("hide");
-    $("#tabla_convenios").removeClass("s12 m12 l12");
-    $("#tabla_convenios").addClass("s10 m10 l10");
-});
-//estadisticas tab
-$("#mostrar_estadisticas").click(function () {
-    $(".rango-fechas-estadisticas").addClass("hide");
-    $("#tabla_estadisticas").removeClass("s10 m10 l10");
-    $("#tabla_estadisticas").addClass("s12 m12 l12");
-});
-$("#tab_estadisticas").click(function () {
-    $(".rango-fechas-estadisticas").removeClass("hide");
-    $("#tabla_estadisticas").removeClass("s12 m12 l12");
-    $("#tabla_estadisticas").addClass("s10 m10 l10");
-});
-//agendas tab
-$("#mostrar_agendas").click(function () {
-    $(".rango-fechas-agendas").addClass("hide");
-    $("#tabla_agendas").removeClass("s10 m10 l10");
-    $("#tabla_agendas").addClass("s12 m12 l12");
-});
-$("#tab_agendas").click(function () {
-    $(".rango-fechas-agendas").removeClass("hide");
-    $("#tabla_agendas").removeClass("s12 m12 l12");
-    $("#tabla_agendas").addClass("s10 m10 l10");
-});
+
+
 //funcion de buscador
 function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
     $("#" + _div).empty();
-    $("#" + _div).append("<img src='image/preloader_central.gif' width='100%'>");
+    $("#" + _div).append('<div class="progress"><div class="indeterminate"></div></div>');
     var params = {
         action: "select_buscar_cuentas",
         busqueda: _busqueda,
@@ -303,9 +286,9 @@ $("#buscador_cuentas_gestor").keyup(function (e) {
         }
     }
 });
-
-
-
+$("#buscador_cuentas_gestor").click(function () {
+//    $("#div_cuentas_encontradas").empty();
+});
 // funciones de datos cuenta
 function select_datos_cuenta(_cuenta) {
     var params = {
@@ -318,13 +301,13 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-//            console.log(datos_cuenta);
+            console.log(datos_cuenta);
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
             }
-            $("#CANAL2").val(datos_cuenta.CANAL);
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
+            $("#CANAL2").val(datos_cuenta.CANAL);
             $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
             $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);
@@ -335,7 +318,7 @@ function select_datos_cuenta(_cuenta) {
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
-            
+
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
@@ -350,22 +333,23 @@ function select_datos_cuenta(_cuenta) {
                 <label>Referencia 4</label>
                 <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
                 <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
-                <label>Aval</label>
-                <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
-                `);
+                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
+            `);
+            $("#datos_marcacion_aval").empty();
+            $("#datos_marcacion_aval").append(`<label>Aval Direcion:${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
+                <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
+            `);
 
             select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], "0000-00-00", "tbody_tabla_gestiones");
 
+            $("#Direccion").val(`${datos_cuenta.COLONIA_CTE} ${datos_cuenta.DIRECCION_CTE} ${datos_cuenta.NUM_EXT_CTE} CP: ${datos_cuenta.CP_CTE}, ${datos_cuenta.POBLACION_CTE}, ${datos_cuenta.ESTADO_CTE}`);
+
             if ($('#primera_llamada').val() === '00:00:00') {
-                select_primera_llamada_gestor();
+//                select_primera_llamada_gestor();
             }
-            select_numero_llamadas_gestor();
-            select_numero_cuentas_tocadas_gestor();
-            select_numero_convenios_gestor();
-        },
-        error: function (error) {
-            console.log(error);
+//            select_numero_llamadas_gestor();
+//            select_numero_cuentas_tocadas_gestor();
+//            select_numero_convenios_gestor();
         }
     });
 }
@@ -380,13 +364,79 @@ function actualizar_contacto(params) {
         success: function (data, textStatus, jqXHR) {
             console.log(data);
         },
-        error: function (error) {
-            console.log(error);
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
         }
     })
 }
 
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_1', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_1: $('#nom_tel_1').val(),
+        tipo_contact_tel_1: $('#tipo_contact_tel_1').val(),
+        act_tel_1: $('#act_tel_1').val()
+    };
+    let params = {
+        action: "actualizar_telefono_1",
+        objContacto: JSON.stringify(_objContacto)
+    };
+    actualizar_contacto(params);
+});
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_2', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_2: $('#nom_tel_2').val(),
+        tipo_contact_tel_2: $('#tipo_contact_tel_2').val(),
+        act_tel_2: $('#act_tel_2').val()
+    };
+    let params = {
+        action: "actualizar_telefono_2",
+        objContacto: JSON.stringify(_objContacto)
+    };
+    actualizar_contacto(params);
+});
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_3', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_3: $('#nom_tel_3').val(),
+        tipo_contact_tel_3: $('#tipo_contact_tel_3').val(),
+        act_tel_3: $('#act_tel_3').val()
+    };
+    let params = {
+        action: "actualizar_telefono_3",
+        objContacto: JSON.stringify(_objContacto)
+    };
+    actualizar_contacto(params);
+});
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_4', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_4: $('#nom_tel_4').val(),
+        tipo_contact_tel_4: $('#tipo_contact_tel_4').val(),
+        act_tel_4: $('#act_tel_4').val()
+    };
 
+    let params = {
+        action: "actualizar_telefono_4",
+        objContacto: JSON.stringify(_objContacto)
+    };
+    actualizar_contacto(params);
+});
+
+$("#div_telefonos_cuenta").on('click', '#guardar_tel_aval', function () {
+    let _objContacto = {
+        _CUENTA: $('#CLIENTE_UNICO').val(),
+        nom_tel_aval: $('#nom_tel_aval').val(),
+        tipo_contact_tel_aval: $('#tipo_contact_tel_aval').val(),
+        act_tel_aval: $('#act_tel_aval').val()
+    };
+    let params = {
+        action: "actualizar_telefono_5",
+        objContacto: JSON.stringify(_objContacto)
+    };
+    actualizar_contacto(params);
+});
 
 
 function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
@@ -419,42 +469,46 @@ function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
                         );
             }
         },
-        error: function (error) {
-            console.log(error);
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
         }
 
     });
 }
-function select_pagos_cuenta(_cuenta, _fecha_inico, _div) {
-    $("#" + _div).empty();
-    $("#" + _div).append("<img src='image/preloader_lineal.gif' width='40%'>");
+
+$('#tab_pagos').click(function () {
+    let id_cliente = $('#CLIENTE_UNICO').val();
+    select_pagos_cuenta(id_cliente, 'tbody_tabla_pagos');
+});
+
+function select_pagos_cuenta(_cuenta, _div) {
+
     var params = {
         action: "select_pagos_cuenta",
-        cuenta: _cuenta,
-        fecha_inico: _fecha_inico
+        cuenta: _cuenta
     };
-//    console.log(params);
+    console.log(params);
     $.ajax({
         type: "POST",
-        url: "/sistema/ControllerGestor",
+        url: "ControllerDataCuentaAzteca",
         data: params,
         dataType: "json",
         success: function (pagos) {
             $("#" + _div).empty();
-//            console.log(pagos.length);
+            console.log(pagos);
             if (pagos.length === 0) {
                 $("#" + _div).append("Esta cuenta no tiene ningun pago");
             } else {
-                for (var i in pagos) {
-                    $("#" + _div).append('<tr>' +
-                            '<td>' + pagos[i].cuenta + '</td>' +
-                            '<td>' + pagos[i].fecha_pago + '</td>' +
-                            '<td>' + pagos[i].origen + '</td>' +
-                            '<td>' + pagos[i].importe + '</td>' +
-                            '<td>' + pagos[i].forma + '</td>' +
-                            '<td>' + pagos[i].status + '</td>' +
-                            '<td>' + pagos[i].fecha_aplicacion + '</td>' +
-                            '</tr>'
+                for (var item of pagos) {
+                    $("#" + _div).append(`<tr>
+                        <td>${item.ID_PAGO}</td>
+                        <td>${item.CLIENTE_UNICO}</td>
+                        <td>${item.ZONA}</td>
+                        <td>${item.GERENTE}</td>
+                        <td>${item.FECHA_GESTION}</td>
+                        <td>${item.RECUPERACION_CAPITAL}</td>
+                        <td>${item.RECUPERACION_MORATORIOS}</td>
+                        </tr>`
                             );
                 }
             }
@@ -465,6 +519,7 @@ function select_pagos_cuenta(_cuenta, _fecha_inico, _div) {
         }
     });
 }
+
 
 
 // funciones de select convenios
@@ -500,8 +555,8 @@ function select_convenios_cuenta(_cuenta, _div) {
                         );
             }
         },
-        error: function (error) {
-            console.log(error);
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
         }
     });
 }
@@ -527,9 +582,6 @@ function select_llamadas_gestor(_id_usuario) {
             $("#cuentas_tocadas").val(respuesta.cuentas);
             $("#llamadas_realizadas").val(respuesta.llamadas);
             $("#convenios").val(respuesta.convenios);
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -557,8 +609,8 @@ function select_cuenta_siguiente(_id_usuario) {
                     $("#" + dato).empty();
                     $("#" + dato).val(datos_cuenta[dato]);
                 }
-                $("#CANAL2").val(datos_cuenta.CANAL);
                 $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
+                $("#CANAL2").val(datos_cuenta.CANAL);
                 $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
                 $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);
@@ -569,44 +621,56 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#codigo_llamada").empty();
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
-                
+
+                $("#numero_marcado_deudor, #gestion").val("");
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
                 $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
                 $("#datos_marcacion_directa").empty();
                 $("#datos_marcacion_directa").append(`
-                <label>Referencia 1</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
-                <label>Referencia 2</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
-                <label>Referencia 3</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
-                <label>Referencia 4</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
-                <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
-                <label>Aval</label>
-                <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://"><i class="material-icons small">local_phone</i></a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
+                    <label>Referencia 1</label>
+                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
+                    <label>Referencia 2</label>
+                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
+                    <label>Referencia 3</label>
+                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
+                    <label>Referencia 4</label>
+                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+                    <label>Referencia 5</label>
+                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
+                `);
+                $("#datos_marcacion_aval").empty();
+                $("#datos_marcacion_aval").append(`<label>Aval Direcion:${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
+                    <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
                 `);
 
+                $('#cuenta_siguiente').removeClass('disabled');
+
                 select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], '0000-00-00', "tbody_tabla_gestiones");
+
+
+                $("#Direccion").val(`${datos_cuenta.COLONIA_CTE} ${datos_cuenta.DIRECCION_CTE} ${datos_cuenta.NUM_EXT_CTE} CP: ${datos_cuenta.CP_CTE}, ${datos_cuenta.POBLACION_CTE}, ${datos_cuenta.ESTADO_CTE}`);
+
+
                 if ($('#primera_llamada').val() === '00:00:00') {
-                    select_primera_llamada_gestor();
+//                    select_primera_llamada_gestor();
                 }
-                select_numero_llamadas_gestor();
-                select_numero_cuentas_tocadas_gestor();
-                select_numero_convenios_gestor();
+//                select_numero_llamadas_gestor();
+//                select_numero_cuentas_tocadas_gestor();
+//                select_numero_convenios_gestor();
             }
 
         },
         error: function (err) {
-            console.log(err);
+            console.log(err.responseText);
         }
     });
 }
 
 $("#cuenta_siguiente").click(function () {
+    $('#cuenta_siguiente').addClass('disabled');
     select_cuenta_siguiente(id_usuario);
+
 });
 // Funciones para insert Gestion
 
@@ -637,13 +701,15 @@ function insertar_gestion(myObj) {
             $("#codigo_llamada").append(options_estatus_llamadas);
             $("#gestion").val("");
             $('select').formSelect();
-            $("#numero_marcado_deudor").val("");
-            $("#gestion").attr("readonly", "readonly");
+            $("#numero_marcado_deudor").val();
+            $("#gestion").val($("#numero_marcado_deudor").val());
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
+            $('#guardar_gestion').removeClass('disabled');
 
             select_gestiones_cuenta(myObj["_CUENTA"], '0000-00-00', "tbody_tabla_gestiones");
         },
+
         error: function (error) {
             console.log(error);
         }
@@ -669,9 +735,11 @@ $("#guardar_gestion").click(function () {
             _RETASO: $('#retraso_actual').val(),
             _ID_PUESTO: id_puesto_usuario,
             _PROMESA: 0,
-            _F_PREDICTIVO: 1,
+            _F_PREDICTIVO: 0,
             _ID_EQUIPO: $('#ID_EQUIPO').val()
         };
+
+        $('#guardar_gestion').addClass('disabled');
 //        console.log(myObjGestion);
         insertar_gestion(myObjGestion);
     } else {
@@ -743,7 +811,7 @@ $("#codigo_llamada").change(function () {
             duracion: $("#tiempo_actual").val(),
             retraso_llamada: $("#retraso_actual").val(),
             expediente: $("#expediente_deudor").val(),
-            f_predictivo: 1
+            f_predictivo: 0
         };
         for (var obj in myObjGestion) {
             if (myObjGestion[obj] === "") {
@@ -781,7 +849,7 @@ $("#insert_convenio").click(function () {
         _RETASO: $('#retraso_actual').val(),
         _ID_PUESTO: id_puesto_usuario,
         _PROMESA: 1,
-        _F_PREDICTIVO: 1,
+        _F_PREDICTIVO: 0,
         _ID_EQUIPO: $('#ID_EQUIPO').val()
     };
     var myObjConvenio = {
@@ -860,9 +928,6 @@ function select_equipos_usuario(_id_usuario, _div) {
 //            console.log(totales);
             $("#" + _div).append('<tr id="' + _id_usuario + '" class="equipo_usuario green">' +
                     '<td></td> <td>' + totales.descripcion + '</td><td>' + totales.suma_cuentas + '</td><td>' + totales.suma_asignado + '</td></tr>');
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -895,9 +960,6 @@ function select_saldos_gestores(_id_usuario, _id_equipo, _div) {
                         '</tr>'
                         );
             }
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -929,9 +991,6 @@ function select_cuentas_de_estaus(_id_usuario, _id_equipo, _id_status, _div) {
                         '</tr>'
                         );
             }
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -956,7 +1015,7 @@ $("#tbody_tabla_saldos_status").delegate('.grupos_estatus', 'dblclick', function
     }
 });
 $("#tbody_tabla_cuentas_status").delegate('.saldos_status_cuenta', 'click', function () {
-    console.log($(this).text());
+//    console.log($(this).text());
     $("#tab_saldos").removeClass("active");
     $("#tab_gestiones").addClass("active");
     $('.tabs').tabs();
@@ -1001,7 +1060,7 @@ function update_time_gestor() {
         data: params,
         dataType: "json",
         success: function (response) {
-            console.log(response);
+//            console.log(response);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -1033,11 +1092,11 @@ function cronometro_llamada_actual() {
     }
     if (minutos <= 9)
         minutos = "0" + minutos;
-    if (minutos >= 5 || horas > 0) {
+    if (minutos >= 20 || horas > 0) {
         $(".div_input_gestor_tiempos").css("background-color", "#ffeb3b");
         cronometro_retraso_actual();
     }
-    if (minutos === 10)
+    if (minutos === 30)
         $(".div_input_gestor_tiempos").css("background-color", "#f44336");
     if (segundos <= 9)
         segundos = "0" + segundos;
@@ -1064,9 +1123,6 @@ function insert_agenda() {
         dataType: "json",
         success: function (result) {
 //            console.log(saldos);
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -1083,9 +1139,6 @@ function select_agenda_disponible() {
         dataType: "json",
         success: function (result) {
 //            console.log(saldos);
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -1102,6 +1155,10 @@ $('#insertar_agenda').click(function () {
     insertar_agenda();
 });
 
+$('#tab_agendas').click(function () {
+    select_agendas();
+});
+
 function insertar_agenda() {
     let params = {
         action: 'insertar_agenda',
@@ -1111,21 +1168,29 @@ function insertar_agenda() {
         fecha: $('#fecha_agenda').val(),
         hora: $('#hora_agenda').val()
     };
+    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerGestor",
         data: params,
         dataType: "json",
         success: function (result) {
-//            console.log(result);
-            $('#cliente_unico_agenda').val('');
-            $('#descripcion_agenda').val('');
-            $('#fecha_agenda').val('');
-            $('#hora_agenda').val('');
-            $('#modal_agregar_agenda').modal('close');
+            console.log(result);
+            if (result.response === 'OK') {
+                $('#cliente_unico_agenda').val('');
+                $('#descripcion_agenda').val('');
+                $('#fecha_agenda').val('');
+                $('#hora_agenda').val('');
+                $('#modal_agregar_agenda').modal('close');
+                select_agendas();
+            } else {
+                $('#mensaje_error_agenda').empty();
+                $('#mensaje_error_agenda').append(result.response);
+
+            }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+        error: function (err) {
+            console.log(err);
         }
     });
 
@@ -1139,11 +1204,80 @@ function select_agendas() {
         dataType: "json",
         success: function (result) {
             console.log(result);
+            $('#tb_list_agenda').empty();
+            for (let item of result) {
+                $('#tb_list_agenda').append(`<tr id='row_agenda_${item.ID_REGISTRO}' class='row_reg_agenda ${item.F_ACTIVE}'>
+                <td>${item.ID_REGISTRO}</td>
+                <td>${item.CLIENTE_UNICO}</td>
+                <td>${item.DESCRIPCION}</td>
+                <td>${item.FECHA}</td>
+                <td>${item.HORA}</td>
+                </tr>`);
+                if (parseInt(item.H_EJECUTAR) > 0) {
+                    console.log(parseInt(item.H_EJECUTAR));
+                    setTimeout(() => {
+                        select_list_agendas_modal(item.CLIENTE_UNICO, item.DESCRIPCION, item.FECHA, item.HORA, item.ID_REGISTRO);
+                        $('#modal_ver_agenda').modal('open');
+                    }, parseInt(item.H_EJECUTAR) * 1000);
+                }
+
+            }
         },
         error: function (error) {
             console.log(error);
         }
     });
+}
+
+$('#agenta_hora').click(function () {
+    $('#mensaje_error_agenda').empty();
+});
+
+$("#tb_list_agenda").on("click", ".row_reg_agenda", function () {
+    $(".row_reg_agenda").removeClass("selected");
+    $("#id_reg_agenda").val($(this).attr("id").replace("row_agenda_", ""));
+    $(this).addClass("selected");
+});
+
+$("#cuenta_agenda_datos").click(function () {
+    let cliente_unico = $("#agenta_cliente_unico").val();
+    let id_reg_agenda = $("#id_agenda_gestor").val();
+    select_datos_cuenta(cliente_unico);
+    descartar_agenda_gestor(id_reg_agenda);
+});
+
+$("#ver_modal_agendas").click(function () {
+    $('#modal_ver_agenda').modal('open');
+});
+
+// tb_cont_agenda
+function select_list_agendas_modal(_cuenta, _descripcion, _fecha, _hora, _id_reg_agenda) {
+    $("#agenta_cliente_unico").val(_cuenta);
+    $("#agenta_descripcion").val(_descripcion);
+    $("#agenta_fecha").val(_fecha);
+    $("#agenta_hora").val(_hora);
+    $("#id_agenda_gestor").val(_id_reg_agenda);
+//    $.ajax({
+//        type: "POST",
+//        url: "ControllerGestor",
+//        data: {action: 'select_agendas', id_gestor: id_usuario},
+//        dataType: "json",
+//        success: function (result) {
+//            $('#tb_cont_agenda').empty();
+//            for (let item of result) {
+//                $('#tb_cont_agenda').append(`<tr class='${item.HORA}'>
+//                <td>${item.CLIENTE_UNICO}</td>
+//                <td>${item.DESCRIPCION}</td>
+//                <td>${item.FECHA}</td>
+//                <td>${item.HORA}</td>
+//                </tr>`);
+//            }
+//            
+//        },
+//        error: function (error) {
+//            console.log(error);
+//        }
+//    });
 }
 
 
@@ -1165,9 +1299,6 @@ function actualizar_informacion_contacto() {
         nom_tel5: $('#NOM_TEL5').val(),
         tel5_1: $('#TELEFONO5').val(),
         tel5_2: $('#TELEFONO5_2').val(),
-        nom_tel_aval: $('#NOMBRE_AVAL').val(),
-        tel_aval_1: $('#TELAVAL').val(),
-        tel_aval_2: $('#TELAVAL2').val(),
         cuenta: $('#CLIENTE_UNICO').val()
     };
     $.ajax({
@@ -1177,12 +1308,39 @@ function actualizar_informacion_contacto() {
         dataType: "json",
         success: function (result) {
             console.log(result);
+            select_datos_cuenta(params.cuenta);
         },
         error: function (error) {
             console.log(error);
         }
     });
 }
+
+
+function actualizar_informacion_aval() {
+    let params = {
+        action: 'actualizar_informacion_aval',
+        nom_tel_aval: $('#NOMBRE_AVAL').val(),
+        tel_aval_1: $('#TELAVAL').val(),
+        tel_aval_2: $('#TELAVAL2').val(),
+        calle_aval: $('#CALLEAVAL').val(),
+        cuenta: $('#CLIENTE_UNICO').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: params,
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            select_datos_cuenta(params.cuenta);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
 
 function select_primera_llamada_gestor() {
     $.ajax({
@@ -1247,25 +1405,32 @@ function select_numero_cuentas_tocadas_gestor() {
 }
 
 $("#m_familiar").click(function () {
-    
     $('#modal_mensaje_familiar').modal('open');
-   
 });
 
 $("#m_tercero").click(function () {
-    
     $('#modal_mensaje_tercero').modal('open');
-   
 });
 
 $("#m_aval").click(function () {
-    
     $('#modal_mensaje_aval').modal('open');
-   
 });
 
 $("#m_tt").click(function () {
-    
     $('#modal_mensaje_tt').modal('open');
-   
 });
+
+function descartar_agenda_gestor(_id_registro) {
+    $.ajax({
+        type: "POST",
+        url: "ControllerGestor",
+        data: {action: 'descartar_agenda_gestor', id_reg: _id_registro},
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
