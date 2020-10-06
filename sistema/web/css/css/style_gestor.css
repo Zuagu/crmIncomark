@@ -211,3 +211,5 @@ input[type="text"]:not(.browser-default).validate + label {
     color: black;
     font-weight: bold;
 }
+
+
