@@ -47,7 +47,6 @@
                             <ul id="tabs-swipe-demo" class="tabs">
                                 <li class="tab col s2"><a class="active" href="#test-swipe-1">Datos</a></li>
                                 <li class="tab col s2"><a href="#test-swipe-2">Archivo</a></li>
-                                <li class="tab col s3"><a href="#test-swipe-3">Contrato</a></li>
                                 <li class="tab col s3"><a href="#test-swipe-4">Estadisticas</a></li>
                                 <li class="tab col s2"><a href="#test-swipe-5">Entradas</a></li>
                             </ul>
@@ -203,74 +202,6 @@
                                     </label>
                                 </p>
                             </div>
-                        </div>
-                        <div id="test-swipe-3" class="col s12 div_tabs">
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].contrato, $(this).text(), 'contrato')">
-                                        <img src="image/users/CONTRATO.png" alt="" width="100%">
-                                        Contrato
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].memorandum, $(this).text(), 'memorandum')">
-                                        <img src="image/users/MEMORANDUM.png" alt="" width="100%">
-                                        Memorandum
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].reglamento, $(this).text(), 'reglamento')">
-                                        <img src="image/users/REGLAMENTO.png" alt="" width="100%">
-                                        Reglamento
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <input type="hidden" class="data_format" value="suspencion">
-                                    <a href="#" onclick="alert_format(users[index_pos].suspencion, $(this).text(), 'suspencion')">
-                                        <img src="image/users/SUSPENCION.png" alt="" width="100%">
-                                        Suspencion
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].acta_administrativa, $(this).text(), 'acta_administrativa')">
-                                        <img src="image/users/ACTA_ADMINISTRATIVA.png" alt="" width="100%">
-                                        Acta Administrativa
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].ausencia_laboral, $(this).text(), 'ausencia_laboral')">
-                                        <img src="image/users/AUSENCIA_LABORAL.png" alt="" width="100%">
-                                        Ausencia Laboral
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].carta_recomendacion, $(this).text(), 'carta_recomendacion')">
-                                        <img src="image/users/CARTA_RECOMENDACION.png" alt="" width="100%">
-                                        Carta de Recomendacion
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col s6 m3 cont_doc">
-                                <div class="col s10 offset-s1 center-align hoverable waves-effect card-panel format">
-                                    <a href="#" onclick="alert_format(users[index_pos].constancia_laboral, $(this).text(), 'constancia_laboral')">
-                                        <img src="image/users/CONSTANCIA_LABORAL.png" alt="" width="100%">
-                                        Constancia Laboral
-                                    </a>
-                                </div>
-                            </div>
-
                         </div>
                         <div id="test-swipe-4" class="col s12 div_tabs">
                             <div class="col s6 m3 cont_doc">
