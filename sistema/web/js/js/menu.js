@@ -7,8 +7,7 @@ $(document).ready(function () {
         outDuration: 250
     });
     $('.tabs').tabs();
-    
-    $('select').formSelect();
+    $('select').formSelect({container: "body"});
     
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
@@ -24,8 +23,6 @@ $(document).ready(function () {
             <div class="collapsible-body collection">${submenu_text}</div>
         </li>`);
     }
-    
-    
     
     $('.tooltipped').tooltip({margin: 20});
     $("#info_gestor").fadeIn(1500);
@@ -78,49 +75,3 @@ $(".img_log").click(function () {
     $('.sidenav').sidenav('open');
 });
 
-// funcion que pinta los submenus al dar click
-function verSubmenu(indice) {
-    $("#contenido").empty();
-    for (row in menu[indice].submenus) {
-        $("#contenido").append('<div class="col s6 m4 l4">' +
-                '<div class="col s10 offset-s1 padding_submenus" >' +
-                '<div class="s12 center-align background_submenus_title">' + menu[indice].submenus[row] + '</div>' +
-                '<div class="s12 center-align background_submenus"><a href="' + menu[indice].jsp[row] + '"><i class="medium material-icons white-icon">' + menu[indice].iconosSubmenus[row] + '</i></a><br></div>' +
-                '</div>' +
-                '</div>'
-                );
-    }
-}
-
-// Funciones para rl buscador
-$("#filtro").click(function () {
-    $("#resultado_menu").removeClass("hide");
-    $("#colect").empty();
-
-    for (p in menu) {
-        for (r in menu[p].submenus) {
-            $("#colect").append('<a href="' + menu[p].jsp[r] + '" class="collection-item">' + menu[p].submenus[r] + '</a>');
-        }
-    }
-});
-
-function myFunction_buscar() {
-    var query = $("#filtro").val();
-    var li = document.querySelectorAll('#resultado_menu div a');
-    for (var i = 0; i < li.length; i++) {
-        var a = li[i];
-        if (a.textContent.toLowerCase().indexOf(query.toLowerCase().trim()) > -1) {
-            a.style.display = "";
-        } else {
-            a.style.display = "none";
-        }
-    }
-}
-// funcion que esconde el menu 
-$("#colect").delegate('.collection-item', 'click', function () {
-    $("#resultado_menu").addClass("hide");
-});
-
-$(".row").click(function () {
-    $("#resultado_menu").addClass("hide");
-});

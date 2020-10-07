@@ -43,31 +43,7 @@ var jefes={};
 var users = [], horarios = [];
 var index_pos;
 var ident_tr = 0;
-$(document).ready(function () {
-    $('.modal').modal({
-        dismissible: false,
-        opacity: 0.4,
-        inDuration: 500,
-        outDuration: 250
-    });
-    $('.tabs').tabs();
-    $('select').formSelect({container: "body"});
-    
-    $('.datepicker').datepicker({
-        format: "yyyy-mm-dd",
-        container: "body"
-    });
-    $('.timepicker').timepicker({
-        container: "body",
-        twelveHour: false,
-        autoClose: true
-    });
-    $('input.autocomplete').autocomplete({
-        data: jefes
-    });
-    $('.collapsible').collapsible();
 
-});
 window.onload = function () {
     select_usuarios('table_user');
     select_horarios();
@@ -99,16 +75,16 @@ function print_data_user_modal(index_pos) {
     $('#f_nacimiento').val(users[index_pos].f_nacimiento);
     $('#horario').val(users[index_pos].horario);
 
-    $('#f_naci').prop('checked', (users[index_pos].acta == "true"));
-    $('#ife').prop('checked', (users[index_pos].ife == "true"));
-    $('#nss').prop('checked', (users[index_pos].nss == "true"));
-    $('#fotos').prop('checked', (users[index_pos].fotos == "true"));
-    $('#curp').prop('checked', (users[index_pos].curp == "true"));
-    $('#com_est').prop('checked', (users[index_pos].comp_est == "true"));
-    $('#com_dom').prop('checked', (users[index_pos].comp_dom == "true"));
-    $('#carta').prop('checked', (users[index_pos].cartas == "true"));
-    $('#no_infv').prop('checked', (users[index_pos].infonavit == "true"));
-    $('#rfc').prop('checked', (users[index_pos].rfc == "true"));
+    $('#f_naci').prop('checked', (users[index_pos].acta === "true"));
+    $('#ife').prop('checked', (users[index_pos].ife === "true"));
+    $('#nss').prop('checked', (users[index_pos].nss === "true"));
+    $('#fotos').prop('checked', (users[index_pos].fotos === "true"));
+    $('#curp').prop('checked', (users[index_pos].curp === "true"));
+    $('#com_est').prop('checked', (users[index_pos].comp_est === "true"));
+    $('#com_dom').prop('checked', (users[index_pos].comp_dom === "true"));
+    $('#carta').prop('checked', (users[index_pos].cartas === "true"));
+    $('#no_infv').prop('checked', (users[index_pos].infonavit === "true"));
+    $('#rfc').prop('checked', (users[index_pos].rfc === "true"));
 
     $('select').formSelect();
 }
@@ -162,7 +138,7 @@ $("#horario").click(function () {
     $('#h_name_user').text(users[index_pos].nombre);
     $("#select_schedules").empty();
     for (var i in horarios) {
-        if (horarios[i].tipo_admin == users[index_pos].f_administrativo) {
+        if (horarios[i].tipo_admin === users[index_pos].f_administrativo) {
             $("#select_schedules").append('<option value="' + horarios[i].descripcion + '">' + horarios[i].descripcion + '</option>');
         }
     }
@@ -478,7 +454,24 @@ $("#modal_user_puestos").delegate('tbody tr', 'click', function () {
     $("#btn_delete_vacante").removeClass("disabled");
     $("#update_puesto").removeClass("disabled");
 });
-// funcion de filtro =============================================================================================================================
+// funcion de Agregar nuevo Usuario =======================================================================================================
+$("#btn_add_user").click( function () {
+    $.ajax({
+        url: 'ControllerUsuario', 
+        type: 'POST', 
+        data: {
+            accion: "add_user", 
+            id_vacante: $("").val() 
+        },
+        success: function (ress) {
+            
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+// funcion de filtro =====================================================================================================================
 function hide_inactives() {
     var inac = document.querySelectorAll(".INACTIVO");
 //    console.l
@@ -489,7 +482,7 @@ function hide_inactives() {
     }
 };
 
-document.querySelector("#filtro").onkeyup = function () {
+document.querySelector("#buscador_cuentas_gestor").onkeyup = function () {
     if(this.value === "") {
         hide_inactives();
     }else {
@@ -513,3 +506,4 @@ $TableFilter = function (id, value) {
         }
     }
 };
+
