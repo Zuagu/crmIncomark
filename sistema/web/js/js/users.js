@@ -22,7 +22,7 @@ function pintar_tabla_usuarios(user_data, _box) {
     $("#" + _box).empty();
     var row_print = '<table id="tabla_usuarios" class="highlight striped"><thead><tr><th>Id</th><th>Nombre</th><th>Puesto</th><th>Fecha Alta</th><th>Celular</th><th>Jefe Inmediato</th><th>Estatus</th></thead><tbody>';
     for (var i in user_data) {
-        row_print += '<tr id="' + i + '" class="row_user '+user_data[i].active+'" style="' + (user_data[i].f_active == 0 ? "display:none; background-image: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 255, 255, 0.77), rgba(255, 0, 0, 0.2));" : "") + '">';
+        row_print += '<tr id="' + i + '" class="row_user ' + user_data[i].active + '" style="' + (user_data[i].f_active == 0 ? "display:none; background-image: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 255, 255, 0.77), rgba(255, 0, 0, 0.2));" : "") + '">';
         row_print += '<td>' + user_data[i].id + '</td>';
         row_print += '<td>' + user_data[i].nombre + '<br>' + user_data[i].sucursal + '</td>';
         row_print += '<td>' + user_data[i].puesto + '</td>';
@@ -37,9 +37,9 @@ function pintar_tabla_usuarios(user_data, _box) {
     row_print += '</tbody></table>';
     console.log(users);
 //    console.log(jefes);
-    
+
 }
-var jefes={};
+var jefes = {};
 var users = [], horarios = [];
 var index_pos;
 var ident_tr = 0;
@@ -114,10 +114,10 @@ $(".save").click(function () {
 // funciones para eliminar usuario ============================================================================================
 $(".eliminar").click(function () {
     alert();
-    $.ajax({ 
-        url: '/sistema/ManageUsuario', type: 'POST', data: {accion: "delete_usuario", id_usuario: users[index_pos].id },
+    $.ajax({
+        url: '/sistema/ManageUsuario', type: 'POST', data: {accion: "delete_usuario", id_usuario: users[index_pos].id},
         success: function (ress) {
-            
+
         }
     });
 });
@@ -183,8 +183,8 @@ $("#insert_horario_especial").click(function () {
     $.ajax({
         url: '/sistema/ManageHorario', type: 'POST',
         data: {
-            accion: "insert_horario_admin", 
-            id_usuario: users[index_pos].id, 
+            accion: "insert_horario_admin",
+            id_usuario: users[index_pos].id,
             dia: $("#select_day").val(),
             entrada: $("#especial_entrada").val(),
             salida: $("#especial_salida").val()
@@ -257,7 +257,7 @@ function update_dataJSON() {
     });
 }
 // funcines para actualizar datos del Usuarios   =======================================================================================
-$("#update_user").click(function (){
+$("#update_user").click(function () {
     var d = {
         accion: "update_data_user",
         id: users[index_pos].id,
@@ -308,7 +308,7 @@ $("#update_user").click(function (){
 });
 
 // Cambiar Puesto =====================================================================================
-$("#puesto").click(function (){
+$("#puesto").click(function () {
     $('#modal_puestos').modal("open");
     $.ajax({
         url: '/sistema/ManageUsuario', type: 'POST', data: {accion: "arcade_select_puesto"},
@@ -346,7 +346,7 @@ function print_vacantes() {
 // click de los puestos
 $(".caja_puesto").delegate(".collection-item", "click", function () {
     $("#modal_user_puestos").modal("open");
-    $("#name_puesto").text( $(this).text() );
+    $("#name_puesto").text($(this).text());
     var _id_puesto = $(this).attr("id");
     $("#id_puesto_modal_puestos").val(_id_puesto);
     $.ajax({
@@ -356,7 +356,7 @@ $(".caja_puesto").delegate(".collection-item", "click", function () {
             print_vacantes();
         }
     });
-    
+
 });
 // UPDATE DATOS DE LA VARIABLE data_vacante y pintar coll\place
 $("#update_puesto").click(function () {
@@ -364,19 +364,19 @@ $("#update_puesto").click(function () {
     // ligica de reasignar o asignar vacante dependiendo del status del usuario
     // estamos trabajndo en esto
     var params = {};
-    if( users[index_pos].f_active === "1" ) {
+    if (users[index_pos].f_active === "1") {
         params = {
-            accion: "reasignar_vacante", 
-            puesto: $("#id_puesto_modal_puestos").val(), 
-            vacante: $(".select_vacante").attr("id"), 
-            usuario_id: users[index_pos].id, 
+            accion: "reasignar_vacante",
+            puesto: $("#id_puesto_modal_puestos").val(),
+            vacante: $(".select_vacante").attr("id"),
+            usuario_id: users[index_pos].id,
             sueldo: "0.00"
         };
-    }else {
+    } else {
         params = {
-            accion: "udpate_id_usuario_vacante", 
-            id_vacante: $(".select_vacante").attr("id"), 
-            id_usuario: users[index_pos].id, 
+            accion: "udpate_id_usuario_vacante",
+            id_vacante: $(".select_vacante").attr("id"),
+            id_usuario: users[index_pos].id,
             sueldo: "0.00"
         };
     }
@@ -403,13 +403,13 @@ $("#btn_nueva_vacante").click(function () {
 
 $("#btn_insert_vacante").click(function () {
     // si el campo esta vacio no inserta nada
-    if($("#name_vacante").val() != "") {
+    if ($("#name_vacante").val() != "") {
         $.ajax({
             url: '/sistema/ManageVacante', type: 'POST',
             data: {accion: "insert_vacante", vacante: $("#name_vacante").val(), id_puesto: $("#id_puesto_modal_puestos").val()},
             success: function (ress) {
                 $.ajax({
-                    url: '/sistema/ManageVacante', type: 'POST', 
+                    url: '/sistema/ManageVacante', type: 'POST',
                     data: {accion: "select_data_vacante", id_puesto: $("#id_puesto_modal_puestos").val()},
                     success: function (ress) {
                         data_vacante = JSON.parse(ress);
@@ -425,13 +425,13 @@ $("#btn_insert_vacante").click(function () {
 $("#btn_delete_vacante").click(function () {
     $("#modal_delete_vacante").modal("open");
 });
-$("#btn_confirm_delete_vacante").click(function () { 
+$("#btn_confirm_delete_vacante").click(function () {
     $.ajax({
-        url: '/sistema/ManageVacante', type: 'POST', data: {accion: "delete_vacante", id_vacante: $(".select_vacante").attr("id") },
+        url: '/sistema/ManageVacante', type: 'POST', data: {accion: "delete_vacante", id_vacante: $(".select_vacante").attr("id")},
         success: function (ress) {
-            
+
             $.ajax({
-                url: '/sistema/ManageVacante', type: 'POST', 
+                url: '/sistema/ManageVacante', type: 'POST',
                 data: {accion: "select_data_vacante", id_puesto: $("#id_puesto_modal_puestos").val()},
                 success: function (ress) {
                     data_vacante = JSON.parse(ress);
@@ -455,16 +455,41 @@ $("#modal_user_puestos").delegate('tbody tr', 'click', function () {
     $("#update_puesto").removeClass("disabled");
 });
 // funcion de Agregar nuevo Usuario =======================================================================================================
-$("#btn_add_user").click( function () {
+$("#btn_add_user").click(function () {
     $.ajax({
-        url: 'ControllerUsuario', 
-        type: 'POST', 
+        url: 'ControllerUsuario',
+        type: 'POST',
         data: {
-            accion: "add_user", 
-            id_vacante: $("").val() 
+            accion: "add_user",
+            nombre_m: $("#nombre_m").val(),
+            alias_m: $("#alias_m").val(),
+            telefono_m: $("#telefono_m").val(),
+            celular_m: $("#celular_m").val(),
+            email_m: $("#email_m").val(),
+            sexo_m: $("#sexo_m").val(),
+            puesto_m: $("#puesto_m").val(),
+            jefe_m: $("#jefe_m").val()
+
         },
         success: function (ress) {
-            
+            if (ress.response === 'ok') {
+                $("#nombre_m").val('');
+                $("#alias_m").val();
+                $("#telefono_m").val();
+                $("#celular_m").val();
+                $("#email_m").val();
+                $("#sexo_m").val();
+                $("#puesto_m").val();
+                $("#jefe_m").val();
+                $("#sms_agregado").empty();
+                $("#sms_agregado").append(ress.mensaje);
+
+            }else{
+                $("#sms_agregado").empty();
+                $("#sms_agregado").append(ress.mensaje);
+                
+            }
+
         },
         error: function (error) {
             console.log(error);
@@ -476,16 +501,17 @@ function hide_inactives() {
     var inac = document.querySelectorAll(".INACTIVO");
 //    console.l
 //    og(inac);
-    for(var i = 0; i < inac.length; i++) {
+    for (var i = 0; i < inac.length; i++) {
         var row = inac[i];
         row.style.display = 'none';
     }
-};
+}
+;
 
 document.querySelector("#buscador_cuentas_gestor").onkeyup = function () {
-    if(this.value === "") {
+    if (this.value === "") {
         hide_inactives();
-    }else {
+    } else {
         $TableFilter("#tabla_usuarios", this.value);
     }
 };

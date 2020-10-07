@@ -490,7 +490,9 @@
                 <div class="row">
                     <div class="col s12 m10 offset-m1 white">
                         <h5 class="center-align"><b>Nuevo Usuario</b></h5>
+                        <h4 id="sms_agregado"class="center-align"><b></b></h4>
                     </div>
+                    
                     <div class="col s12 m10 l10 offset-l1 offset-s1">
                         <div class="input-field col s6">
                             <input  id="nombre_m" type="text" class="validate">
