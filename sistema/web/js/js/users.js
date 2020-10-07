@@ -459,8 +459,9 @@ $("#btn_add_user").click(function () {
     $.ajax({
         url: 'ControllerUsuario',
         type: 'POST',
+        dataType: "json",
         data: {
-            accion: "add_user",
+            action: "add_user",
             nombre_m: $("#nombre_m").val(),
             alias_m: $("#alias_m").val(),
             telefono_m: $("#telefono_m").val(),
@@ -472,29 +473,37 @@ $("#btn_add_user").click(function () {
 
         },
         success: function (ress) {
+            console.log(ress);
+            console.log(ress['mensaje']);
             if (ress.response === 'ok') {
                 $("#nombre_m").val('');
-                $("#alias_m").val();
-                $("#telefono_m").val();
-                $("#celular_m").val();
-                $("#email_m").val();
-                $("#sexo_m").val();
-                $("#puesto_m").val();
-                $("#jefe_m").val();
+                $("#alias_m").val('');
+                $("#telefono_m").val('');
+                $("#celular_m").val('');
+                $("#email_m").val('');
+                $("#sexo_m").val('');
+                $("#puesto_m").val('');
+                $("#jefe_m").val('');
                 $("#sms_agregado").empty();
-                $("#sms_agregado").append(ress.mensaje);
+                $("#sms_agregado").append(ress['mensaje']);
 
-            }else{
+            } else {
                 $("#sms_agregado").empty();
-                $("#sms_agregado").append(ress.mensaje);
-                
+                $("#sms_agregado").append(ress['mensaje']);
+
             }
 
         },
         error: function (error) {
             console.log(error);
+
+            $("#sms_agregado").empty();
+            $("#sms_agregado").append(error.responseText);
         }
     });
+});
+$('#modal_nuevo_usuario input').click( function () {
+    $("#sms_agregado").empty();
 });
 // funcion de filtro =====================================================================================================================
 function hide_inactives() {

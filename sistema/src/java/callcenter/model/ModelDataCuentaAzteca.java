@@ -21,7 +21,7 @@ import org.json.simple.parser.JSONParser;
  * @author Emmanuel Medina
  */
 public class ModelDataCuentaAzteca {
-
+    
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
@@ -130,8 +130,11 @@ public class ModelDataCuentaAzteca {
 //            System.out.println(objCuenta.toString());
             return objCuenta.toString();
         } catch (SQLException e) {
+            
+            System.out.println(e);
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
+        
     }
 
     public static String guardarGestion(String objGestion) {

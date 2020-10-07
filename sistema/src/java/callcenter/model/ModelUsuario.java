@@ -150,12 +150,13 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
+
     //==========================================================================
     public static String real_id(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
             String resultado = "";
-            String sql = "select id from arcade_usuarios where alias = '"+id_usuario+"';";
+            String sql = "select id from arcade_usuarios where alias = '" + id_usuario + "';";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {
@@ -174,8 +175,8 @@ public class ModelUsuario {
     public static String select_usuarios_cargo(int puesto, int puesto2, int puesto3) {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String cadena_puesto = puesto + "," + puesto2 + "," + puesto3 ;
-            
+            String cadena_puesto = puesto + "," + puesto2 + "," + puesto3;
+
             String sql = "select u.id, u.nombre from arcade_usuarios u\n"
                     + "left join sic_puestos p on (u.id_puesto = p.id_puesto or u.id_puesto2 = p.id_puesto or u.id_puesto3 = p.id_puesto)\n"
                     + "where p.id_padre in (" + cadena_puesto + ") and p.id_padre != 0;";
@@ -196,7 +197,7 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
-    
+
     //==========================================================================
     public static String select_usuarios(String filtro) {
         try {
@@ -219,17 +220,17 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
-    
+
     //==========================================================================
     //==========================================================================
     public static String select_usuarios_cargo_filtro(int puesto, int puesto2, int puesto3, String filtro) {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String cadena_puesto = puesto + "," + puesto2 + "," + puesto3 ;
-            
+            String cadena_puesto = puesto + "," + puesto2 + "," + puesto3;
+
             String sql = "select u.id, u.nombre from arcade_usuarios u\n"
                     + "left join sic_puestos p on (u.id_puesto = p.id_puesto or u.id_puesto2 = p.id_puesto or u.id_puesto3 = p.id_puesto)\n"
-                    + "where p.id_padre in (" + cadena_puesto + ") and p.id_padre != 0 and (u.id like '%"+ filtro +"%' or u.nombre like '%"+ filtro +"%');";
+                    + "where p.id_padre in (" + cadena_puesto + ") and p.id_padre != 0 and (u.id like '%" + filtro + "%' or u.nombre like '%" + filtro + "%');";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             JSONArray gestores = new JSONArray();
@@ -243,6 +244,31 @@ public class ModelUsuario {
             inicioConexion.rs.close();
             inicioConexion.st.close();
             return gestores.toJSONString();
+        } catch (SQLException ex) {
+            return "SQL Code: " + ex;
+        }
+    }
+
+    //==========================================================================
+    public static String add_user(String nom, String alias, String tel, String cel, String mail, String sexo, String puesto, String jefe) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+
+            String sql = "CALL arcade_insert_usuario('" + nom + "','" + alias + "', 1, 24, 1,'" + sexo + "','" + tel + "','" + cel + "','" + mail + "', 1);";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+
+            JSONObject gestor = new JSONObject();
+            // mensaje, response
+            while (inicioConexion.rs.next()) {
+                gestor.put("mensaje", inicioConexion.rs.getString("mensaje"));
+                gestor.put("response", inicioConexion.rs.getString("response"));
+                
+            }
+            inicioConexion.conn.close();
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            return gestor.toJSONString();
         } catch (SQLException ex) {
             return "SQL Code: " + ex;
         }

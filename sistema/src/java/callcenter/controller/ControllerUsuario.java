@@ -81,9 +81,16 @@ public class ControllerUsuario extends HttpServlet {
             writer.flush();
             writer.close();
         }
-        else if (action.equals("select_usuarios")) {
-            String Respuesta = ModelUsuario.select_usuarios(
-                    request.getParameter("filtro")
+        else if (action.equals("add_user")) {
+            String Respuesta = ModelUsuario.add_user(
+                    request.getParameter("nombre_m"),
+                    request.getParameter("alias_m"),
+                    request.getParameter("telefono_m"),
+                    request.getParameter("celular_m"),
+                    request.getParameter("email_m"),
+                    request.getParameter("sexo_m"),
+                    request.getParameter("puesto_m"),
+                    request.getParameter("jefe_m")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
