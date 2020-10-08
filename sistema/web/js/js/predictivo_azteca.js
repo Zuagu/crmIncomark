@@ -1068,9 +1068,9 @@ function update_time_gestor() {
     });
 }
 
-var time_gestor = setInterval(function () {
-    update_time_gestor();
-}, 59000);
+//var time_gestor = setInterval(function () {
+//    update_time_gestor();
+//}, 59000);
 
 function cronometro_llamada_actual() {
     var datos = $("#tiempo_actual").val().split(":");

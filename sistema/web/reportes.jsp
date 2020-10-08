@@ -8,7 +8,7 @@
         <title>Reportes Azteca</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
         <style>
             .encabezados_csv span {
                 background-color: rgba(0, 0, 0, 0.13);
@@ -29,6 +29,9 @@
             }
             .div_resumen table {
                 margin-top: 0.7rem;
+            }
+            td, th {
+                padding: 5px 5px !important;
             }
         </style>
     </head>

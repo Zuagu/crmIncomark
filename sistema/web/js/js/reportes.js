@@ -7,6 +7,8 @@
 window.onload = function () {
     select_options_territorios();
     select_options_zona();
+    $('.contenedor_buscar').addClass('hide');
+    $('#buscar_cuentas').addClass('hide');
 };
 //var reporte_estiones = [];
 
