@@ -16,6 +16,10 @@ $('#enviar_gestiones').click(function () {
     reporte_gestiones_tabla();
 });
 
+$('#obt_promesado_diario').click(function () {
+    reporte_promesado_diario();
+});
+
 $('#enviar_convenios').click(function () {
     azteca_reporte_convenios();
 });
@@ -421,6 +425,45 @@ function descargar_base() {
     });
 }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function reporte_promesado_diario() {
+    let params = {
+        action: 'reporte_promesado_diario',
+        desde: $('#fecha_promesado_diario').val(),
+        territorio: $('#id_promesado_diario').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            $('#tbody_tabla_promesado_diario').empty();
+            let cantidad = 0;
+            for (let item of response) {
+                $('#tbody_tabla_promesado_diario').append(`<tr>
+                    <td>${item.GESTOR}</td>
+                    <td>${item.CUENTA}</td>
+                    <td>${item.NOMBRE}</td>
+                    <td>${item.GERENTE}</td>
+                    <td>${item.ESTATUS_PAGO}</td>
+                    <td>${item.CANAL}</td>
+                    <td>${item.ATRASO_MAXIMO}</td>
+                    <td>${item.FECHA}</td>
+                    </tr>`);
+                cantidad = cantidad + 1;
+            }
+            $('#cantidad_convenios').empty();
+            $('#cantidad_convenios').append(cantidad + ' Cuentas');
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

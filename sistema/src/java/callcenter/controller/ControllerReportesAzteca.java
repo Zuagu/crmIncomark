@@ -105,6 +105,26 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("reporte_promesado_diario")) {
+            String Respuesta = ModelReportesAzteca.reporte_promesado_diario(
+                    request.getParameter("desde")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("reporte_promesas_incumplidas")) {
+            String Respuesta = ModelReportesAzteca.reporte_promesas_incumplidas(
+                    request.getParameter("desde")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         
     }
     

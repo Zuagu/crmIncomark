@@ -304,7 +304,7 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
+//            console.log(datos_cuenta);
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);

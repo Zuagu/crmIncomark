@@ -50,7 +50,7 @@ window.onload = function () {
 };
 // pintar datos del usuarios en el modal =========================================================================================================
 function print_data_user_modal(index_pos) {
-    $(".cont_img").css('background-image', 'url("http://201.172.31.105:8080/sistema/images/usuarios/' + users[index_pos].id + '-min.png")');
+    $(".cont_img").css('background-image', 'url("image/icon-user.png")');
 //    $(".fondo").css('background-image', 'url("image/users/fondo_time.png');
 //    $(".fondo").css('background-size', '37%');
 //    $(".fondo").css('background-repeat', 'no-repeat');

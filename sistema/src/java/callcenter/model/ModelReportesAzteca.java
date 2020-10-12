@@ -59,6 +59,65 @@ public class ModelReportesAzteca {
         }
 
     }
+    
+    
+    public static String reporte_promesado_diario(String desde) {
+        try {
+
+            StartConexion ic = new StartConexion();
+            String sql = "call azteca_promesado_diario('" + desde + "');";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listConvenios = new JSONArray();
+            // GESTOR, CUENTA, NOMBRE, GERENTE, ESTATUS_LLAMADA, CONVENIO, PAGOS, FECHA, ESTATUS_PAGO, FECHA_PAGO
+            while (ic.rs.next()) {
+                JSONObject objConvenio = new JSONObject();
+                objConvenio.put("GESTOR", ic.rs.getString("GESTOR"));
+                objConvenio.put("CUENTA", ic.rs.getString("CUENTA"));
+                objConvenio.put("NOMBRE", ic.rs.getString("NOMBRE"));
+                objConvenio.put("GERENTE", ic.rs.getString("GERENTE"));
+                objConvenio.put("ESTATUS_LLAMADA", ic.rs.getString("ESTATUS_LLAMADA"));
+                objConvenio.put("CONVENIO", ic.rs.getString("CONVENIO"));
+                objConvenio.put("PAGOS", ic.rs.getString("PAGOS"));
+                objConvenio.put("FECHA", ic.rs.getString("FECHA"));
+                objConvenio.put("ESTATUS_PAGO", ic.rs.getString("ESTATUS_PAGO"));
+                objConvenio.put("FECHA_PAGO", ic.rs.getString("FECHA_PAGO"));
+                listConvenios.add(objConvenio);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            return listConvenios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    public static String reporte_promesas_incumplidas(String desde) {
+        try {
+
+            StartConexion ic = new StartConexion();
+            String sql = "call azteca_promesas_incumplidas('" + desde + "');";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listConvenios = new JSONArray();
+            // GERENTE, TOTAL, FECHA, ID_ESTATUS
+            while (ic.rs.next()) {
+                JSONObject objConvenio = new JSONObject();
+                objConvenio.put("GERENTE", ic.rs.getString("GERENTE"));
+                objConvenio.put("TOTAL", ic.rs.getString("TOTAL"));
+                objConvenio.put("FECHA", ic.rs.getString("FECHA"));
+                objConvenio.put("ID_ESTATUS", ic.rs.getString("ID_ESTATUS"));
+                listConvenios.add(objConvenio);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            return listConvenios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
 
     public static String reporte_gestiones_tabla(String desde, String hasta, String territrio) {
         try {

@@ -56,38 +56,34 @@
                         <div class="row">
                             <div class="col s10 offset-s1 hide_print">
                                 <div class="input-field col s3 offset-l2" >
-                                    <select id="id_ter_gestion" name="id_region"></select>
+                                    <select id="id_promesado_diario" name="id_region"></select>
                                     <label>Territorio</label>
                                 </div>
                                 <div class="input-field col s7" >
                                     <input id="fecha_promesado_diario" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
                                     <label class="" for="fecha_promesado_diario"></label>
-                                    <a id="enviar_gestiones" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
+                                    <a id="obt_promesado_diario" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_promesado_diario', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
                                 </div>
                             </div>
-                            <div id="promesado_diario" class="col s12 m12 l12 hide">
+                            <div id="promesado_diario" class="col s12 m12 l12">
                                 <h5 id="titulo_promesado_diario" class="right-align"></h5>
                                 <div id="datos_tabla_promesado_diario" class="col s12 z-depth-2 dt">
                                     <table class="highlight" id="tabla_pagos">
                                         <thead class="blue">
                                             <tr class="text-white">
-                                                <td><b>ID</b></td>
-                                                <td><b>HORA</b></td>
-                                                <td><b>TERRITORIO</b></td>
-                                                <td><b>FECHA_LARGA</b></td>
-                                                <td><b>CUENTA</b></td>
-                                                <td><b>NUMERO_MARCADO</b></td>
-                                                <td><b>ID_ESTATUS_LLAMADA</b></td>
-                                                <td><b>USUARIO</b></td>
-                                                <td><b>GESTION</b></td>
-                                                <td><b>DURACION</b></td>
-                                                <td><b>RETASO</b></td>
-                                                <td><b>PROMESA</b></td>
-                                                <td><b>PREDICTIVO</b></td>
+                                                <td><b>GESTOR</b></td>
+                                                <td><b>CEUNTA</b></td>
+                                                <td><b>NOMBRE</b></td>
+                                                <td><b>GERENTE</b></td>
+                                                <td><b>ESTATUS</b></td>
+                                                <td><b>MONTO</b></td>
+                                                <td><b>FECHA</b></td>
+                                                <td><b>ESTATUS PAGO</b></td>
+                                                <td><b>FECHA FAGO</b></td>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbody_tabla_gestiones">
+                                        <tbody id="tbody_tabla_promesado_diario">
                                         </tbody>
                                     </table>
                                 </div>
