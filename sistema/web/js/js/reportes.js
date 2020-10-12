@@ -174,12 +174,9 @@ function reporte_gestiones_tabla() {
                     <td>${item.ID_GESTION}</td>
                     <td>${item.HORA}</td>
                     <td>${item.TERRITORIO}</td>
-                    <td>${item.CANAL}</td>
                     <td>${item.FECHA_LARGA}</td>
-                    <td>${item.ATRASO_MAXIMO}</td>
                     <td>${item.CUENTA}</td>
                     <td>${item.NUMERO_MARCADO}</td>
-                    <td>${item.ID_ESTATUS_CUENTA}</td>
                     <td>${item.ID_ESTATUS_LLAMADA}</td>
                     <td>${item.USUARIO}</td>
                     <td>${item.GESTION}</td>

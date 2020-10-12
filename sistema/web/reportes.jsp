@@ -32,6 +32,10 @@
             }
             td, th {
                 padding: 5px 5px !important;
+                
+            }
+            td {
+                font-size: 13px;
             }
         </style>
     </head>
@@ -153,22 +157,19 @@
                                 <table class="highlight" id="tabla_pagos">
                                     <thead class="blue">
                                         <tr class="text-white">
-                                            <td><b>ID_GESTION</b></td>
+                                            <td><b>ID</b></td>
                                             <td><b>HORA</b></td>
                                             <td><b>TERRITORIO</b></td>
-                                            <td><b>CANAL</b></td>
                                             <td><b>FECHA_LARGA</b></td>
-                                            <td><b>ATRASO_MAXIMO</b></td>
                                             <td><b>CUENTA</b></td>
                                             <td><b>NUMERO_MARCADO</b></td>
-                                            <td><b>ID_ESTATUS_CUENTA</b></td>
                                             <td><b>ID_ESTATUS_LLAMADA</b></td>
                                             <td><b>USUARIO</b></td>
                                             <td><b>GESTION</b></td>
                                             <td><b>DURACION</b></td>
                                             <td><b>RETASO</b></td>
                                             <td><b>PROMESA</b></td>
-                                            <td><b>F_PREDICTIVO</b></td>
+                                            <td><b>PREDICTIVO</b></td>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_gestiones">

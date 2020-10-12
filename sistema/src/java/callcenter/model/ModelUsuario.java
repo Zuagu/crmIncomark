@@ -220,6 +220,30 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
+    
+    //==========================================================================
+    public static String select_puestos_disponobles() {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "select id_puesto,puesto from sic_puestos;";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            
+            JSONArray puestos = new JSONArray();
+            while (inicioConexion.rs.next()) {
+                JSONObject puesto = new JSONObject();
+                puesto.put("id_puesto", inicioConexion.rs.getInt("id_puesto"));
+                puesto.put("nombre", inicioConexion.rs.getString("nombre"));
+                puestos.add(puesto);
+            }
+            inicioConexion.conn.close();
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            return puestos.toJSONString();
+        } catch (SQLException ex) {
+            return "SQL Code: " + ex;
+        }
+    }
 
     //==========================================================================
     //==========================================================================

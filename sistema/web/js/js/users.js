@@ -517,6 +517,25 @@ function hide_inactives() {
 }
 ;
 
+function select_puestos_disponobles() {
+    let params = {
+        action: 'select_puestos_disponobles'
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerUsuario",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+//            console.log(response);
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
 document.querySelector("#buscador_cuentas_gestor").onkeyup = function () {
     if (this.value === "") {
         hide_inactives();
