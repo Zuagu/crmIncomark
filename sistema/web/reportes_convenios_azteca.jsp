@@ -60,11 +60,51 @@
             <div class="col s12 m12 l12">
                 <div class="col s12 m12 l12">
                     <ul id="tabs-swipe-demo" class="tabs hide_print">
-                        <li class="tab col s3"><a class="active" href="#test-swipe-1" style="color:#db040e">Promesado Diario</a></li>
+                        <li class="tab col s3"><a class="active" href="#test-swipe-0" style="color:#db040e">Promesado Diario</a></li>
+                        <li class="tab col s3"><a class="active" href="#test-swipe-1" style="color:#db040e">Promesado a Pagar Diario</a></li>
                         <li class="tab col s3"><a class="active" href="#test-swipe-2" style="color:#db040e">Promesas Incumplidas</a></li>
-                        <li class="tab col s2"><a class="active" href="#test-swipe-3" style="color:#db040e">Promesado x Gestor</a></li>
+                        <li class="tab col s3"><a class="active" href="#test-swipe-3" style="color:#db040e">Promesado x Gestor</a></li>
 
                     </ul>
+                    <div id="test-swipe-0" class="col s12" style="margin-top:10px;"> 
+                        <div class="row">
+                            <div class="col s10 hide_print">
+                                <div class="input-field col s3" >
+                                    <select id="territorio_promesado_diario"  type="text"></select>
+                                    <label for="territorio_promesado_diario">Territorio</label>
+                                </div>
+                                <div class="input-field col s3" >
+                                    <input id="fecha_promesado_al_momento" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly=""></td>
+                                    <label class="" for="fecha_promesado_diario"></label>
+                                     <input id="hora_promesado_al_momento" name="hora" type="text" class="validate timepicker" placeholder="desde" readonly=""></td>
+                                </div>
+                                <a id="obt_promesado_diario" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
+                                <a onclick="tableToExcel('datos_tabla_promesado_diario', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
+                            </div>
+                            <div id="promesado_diario_org" class="col s12 m12 l12">
+                                <div id="datos_tabla_promesado_diario_org" class="col s12 z-depth-2 dt">
+                                    <table class="highlight">
+                                        <thead class="blue">
+                                            <tr class="text-white">
+                                                <td><b>GESTOR</b></td>
+                                                <td><b>CUENTA</b></td>
+                                                <td><b>NOMBRE</b></td>
+                                                <td><b>GERENTE</b></td>
+                                                <td><b>ESTATUS</b></td>
+                                                <td><b>MONTO</b></td>
+                                                <td><b>FECHA</b></td>
+                                                <td><b>HORA</b></td>
+                                                <td><b>ESTATUS PAGO</b></td>
+                                                <td><b>FECHA PAGO</b></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_tabla_promesado_diario_org">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div id="test-swipe-1" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
@@ -85,7 +125,7 @@
                                         <thead class="blue">
                                             <tr class="text-white">
                                                 <td><b>GESTOR</b></td>
-                                                <td><b>CEUNTA</b></td>
+                                                <td><b>CUENTA</b></td>
                                                 <td><b>NOMBRE</b></td>
                                                 <td><b>GERENTE</b></td>
                                                 <td><b>ESTATUS</b></td>
@@ -105,7 +145,7 @@
                     <div id="test-swipe-2" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
-                                
+
                                 <div class="input-field col s3 hide" >
                                     <select id="ter" name="id_region"></select>
                                     <label>Territorio</label>
@@ -116,7 +156,7 @@
                                 </div>
                                 <a id="enviar_promesas_incumplidas" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesas_incumplidas', 'incumplidas')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
-                                
+
                             </div>
                             <div id="datos_tabla_promesas_incumplidas" class="col s12 z-depth-2 dt">
                                 <table class="highlight">
