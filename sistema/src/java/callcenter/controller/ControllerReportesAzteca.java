@@ -66,6 +66,14 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("select_options_territorios_convenios")) {
+            String Respuesta = ModelReportesAzteca.select_options_territorios_convenios();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         else if (action.equals("azteca_reporte_pagos")) {
             String Respuesta = ModelReportesAzteca.azteca_reporte_pagos(
                     request.getParameter("desde"),
@@ -107,6 +115,7 @@ public class ControllerReportesAzteca extends HttpServlet {
         }
         else if (action.equals("reporte_promesado_diario")) {
             String Respuesta = ModelReportesAzteca.reporte_promesado_diario(
+                    request.getParameter("territorio"),
                     request.getParameter("desde")
             );
             response.setContentType("text/html; charset=UTF-8");

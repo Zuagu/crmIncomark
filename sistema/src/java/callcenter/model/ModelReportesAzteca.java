@@ -61,11 +61,11 @@ public class ModelReportesAzteca {
     }
     
     
-    public static String reporte_promesado_diario(String desde) {
+    public static String reporte_promesado_diario(String territorio, String desde) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_promesado_diario('" + desde + "');";
+            String sql = "call azteca_promesado_diario('" + territorio + "','" + desde + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listConvenios = new JSONArray();
@@ -108,6 +108,7 @@ public class ModelReportesAzteca {
                 objConvenio.put("TOTAL", ic.rs.getString("TOTAL"));
                 objConvenio.put("FECHA", ic.rs.getString("FECHA"));
                 objConvenio.put("ID_ESTATUS", ic.rs.getString("ID_ESTATUS"));
+                objConvenio.put("DIA_SEM", ic.rs.getString("DIA_SEM"));
                 listConvenios.add(objConvenio);
             }
             ic.rs.close();
@@ -258,7 +259,28 @@ public class ModelReportesAzteca {
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
+    }
+    
+    public static String select_options_territorios_convenios() {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT TERRITORIO FROM azteca_convenios GROUP BY TERRITORIO;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray territorios = new JSONArray();
+            while (ic.rs.next()) {
+                territorios.add(ic.rs.getString("TERRITORIO"));
+//                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
 
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return territorios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
     }
 
     public static String select_options_zona() {
