@@ -21,6 +21,10 @@ $('#obt_promesado_diario').click(function () {
     reporte_promesado_diario();
 });
 
+$('#obt_promesado_diario_org').click(function () {
+    reporte_promesado_diario_org();
+});
+
 $('#enviar_promesas_incumplidas').click(function () {
     reporte_promesas_incumplidas_semana();
 });
@@ -120,9 +124,12 @@ function select_options_territorios_convenios() {
         success: function (response) {
             console.log(response);
             $('#territorio_promesado_diario').empty();
+            $('#territorio_promesado_diario_org').empty();
             $('#territorio_promesado_diario').append(`<option value="0">Todos</option>`);
+            $('#territorio_promesado_diario_org').append(`<option value="0">Todos</option>`);
             for (let item of response) {
                 $('#territorio_promesado_diario').append(`<option value="${item}">${item}</option>`);
+                $('#territorio_promesado_diario_org').append(`<option value="${item}">${item}</option>`);
             }
             $('select').formSelect();
         },
@@ -499,6 +506,51 @@ function reporte_promesado_diario() {
                 cantidad = cantidad + 1;
             }
             $('#tbody_tabla_promesado_diario').append(`<tr class="">
+                <td class="right-align" colspan="3"><h6></h6></td>
+                <td class="right-align" colspan="3"><h6>${cantidad} Promesas</h6></td>
+                <td class="right-align" colspan="3"><h6>Importe: $${monto}</h6></td>
+            </tr>`);
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function reporte_promesado_diario_org() {
+    let params = {
+        action: 'reporte_promesado_al_momento',
+        desde: $('#fecha_promesado_al_momento_org').val(),
+        territorio: $('#territorio_promesado_diario_org').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+//            console.log(response);
+            $('#tbody_tabla_promesado_diario_org').empty();
+            let cantidad = 0;
+            let monto = 0;
+            for (let item of response) {
+                $('#tbody_tabla_promesado_diario_org').append(`<tr class="color_${item.ESTATUS_PAGO}">
+                    <td>${item.GESTOR}</td>
+                    <td>${item.CUENTA}</td>
+                    <td>${item.NOMBRE}</td>
+                    <td>${item.GERENTE}</td>
+                    <td>${item.ESTATUS_LLAMADA}</td>
+                    <td>${item.CONVENIO}</td>
+                    <td>${item.FECHA_INSET}</td>
+                    <td>${item.HORA}</td>
+                    <td>${item.ESTATUS_PAGO}</td>
+                    <td>${item.FECHA}</td>
+                    </tr>`);
+                monto += parseFloat(item.CONVENIO);
+                cantidad = cantidad + 1;
+            }
+            $('#tbody_tabla_promesado_diario_org').append(`<tr class="">
                 <td class="right-align" colspan="3"><h6></h6></td>
                 <td class="right-align" colspan="3"><h6>${cantidad} Promesas</h6></td>
                 <td class="right-align" colspan="3"><h6>Importe: $${monto}</h6></td>

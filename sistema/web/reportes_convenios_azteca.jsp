@@ -70,16 +70,16 @@
                         <div class="row">
                             <div class="col s10 hide_print">
                                 <div class="input-field col s3" >
-                                    <select id="territorio_promesado_diario"  type="text"></select>
-                                    <label for="territorio_promesado_diario">Territorio</label>
+                                    <select id="territorio_promesado_diario_org"  type="text"></select>
+                                    <label for="territorio_promesado_diario_org">Territorio</label>
                                 </div>
                                 <div class="input-field col s3" >
-                                    <input id="fecha_promesado_al_momento" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly=""></td>
-                                    <label class="" for="fecha_promesado_diario"></label>
-                                     <input id="hora_promesado_al_momento" name="hora" type="text" class="validate timepicker" placeholder="desde" readonly=""></td>
+                                    <input id="fecha_promesado_al_momento_org" name="fecha" type="text" class="validate datepicker" placeholder="Fecha" readonly=""></td>
+                                    <label class="" for="fecha_promesado_al_momento_org">Fecha</label>
+                                     <!--<input id="hora_promesado_al_momento" name="hora" type="text" class="validate timepicker" placeholder="desde" readonly=""></td>-->
                                 </div>
-                                <a id="obt_promesado_diario" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
-                                <a onclick="tableToExcel('datos_tabla_promesado_diario', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
+                                <a id="obt_promesado_diario_org" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
+                                <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>
                             <div id="promesado_diario_org" class="col s12 m12 l12">
                                 <div id="datos_tabla_promesado_diario_org" class="col s12 z-depth-2 dt">
@@ -92,7 +92,7 @@
                                                 <td><b>GERENTE</b></td>
                                                 <td><b>ESTATUS</b></td>
                                                 <td><b>MONTO</b></td>
-                                                <td><b>FECHA</b></td>
+                                                <td><b>FECHA INSERT</b></td>
                                                 <td><b>HORA</b></td>
                                                 <td><b>ESTATUS PAGO</b></td>
                                                 <td><b>FECHA PAGO</b></td>
