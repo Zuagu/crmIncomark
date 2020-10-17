@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //iniciar el dropdown del menu
     $('.modal').modal({
-        dismissible: false,
+        dismissible: true,
         opacity: 0.4,
         inDuration: 500,
         outDuration: 250

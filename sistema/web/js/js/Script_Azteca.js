@@ -766,6 +766,21 @@ $("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
     }
 
 });
+
+$("#datos_marcacion_aval").delegate(".num_phone", "click", function () {
+    $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+    $(".num_phone").removeClass("numero_marcado");
+    $(this).addClass("numero_marcado");
+    let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
+    if (num.length === 10) {
+        $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+        $("#gestion").removeAttr("readonly");
+    } else {
+        alert("El dato selecionado no es numero");
+    }
+
+});
+
 // Insert Convenio 
 function insertar_convenio(_myObjConvenio, _myObjGestion) {
 //    console.log(_myObjConvenio);

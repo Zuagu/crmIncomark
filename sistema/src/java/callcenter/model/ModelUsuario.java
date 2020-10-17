@@ -202,7 +202,7 @@ public class ModelUsuario {
     public static String select_usuarios(String filtro) {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String sql = "SELECT * FROM arcade_usuarios WHERE f_active = 1 AND f_administrativo = 0;";
+            String sql = "SELECT * FROM arcade_usuarios WHERE f_active = 1;";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             JSONArray gestores = new JSONArray();
