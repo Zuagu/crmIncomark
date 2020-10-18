@@ -758,7 +758,7 @@ $("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
     $(".num_phone").removeClass("numero_marcado");
     $(this).addClass("numero_marcado");
     let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
-    if (num.length === 10) {
+    if (num.length >= 8) {
         $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
         $("#gestion").removeAttr("readonly");
     } else {
@@ -772,7 +772,7 @@ $("#datos_marcacion_aval").delegate(".num_phone", "click", function () {
     $(".num_phone").removeClass("numero_marcado");
     $(this).addClass("numero_marcado");
     let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
-    if (num.length === 10) {
+    if (num.length >= 8) {
         $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
         $("#gestion").removeAttr("readonly");
     } else {

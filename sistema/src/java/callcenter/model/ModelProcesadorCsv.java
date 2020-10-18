@@ -147,6 +147,7 @@ public class ModelProcesadorCsv {
             ic.st.executeUpdate("truncate azteca_pagos_temporal;");
 //            System.out.println(sql_import_csv);
             ic.st.executeUpdate(sql_import_csv);
+            ic.st.executeQuery("CALL azteca_procesar_pagos();");
 
             ic.st.close();
             ic.conn.close();

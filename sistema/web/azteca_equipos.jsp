@@ -10,7 +10,8 @@
         <link rel="shortcut icon" href="image/logoSicsa/icon-sicsa.png">
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
 
         <style>
 
@@ -121,6 +122,18 @@
             }
             th, td {
                 font-size: 14px;
+            }
+            .tabla_gestores_selec_asig {
+                max-height: 30vh;
+                overflow: auto;
+            }
+            .tabla_gestores_disp_asig {
+                max-height: 30vh;
+                overflow: auto;
+            }
+            .tabla_equipos_asig {
+                max-height: 65vh;
+                overflow: auto;
             }
 
         </style>

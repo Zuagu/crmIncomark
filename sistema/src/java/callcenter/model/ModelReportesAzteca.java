@@ -152,6 +152,33 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
+    
+    public static String reporte_promesas_por_gestor(String f_inicio) {
+        try {
+
+            StartConexion ic = new StartConexion();
+            String sql = "call azteca_recuperacion_por_gestor('" + f_inicio + "');";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listConvenios = new JSONArray();
+            // GESTOR, CONVENIO, PAGOS, FECHA
+            while (ic.rs.next()) {
+                JSONObject objConvenio = new JSONObject();
+                objConvenio.put("GESTOR", ic.rs.getString("GESTOR"));
+                objConvenio.put("CONVENIO", ic.rs.getString("CONVENIO"));
+                objConvenio.put("PAGOS", ic.rs.getString("PAGOS"));
+                objConvenio.put("FECHA", ic.rs.getString("FECHA"));
+                objConvenio.put("DIA_SEM", ic.rs.getString("DIA_SEM"));
+                listConvenios.add(objConvenio);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            return listConvenios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
 
     public static String reporte_gestiones_tabla(String desde, String hasta, String territrio) {
         try {

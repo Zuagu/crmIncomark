@@ -677,6 +677,75 @@ function reporte_promesas_incumplidas_semana() {
     });
 }
 
+function reporte_promesas_por_gestor() {
+    let params = {
+        action: 'reporte_promesas_por_gestor',
+        desde: $('#inicio_sem_promesas_incumplidas').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+//            console.log(response);
+            let user = ["ACAREVALO","ACRUZ","ADRODRIGUEZ","AGARZA","AJCANTU","ALAYALA","AMIRANDA","AORDONEZ","BDSANCHEZ","BNSOLIS","CSANCHEZ","DAESPARZA","DHSAAVEDRA","DJESPARZA","DJMARTINEZ"];
+//            $('#tbody_tabla_promesas_incumplidas').empty();
+            let gestor = {};
+            for (let item of user) {
+                gestor[item] = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+            }
+            
+            for (let row of response) {
+                gestor[row.GESTOR][parseInt(row.DIA_SEM)] = row.PAGOS;
+            }
+            
+            
+            let cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+            let incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+            let vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+            let dias = ["FECHA", "", "", "", "", "", "", "", ""]; 
+            let gerente1 = response[0].GERENTE;
+            let tabla_cum = [];
+            let tabla_incum = [];
+            let tabla_vig = [];
+            cumplidos[0] = response[0].GERENTE;
+            incumplidos[0] = response[0].GERENTE;
+            vigentes[0] = response[0].GERENTE;
+//            let cantidad = 0;
+            for (let item of response) {
+                dias[parseInt(item.DIA_SEM)] = item.FECHA;
+                if (item.GERENTE === gerente1) {
+                    if (item.ID_ESTATUS === "3") {
+                        cumplidos[parseInt(item.DIA_SEM)] = item.TOTAL;
+                    }
+                    if (item.ID_ESTATUS === "2") {
+                        incumplidos[parseInt(item.DIA_SEM)] = item.TOTAL;
+                    }
+                    if (item.ID_ESTATUS === "1") {
+                        vigentes[parseInt(item.DIA_SEM)] = item.TOTAL;
+                    }
+                } else {
+                    tabla_cum.push(cumplidos);
+                    tabla_incum.push(incumplidos);
+                    tabla_vig.push(vigentes);
+                    cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+                    incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+                    vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+                    cumplidos[0] = item.GERENTE;
+                    incumplidos[0] = item.GERENTE;
+                    vigentes[0] = item.GERENTE;
+                    gerente1 = item.GERENTE;
+                }
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+            
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
