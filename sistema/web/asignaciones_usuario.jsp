@@ -26,7 +26,21 @@
 
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
                 <div id="table_user" class="col s12 m12 table_user z-depth-2 inner white">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Cuentas</th>
+                                <th>Importe Total</th>
+                                <th>Orden</th>
+                                <th><i class="material-icons">play_arrow</i></th>
+                            </tr>
+                        </thead>
+                        <tbody id="body_table_horario">
 
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
