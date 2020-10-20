@@ -1,7 +1,7 @@
 <%-- 
-    Document   : cargar-gestiones-azteca
-    Created on : 27/09/2020, 08:10:38 PM
-    Author     : Emmanuel Medina
+    Document   : cargar-cartera-banco-azteca
+    Created on : 30/06/2020, 07:51:12 AM
+    Author     : zuagu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,10 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Carga de Gestiones azteca</title>
+        <title>Cargar Equipos Azteca</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
         <style>
             .encabezados_csv span {
                 background-color: rgba(0, 0, 0, 0.13);
@@ -33,31 +34,30 @@
 
         <div class="row">
             <div class="col s12 m12 l12">
-                <h5>Carga de Gestiones</h5>
-            </div>
-            <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2 margin_17_top">
-                <form method="POST" action="ControllerUploadGestiones" enctype="multipart/form-data">
-                    <div class="file-field input-field">
+                <div class="col s12 m6 l6 offset-m3 offset-l3">
+                    <form method="POST" action="" enctype="multipart/form-data">
                         <div class="col s12 m12 l12">
-                            <h6>Carga de Gestiones</h6>
-                        </div>  
-                        <div class="col s12 m12 l12 margin_20_down margin_17_top">
+                            <h6>Carga de Cuentas a Equipo</h6>
+                        </div> 
+                        <div class="file-field input-field">
                             <div class="btn blue">
-                                <span>Archivo csv</span>
+                                <span>Archivo CSV</span>
                                 <input type="file" name="uploadFile" accept=".csv">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
                             </div>
-                        </div>     
-                        <div class="col s4 m14 l14 offset-l4 offset-m4 margin_20_down">
-                            <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
+                            <div class="col s4 m14 l14 offset-l4 offset-m4 margin_20_down">
+                                <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
 
+            </div>
         </div>
+
+
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/menu.js"></script>

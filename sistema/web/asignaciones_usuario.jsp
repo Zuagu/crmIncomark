@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <link rel="shortcut icon" href="image/logoInco.fw.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Usuarios</title>
+        <title>Asignacion usuarios</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
@@ -21,35 +21,45 @@
             <div class="col s12"></div>
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
                 <div class="col s12 m12 l12 z-depth-2 inner actualizar_todos white">
-                    <h5 class="col s12 m4 l4">Ordenar todos</h5>
-                    <div class="input-field col s6 m3 l3">
-                        <select id="ultima_gestion_order_todos">
-                            <option value="asc">Mas Antiguo</option>
-                            <option value="desc">Mas Receinte</option>
+                    <div class="input-field col s12">
+                        <select multiple>
+                            <option value="" disabled selected>Seleccionar Territorio</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
                         </select>
-                        <label for="ultima_gestion_order_todos">Ultima Gestion Todos</label>
+                        <label>Territorio</label>
                     </div>
-                    <div class="input-field col s6 m3 l3">
-                        <select id="importe_order_todos">
-                            <option value="asc">Menor a Mayor</option>
-                            <option value="desc">Mayor a Menor</option>
+                    <div class="input-field col s3">
+                        <select multiple>
+                            <option value="" disabled selected>Seleccionar Gerente</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
                         </select>
-
-                        <label for="importe_order_todos">Importe Todos</label>
+                        <label>Gerente</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <select multiple>
+                            <option value="" disabled selected>Selecciona Gerencia</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label>Gerencia</label>
                     </div>
                     <div class="input-field col s6 m1 l1">
                         <a id="act_todos" class="btn-small waves-effect blue">Actualizar</a>
                     </div>
                 </div>
             </div>
-
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
                 <div class="col s12 m12 l12 z-depth-2 inner white">
                     <table>
                         <thead>
                             <tr>
-                                <th>Gestor</th>
-                                <th>Cantidad</th>
+                                <th>Usuario</th>
+                                <th>Gerente</th>
                                 <th>Importe</th>
                                 <th>Orden Fecha Gestion</th>
                                 <th>Orden Importe</th>
