@@ -20,36 +20,76 @@
         <div class="row">
             <div class="col s10 m10 l10 offset-s1 options offset-m1 offset-l1 right-align">
                 <div class="col s12 m12 l12">
-                    <a class="waves-effect waves-light btn blue modal-trigger add_user" href="#modal_nuevo_usuario">Nuevo</a>
+                    <h5 class="col s12 m5 l5">Oordenar todos</h5>
+                    <div class="input-field col s6 m3 l3">
+                        <input placeholder="Placeholder" id="ultima_gestion_order_todos" type="text" class="validate">
+                        <label for="ultima_gestion_order_todos">Ultima Gestion Todos</label>
+                    </div>
+                    <div class="input-field col s6 m3 l3">
+                        <input placeholder="Placeholder" id="importe_order_todos" type="text" class="validate">
+                        <label for="importe_order_todos">Importe Todos</label>
+                    </div>
+                    <div class="input-field col s6 m1 l1">
+                        <a id="act_todos" class="btn waves-effect blue">Actualizar</a>
+                    </div>
                 </div>
+
             </div>
 
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
-                <div id="table_user" class="col s12 m12 table_user z-depth-2 inner white">
+                <div class="col s12 m12 l12 z-depth-2 inner white">
                     <table>
                         <thead>
                             <tr>
-                                <th>Usuario</th>
-                                <th>Nombre</th>
-                                <th>Cuentas</th>
-                                <th>Importe Total</th>
-                                <th>Orden</th>
-                                <th><i class="material-icons">play_arrow</i></th>
+                                <th>Gestor</th>
+                                <th>Cantidad</th>
+                                <th>Importe</th>
+                                <th>Orden Fecha Gestion</th>
+                                <th>Orden Importe</th>
+                                <th></th>
                             </tr>
                         </thead>
-                        <tbody id="body_table_horario">
+                        <tbody id="tbody_asignaciones_gestor">
 
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <!-- Modal Structure -->
+        <div id="modal_data_asignacion" class="modal">
+            <div class="modal-content">
+                <div class="row">
+                    <h4 class="col s12 m8 l8 offset-m1 offset-l2 margen_top1_5"><b id="nom_asig"></b></h4>
+
+                    <div class="col s12 m8 l8 offset-m1 offset-l2 altura_max_modal_asig">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Estatus llamada</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_estatus_cuentas_asig">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn red">Cerrar</a>
+            </div>
+        </div>
+
+
 
 
         <script src="js/js/jquery-2.2.4.min.js"></script>
         <script src="js/js/materialize.min.js"></script>
         <script src="js/js/menu.js"></script>
-        <script src="js/js/users.js"></script>
+        <script src="js/js/asignaciones_usuarios.js"></script>
     </body>
 
 </html>
