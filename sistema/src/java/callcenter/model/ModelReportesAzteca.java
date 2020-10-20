@@ -59,8 +59,7 @@ public class ModelReportesAzteca {
         }
 
     }
-    
-    
+
     public static String reporte_promesado_diario(String territorio, String desde) {
         try {
 
@@ -92,8 +91,7 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
-    
+
     public static String reporte_promesado_al_momento(String territorio, String desde) {
         try {
 
@@ -125,7 +123,7 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
+
     public static String reporte_promesas_incumplidas(String desde) {
         try {
 
@@ -152,7 +150,7 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
+
     public static String reporte_promesas_por_gestor(String f_inicio) {
         try {
 
@@ -219,7 +217,7 @@ public class ModelReportesAzteca {
         }
 
     }
-    
+
     public static String azteca_reporte_operacion(String desde, String hasta) {
         try {
             StartConexion ic = new StartConexion();
@@ -298,7 +296,222 @@ public class ModelReportesAzteca {
         }
 
     }
+    // =========================================================================
 
+    public static String select_territorios() {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT count(CLIENTE_UNICO) as catidad,TERRITORIO FROM azteca_base_genenral_original where IDENTIFICADOR != '0' GROUP BY TERRITORIO ;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listterri = new JSONArray();
+            while (ic.rs.next()) {
+                JSONObject territorio = new JSONObject();
+                territorio.put("catidad", ic.rs.getString("catidad"));
+                territorio.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                listterri.add(territorio);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listterri.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+
+    public static String select_gerentes(String _territorios) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT count(CLIENTE_UNICO) as catidad,GERENTE FROM azteca_base_genenral_original where IDENTIFICADOR != '0' and TERRITORIO in (" + _territorios.replace("\"", "'") + ") GROUP BY GERENTE;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listgerentes = new JSONArray();
+            while (ic.rs.next()) {
+                JSONObject gerentes = new JSONObject();
+                gerentes.put("catidad", ic.rs.getString("catidad"));
+                gerentes.put("GERENTE", ic.rs.getString("GERENTE"));
+                listgerentes.add(gerentes);
+
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listgerentes.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+
+    public static String select_gerencias(String _territorios, String _gerentes) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT count(CLIENTE_UNICO) as catidad,GERENCIA FROM azteca_base_genenral_original where IDENTIFICADOR != '0' and TERRITORIO in (" + _territorios.replace("\"", "'") + ") and GERENTE in (" + _gerentes.replace("\"", "'") + ") GROUP BY GERENCIA;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listgerencias = new JSONArray();
+            while (ic.rs.next()) {
+                JSONObject gerencias = new JSONObject();
+                gerencias.put("catidad", ic.rs.getString("catidad"));
+                gerencias.put("GERENCIA", ic.rs.getString("GERENCIA"));
+                listgerencias.add(gerencias);
+
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listgerencias.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+
+    public static String generar_csv_telefonos(String _tipo_base, String territorio, String gerente, String gerencia) throws IOException {
+
+        String filename = "/var/lib/tomcat8/webapps/sistema/excel/NumerosBaseCrm.csv";
+        System.out.println("FILE NAME: " + filename);
+
+        try {
+            String resultado;
+            FileWriter fw = new FileWriter(filename);
+            StartConexion s = new StartConexion();
+            String sql;
+            if (_tipo_base.equals("completo")) {
+                sql = "select CLIENTE_UNICO,NOMBRE_CTE,\n"
+                        + "NOM_TEL1,TELEFONO1,TELEFONO1_2,\n"
+                        + "NOM_TEL2,TELEFONO2,TELEFONO2_2,\n"
+                        + "NOM_TEL3,TELEFONO3,TELEFONO3_2,\n"
+                        + "NOM_TEL4,TELEFONO4,TELEFONO4_2,\n"
+                        + "NOM_TEL5,TELEFONO5,TELEFONO5_2,\n"
+                        + "NOMBRE_AVAL,TELAVAL,TELAVAL2 \n"
+                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0' order by ULTIMA_GESTION";
+
+            } else if (_tipo_base.equals("medio_completo")) {
+                sql = "select CLIENTE_UNICO,NOMBRE_CTE,\n"
+                        + "NOM_TEL1,TELEFONO1,TELEFONO1_2,\n"
+                        + "NOM_TEL2,TELEFONO2,TELEFONO2_2,\n"
+                        + "NOM_TEL3,TELEFONO3,TELEFONO3_2,\n"
+                        + "NOM_TEL4,TELEFONO4,TELEFONO4_2,\n"
+                        + "NOM_TEL5,TELEFONO5,TELEFONO5_2,\n"
+                        + "NOMBRE_AVAL,TELAVAL,TELAVAL2 \n"
+                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0' and TERRITORIO in (" + territorio.replace("\"", "'") + ") and GERENTE in (" + gerente.replace("\"", "'") + ");";
+
+            } else {
+                sql = "select CLIENTE_UNICO,NOMBRE_CTE,\n"
+                        + "NOM_TEL1,TELEFONO1,TELEFONO1_2,\n"
+                        + "NOM_TEL2,TELEFONO2,TELEFONO2_2,\n"
+                        + "NOM_TEL3,TELEFONO3,TELEFONO3_2,\n"
+                        + "NOM_TEL4,TELEFONO4,TELEFONO4_2,\n"
+                        + "NOM_TEL5,TELEFONO5,TELEFONO5_2,\n"
+                        + "NOMBRE_AVAL,TELAVAL,TELAVAL2 \n"
+                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0' and TERRITORIO in (" + territorio.replace("\"", "'") + ") and GERENTE in (" + gerente.replace("\"", "'") + ") and GERENCIA in (" + gerencia.replace("\"", "'") + ");";
+
+            }
+
+            System.out.println(sql);
+            
+            fw.append("CLIENTE_UNICO");
+            fw.append(',');
+            fw.append("NOMBRE_CTE");
+            fw.append(',');
+            fw.append("NOM_TEL1");
+            fw.append(',');
+            fw.append("TELEFONO1");
+            fw.append(',');
+            fw.append("TELEFONO1_2");
+            fw.append(',');
+            fw.append("NOM_TEL2");
+            fw.append(',');
+            fw.append("TELEFONO2");
+            fw.append(',');
+            fw.append("TELEFONO2_2");
+            fw.append(',');
+            fw.append("NOM_TEL3");
+            fw.append(',');
+            fw.append("TELEFONO3");
+            fw.append(',');
+            fw.append("TELEFONO3_2");
+            fw.append(',');
+            fw.append("NOM_TEL4");
+            fw.append(',');
+            fw.append("TELEFONO4");
+            fw.append(',');
+            fw.append("TELEFONO4_2");
+            fw.append(',');
+            fw.append("NOM_TEL5");
+            fw.append(',');
+            fw.append("TELEFONO5");
+            fw.append(',');
+            fw.append("TELEFONO5_2");
+            fw.append(',');
+            fw.append("NOMBRE_AVAL");
+            fw.append(',');
+            fw.append("TELAVAL");
+            fw.append(',');
+            fw.append("TELAVAL2");
+            fw.append('\n');
+
+            s.rs = s.st.executeQuery(sql);
+            while (s.rs.next()) {
+                fw.append(s.rs.getString("CLIENTE_UNICO"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOMBRE_CTE"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOM_TEL1"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO1"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO1_2"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOM_TEL2"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO2"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO2_2"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOM_TEL3"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO3"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO3_2"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOM_TEL4"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO4"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO4_2"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOM_TEL5"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO5"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELEFONO5_2"));
+                fw.append(',');
+                fw.append(s.rs.getString("NOMBRE_AVAL"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELAVAL"));
+                fw.append(',');
+                fw.append(s.rs.getString("TELAVAL2"));
+                fw.append('\n');
+            }
+
+            fw.flush();
+            fw.close();
+
+            s.rs.close();
+            s.st.close();
+            s.conn.close();
+            resultado = "{\"response\":\"Se ha generado la base general en CSV de manera correcta.\"}";
+            return resultado;
+        } catch (SQLException ex) {
+            return "SQL COde:" + ex;
+        }
+    }
+
+    // =========================================================================
     public static String select_options_territorios() {
         try {
             StartConexion ic = new StartConexion();
@@ -320,7 +533,7 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
-    
+
     public static String select_options_territorios_convenios() {
         try {
             StartConexion ic = new StartConexion();

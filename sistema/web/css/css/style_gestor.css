@@ -227,3 +227,9 @@ input[type="text"]:not(.browser-default).validate + label {
     margin-top: 1rem !important;
     margin-bottom: 1rem !important;
 }
+
+.div_gerencias {
+    height: 60vh;
+    max-height: 60vh;
+    overflow: auto;
+}

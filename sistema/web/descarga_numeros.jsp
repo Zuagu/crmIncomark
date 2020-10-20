@@ -21,74 +21,51 @@
             <div class="col s12"></div>
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
                 <div class="col s12 m12 l12 z-depth-2 inner actualizar_todos white">
-                    <h5 class="col s12 m4 l4">Ordenar todos</h5>
-                    <div class="input-field col s6 m3 l3">
-                        <select id="ultima_gestion_order_todos">
-                            <option value="asc">Mas Antiguo</option>
-                            <option value="desc">Mas Receinte</option>
-                        </select>
-                        <label for="ultima_gestion_order_todos">Ultima Gestion Todos</label>
-                    </div>
-                    <div class="input-field col s6 m3 l3">
-                        <select id="importe_order_todos">
-                            <option value="asc">Menor a Mayor</option>
-                            <option value="desc">Mayor a Menor</option>
-                        </select>
+                    <h5 class="col s12 m10 l10">Descargar base de numeros Completa</h5>
 
-                        <label for="importe_order_todos">Importe Todos</label>
+                    <div class="input-field col s6 m2 l2">
+                        <a id="descargar_todos" class="btn-small waves-effect blue"><i class="material-icons right">archive</i>Descargar</a>
                     </div>
-                    <div class="input-field col s6 m1 l1">
-                        <a id="act_todos" class="btn-small waves-effect blue">Actualizar</a>
+                </div>
+            </div>
+            <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
+                <div class="col s12 m12 l12 z-depth-2 inner actualizar_todos white">
+                    <div class="input-field col s3">
+                        <select id="territorios" multiple>
+                            
+                        </select>
+                        <label>Territorios</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <select id="gerentes" multiple>
+                            
+                        </select>
+                        <label>Gertentes</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <a id="descargar_todos_select" class="btn-small waves-effect blue"><i class="material-icons right">archive</i>Descargar</a>
                     </div>
                 </div>
             </div>
 
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
-                <div class="col s12 m12 l12 z-depth-2 inner white">
+                <div class="col s12 m12 l12 z-depth-2 inner white div_gerencias">
                     <table>
                         <thead>
                             <tr>
-                                <th>Gestor</th>
-                                <th>Cantidad</th>
-                                <th>Importe</th>
-                                <th>Orden Fecha Gestion</th>
-                                <th>Orden Importe</th>
-                                <th></th>
+                                <th>Gerencia</th>
+                                <th>Cuentas</th>
+                                <th>Descargar</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody_asignaciones_gestor">
+                        <tbody id="tbody_gerencias_descargar">
 
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <!-- Modal Structure -->
-        <div id="modal_data_asignacion" class="modal">
-            <div class="modal-content">
-                <div class="row">
-                    <h4 class="col s12 m8 l8 offset-m1 offset-l2 margen_top1_5"><b id="nom_asig"></b></h4>
 
-                    <div class="col s12 m8 l8 offset-m1 offset-l2 altura_max_modal_asig">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Estatus llamada</th>
-                                    <th>Cantidad</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_estatus_cuentas_asig">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn red">Cerrar</a>
-            </div>
-        </div>
 
 
 
@@ -96,7 +73,7 @@
         <script src="js/js/jquery-2.2.4.min.js"></script>
         <script src="js/js/materialize.min.js"></script>
         <script src="js/js/menu.js"></script>
-        <script src="js/js/asignaciones_usuarios.js"></script>
+        <script src="js/js/descarga_numeros.js"></script>
     </body>
 
 </html>

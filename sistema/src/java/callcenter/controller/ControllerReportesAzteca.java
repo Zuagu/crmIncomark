@@ -155,6 +155,48 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("select_territorios")) {
+            String Respuesta = ModelReportesAzteca.select_territorios();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_gerentes")) {
+            String Respuesta = ModelReportesAzteca.select_gerentes(
+                    request.getParameter("_territorios")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_gerencias")) {
+            String Respuesta = ModelReportesAzteca.select_gerencias(
+                    request.getParameter("_territorios"),
+                    request.getParameter("_gerentes")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("generar_csv_telefonos")) {
+            String Respuesta = ModelReportesAzteca.generar_csv_telefonos(
+                    request.getParameter("_tipo_base"),
+                    request.getParameter("territorio"),
+                    request.getParameter("gerente"),
+                    request.getParameter("gerencia")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         
     }
     
