@@ -216,8 +216,14 @@ input[type="text"]:not(.browser-default).validate + label {
     margin-top: 1.5rem !important;
 }
 
+/* CSS asignaciones_usuario.jsp */
 .altura_max_modal_asig {
     height: 40vh;
     max-height: 40vh;
     overflow: auto;
+}
+
+.actualizar_todos {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
 }

@@ -113,6 +113,7 @@ function update_config_todos_gestor(params) {
         success: function (response) {
             console.log(response);
             alert(response.response);
+            select_asignaiones_usuarios()
         },
         error: function (error) {
             console.log(error);

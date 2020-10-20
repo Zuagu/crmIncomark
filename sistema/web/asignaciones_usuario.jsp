@@ -18,22 +18,29 @@
         <jsp:include page="header.jsp"/>
 
         <div class="row">
-            <div class="col s10 m10 l10 offset-s1 options offset-m1 offset-l1 right-align">
-                <div class="col s12 m12 l12">
-                    <h5 class="col s12 m5 l5">Oordenar todos</h5>
+            <div class="col s12"></div>
+            <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
+                <div class="col s12 m12 l12 z-depth-2 inner actualizar_todos white">
+                    <h5 class="col s12 m4 l4">Ordenar todos</h5>
                     <div class="input-field col s6 m3 l3">
-                        <input placeholder="Placeholder" id="ultima_gestion_order_todos" type="text" class="validate">
+                        <select id="ultima_gestion_order_todos">
+                            <option value="asc">Mas Antiguo</option>
+                            <option value="desc">Mas Receinte</option>
+                        </select>
                         <label for="ultima_gestion_order_todos">Ultima Gestion Todos</label>
                     </div>
                     <div class="input-field col s6 m3 l3">
-                        <input placeholder="Placeholder" id="importe_order_todos" type="text" class="validate">
+                        <select id="importe_order_todos">
+                            <option value="asc">Menor a Mayor</option>
+                            <option value="desc">Mayor a Menor</option>
+                        </select>
+
                         <label for="importe_order_todos">Importe Todos</label>
                     </div>
                     <div class="input-field col s6 m1 l1">
-                        <a id="act_todos" class="btn waves-effect blue">Actualizar</a>
+                        <a id="act_todos" class="btn-small waves-effect blue">Actualizar</a>
                     </div>
                 </div>
-
             </div>
 
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
