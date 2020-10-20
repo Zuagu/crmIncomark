@@ -372,6 +372,14 @@
         <servlet-name>ControllerUploadGestiones</servlet-name>
         <servlet-class>callcenter.controller.ControllerUploadGestiones</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerUploadFilesEquipos</servlet-name>
+        <servlet-class>callcenter.controller.ControllerUploadFilesEquipos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllerAsignacionesUsuarios</servlet-name>
+        <servlet-class>callcenter.controller.ControllerAsignacionesUsuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -731,6 +739,14 @@
     <servlet-mapping>
         <servlet-name>ControllerUploadGestiones</servlet-name>
         <url-pattern>/ControllerUploadGestiones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerUploadFilesEquipos</servlet-name>
+        <url-pattern>/ControllerUploadFilesEquipos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerAsignacionesUsuarios</servlet-name>
+        <url-pattern>/ControllerAsignacionesUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

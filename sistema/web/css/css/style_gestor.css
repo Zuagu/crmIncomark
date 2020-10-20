@@ -212,4 +212,12 @@ input[type="text"]:not(.browser-default).validate + label {
     font-weight: bold;
 }
 
+.margen_top1_5 {
+    margin-top: 1.5rem !important;
+}
 
+.altura_max_modal_asig {
+    height: 40vh;
+    max-height: 40vh;
+    overflow: auto;
+}
