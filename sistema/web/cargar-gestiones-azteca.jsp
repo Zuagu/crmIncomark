@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Cargar Equipos Azteca</title>
+        <title>Cargar Gestiones</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <!--<link rel="stylesheet" type="text/css" href="css/css/style.css">-->
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="col s12 m6 l6 offset-m3 offset-l3">
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="ControllerUploadGestiones" enctype="multipart/form-data">
                         <div class="col s12 m12 l12">
                             <h6>Carga de Cuentas a Equipo</h6>
                         </div> 

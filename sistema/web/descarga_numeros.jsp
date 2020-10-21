@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <link rel="shortcut icon" href="image/logoInco.fw.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Usuarios</title>
+        <title>Descarga Numeros</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
@@ -21,10 +21,10 @@
             <div class="col s12"></div>
             <div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
                 <div class="col s12 m12 l12 z-depth-2 inner actualizar_todos white">
-                    <h5 class="col s12 m10 l10">Descargar base de numeros Completa</h5>
+                    <h5 class="col s12 m9 l9">Descargar base de numeros Completa</h5>
 
-                    <div class="input-field col s6 m2 l2">
-                        <a id="descargar_todos" class="btn-small waves-effect blue"><i class="material-icons right">archive</i>Descargar</a>
+                    <div class="input-field col s6 m3 l3 left-align">
+                        <a id="descargar_todos" class="btn-small waves-effect blue right"><i class="material-icons right">archive</i>Descargar</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         </select>
                         <label>Gertentes</label>
                     </div>
-                    <div class="input-field col s3">
+                    <div class="input-field col s6 right-align">
                         <a id="descargar_todos_select" class="btn-small waves-effect blue"><i class="material-icons right">archive</i>Descargar</a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <tr>
                                 <th>Gerencia</th>
                                 <th>Cuentas</th>
-                                <th>Descargar</th>
+                                <th class="right-align">Descargar</th>
                             </tr>
                         </thead>
                         <tbody id="tbody_gerencias_descargar">

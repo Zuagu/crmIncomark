@@ -372,6 +372,8 @@ public class ModelReportesAzteca {
     public static String generar_csv_telefonos(String _tipo_base, String territorio, String gerente, String gerencia) throws IOException {
 
         String filename = "/var/lib/tomcat8/webapps/sistema/excel/NumerosBaseCrm.csv";
+        // /var/lib/tomcat8/webapps/sistema/excel
+//        String filename = "C:\\Users\\Public\\NumerosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
 
         try {
@@ -387,7 +389,7 @@ public class ModelReportesAzteca {
                         + "NOM_TEL4,TELEFONO4,TELEFONO4_2,\n"
                         + "NOM_TEL5,TELEFONO5,TELEFONO5_2,\n"
                         + "NOMBRE_AVAL,TELAVAL,TELAVAL2 \n"
-                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0' order by ULTIMA_GESTION";
+                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0'";
 
             } else if (_tipo_base.equals("medio_completo")) {
                 sql = "select CLIENTE_UNICO,NOMBRE_CTE,\n"
@@ -407,7 +409,7 @@ public class ModelReportesAzteca {
                         + "NOM_TEL4,TELEFONO4,TELEFONO4_2,\n"
                         + "NOM_TEL5,TELEFONO5,TELEFONO5_2,\n"
                         + "NOMBRE_AVAL,TELAVAL,TELAVAL2 \n"
-                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0' and TERRITORIO in (" + territorio.replace("\"", "'") + ") and GERENTE in (" + gerente.replace("\"", "'") + ") and GERENCIA in (" + gerencia.replace("\"", "'") + ");";
+                        + "from azteca_base_genenral_original where IDENTIFICADOR != '0' and TERRITORIO in (" + territorio.replace("\"", "'") + ") and GERENTE in (" + gerente.replace("\"", "'") + ") and GERENCIA in ('" + gerencia.replace("\"", "'") + "');";
 
             }
 

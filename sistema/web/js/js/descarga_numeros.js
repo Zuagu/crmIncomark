@@ -114,7 +114,7 @@ function select_gerencias(territorios, gerentes) {
                 $('#tbody_gerencias_descargar').append(`<tr id="${item.GERENCIA}">
                 <td>${item.GERENCIA}</td>
                 <td>${item.catidad}</td>
-                <td><a class="btn-small waves-effect blue descargar_tel_gerencia"><i class="material-icons right">archive</i>Descargar</a></td>
+                <td class="right-align"><a class="btn-small waves-effect blue descargar_tel_gerencia"><i class="material-icons right">archive</i>Descargar</a></td>
                 </tr>`);
             }
         },
@@ -193,10 +193,31 @@ function descargar_tel_gerencia(gerencia) {
         dataType: "json",
         success: function (response) {
             console.log(response);
+            let url_sever = document.URL.replace('descarga_numeros.jsp','excel/');
+//            downloadDataUrlFromJavascript('NumerosBaseCrm.csv',url_sever);
+//            document.execCommand('SaveAs',true,url_sever + 'excel/NumerosBaseCrm.csv');
             window.open("excel/NumerosBaseCrm.csv");
         },
         error: function (error) {
             console.log(error);
+            
         }
     });
+}
+
+function downloadDataUrlFromJavascript(filename, dataUrl) {
+
+       // Construct the a element
+       var link = document.createElement("a");
+       link.download = filename;
+       link.target = "_blank";
+
+       // Construct the uri
+       link.href = dataUrl;
+       document.body.appendChild(link);
+       link.click();
+
+       // Cleanup the DOM
+       document.body.removeChild(link);
+       delete link;
 }

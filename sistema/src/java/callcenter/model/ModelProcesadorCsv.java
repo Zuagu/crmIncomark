@@ -161,19 +161,26 @@ public class ModelProcesadorCsv {
         try {
             // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
             StartConexion ic = new StartConexion();
-            String sql_import_csv = "LOAD DATA LOCAL INFILE '" + dirFile + "' INTO TABLE azteca_gestiones \n"
+            String sql_import_csv = "LOAD DATA LOCAL INFILE '" + dirFile + "' INTO TABLE azteca_carga_gestiones \n"
                     + "FIELDS TERMINATED BY ',' \n"
                     + "LINES TERMINATED BY '\\n' \n"
-                    + "IGNORE 1 ROWS (@col1, @col2, @col3, @col4, @col5, @col6)\n"
+                    + "IGNORE 1 ROWS (@col1, @col2, @col3, @col4, @col5, @col6, @col7, @col8, @col9, @col10, @col11)\n"
                     + "set \n"
-                    + "CUENTA=@col1,\n"
-                    + "GESTION=@col2,\n"
-                    + "TERRITORIO=@col3,\n"
-                    + "ALIAS_GESTOR=@col4,\n"
-                    + "FECHA_LARGA=@col5,\n"
-                    + "NUMERO_MARCADO=@col6 \n";
+                    + "FECHA_LARGA=concat(str_to_date(@col1, '%d/%m/%Y'),' ',@col2),\n"
+                    + "ATRASO_MAXIMO=@col3,\n"
+                    + "CUENTA=@col4,\n"
+                    + "NUMERO_MARCADO=@col5,\n"
+                    + "ID_ESTATUS_CUENTA=@col6,\n"
+                    + "ID_ESTATUS_LLAMADA=@col7,\n"
+                    + "ID_USUARIO=@col8,\n"
+                    + "GESTION=@col9,\n"
+                    + "DURACION=@col10,\n"
+                    + "ID_PUESTO=@col11 \n";
 //            System.out.println(sql_import_csv);
+            ic.st.executeUpdate("truncate azteca_carga_gestiones;");
             ic.st.executeUpdate(sql_import_csv);
+            
+            ic.st.executeQuery("CALL azteca_completar_carga_gestiones();");
 
             ic.st.close();
             ic.conn.close();
