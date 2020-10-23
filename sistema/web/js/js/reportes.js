@@ -473,6 +473,70 @@ function descargar_base() {
     });
 }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$("#descarga_directa_lista_gestion").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: {
+            action: "reporte_gestiones_descarga",
+            desde: $('#desde_gestiones').val(),
+            hasta: $('#hasta_gestiones').val(),
+            territorio: $('#id_ter_gestion').val()
+        },
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            window.open("excel/GestionesBaseCrm.csv");
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+$("#descarga_directa_convenios").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: {
+            action: "reporte_convenios_descarga",
+            desde: $('#desde_gestiones').val(),
+            hasta: $('#hasta_gestiones').val(),
+            territorio: $('#id_ter_gestion').val()
+        },
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            window.open("excel/ConveniosBaseCrm.csv");
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+$("#descarga_directa_tiempos").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: {
+            action: "azteca_reporte_operacion_descarga",
+            desde: $('#desde_gestiones').val(),
+            hasta: $('#hasta_gestiones').val()
+        },
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            window.open("excel/ReporteOperacionBaseCrm.csv");
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function reporte_promesado_diario() {
     let params = {
@@ -579,7 +643,7 @@ function reporte_promesas_incumplidas_semana() {
             let cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             let incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             let vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
-            let dias = ["FECHA", "", "", "", "", "", "", "", ""]; 
+            let dias = ["FECHA", "", "", "", "", "", "", "", ""];
             let gerente1 = response[0].GERENTE;
             let tabla_cum = [];
             let tabla_incum = [];
@@ -604,9 +668,12 @@ function reporte_promesas_incumplidas_semana() {
                     tabla_cum.push(cumplidos);
                     tabla_incum.push(incumplidos);
                     tabla_vig.push(vigentes);
-                    cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];;
-                    incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];;
-                    vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];;
+                    cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+                    ;
+                    incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+                    ;
+                    vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
+                    ;
                     cumplidos[0] = item.GERENTE;
                     incumplidos[0] = item.GERENTE;
                     vigentes[0] = item.GERENTE;
@@ -637,7 +704,7 @@ function reporte_promesas_incumplidas_semana() {
                 <td>${row[6]}</td>
                 <td>${row[7]}</td>
                 <td>${row[1]}</td>
-                <td>${(parseInt(row[1]) + parseInt(row[2]) + parseInt(row[3]) + parseInt(row[4]) + parseInt(row[5]) + parseInt(row[6]) + parseInt(row[7]) )}</td>
+                <td>${(parseInt(row[1]) + parseInt(row[2]) + parseInt(row[3]) + parseInt(row[4]) + parseInt(row[5]) + parseInt(row[6]) + parseInt(row[7]))}</td>
             </tr>`);
             }
             for (let row of tabla_incum) {
@@ -650,7 +717,7 @@ function reporte_promesas_incumplidas_semana() {
                 <td>${row[6]}</td>
                 <td>${row[7]}</td>
                 <td>${row[1]}</td>
-                <td>${(parseInt(row[1]) + parseInt(row[2]) + parseInt(row[3]) + parseInt(row[4]) + parseInt(row[5]) + parseInt(row[6]) + parseInt(row[7]) )}</td>
+                <td>${(parseInt(row[1]) + parseInt(row[2]) + parseInt(row[3]) + parseInt(row[4]) + parseInt(row[5]) + parseInt(row[6]) + parseInt(row[7]))}</td>
             </tr>`);
             }
             for (let row of tabla_vig) {
@@ -663,7 +730,7 @@ function reporte_promesas_incumplidas_semana() {
                 <td>${row[6]}</td>
                 <td>${row[7]}</td>
                 <td>${row[1]}</td>
-                <td>${(parseInt(row[1]) + parseInt(row[2]) + parseInt(row[3]) + parseInt(row[4]) + parseInt(row[5]) + parseInt(row[6]) + parseInt(row[7]) )}</td>
+                <td>${(parseInt(row[1]) + parseInt(row[2]) + parseInt(row[3]) + parseInt(row[4]) + parseInt(row[5]) + parseInt(row[6]) + parseInt(row[7]))}</td>
             </tr>`);
             }
             console.log(dias);
@@ -689,22 +756,22 @@ function reporte_promesas_por_gestor() {
         dataType: "json",
         success: function (response) {
 //            console.log(response);
-            let user = ["ACAREVALO","ACRUZ","ADRODRIGUEZ","AGARZA","AJCANTU","ALAYALA","AMIRANDA","AORDONEZ","BDSANCHEZ","BNSOLIS","CSANCHEZ","DAESPARZA","DHSAAVEDRA","DJESPARZA","DJMARTINEZ"];
+            let user = ["ACAREVALO", "ACRUZ", "ADRODRIGUEZ", "AGARZA", "AJCANTU", "ALAYALA", "AMIRANDA", "AORDONEZ", "BDSANCHEZ", "BNSOLIS", "CSANCHEZ", "DAESPARZA", "DHSAAVEDRA", "DJESPARZA", "DJMARTINEZ"];
 //            $('#tbody_tabla_promesas_incumplidas').empty();
             let gestor = {};
             for (let item of user) {
                 gestor[item] = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             }
-            
+
             for (let row of response) {
                 gestor[row.GESTOR][parseInt(row.DIA_SEM)] = row.PAGOS;
             }
-            
-            
+
+
             let cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             let incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             let vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
-            let dias = ["FECHA", "", "", "", "", "", "", "", ""]; 
+            let dias = ["FECHA", "", "", "", "", "", "", "", ""];
             let gerente1 = response[0].GERENTE;
             let tabla_cum = [];
             let tabla_incum = [];
@@ -744,7 +811,7 @@ function reporte_promesas_por_gestor() {
         }
     });
 }
-            
+
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -76,7 +76,7 @@
                                 <div class="input-field col s3" >
                                     <input id="fecha_promesado_al_momento_org" name="fecha" type="text" class="validate datepicker" placeholder="Fecha" readonly=""></td>
                                     <label class="" for="fecha_promesado_al_momento_org">Fecha</label>
-                                     <!--<input id="hora_promesado_al_momento" name="hora" type="text" class="validate timepicker" placeholder="desde" readonly=""></td>-->
+                                    <!--<input id="hora_promesado_al_momento" name="hora" type="text" class="validate timepicker" placeholder="desde" readonly=""></td>-->
                                 </div>
                                 <a id="obt_promesado_diario_org" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
@@ -181,25 +181,22 @@
                     </div>
                     <div id="test-swipe-3" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
-                            <div class="col s10 offset-s1 hide_print">
-                                <div class="input-field col s2 offset-l2" >
-                                    <select id="id_ter_pagos" name="id_region"></select>
-                                    <label>ZONA</label>
+                            <div class="col s10">
+                                <div class="input-field col s3 hide" >
+                                    <select id="territorio_prom_por_gestor" name="territorio_prom_por_gestor"></select>
+                                    <label for=territorio_prom_por_gestor">Territorio</label>
                                 </div>
-                                <div class="input-field col s7" >
-                                    <input id="desde_pagos" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
-                                    <label class="" for="desde_pagos"></label>
-                                    <input id="hasta_pagos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
-                                    <label class="" for="hasta_pagos"></label>
-                                    <a id="enviar_pagos" class="waves-effect waves-light btn blue" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">send</i></a> 
-                                    <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green" style="margin-left: 5px;width: 50px;border-radius: 4px;height:29px;margin-bottom: 5px;"><i class="material-icons" style="margin: -10px;">explicit</i></a> 
-                                    <a id="ver_resumen_pagos" class="btn-small blue">ver resumen</a>
-                                    <a id="ver_lista_pagos" class="btn-small blue hide">lista gestiones</a>
+                                <div class="input-field col s3" >
+                                    <input id="inicio_semana_prom_por_gestor" type="text" class="validate datepicker" placeholder="Inicio de Semana" readonly="">
+                                    <label for="inicio_semana_prom_por_gestor">Inicio de Semana</label>
                                 </div>
+                                <a id="enviar_pagos" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
+                                <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
+                                
                             </div>
 
-                            <div id="resumen_pagos" class="col s12 z-depth-2 hide">
-                                <h5 id="cantidad_pagos" class="right-align"></h5>
+                            <div id="resumen_promesado_gestor" class="col s12 z-depth-2">
+                                <h5 class="right-align"></h5>
                                 <table>
                                     <thead>
                                         <tr class="green accent-2">
@@ -211,34 +208,13 @@
                                             <th>SALDO ACTUAL</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tb_resumen_pagos">
+                                    <tbody id="tbody_resumen_promesado_gestor">
 
                                     </tbody>
 
                                 </table>
                             </div>
-                            <div id="datos_tabla_pagos" class="col s12 z-depth-2 dt">
-                                <table class="highlight" id="tabla_pagos">
-                                    <thead class="blue">
-                                        <tr class="text-white">
-                                            <td><b>CLIENTE UNICO</b></td>
-                                            <td><b>AÑO</b></td>
-                                            <td><b>SEMANA</b></td>
-                                            <td><b>DIA</b></td>
-                                            <td><b>RECUPERACION_CAPITAL</b></td>
-                                            <td><b>RECUPERACION_MORATORIOS</b></td>
-                                            <td><b>SALDO_ACTUAL</b></td>
-                                            <td><b>MORATORIO</b></td>
-                                            <td><b>FECHA_GESTION</b></td>
-                                            <td><b>CARGO_AUTOMATICO</b></td>
-                                            <td><b>ZONA</b></td>
-                                            <td><b>GERENTE</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbody_tabla_pagos">
-                                    </tbody>
-                                </table>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

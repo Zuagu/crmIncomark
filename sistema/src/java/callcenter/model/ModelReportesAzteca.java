@@ -218,6 +218,254 @@ public class ModelReportesAzteca {
 
     }
 
+    public static String reporte_gestiones_descarga(String desde, String hasta, String territrio) throws IOException {
+        String filename = "/var/lib/tomcat8/webapps/sistema/excel/GestionesBaseCrm.csv";
+//        String filename = "C:\\Users\\Public\\GestionesBaseCrm.csv";
+        System.out.println("FILE NAME: " + filename);
+        try {
+            StartConexion ic = new StartConexion();
+            FileWriter fw = new FileWriter(filename);
+            String sql = "call azteca_reporte_gestiones('" + desde + "', '" + hasta + "', '" + territrio + "');";
+            ic.rs = ic.st.executeQuery(sql);
+
+            fw.append("ID_GESTION");
+            fw.append(',');
+            fw.append("HORA");
+            fw.append(',');
+            fw.append("TERRITORIO");
+            fw.append(',');
+            fw.append("CANAL");
+            fw.append(',');
+            fw.append("FECHA_LARGA");
+            fw.append(',');
+            fw.append("ATRASO_MAXIMO");
+            fw.append(',');
+            fw.append("CUENTA");
+            fw.append(',');
+            fw.append("NUMERO_MARCADO");
+            fw.append(',');
+            fw.append("ID_ESTATUS_CUENTA");
+            fw.append(',');
+            fw.append("ID_ESTATUS_LLAMADA");
+            fw.append(',');
+            fw.append("USUARIO");
+            fw.append(',');
+            fw.append("GESTION");
+            fw.append(',');
+            fw.append("DURACION");
+            fw.append(',');
+            fw.append("RETASO");
+            fw.append(',');
+            fw.append("F_PREDICTIVO");
+            fw.append('\n');
+
+            while (ic.rs.next()) {
+                JSONObject objGestion = new JSONObject();
+                fw.append(ic.rs.getString("ID_GESTION"));
+                fw.append(',');
+                fw.append(ic.rs.getString("HORA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("TERRITORIO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("CANAL"));
+                fw.append(',');
+                fw.append(ic.rs.getString("FECHA_LARGA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("ATRASO_MAXIMO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("CUENTA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("NUMERO_MARCADO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("ID_ESTATUS_CUENTA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("ID_ESTATUS_LLAMADA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("USUARIO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("GESTION"));
+                fw.append(',');
+                fw.append(ic.rs.getString("DURACION"));
+                fw.append(',');
+                fw.append(ic.rs.getString("RETASO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("F_PREDICTIVO"));
+                fw.append('\n');
+            }
+
+            fw.flush();
+            fw.close();
+
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return "{\"response\":\"Archivo CSV generado\"}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+
+    public static String reporte_convenios_descarga(String desde, String hasta, String territrio) throws IOException {
+        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ConveniosBaseCrm.csv";
+//        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
+        System.out.println("FILE NAME: " + filename);
+        try {
+
+            StartConexion ic = new StartConexion();
+
+            FileWriter fw = new FileWriter(filename);
+            String sql = "call azteca_reporte_convenios('" + desde + "', '" + hasta + "', '" + territrio + "');";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+
+            fw.append("ID_CONVENIO");
+            fw.append(',');
+            fw.append("CONVENIO");
+            fw.append(',');
+            fw.append("RESTO");
+            fw.append(',');
+            fw.append("APLICA");
+            fw.append(',');
+            fw.append("TERRITORIO");
+            fw.append(',');
+            fw.append("CANAL");
+            fw.append(',');
+            fw.append("ATRASO_MAXIMO");
+            fw.append(',');
+            fw.append("FECHA");
+            fw.append(',');
+            fw.append("USUARIO");
+            fw.append(',');
+            fw.append("CUENTA");
+            fw.append(',');
+            fw.append("ID_ESTATUS");
+            fw.append(',');
+            fw.append("FECHA_INSET");
+            fw.append(',');
+            fw.append("PAGOS");
+            fw.append(',');
+            fw.append("FECHA_PAGO");
+            fw.append(',');
+            fw.append("EFECTIVIDAD");
+            fw.append(',');
+            fw.append("ID_EQUIPO");
+            fw.append('\n');
+
+            while (ic.rs.next()) {
+                fw.append(ic.rs.getString("ID_CONVENIO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("CONVENIO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("RESTO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("APLICA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("TERRITORIO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("CANAL"));
+                fw.append(',');
+                fw.append(ic.rs.getString("ATRASO_MAXIMO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("FECHA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("USUARIO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("CUENTA"));
+                fw.append(',');
+                fw.append(ic.rs.getString("ID_ESTATUS"));
+                fw.append(',');
+                fw.append(ic.rs.getString("FECHA_INSET"));
+                fw.append(',');
+                fw.append(ic.rs.getString("PAGOS"));
+                fw.append(',');
+                fw.append(ic.rs.getString("FECHA_PAGO"));
+                fw.append(',');
+                fw.append(ic.rs.getString("EFECTIVIDAD"));
+                fw.append(',');
+                fw.append(ic.rs.getString("ID_EQUIPO"));
+                fw.append('\n');
+            }
+
+            fw.flush();
+            fw.close();
+
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return "{\"response\":\"Archivo CSV generado\"}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
+
+    public static String azteca_reporte_operacion_descarga(String desde, String hasta) throws IOException {
+        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ReporteOperacionBaseCrm.csv";
+//        String filename = "C:\\Users\\Public\\ReporteOperacionBaseCrm.csv";
+        System.out.println("FILE NAME: " + filename);
+        try {
+            StartConexion ic = new StartConexion();
+
+            FileWriter fw = new FileWriter(filename);
+
+            String sql = "SELECT \n"
+                    + "	tu.id_usuario,\n"
+                    + "    u.nombre,\n"
+                    + "    tu.fecha,\n"
+                    + "    tu.hora_inicial,\n"
+                    + "    tu.tiempo_conectado,\n"
+                    + "    week(tu.fecha) as semana\n"
+                    + "FROM azteca_tiempos_usuarios tu\n"
+                    + "left join arcade_usuarios u on tu.id_usuario = u.id\n"
+                    + "where  fecha between '" + desde + "' and '" + hasta + "';";
+            System.out.println(sql);
+
+            fw.append("id_usuario");
+            fw.append(',');
+            fw.append("nombre");
+            fw.append(',');
+            fw.append("fecha");
+            fw.append(',');
+            fw.append("hora_inicial");
+            fw.append(',');
+            fw.append("tiempo_conectado");
+            fw.append(',');
+            fw.append("semana");
+            fw.append('\n');
+
+            ic.rs = ic.st.executeQuery(sql);
+
+            while (ic.rs.next()) {
+                fw.append(ic.rs.getString("id_usuario"));
+                fw.append(',');
+                fw.append(ic.rs.getString("nombre"));
+                fw.append(',');
+                fw.append(ic.rs.getString("fecha"));
+                fw.append(',');
+                fw.append(ic.rs.getString("hora_inicial"));
+                fw.append(',');
+                fw.append(ic.rs.getString("tiempo_conectado"));
+                fw.append(',');
+                fw.append(ic.rs.getString("semana"));
+                fw.append('\n');
+            }
+
+            fw.flush();
+            fw.close();
+
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return "{\"response\":\"Archivo CSV generado\"}";
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
+
     public static String azteca_reporte_operacion(String desde, String hasta) {
         try {
             StartConexion ic = new StartConexion();
@@ -414,7 +662,7 @@ public class ModelReportesAzteca {
             }
 
             System.out.println(sql);
-            
+
             fw.append("CLIENTE_UNICO");
             fw.append(',');
             fw.append("NOMBRE_CTE");

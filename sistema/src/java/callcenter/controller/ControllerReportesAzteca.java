@@ -46,6 +46,41 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if(action.equals("reporte_gestiones_descarga")) {
+            String Respuesta = ModelReportesAzteca.reporte_gestiones_descarga(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta"),
+                    request.getParameter("territorio")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("reporte_convenios_descarga")) {
+            String Respuesta = ModelReportesAzteca.reporte_convenios_descarga(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta"),
+                    request.getParameter("territorio")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("azteca_reporte_operacion_descarga")) {
+            String Respuesta = ModelReportesAzteca.azteca_reporte_operacion_descarga(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         else if (action.equals("azteca_reporte_convenios")) {
             String Respuesta = ModelReportesAzteca.reporte_convenios_tabla(
                     request.getParameter("desde"),
