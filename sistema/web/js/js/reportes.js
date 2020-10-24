@@ -465,12 +465,33 @@ function descargar_base() {
         dataType: "json",
         success: function (response) {
             console.log(response);
+            let url_sever = document.URL.replace('reportes.jsp','excel/');
+//            downloadDataUrlFromJavascript('BaseAztecaCrm.csv',url_sever);
+//            document.execCommand('SaveAs',true,url_sever + 'excel/BaseAztecaCrm.csv');
             window.open("excel/BaseAztecaCrm.csv");
         },
         error: function (error) {
             console.log(error);
         }
     });
+}
+
+
+function downloadDataUrlFromJavascript(filename, dataUrl) {
+
+       // Construct the a element
+       var link = document.createElement("a");
+       link.download = filename;
+       link.target = "_blank";
+
+       // Construct the uri
+       link.href = dataUrl;
+       document.body.appendChild(link);
+       link.click();
+
+       // Cleanup the DOM
+       document.body.removeChild(link);
+       delete link;
 }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $("#descarga_directa_lista_gestion").click(function () {
