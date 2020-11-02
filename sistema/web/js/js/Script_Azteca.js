@@ -358,6 +358,7 @@ function select_datos_cuenta(_cuenta) {
         dataType: "json",
         success: function (datos_cuenta) {
 //            console.log(datos_cuenta);
+            if (datos_cuenta.IDENTIFICADOR === '0') {alert('Esta cuenta ya esta inactiva y asignada a otro despacho');}
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
@@ -657,6 +658,7 @@ function select_cuenta_siguiente(_id_usuario) {
         dataType: "json",
         success: function (datos_cuenta) {
 //            console.log(datos_cuenta);
+            if (datos_cuenta.IDENTIFICADOR === '0') {alert('Esta cuenta ya esta inactiva y asignada a otro despacho');}
             if (datos_cuenta.id_cuenta === 0) {
                 alert("Sin cuentas");
             } else {
