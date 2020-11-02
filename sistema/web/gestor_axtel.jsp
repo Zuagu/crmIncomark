@@ -39,32 +39,28 @@
                                 <h6>Informacion del cliente</h6>
                             </div>
                             <div class="input-field col s12 m12 l12">
-                                <input id="NOMBRE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="NOMBRE_AXTEL">Titular</label>
+                                <input id="CLIENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CLIENTE">Cliente</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CLIENTE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CLIENTE_AXTEL">Cuenta</label>
+                                <input id="CUENTA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CUENTA">Cuenta</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="RFC_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="RFC_AXTEL">RFC</label>
+                                <input id="RFC" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="RFC">RFC</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="OCA_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="OCA_AXTEL">OCA</label>
+                                <input id="OCA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="OCA">OCA</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="BUCKET" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="BUCKET">BUCKET</label>
+                                <input id="CATEGORIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CATEGORIA">Categoria</label>
                             </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="ESTADO_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="ESTADO_AXTEL">Estado Instancias</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="CATEGORIA_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CATEGORIA_AXTEL">Categoria</label>
+                              <div class="input-field col s12 m12 l12">
+                                <input id="ESTADOS_INSTANCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ESTADOS_INSTANCIA">Estado Instancias</label>
                             </div>
                             <div class=" col s12 m12 l12">
                                 <textarea id="DIRECCION_AXTEL" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
@@ -82,36 +78,44 @@
                                 <label for="FECHA_ASIGNACION">Fecha Asignacion</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="FECHA_ULT_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="FECHA_ULT_PAGO">Fecha Ult Pago</label>
+                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_ULTIMO_PAGO">Fecha Ult Pago</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="MONTO_ULT_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="MONTO_ULT_PAGO">Monto Ult Pago</label>
+                                <input id="MONTO_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="MONTO_ULTIMO_PAGO">Monto Ult Pago</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="DIA_MORA_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="DIA_MORA_AXTEL">Días Mora</label>
+                                <input id="DIAS_MORA" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DIAS_MORA">Días Mora</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="SEGMENTO_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="SEGMENTO_AXTEL">Segmento</label>
+                                <input id="SEGMENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="SEGMENTO">Segmento</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CORRIENTE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="CORRIENTE_AXTEL">Corriente</label>
+                                <input id="CORRIENTE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="CORRIENTE">Corriente</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="DESCUENTO_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="DESCUENTO_AXTEL">Descuento</label>
+                                <input id="DESCUENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DESCUENTO">Descuento</label>
                             </div>
-                             <div class="input-field col s12 m12 l12">
-                                <input id="QUEQUE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="QUEQUE_AXTEL">Queque</label>
+                             <div class="input-field col s6 m6 l6">
+                                <input id="QUEQUE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="QUEQUE">Queque</label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
-                                <input id="TOTAL_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="TOTAL_AXTEL">Total</label>
+                              <div class="input-field col s6 m6 l6">
+                                <input id="VENCIDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="VENCIDO">Vencido</label>
+                            </div>
+                              <div class="input-field col s6 m6 l6">
+                                <input id="BUCKET" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="BUCKET">BUCKET</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="TOTAL">Total</label>
                             </div>
                         </div>
                     </div>
@@ -128,7 +132,7 @@
                             <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
                                 <div class="input-field col s12 m12 l12">
                                     <input id="REFRENCIA_AXTEL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="REFRENCIA_AXTEL">Referencia</label>
+                                    <label for="REFRENCIA">Referencia</label>
                                 </div>
                                 <div class="input-field col s12 m12 l12">
                                     <input id="CONTACTO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
@@ -208,16 +212,12 @@
                                     <h6>Referencias</h6>
                                 </div>
                                 <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL1">Contacto 1</label>
+                                    <input id="NOM_TEL_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="NOM_TEL_PRINCIPAL">Contacto 1</label>
                                 </div>
                                 <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO1">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO1_2">Tel. 2</label>
+                                    <input id="TELEFONO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO_PRINCIPAL">Tel. Principal</label>
                                 </div>
                                 <div class="input-field col s6 m6 l6">
                                     <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
@@ -225,11 +225,7 @@
                                 </div>
                                 <div class="input-field col s3 m3 l3">
                                     <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2_2">Tel. 2</label>
+                                    <label for="TELEFONO2">Telefono 2</label>
                                 </div>
                                 <div class="input-field col s6 m6 l6">
                                     <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
@@ -237,37 +233,8 @@
                                 </div>
                                 <div class="input-field col s3 m3 l3">
                                     <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3">Tel. 1</label>
+                                    <label for="TELEFONO3">Teleleno 3</label>
                                 </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL4">Contacto 4</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO4">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO4_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL5">Contacto 5</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO5">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO5_2">Tel. 2</label>
-                                </div>
-
                                 <!--                                <div class="input-field col s6 m6 l6">
                                                                     <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
                                                                     <label for="NOMBRE_AVAL">Contacto Aval</label>
