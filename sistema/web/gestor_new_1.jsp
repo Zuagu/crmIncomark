@@ -50,7 +50,7 @@
                                 <label for="GERENCIA">Gerencia</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <input id="doce" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="">Subproducto</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
@@ -58,8 +58,8 @@
                                 <label for="GERENTE">Gerente</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="TIPO_CTE">Tipo</label>
+                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ETAPA">Tipo</label>
                             </div>
                             <div class=" col s12 m12 l12">
                                 <textarea id="Direccion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>

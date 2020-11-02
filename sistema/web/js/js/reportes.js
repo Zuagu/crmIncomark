@@ -520,9 +520,9 @@ $("#descarga_directa_convenios").click(function () {
         url: "ControllerReportesAzteca",
         data: {
             action: "reporte_convenios_descarga",
-            desde: $('#desde_gestiones').val(),
-            hasta: $('#hasta_gestiones').val(),
-            territorio: $('#id_ter_gestion').val()
+            desde: $('#desde_convenios').val(),
+            hasta: $('#hasta_convenios').val(),
+            territorio: $('#id_ter_convenio').val()
         },
         dataType: "json",
         success: function (response) {
@@ -540,8 +540,8 @@ $("#descarga_directa_tiempos").click(function () {
         url: "ControllerReportesAzteca",
         data: {
             action: "azteca_reporte_operacion_descarga",
-            desde: $('#desde_gestiones').val(),
-            hasta: $('#hasta_gestiones').val()
+            desde: $('#desde_tiempos').val(),
+            hasta: $('#hasta_tiempos').val()
         },
         dataType: "json",
         success: function (response) {

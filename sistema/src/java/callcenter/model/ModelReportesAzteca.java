@@ -219,7 +219,8 @@ public class ModelReportesAzteca {
     }
 
     public static String reporte_gestiones_descarga(String desde, String hasta, String territrio) throws IOException {
-        String filename = "/var/lib/tomcat8/webapps/sistema/excel/GestionesBaseCrm.csv";
+//        String filename = "/var/lib/tomcat8/webapps/sistema/excel/GestionesBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/GestionesBaseCrm.csv";
 //        String filename = "C:\\Users\\Public\\GestionesBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
@@ -307,7 +308,8 @@ public class ModelReportesAzteca {
     }
 
     public static String reporte_convenios_descarga(String desde, String hasta, String territrio) throws IOException {
-        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ConveniosBaseCrm.csv";
+//        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ConveniosBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
 //        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
@@ -402,7 +404,8 @@ public class ModelReportesAzteca {
     }
 
     public static String azteca_reporte_operacion_descarga(String desde, String hasta) throws IOException {
-        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ReporteOperacionBaseCrm.csv";
+//        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ReporteOperacionBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/ReporteOperacionBaseCrm.csv";
 //        String filename = "C:\\Users\\Public\\ReporteOperacionBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
@@ -619,7 +622,8 @@ public class ModelReportesAzteca {
 
     public static String generar_csv_telefonos(String _tipo_base, String territorio, String gerente, String gerencia) throws IOException {
 
-        String filename = "/var/lib/tomcat8/webapps/sistema/excel/NumerosBaseCrm.csv";
+//        String filename = "/var/lib/tomcat8/webapps/sistema/excel/NumerosBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/NumerosBaseCrm.csv";
         // /var/lib/tomcat8/webapps/sistema/excel
 //        String filename = "C:\\Users\\Public\\NumerosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
@@ -861,7 +865,8 @@ public class ModelReportesAzteca {
 
     public static String descargar_base() throws IOException {
 
-        String filename = "/var/lib/tomcat8/webapps/sistema/excel/BaseAztecaCrm.csv";
+//        String filename = "/var/lib/tomcat8/webapps/sistema/excel/BaseAztecaCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
 //        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
         System.out.println("FILE NAME: " + filename);
 
@@ -878,8 +883,10 @@ public class ModelReportesAzteca {
                     + "    ANO,IMP_ULTIMO_PAGO,ESTADOAVAL,NOMBRE_AVAL,CUADRANTE,\n"
                     + "    RFC_CTE,TELAVAL,TELEFONO1,TIPOTEL1,TELEFONO2,\n"
                     + "    TIPOTEL2,TELEFONO3,TIPOTEL3,TELEFONO4,TIPOTEL4,\n"
-                    + "    IDENTIFICADOR2,ID_MEJOR_ESTATUS,ULTIMA_GESTION,\n"
-                    + "    nombre_estatus_cuenta_azteca(ID_ESTATUS_CUENTA) AS ESTATUS_CUENTA\n"
+                    + "    IDENTIFICADOR2,"
+                    + "    nombre_estatus_llamada_azteca(ID_MEJOR_ESTATUS) as MEJOR_ESTATUS,"
+                    + "    date(ULTIMA_GESTION) as FECHA_ULTIMA_GESTION,time(ULTIMA_GESTION) as HORA_ULTIMA_GESTION,\n"
+                    + "    nombre_estatus_llamada_azteca(ID_ESTATUS_CUENTA) AS ESTATUS_CUENTA\n"
                     + "FROM azteca_base_genenral_original where IDENTIFICADOR != '0' ORDER BY ULTIMA_GESTION DESC;";
             System.out.println(sql);
             fw.append("CLIENTE_UNICO");
@@ -960,11 +967,13 @@ public class ModelReportesAzteca {
             fw.append(',');
             fw.append("IDENTIFICADOR2");
             fw.append(',');
-            fw.append("ID_MEJOR_ESTATUS");
+            fw.append("MEJOR_ESTATUS");
             fw.append(',');
-            fw.append("ULTIMA_GESTION");
+            fw.append("FECHA_ULTIMA_GESTION");
             fw.append(',');
-            fw.append("ESTATUS_CUENTA");
+            fw.append("HORA_ULTIMA_GESTION");
+            fw.append(',');
+            fw.append("ESTATUS_ACT_CUENTA");
             fw.append('\n');
 
             s.rs = s.st.executeQuery(sql);
@@ -1047,9 +1056,11 @@ public class ModelReportesAzteca {
                 fw.append(',');
                 fw.append(s.rs.getString("IDENTIFICADOR2"));
                 fw.append(',');
-                fw.append(s.rs.getString("ID_MEJOR_ESTATUS"));
+                fw.append(s.rs.getString("MEJOR_ESTATUS"));
                 fw.append(',');
-                fw.append(s.rs.getString("ULTIMA_GESTION"));
+                fw.append(s.rs.getString("FECHA_ULTIMA_GESTION"));
+                fw.append(',');
+                fw.append(s.rs.getString("HORA_ULTIMA_GESTION"));
                 fw.append(',');
                 fw.append(s.rs.getString("ESTATUS_CUENTA"));
                 fw.append('\n');

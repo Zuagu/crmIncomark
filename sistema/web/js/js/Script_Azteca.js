@@ -52,7 +52,7 @@ $(document).ready(function () {
 });
 window.onload = function () {
     select_cuenta_siguiente(id_usuario);
-//    select_agendas();
+    select_agendas();
 //    select_llamadas_gestor(id_usuario);
     options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
         <option value="1">SIN CLASIFICAR</option>
@@ -191,6 +191,7 @@ $("#estatus").change(function () {
         <option value="33">DOMICILIO NO EXISTE</option>
         <option value="34">SE ENTREGA CARTA CON FAMILIAR</option>
         <option value="35">PROPORCIONA TELEFONO</option>
+        <option value="25">PROMESA DE PAGO</option>
         <option value="36">CAMBIO DE DOMICILIO</option>
         <option value="37">MENSAJE CON TERCERO</option>
         <option value="38">TITULAR NO DEFINE</option>
@@ -369,7 +370,7 @@ function select_datos_cuenta(_cuenta) {
             $("#FECHA_ULTIMO_PAGO").val(datos_cuenta.FECHA_ULTIMO_PAGO.split(' ')[0]);
 
             $("#estatus").empty();
-            $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
+            $("#estatus").append('<option value=""  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
@@ -673,7 +674,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#FECHA_ULTIMO_PAGO").val(datos_cuenta.FECHA_ULTIMO_PAGO.split(' ')[0]);
 
                 $("#estatus").empty();
-                $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
+                $("#estatus").append('<option value="" selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
                 $("#codigo_llamada").empty();
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
@@ -773,6 +774,10 @@ function insertar_gestion(myObj) {
 }
 
 $("#guardar_gestion").click(function () {
+    console.log( $("#codigo_llamada").val() );
+    console.log( $("#gestion").val() );
+    console.log( $("#numero_marcado_deudor").val() );
+    console.log( $("#estatus").val() );
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
@@ -954,6 +959,7 @@ $("#insert_convenio").click(function () {
     if (validacion === 0) {
         insertar_convenio(myObjConvenio, myObjGestion);
     } else {
+        console.log(myObjConvenio);
         $("#alerta_convenio").empty();
         $("#alerta_convenio").append("Faltan datos por llenar");
     }
