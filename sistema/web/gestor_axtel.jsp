@@ -39,35 +39,35 @@
                                 <h6>Informacion del cliente</h6>
                             </div>
                             <div class="input-field col s12 m12 l12">
-                                <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="NOMBRE_CTE">Titular</label>
+                                <input id="NOMBRE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="NOMBRE_AXTEL">Titular</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CLIENTE_UNICO">Cuenta</label>
+                                <input id="CLIENTE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CLIENTE_AXTEL">Cuenta</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CAMPANIA">Producto</label>
+                                <input id="RFC_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="RFC_AXTEL">RFC</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="GERENCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="GERENCIA">Gerencia</label>
+                                <input id="OCA_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="OCA_AXTEL">OCA</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="doce" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="">Subproducto</label>
+                                <input id="BUCKET" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="BUCKET">BUCKET</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="GERENTE">Gerente</label>
+                                <input id="ESTADO_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ESTADO_AXTEL">Estado Instancias</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="ETAPA">Tipo</label>
+                                <input id="CATEGORIA_AXTEL" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="CATEGORIA_AXTEL">Categoria</label>
                             </div>
                             <div class=" col s12 m12 l12">
-                                <textarea id="Direccion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
+                                <textarea id="DIRECCION_AXTEL" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
                             </div>
 
                         </div>
@@ -78,36 +78,40 @@
                                 <h6>Informacion Economica</h6>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="SALDO">Capital</label>
+                                <input id="FECHA_ASIGNACION" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_ASIGNACION">Fecha Asignacion</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="MORATORIOS">Moratorios</label>
+                                <input id="FECHA_ULT_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_ULT_PAGO">Fecha Ult Pago</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="ATRASO_MAXIMO">Semanas</label>
+                                <input id="MONTO_ULT_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="MONTO_ULT_PAGO">Monto Ult Pago</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="DIA_DE_PAGO">Día de Pago</label>
+                                <input id="DIA_MORA_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DIA_MORA_AXTEL">Días Mora</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="IMP_ULTIMO_PAGO">Ultimo Pago</label>
+                                <input id="SEGMENTO_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="SEGMENTO_AXTEL">Segmento</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
+                                <input id="CORRIENTE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="CORRIENTE_AXTEL">Corriente</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="CRM">estatus</label>
+                                <input id="DESCUENTO_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DESCUENTO_AXTEL">Descuento</label>
+                            </div>
+                             <div class="input-field col s12 m12 l12">
+                                <input id="QUEQUE_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="QUEQUE_AXTEL">Queque</label>
                             </div>
                             <div class="input-field col s12 m12 l12">
-                                <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="SALDO_TOTAL">Saldo Total</label>
+                                <input id="TOTAL_AXTEL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="TOTAL_AXTEL">Total</label>
                             </div>
                         </div>
                     </div>
@@ -122,24 +126,15 @@
                             </ul>
 
                             <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOMBRE_AVAL">Contacto Aval</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELAVAL">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELAVAL2">Tel. 2</label>
+                                <div class="input-field col s12 m12 l12">
+                                    <input id="REFRENCIA_AXTEL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="REFRENCIA_AXTEL">Referencia</label>
                                 </div>
                                 <div class="input-field col s12 m12 l12">
-                                    <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="CALLEAVAL">Direccion Aval </label>
+                                    <input id="CONTACTO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="CONTACTO_PRINCIPAL">Contacto Principal</label>
                                 </div>
                             </div>
-
                             <ul class="collection coll_2 datos_marcacion_directa center">
                                 <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
                                 <a id="editar_info_aval" class="btn-small blue">editar</a>
