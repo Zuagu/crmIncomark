@@ -25,13 +25,10 @@
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
                 <div class="col s12 m12 l12 contenido-datos">
+                    
                     <input id="id_cuenta" type="hidden">
                     <input id="numero_marcado_deudor" type="hidden">
-                    <input id="ID_SUCURSAL" type="hidden">
-                    <input id="ID_CLIENTE" type="hidden">
-                    <input id="TERRITORIO" type="hidden">
-                    <input id="CANAL" type="hidden">
-                    <input id="ID_EQUIPO" type="hidden">
+                    
                     <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
 
@@ -130,13 +127,21 @@
                             </ul>
 
                             <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
-                                <div class="input-field col s12 m12 l12">
-                                    <input id="REFRENCIA_AXTEL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="REFRENCIA">Referencia</label>
+                                <div class="input-field col s6">
+                                    <input id="REFERENCIA" type="text" class="validate" placeholder=""  value="">
+                                    <label for="REFERENCIA">Referencia</label>
                                 </div>
-                                <div class="input-field col s12 m12 l12">
-                                    <input id="CONTACTO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="CONTACTO_PRINCIPAL">Contacto Principal</label>
+                                <div class="input-field col s6">
+                                    <input id="DIRECCION_REFERENCIA" type="text" class="validate" placeholder=""  value="">
+                                    <label for="DIRECCION_REFERENCIA">Direccion Referencia</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="TELEFONO_REFERENCIA1" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO_REFERENCIA1">Contacto Principal TEL 1</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="TELEFONO_REFERENCIA2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO_REFERENCIA2">Contacto Principal TEL 2</label>
                                 </div>
                             </div>
                             <ul class="collection coll_2 datos_marcacion_directa center">
@@ -200,10 +205,6 @@
                                 <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
                                 <label>Referencia 3</label>
                                 <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 4</label>
-                                <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 5</label>
-                                <li class="collection-item black-text">Nombre 5<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
                             </ul>
 
                             <!--componente de editar_marcacion_directa-->
@@ -217,7 +218,11 @@
                                 </div>
                                 <div class="input-field col s3 m3 l3">
                                     <input id="TELEFONO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO_PRINCIPAL">Tel. Principal</label>
+                                    <label for="TELEFONO_PRINCIPAL">Tel Principal</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO_PRINCIPAL_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO_PRINCIPAL_2">Tel2 Principal</label>
                                 </div>
                                 <div class="input-field col s6 m6 l6">
                                     <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
@@ -225,7 +230,11 @@
                                 </div>
                                 <div class="input-field col s3 m3 l3">
                                     <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2">Telefono 2</label>
+                                    <label for="TELEFONO2">Telefono 1</label>
+                                </div>
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO2_2">Telefono 2</label>
                                 </div>
                                 <div class="input-field col s6 m6 l6">
                                     <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
@@ -233,25 +242,12 @@
                                 </div>
                                 <div class="input-field col s3 m3 l3">
                                     <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3">Teleleno 3</label>
+                                    <label for="TELEFONO3">Teleleno 1</label>
                                 </div>
-                                <!--                                <div class="input-field col s6 m6 l6">
-                                                                    <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="NOMBRE_AVAL">Contacto Aval</label>
-                                                                </div>
-                                                                <div class="input-field col s3 m3 l3">
-                                                                    <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="TELAVAL">Tel. 1</label>
-                                                                </div>
-                                                                <div class="input-field col s3 m3 l3">
-                                                                    <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="TELAVAL2">Tel. 2</label>
-                                                                </div>
-                                                                <div class="input-field col s12 m12 l12">
-                                                                    <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="CALLEAVAL">Direccion Aval </label>
-                                                                </div>-->
-
+                                <div class="input-field col s3 m3 l3">
+                                    <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO3_2">Teleleno 2</label>
+                                </div>
                             </div>
 
 
@@ -667,6 +663,6 @@
 
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/js/Script_Azteca.js"></script>
+        <script type="text/javascript" src="js/js/gestor_axtel.js"></script>
     </body>
 </html>
