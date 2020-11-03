@@ -106,10 +106,6 @@
                                 <input id="VENCIDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="VENCIDO">Vencido</label>
                             </div>
-                              <div class="input-field col s6 m6 l6">
-                                <input id="BUCKET" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="BUCKET">BUCKET</label>
-                            </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="TOTAL">Total</label>
