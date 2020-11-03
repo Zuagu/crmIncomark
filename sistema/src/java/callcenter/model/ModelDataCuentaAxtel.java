@@ -91,7 +91,7 @@ public class ModelDataCuentaAxtel {
                 objCuenta.put("TELEFONO_REFERENCIA1", ic.rs.getString("TELEFONO_REFERENCIA1"));
                 objCuenta.put("TELEFONO_REFERENCIA2", ic.rs.getString("TELEFONO_REFERENCIA2"));
                 objCuenta.put("DIRECCION_REFERENCIA", ic.rs.getString("DIRECCION_REFERENCIA"));
-                
+
             }
             ic.rs.close();
             ic.st.close();
@@ -110,7 +110,6 @@ public class ModelDataCuentaAxtel {
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objGestion);
 
-            
             Object _CUENTA = jsonObject.get("_CUENTA");
             Object _NUMERO_MARCADO = jsonObject.get("_NUMERO_MARCADO");
             Object _ID_ESTATUS_CUENTA = jsonObject.get("_ID_ESTATUS_CUENTA");
@@ -122,11 +121,10 @@ public class ModelDataCuentaAxtel {
             Object _ID_PUESTO = jsonObject.get("_ID_PUESTO");
             Object _PROMESA = jsonObject.get("_PROMESA");
             Object _F_PREDICTIVO = jsonObject.get("_F_PREDICTIVO");
-            
 
             StartConexion ic = new StartConexion();
-            String sql = "CALL ('" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ");";
-//            System.out.println(sql);
+            String sql = "CALL axtel_insert_gestion('" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ");";
+            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 
             JSONObject objRes = new JSONObject();
@@ -190,6 +188,7 @@ public class ModelDataCuentaAxtel {
                 JSONObject objGestion = new JSONObject();
                 objGestion.put("ID_GESTION", ic.rs.getString("ID_GESTION"));
                 objGestion.put("FECHA_INSERT", ic.rs.getString("FECHA_INSERT"));
+                objGestion.put("HORA", ic.rs.getString("HORA"));
                 objGestion.put("CUENTA", ic.rs.getString("CUENTA"));
                 objGestion.put("ID_ESTATUS_CUENTA", ic.rs.getString("ID_ESTATUS_CUENTA"));
                 objGestion.put("ID_ESTATUS_LLAMDA", ic.rs.getString("ID_ESTATUS_LLAMDA"));
@@ -292,31 +291,21 @@ public class ModelDataCuentaAxtel {
         }
     }
 
-    public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String nom_tel4, String tel4_1, String tel4_2, String nom_tel5, String tel5_1, String tel5_2, String cuenta) {
+    public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            /*
-            nom_tel1            tel1_1            tel1_2            nom_tel2            tel2_1            tel2_2
-            nom_tel3            tel3_1            tel3_2            nom_tel4            tel4_1            tel4_2
-            nom_tel5            tel5_1            tel5_2            nom_tel_aval        tel_aval_1        tel_aval_2
-             */
-            String sql = "UPDATE azteca_base_genenral_original SET\n"
-                    + "NOM_TEL1 = '" + nom_tel1 + "',\n"
-                    + "TELEFONO1 = '" + tel1_1 + "',\n"
-                    + "TELEFONO1_2 = '" + tel1_2 + "',\n"
-                    + "NOM_TEL2 = '" + nom_tel2 + "',\n"
-                    + "TELEFONO2 = '" + tel2_1 + "',\n"
-                    + "TELEFONO2_2 = '" + tel2_2 + "',\n"
-                    + "NOM_TEL3 = '" + nom_tel3 + "',\n"
-                    + "TELEFONO3 = '" + tel3_1 + "',\n"
-                    + "TELEFONO3_2 = '" + tel3_2 + "',\n"
-                    + "NOM_TEL4 = '" + nom_tel4 + "',\n"
-                    + "TELEFONO4 = '" + tel4_1 + "',\n"
-                    + "TELEFONO4_2 = '" + tel4_2 + "',\n"
-                    + "NOM_TEL5 = '" + nom_tel5 + "',\n"
-                    + "TELEFONO5 = '" + tel5_1 + "',\n"
-                    + "TELEFONO5_2 = '" + tel5_2 + "'\n"
-                    + "WHERE CLIENTE_UNICO = '" + cuenta + "';";
+
+            String sql = " UPDATE axtel_base_general SET\n"
+                    + "NOM_TEL_PRINCIPAL = '"+ nom_tel1 +"',\n"
+                    + "TELEFONO_PRINCIPAL = '"+ tel1_1 +"',\n"
+                    + "TELEFONO_PRINCIPAL_2 = '"+ tel1_2 +"',\n"
+                    + "NOM_TEL2 = '"+ nom_tel2 +"',\n"
+                    + "TELEFONO2 = '"+ tel2_1 +"',\n"
+                    + "TELEFONO2_2 = '"+ tel2_2 +"',\n"
+                    + "NOM_TEL3 = '"+ nom_tel3 +"',\n"
+                    + "TELEFONO3 = '"+ tel3_1 +"',\n"
+                    + "TELEFONO3_2 = '"+ tel3_2 +"'\n"
+                    + "WHERE CUENTA = '"+ cuenta +"'";
 //            System.out.println(sql);
 
             ic.st.executeUpdate(sql);

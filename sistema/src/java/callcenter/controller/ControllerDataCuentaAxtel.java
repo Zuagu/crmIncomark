@@ -55,9 +55,10 @@ public class ControllerDataCuentaAxtel extends HttpServlet {
             writer.flush();
             writer.close();
         }
-        else if (action.equals("guardarGestion")) {
+        else if (action.equals("guardar_gestion")) {
+            
             String Respuesta = ModelDataCuentaAxtel.guardarGestion(
-                    request.getParameter("")
+                    request.getParameter("datos")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -67,8 +68,8 @@ public class ControllerDataCuentaAxtel extends HttpServlet {
         }
         else if (action.equals("select_buscar_cuentas")) {
             String Respuesta = ModelDataCuentaAxtel.select_buscar_cuentas(
-                    request.getParameter(""),
-                    Integer.parseInt(request.getParameter(""))
+                    request.getParameter("busqueda"),
+                    Integer.parseInt(request.getParameter("id_puesto"))
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -78,8 +79,8 @@ public class ControllerDataCuentaAxtel extends HttpServlet {
         }
         else if (action.equals("select_gestiones_cuenta")) {
             String Respuesta = ModelDataCuentaAxtel.select_gestiones_cuenta(
-                    request.getParameter(""),
-                    request.getParameter("")
+                    request.getParameter("cuenta"),
+                    request.getParameter("fecha_inico")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();

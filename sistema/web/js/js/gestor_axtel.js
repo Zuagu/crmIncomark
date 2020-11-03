@@ -24,7 +24,7 @@ $(document).ready(function () {
             <div class="collapsible-body collection">${submenu_text}</div>
         </li>`);
     }
-    
+
     $('.collapsible').collapsible();
     $('.tooltipped').tooltip({margin: 20});
     $("#info_gestor").fadeIn(1500);
@@ -130,25 +130,54 @@ $("#save_info_aval").click(function () {
 });
 // =============================================================================
 $("#edit_num").click(function () {
-
-    $('#edit_num').addClass('hide');
-    $('#save_num').removeClass('hide');
-
-    $('#datos_marcacion_directa').addClass('hide');
-    $('#editar_marcacion_directa').removeClass('hide');
+    console.log("Funcion no disponible");
+//    $('#edit_num').addClass('hide');
+//    $('#save_num').removeClass('hide');
+//
+//    $('#datos_marcacion_directa').addClass('hide');
+//    $('#editar_marcacion_directa').removeClass('hide');
+    
 });
 
 $("#save_num").click(function () {
-    $('#save_num').addClass('hide');
-    $('#edit_num').removeClass('hide');
+    
+//    $('#save_num').addClass('hide');
+//    $('#edit_num').removeClass('hide');
+//
+//    $('#datos_marcacion_directa').removeClass('hide');
+//    $('#editar_marcacion_directa').addClass('hide');
+//    let cliente_unico = $("#CLIENTE_UNICO").val();
+//
+//    if ($("#CLIENTE_UNICO").val().length > 5) {
+//        actualizar_informacion_contacto();
+//    }
+    
+});
 
-    $('#datos_marcacion_directa').removeClass('hide');
-    $('#editar_marcacion_directa').addClass('hide');
-    let cliente_unico = $("#CLIENTE_UNICO").val();
 
-    if ($("#CLIENTE_UNICO").val().length > 5) {
-        actualizar_informacion_contacto();
-    }
+$("#editar_info_aval").click(function () {
+    console.log("Funcion no disponible");
+//    $('#editar_info_aval').addClass('hide');
+//    $('#save_info_aval').removeClass('hide');
+//
+//    $('#datos_marcacion_aval').addClass('hide');
+//    $('#edit_datos_marcacion_aval').removeClass('hide');
+    
+});
+
+$("#save_info_aval").click(function () {
+
+//    $('#save_info_aval').addClass('hide');
+//    $('#editar_info_aval').removeClass('hide');
+//
+//    $('#edit_datos_marcacion_aval').addClass('hide');
+//    $('#datos_marcacion_aval').removeClass('hide');
+//    let cliente_unico = $("#CLIENTE_UNICO").val();
+//    console.log(cliente_unico.length);
+//    if (cliente_unico.length > 5) {
+//        actualizar_informacion_aval();
+//    }
+
 });
 // =============================================================================
 $("#buscar_cuentas").click(function () {
@@ -203,10 +232,10 @@ $("#datos_marcacion_aval").delegate(".num_phone", "click", function () {
 });
 // =============================================================================
 $("#guardar_gestion").click(function () {
-    console.log( $("#codigo_llamada").val() );
-    console.log( $("#gestion").val() );
-    console.log( $("#numero_marcado_deudor").val() );
-    console.log( $("#estatus").val() );
+    console.log($("#codigo_llamada").val());
+    console.log($("#gestion").val());
+    console.log($("#numero_marcado_deudor").val());
+    console.log($("#estatus").val());
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
@@ -224,7 +253,7 @@ $("#guardar_gestion").click(function () {
         };
 
         $('#guardar_gestion').addClass('disabled');
-        console.log(myObjGestion);
+//        console.log(myObjGestion);
         insertar_gestion(myObjGestion);
     } else {
         $("#modal_alerta").modal("open");
@@ -234,8 +263,25 @@ $("#guardar_gestion").click(function () {
     }
 });
 // =============================================================================
-
+$('#buqueda_relacionada').keyup(function (e) {
+    if (e.keyCode === 13) {
+        let busqueda = $(this).val();
+        if (busqueda.length > 6) {
+            buscar_cuentas_gestor(busqueda, id_usuario, 'tb_cont_busqueda');
+        } else {
+            $('#modal_alerta').modal('open');
+            $('#mensaje_alerta').empty();
+            $('#mensaje_alerta').append(`El criterio de busqueda es muy corto ingrese mas de 6 letras`);
+        }
+    }
+});
 // =============================================================================
+$('#tb_cont_busqueda').on('click', '.cuenta_encontrada', function () {
+//    console.log( $('.cuenta_en_CLIENTE_UNICO',this).text() );
+    let cuenta = $('.cuenta_en_CLIENTE_UNICO', this).text();
+    select_datos_cuenta(cuenta);
+    $('#modal_busqueda').modal('close');
+});
 
 // =============================================================================
 
@@ -270,14 +316,16 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
-            if (datos_cuenta.IDENTIFICADOR === '0') {alert('Esta cuenta ya esta inactiva y asignada a otro despacho');}
+//            console.log(datos_cuenta);
+            if (datos_cuenta.IDENTIFICADOR === '0') {
+                alert('Esta cuenta ya esta inactiva y asignada a otro despacho');
+            }
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
             }
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
-            
+
 
             $("#estatus").empty();
             $("#estatus").append('<option value=""  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
@@ -288,7 +336,7 @@ function select_datos_cuenta(_cuenta) {
             $("#numero_marcado_deudor, #gestion").val("");
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
-            
+
             $("#datos_marcacion_directa").empty();
             $("#datos_marcacion_directa").append(`
                 <label>NOM_TEL_PRINCIPAL</label>
@@ -302,7 +350,7 @@ function select_datos_cuenta(_cuenta) {
             $("#datos_marcacion_aval").append(`<label>Referencia Direcion: ${datos_cuenta.DIRECCION_REFERENCIA} </label>
                 <li class="collection-item black-text">${datos_cuenta.REFERENCIA}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO_REFERENCIA2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO_REFERENCIA2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO_REFERENCIA1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO_REFERENCIA1}</a></li>
             `);
-//            select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], "0000-00-00", "tbody_tabla_gestiones");
+            select_gestiones_cuenta(datos_cuenta.CUENTA, "0000-00-00", "tbody_tabla_gestiones");
             $("#DIRECCION_AXTEL").val(`${datos_cuenta.COLONIA} ${datos_cuenta.CALLE_NUM} CP: ${datos_cuenta.CP}, ${datos_cuenta.CIUDAD}, ${datos_cuenta.ESTADO}`);
         }
     });
@@ -336,6 +384,77 @@ function insertar_gestion(myObj) {
             select_gestiones_cuenta(myObj["_CUENTA"], '0000-00-00', "tbody_tabla_gestiones");
         },
 
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+// =============================================================================
+function select_gestiones_cuenta(_cuenta, _fecha_inico, _div) {
+    $("#" + _div).empty();
+    $("#" + _div).append('<div class="progress"><div class="indeterminate"></div></div>');
+    var params = {
+        action: "select_gestiones_cuenta",
+        cuenta: _cuenta,
+        fecha_inico: _fecha_inico
+    };
+//    console.log(params);
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAxtel",
+        data: params,
+        dataType: "json",
+        success: function (gestiones) {
+            
+            $("#" + _div).empty();
+            for (var i in gestiones) {
+                $("#" + _div).append('<tr class="tb_gestion_cuenta">' +
+                        '<td class="g_fecha">' + gestiones[i].FECHA_INSERT + '</td>' +
+                        '<td class="g_hora">' + gestiones[i].HORA + '</td>' +
+                        '<td class="g_num_marcado">' + gestiones[i].NUMERO_MARCADO + '</td>' +
+                        '<td class="g_usuario">' + gestiones[i].ID_USUARIO + '</td>' +
+                        '<td class="g_estatus">' + gestiones[i].ID_ESTATUS_CUENTA + '</td>' +
+                        '<td class="g_codigo">' + gestiones[i].ID_ESTATUS_LLAMDA + '</td>' +
+                        '<td class="g_gestion">' + gestiones[i].GESTION + '</td>' +
+                        '<td class="g_duracio">' + gestiones[i].DURACION + '</td>' +
+                        '</tr>'
+                        );
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+}
+// =============================================================================
+//funcion de buscador
+function buscar_cuentas_gestor(_busqueda, _id_puesto, _div) {
+    $("#" + _div).empty();
+    $("#" + _div).append('<div class="progress"><div class="indeterminate"></div></div>');
+    var params = {
+        action: "select_buscar_cuentas",
+        busqueda: _busqueda,
+        id_puesto: _id_puesto
+    };
+//    console.log();
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAxtel",
+        data: params,
+        dataType: "json",
+        success: function (cuentas) {
+            $('#' + _div).empty();
+            for (let item of cuentas) {
+                $('#' + _div).append(`<tr class="cuenta_encontrada">
+                <td class="cuenta_en_CLIENTE_UNICO">${item.CUENTA}</td>
+                <td>${item.CLIENTE}</td>
+                <td>${item.REFERENCIA}</td>
+                <td>${item.CATEGORIA}</td>
+                </tr>`);
+            }
+//            console.log(cuentas);
+        },
         error: function (error) {
             console.log(error);
         }

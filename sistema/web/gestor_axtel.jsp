@@ -544,10 +544,10 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>CLIENTE_UNICO</th>
-                                    <th>DESCRIPCION</th>
-                                    <th>FECHA</th>
-                                    <th>HORA</th>
+                                    <th>CUENTA</th>
+                                    <th>CLIENTE</th>
+                                    <th>REFERENCIA</th>
+                                    <th>CATEGORIA</th>
                                 </tr>
                             </thead>
                             <tbody id="tb_cont_busqueda">
