@@ -25,10 +25,10 @@
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
                 <div class="col s12 m12 l12 contenido-datos">
-                    
+
                     <input id="id_cuenta" type="hidden">
                     <input id="numero_marcado_deudor" type="hidden">
-                    
+
                     <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
 
@@ -55,12 +55,32 @@
                                 <input id="CATEGORIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="CATEGORIA">Categoria</label>
                             </div>
-                              <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s12 m12 l12">
                                 <input id="ESTADOS_INSTANCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="ESTADOS_INSTANCIA">Estado Instancias</label>
                             </div>
                             <div class=" col s12 m12 l12">
                                 <textarea id="DIRECCION_AXTEL" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
+                            </div>
+                            <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
+                                <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
+                                    <div class="input-field col s6">
+                                        <input id="REFERENCIA" type="text" class="validate" placeholder=""  value="">
+                                        <label for="REFERENCIA">Referencia</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="DIRECCION_REFERENCIA" type="text" class="validate" placeholder=""  value="">
+                                        <label for="DIRECCION_REFERENCIA">Direccion Referencia</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="TELEFONO_REFERENCIA1" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO_REFERENCIA1">Contacto Principal TEL 1</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="TELEFONO_REFERENCIA2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO_REFERENCIA2">Contacto Principal TEL 2</label>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -94,60 +114,25 @@
                                 <input id="CORRIENTE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="CORRIENTE">Corriente</label>
                             </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="DESCUENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="DESCUENTO">Descuento</label>
-                            </div>
                              <div class="input-field col s6 m6 l6">
                                 <input id="QUEQUE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="QUEQUE">Queque</label>
                             </div>
-                              <div class="input-field col s6 m6 l6">
+                            <div class="input-field col s12 m12 l12">
+                                <input id="DESCUENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DESCUENTO">Descuento</label>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
                                 <input id="VENCIDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="VENCIDO">Vencido</label>
                             </div>
-                            <div class="input-field col s6 m6 l6">
+                            <div class="input-field col s12 m12 l12">
                                 <input id="TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="TOTAL">Total</label>
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col s7 m7 l7">
-                        <!--componente de datos aval -->
-                        <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
-                            <ul id="datos_marcacion_aval" class="collection coll_1 datos_marcacion_directa">
-                                <label>Aval Calle: Num: Colonia: Municipio: Estado: </label>
-                                <li class="collection-item black-text">Nombre del Aval <a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
-                            </ul>
-
-                            <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
-                                <div class="input-field col s6">
-                                    <input id="REFERENCIA" type="text" class="validate" placeholder=""  value="">
-                                    <label for="REFERENCIA">Referencia</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="DIRECCION_REFERENCIA" type="text" class="validate" placeholder=""  value="">
-                                    <label for="DIRECCION_REFERENCIA">Direccion Referencia</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="TELEFONO_REFERENCIA1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO_REFERENCIA1">Contacto Principal TEL 1</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="TELEFONO_REFERENCIA2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO_REFERENCIA2">Contacto Principal TEL 2</label>
-                                </div>
-                            </div>
-                            <ul class="collection coll_2 datos_marcacion_directa center">
-                                <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
-                                <a id="editar_info_aval" class="btn-small blue">editar</a>
-                            </ul>
-                        </div>
-
-                        <!--componente de gestion-->
-
                         <div id="div_gestor_gestion" class=" col s12 m12 l12  div_gestor_gestion z-depth-1 white">
                             <div class="col s12 m12 l12">
                                 <h6>Gestion</h6>

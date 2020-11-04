@@ -395,6 +395,8 @@
                     <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
                     <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
                     <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                    <li><a class="btn-floating purple"><i class="material-icons">announcement</i></a></li>
+                    <li><a class="btn-floating orange"><i class="material-icons">book</i></a></li>
                 </ul>
             </div>
 

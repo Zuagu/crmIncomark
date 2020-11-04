@@ -8,6 +8,7 @@ $(document).ready(function () {
     $('.modal').modal();
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
+    $('.slider').slider();
 
     $(".sidenav").empty();
     $(".sidenav").append(`<li class="center"><img src="image/icon-user.png"><li>`);
@@ -196,7 +197,7 @@ $("#estatus").change(function () {
         <option value="37">MENSAJE CON TERCERO</option>
         <option value="38">TITULAR NO DEFINE</option>
         `);
-        
+
     } else {
         $("#codigo_llamada").empty();
         options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
@@ -358,7 +359,9 @@ function select_datos_cuenta(_cuenta) {
         dataType: "json",
         success: function (datos_cuenta) {
 //            console.log(datos_cuenta);
-            if (datos_cuenta.IDENTIFICADOR === '0') {alert('Esta cuenta ya esta inactiva y asignada a otro despacho');}
+            if (datos_cuenta.IDENTIFICADOR === '0') {
+                alert('Esta cuenta ya esta inactiva y asignada a otro despacho');
+            }
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
@@ -658,7 +661,9 @@ function select_cuenta_siguiente(_id_usuario) {
         dataType: "json",
         success: function (datos_cuenta) {
 //            console.log(datos_cuenta);
-            if (datos_cuenta.IDENTIFICADOR === '0') {alert('Esta cuenta ya esta inactiva y asignada a otro despacho');}
+            if (datos_cuenta.IDENTIFICADOR === '0') {
+                alert('Esta cuenta ya esta inactiva y asignada a otro despacho');
+            }
             if (datos_cuenta.id_cuenta === 0) {
                 alert("Sin cuentas");
             } else {
@@ -776,10 +781,10 @@ function insertar_gestion(myObj) {
 }
 
 $("#guardar_gestion").click(function () {
-    console.log( $("#codigo_llamada").val() );
-    console.log( $("#gestion").val() );
-    console.log( $("#numero_marcado_deudor").val() );
-    console.log( $("#estatus").val() );
+    console.log($("#codigo_llamada").val());
+    console.log($("#gestion").val());
+    console.log($("#numero_marcado_deudor").val());
+    console.log($("#estatus").val());
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
@@ -1503,6 +1508,12 @@ $("#m_aval").click(function () {
 
 $("#m_tt").click(function () {
     $('#modal_mensaje_tt').modal('open');
+});
+$("#m_speach").click(function () {
+    $('#modal_speach').modal('open');
+});
+$("#m_capacitacion").click(function () {
+    $('#modal_capacitacion').modal('open');
 });
 
 function descartar_agenda_gestor(_id_registro) {
