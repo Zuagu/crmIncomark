@@ -12,6 +12,15 @@
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
         <style>
+            #modal_capacitacion {
+                max-width: 70%;
+                width: 70%;
+                max-height: 80%;
+                height: 80%;
+            }
+            .slider .slides li img {
+                background-size: contain;
+            }
         </style>
     </head>
 
@@ -710,7 +719,7 @@
                     <h3 class="center">GUIA CAPACITACIÓN  A AGENCIAS Y/O DESPACHOS EXTERNOS</h3>
                     <div class="col s12 m12 l12">
                         <div class="slider">
-                            <ul class="slides">
+                            <ul id="cont_de_imagenes" class="slides">
                                 <li>
                                     <img src="image/banco_1.png"> <!-- random image -->
                                 </li>
@@ -718,7 +727,8 @@
                                     <img src="image/banco_2.png"> <!-- random image -->
                                 </li>
                                 <li>
-                                    <img src="image/banco_3.png"> <!-- random image -->                                </li>
+                                    <img src="image/banco_3.png"> <!-- random image -->
+                                </li>
                                 <li>
                                     <img src="image/banco_4.png"> <!-- random image -->
                                 </li>

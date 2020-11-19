@@ -51,7 +51,7 @@ window.onload = function () {
     select_datos_cuenta($("#ID_CLIENTE_CLIENTE_UNICO").val());
 //    select_agendas();
 //    select_llamadas_gestor(id_usuario);
-    options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
+    options_estatus_llamadas = `<option value="5" selected>Selecciona Codigo</option>
         <option value="1">SIN CLASIFICAR</option>
         <option value="2">SIN DATOS</option>
         <option value="3">NO EXISTE</option>

@@ -21,7 +21,7 @@
                         <div class="inner ">
                             <div class="col s12 m12 l12">
                                 <div id="box_image" class="col s12 m6 l6  offset-m3 offset-l3 padding_40 back">
-                                    <img class="width_100" src="image/incomark.png">
+                                    <img class="width_100" src="image/karina.png">
                                 </div>
                                 <form id="login" class="back" style="" name="login" action="/sistema/main.jsp" method="post">
                                     <div class="col s12 m6 l6  offset-m3 offset-l3 padding_40 back">

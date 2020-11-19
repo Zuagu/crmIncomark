@@ -55,32 +55,16 @@
                                 <input id="CATEGORIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="CATEGORIA">Categoria</label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s6 m6 l6">
+                                <input id="REFERENCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="REFERENCIA">REFERENCIA</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
                                 <input id="ESTADOS_INSTANCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="ESTADOS_INSTANCIA">Estado Instancias</label>
                             </div>
                             <div class=" col s12 m12 l12">
                                 <textarea id="DIRECCION_AXTEL" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
-                            </div>
-                            <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
-                                <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
-                                    <div class="input-field col s6">
-                                        <input id="REFERENCIA" type="text" class="validate" placeholder=""  value="">
-                                        <label for="REFERENCIA">Referencia</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="DIRECCION_REFERENCIA" type="text" class="validate" placeholder=""  value="">
-                                        <label for="DIRECCION_REFERENCIA">Direccion Referencia</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="TELEFONO_REFERENCIA1" type="text" class="validate" placeholder=""  value="">
-                                        <label for="TELEFONO_REFERENCIA1">Contacto Principal TEL 1</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="TELEFONO_REFERENCIA2" type="text" class="validate" placeholder=""  value="">
-                                        <label for="TELEFONO_REFERENCIA2">Contacto Principal TEL 2</label>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
@@ -107,32 +91,43 @@
                                 <label for="DIAS_MORA">Días Mora</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="SEGMENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="SEGMENTO">Segmento</label>
+                                <input id="MONEDA" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="MONEDA">Tipo de Moneda</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CORRIENTE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="CORRIENTE">Corriente</label>
+                                <input id="CORIENTE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="CORIENTE">Corriente</label>
                             </div>
-                             <div class="input-field col s6 m6 l6">
-                                <input id="QUEQUE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="QUEQUE">Queque</label>
-                            </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s6 m6 l6">
                                 <input id="DESCUENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="DESCUENTO">Descuento</label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s6 m6 l6">
+                                <input id="QUEUE" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="QUEUE">Queque</label>
+                            </div>
+                            <div class="input-field col s4 m4 l4">
                                 <input id="VENCIDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="VENCIDO">Vencido</label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s4 m4 l4">
                                 <input id="TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="TOTAL">Total</label>
                             </div>
+                            <div class="input-field col s4 m4 l4">
+                                <input id="TOTAL_DESCUENTO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="TOTAL_DESCUENTO">Total con Descuento</label>
+                            </div>
+                            
                         </div>
                     </div>
+
+
                     <div class="col s7 m7 l7">
+                        
+
+                        <!--componente de gestion-->
+
                         <div id="div_gestor_gestion" class=" col s12 m12 l12  div_gestor_gestion z-depth-1 white">
                             <div class="col s12 m12 l12">
                                 <h6>Gestion</h6>
@@ -175,6 +170,34 @@
                     </div>
 
                     <div class="col s5 m5 l5">
+                        
+                        <!--componente de datos aval -->
+                        <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
+                            <ul id="datos_marcacion_aval" class="collection coll_1 datos_marcacion_directa">
+                                <label>Direccion</label>
+                                <li class="collection-item black-text">Nombre Contacto Principal <a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
+                            </ul>
+
+                            <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
+                                <div class="input-field col s6">
+                                    <input id="CONTACTO_PRINCIAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="CONTACTO_PRINCIAL">Referencia</label>
+                                </div>
+                                
+                                <div class="input-field col s6">
+                                    <input id="TELEFONO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO_PRINCIPAL">Contacto Principal TEL 1</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="TELEFONO_PRINCIPAL_2" type="text" class="validate" placeholder=""  value="">
+                                    <label for="TELEFONO_PRINCIPAL_2">Contacto Principal TEL 2</label>
+                                </div>
+                            </div>
+                            <ul class="collection coll_2 datos_marcacion_directa center">
+                                <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
+                                <a id="editar_info_aval" class="btn-small blue">editar</a>
+                            </ul>
+                        </div>
 
                         <!--componente de datos de contactacion directa -->
 
@@ -193,18 +216,7 @@
                                 <div class="col s12 m12 l12">
                                     <h6>Referencias</h6>
                                 </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL_PRINCIPAL">Contacto 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO_PRINCIPAL" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO_PRINCIPAL">Tel Principal</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO_PRINCIPAL_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO_PRINCIPAL_2">Tel2 Principal</label>
-                                </div>
+                                
                                 <div class="input-field col s6 m6 l6">
                                     <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
                                     <label for="NOM_TEL2">Contacto 2</label>
@@ -238,12 +250,9 @@
                             </div>
 
                         </div>
-
                         <!--componente de editar_marcacion_directa-->
 
-
-
-
+                        
 
                     </div>
 
@@ -499,7 +508,7 @@
                             <input id="hora_agenda" type="text" class="timepicker">
                             <label for="hora_agenda">Hora</label>
                         </div>
-                        <div class="col s12 div_btn right-align">
+                        <div class="input-field col s12 div_btn right-align">
                             <a class="btn red waves-effect modal-close">Cancelar</a>
                             <a id="insertar_agenda" class="btn blue waves-effect">Aceptar</a>
                         </div>
@@ -540,6 +549,67 @@
                             </tbody>
                         </table>
 
+                    </div>
+                </div>
+            </div>
+            
+            <div id="modal_vencido_b" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">Vencido </h3>
+                    
+                    <div class="col s12 tabla_resultado_busqueda">
+                        <div class="input-field col s2">
+                            <input id="B30" type="text" placeholder=" ">
+                            <label for="B30">B30</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B60" type="text" placeholder=" ">
+                            <label for="B60">B60</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B90" type="text" placeholder=" ">
+                            <label for="B90">B90</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B120" type="text" placeholder=" ">
+                            <label for="B120">B120</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B150" type="text" placeholder=" ">
+                            <label for="B150">B150</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B180" type="text" placeholder=" ">
+                            <label for="B180">B180</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B210" type="text" placeholder=" ">
+                            <label for="B210">B210</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B240" type="text" placeholder=" ">
+                            <label for="B240">B240</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B270" type="text" placeholder=" ">
+                            <label for="B270">B270</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B300" type="text" placeholder=" ">
+                            <label for="B300">B300</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B330" type="text" placeholder=" ">
+                            <label for="B330">B330</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B360" type="text" placeholder=" ">
+                            <label for="B360">B360</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="B390" type="text" placeholder=" ">
+                            <label for="B390">B390</label>
+                        </div>
                     </div>
                 </div>
             </div>

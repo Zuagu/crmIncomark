@@ -55,7 +55,7 @@ window.onload = function () {
     select_cuenta_siguiente(id_usuario);
     select_agendas();
 //    select_llamadas_gestor(id_usuario);
-    options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
+    options_estatus_llamadas = `<option value="5" selected>Selecciona Codigo</option>
         <option value="1">SIN CLASIFICAR</option>
         <option value="2">SIN DATOS</option>
         <option value="3">NO EXISTE</option>
@@ -1513,6 +1513,7 @@ $("#m_speach").click(function () {
     $('#modal_speach').modal('open');
 });
 $("#m_capacitacion").click(function () {
+    
     $('#modal_capacitacion').modal('open');
 });
 
