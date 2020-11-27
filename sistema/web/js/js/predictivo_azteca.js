@@ -183,6 +183,38 @@ $("#save_info_aval").click(function () {
 
 $("#edit_num").click(function () {
 
+    let data_tel = {
+        NOM_TEL1: $("#NOM_TEL1").val(),
+        TELEFONO1: $("#TELEFONO1").val(),
+        TELEFONO1_2: $("#TELEFONO1_2").val(),
+
+        NOM_TEL2: $("#NOM_TEL2").val(),
+        TELEFONO2: $("#TELEFONO2").val(),
+        TELEFONO2_2: $("#TELEFONO2_2").val(),
+
+        NOM_TEL3: $("#NOM_TEL3").val(),
+        TELEFONO3: $("#TELEFONO3").val(),
+        TELEFONO3_2: $("#TELEFONO3_2").val(),
+
+        NOM_TEL4: $("#NOM_TEL4").val(),
+        TELEFONO4: $("#TELEFONO4").val(),
+        TELEFONO4_2: $("#TELEFONO4_2").val(),
+
+        NOM_TEL5: $("#NOM_TEL5").val(),
+        TELEFONO5: $("#TELEFONO5").val(),
+        TELEFONO5_2: $("#TELEFONO5_2").val()
+    };
+    
+    for (let tel in data_tel) {
+        if ( data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
+        } else {
+            $("#" + tel).attr("readonly","readonly");
+        }
+    }
+    
+    
+//    console.log(data_tel);
+
     $('#edit_num').addClass('hide');
     $('#save_num').removeClass('hide');
 
@@ -190,6 +222,22 @@ $("#edit_num").click(function () {
     $('#editar_marcacion_directa').removeClass('hide');
 
 });
+
+$("#editar_marcacion_directa input").click( function () {
+    let atrib = $(this).attr("readonly");
+    let id = $(this).attr("id");
+    console.log(atrib);
+    if (atrib === "readonly") {
+        var person = prompt("Favor de ingresar el codigo de autorizacion", "");
+        if (person === "1234") {
+            $("#" + id).removeAttr("readonly");
+        }else {
+            alert("Clave de acceso no autorizado");
+        }
+    }
+}); 
+
+
 
 $("#save_num").click(function () {
     $('#save_num').addClass('hide');

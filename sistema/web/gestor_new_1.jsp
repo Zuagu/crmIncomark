@@ -277,23 +277,6 @@
                                     <label for="TELEFONO5_2">Tel. 2</label>
                                 </div>
 
-                                <!--                                <div class="input-field col s6 m6 l6">
-                                                                    <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="NOMBRE_AVAL">Contacto Aval</label>
-                                                                </div>
-                                                                <div class="input-field col s3 m3 l3">
-                                                                    <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="TELAVAL">Tel. 1</label>
-                                                                </div>
-                                                                <div class="input-field col s3 m3 l3">
-                                                                    <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="TELAVAL2">Tel. 2</label>
-                                                                </div>
-                                                                <div class="input-field col s12 m12 l12">
-                                                                    <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="CALLEAVAL">Direccion Aval </label>
-                                                                </div>-->
-
                             </div>
 
 
@@ -490,6 +473,7 @@
                             <option value="19">19 SEMANAS</option>
                             <option value="20">20 SEMANAS</option>
                             <option value="21">21 SEMANAS</option>
+                            <option value="22">22 SEMANAS</option>
                             <option value="23">23 SEMANAS</option>
                             <option value="24">24 SEMANAS</option>
                             <option value="25">25 SEMANAS</option>

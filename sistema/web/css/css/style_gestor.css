@@ -233,3 +233,7 @@ input[type="text"]:not(.browser-default).validate + label {
     max-height: 60vh;
     overflow: auto;
 }
+
+.div_btn_pwd .input-field {
+    margin-bottom: 0.1rem;
+}
