@@ -84,22 +84,20 @@
                         <span>FECHA_REINGRESO</span>
                     </div>
                 </div>
-                <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2 margin_17_top">
+                <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2">
                     <form method="POST" action="ControllerUploadFiles" enctype="multipart/form-data">
+                        <div class="col s12 m12 l12">
+                            <h6>Carga de Cuentas</h6>
+                        </div> 
                         <div class="file-field input-field">
-                            <div class="col s12 m12 l12">
-                                <h6>Carga de Cuentas</h6>
-                            </div>    
-                            <div class="col s12 m12 l12 margin_20_down margin_17_top">
-                                <div class="btn blue">
-                                    <span>CSV</span>
-                                    <input type="file" name="uploadFile" accept=".csv">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-                            </div>    
-                            <div class="col s4 m14 l14 offset-l4 offset-m4 margin_20_down">
+                            <div class="btn blue">
+                                <span>CSV</span>
+                                <input type="file" name="uploadFile" accept=".csv">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>  
+                            <div class="col s4 m14 l14 offset-l4 offset-m4 input-field">
                                 <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
                             </div>
                         </div>
