@@ -10,7 +10,8 @@
         <link rel="shortcut icon" href="image/logoSicsa/icon-sicsa.png">
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
         <style>
             .gestores{
             }
@@ -756,6 +757,7 @@
             <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
             <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
             <script type="text/javascript" src="js/js/materialize.min.js"></script>
+            <script type="text/javascript" src="js/js/menu.js"></script>
             <script type="text/javascript" src="js/js/dashboard_supervisor.js"></script>
             <!--<script type="text/javascript" src="js/js/script.js"></script>-->
 

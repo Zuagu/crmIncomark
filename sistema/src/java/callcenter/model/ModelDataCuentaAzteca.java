@@ -139,6 +139,7 @@ public class ModelDataCuentaAzteca {
 
     public static String guardarGestion(String objGestion) {
         try {
+            System.out.println(objGestion);
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objGestion);
 

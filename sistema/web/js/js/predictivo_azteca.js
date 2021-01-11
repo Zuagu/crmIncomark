@@ -362,7 +362,7 @@ function select_datos_cuenta(_cuenta) {
             $("#FECHA_ULTIMO_PAGO").val(datos_cuenta.FECHA_ULTIMO_PAGO.split(' ')[0]);
 
             $("#estatus").empty();
-            $("#estatus").append('<option value="0"  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
+            $("#estatus").append('<option value="1" selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
@@ -783,7 +783,7 @@ $("#guardar_gestion").click(function () {
             _RETASO: $('#retraso_actual').val(),
             _ID_PUESTO: id_puesto_usuario,
             _PROMESA: 0,
-            _F_PREDICTIVO: 0,
+            _F_PREDICTIVO: 1,
             _ID_EQUIPO: $('#ID_EQUIPO').val()
         };
 

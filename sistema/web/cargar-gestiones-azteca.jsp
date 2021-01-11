@@ -37,7 +37,7 @@
                 <div class="col s12 m6 l6 offset-m3 offset-l3">
                     <form method="POST" action="ControllerUploadGestiones" enctype="multipart/form-data">
                         <div class="col s12 m12 l12">
-                            <h6>Carga de Cuentas a Equipo</h6>
+                            <h6>Carga de Cuentas a Gestiones</h6>
                         </div> 
                         <div class="file-field input-field">
                             <div class="btn blue">
@@ -47,7 +47,7 @@
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
                             </div>
-                            <div class="col s4 m14 l14 offset-l4 offset-m4 margin_20_down">
+                            <div class="col s4 m14 l14 offset-l4 offset-m4 input-field">
                                 <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
                             </div>
                         </div>

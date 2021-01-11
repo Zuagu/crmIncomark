@@ -26,8 +26,8 @@ public class ControllerUploadFiles extends HttpServlet {
     
     private static final String UPLOAD_DIRECTORY = "upload";
     private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 500; // 40MB
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 500; // 50MB
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 500; // 500MB
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 500; // 500MB
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

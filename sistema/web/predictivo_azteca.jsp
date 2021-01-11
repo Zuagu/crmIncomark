@@ -51,8 +51,8 @@
                                 <label for="GERENCIA">Gerencia</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="">Subproducto</label>
+                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ETAPA">Subproducto</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">

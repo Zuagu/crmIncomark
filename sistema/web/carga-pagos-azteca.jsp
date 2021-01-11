@@ -14,7 +14,8 @@
         <title>Carga de pagos azteca</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
         <style>
             .encabezados_csv span {
                 background-color: rgba(0, 0, 0, 0.13);
@@ -32,16 +33,14 @@
         <div class="row" id="contenido"></div>
 
         <div class="row">
-            <div class="col s12 m12 l12">
-                <h5>Carga de pagos</h5>
-            </div>
-            <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2 margin_17_top">
-                <form method="POST" action="ControllerUploadFilesPagos" enctype="multipart/form-data">
-                    <div class="file-field input-field">
+            <div class="col s12 m12 l12 center-align">
+                <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2">
+                    <form method="POST" action="ControllerUploadFilesPagos" enctype="multipart/form-data">
                         <div class="col s12 m12 l12">
-                            <h6>Carga de Cuentas</h6>
-                        </div>  
-                        <div class="col s12 m12 l12 margin_20_down margin_17_top">
+                            <h6>Carga de Pagos</h6>
+                        </div>
+                        <div class="file-field input-field">
+
                             <div class="btn blue">
                                 <span>Archivo csv</span>
                                 <input type="file" name="uploadFile" accept=".csv">
@@ -49,12 +48,13 @@
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
                             </div>
-                        </div>     
-                        <div class="col s4 m14 l14 offset-l4 offset-m4 margin_20_down">
-                            <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
+
+                            <div class="col s4 m14 l14 offset-l4 offset-m4 input-field">
+                                <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
         </div>
