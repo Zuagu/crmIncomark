@@ -866,8 +866,8 @@ public class ModelReportesAzteca {
     public static String descargar_base() throws IOException {
 
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/BaseAztecaCrm.csv";
-        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
-//        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
+//        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
+        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
         System.out.println("FILE NAME: " + filename);
 
         try {
@@ -885,10 +885,11 @@ public class ModelReportesAzteca {
                     + "    TIPOTEL2,TELEFONO3,TIPOTEL3,TELEFONO4,TIPOTEL4,\n"
                     + "    IDENTIFICADOR2,"
                     + "    nombre_estatus_llamada_azteca(ID_MEJOR_ESTATUS) as MEJOR_ESTATUS,"
-                    + "    date(ULTIMA_GESTION) as FECHA_ULTIMA_GESTION,time(ULTIMA_GESTION) as HORA_ULTIMA_GESTION,\n"
+                    + "    date_format(ULTIMA_GESTION,'%Y-%m-%d') as FECHA_ULTIMA_GESTION, time(ULTIMA_GESTION) as HORA_ULTIMA_GESTION,\n"
                     + "    nombre_estatus_llamada_azteca(ID_ESTATUS_CUENTA) AS ESTATUS_CUENTA\n"
                     + "FROM azteca_base_genenral_original where IDENTIFICADOR != '0' ORDER BY ULTIMA_GESTION DESC;";
             System.out.println(sql);
+            
             fw.append("CLIENTE_UNICO");
             fw.append(',');
             fw.append("PLAN");
@@ -1056,11 +1057,11 @@ public class ModelReportesAzteca {
                 fw.append(',');
                 fw.append(s.rs.getString("IDENTIFICADOR2").replace("\n", "") );
                 fw.append(',');
-                fw.append(s.rs.getString("MEJOR_ESTATUS").replace("\n", "") );
+                fw.append(s.rs.getString("MEJOR_ESTATUS") );
                 fw.append(',');
-                fw.append(s.rs.getString("FECHA_ULTIMA_GESTION").replace("\n", "") );
+                fw.append(s.rs.getString("FECHA_ULTIMA_GESTION") );
                 fw.append(',');
-                fw.append(s.rs.getString("HORA_ULTIMA_GESTION").replace("\n", "") );
+                fw.append(s.rs.getString("HORA_ULTIMA_GESTION") );
                 fw.append(',');
                 fw.append(s.rs.getString("ESTATUS_CUENTA").replace("\n", "") );
                 fw.append('\n');

@@ -287,7 +287,7 @@ $("#editar_marcacion_directa input").click( function () {
     console.log(atrib);
     if (atrib === "readonly") {
         var person = prompt("Favor de ingresar el codigo de autorizacion", "");
-        if (person === "1234") {
+        if (person === "pjcruz20") {
             $("#" + id).removeAttr("readonly");
         }else {
             alert("Clave de acceso no autorizado");
