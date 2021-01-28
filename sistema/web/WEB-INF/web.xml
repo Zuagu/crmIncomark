@@ -388,6 +388,10 @@
         <servlet-name>ControllerDataCuentaAxtel</servlet-name>
         <servlet-class>callcenter.controller.ControllerDataCuentaAxtel</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerSolicitud</servlet-name>
+        <servlet-class>callcenter.controller.ControllerSolicitud</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -763,6 +767,10 @@
     <servlet-mapping>
         <servlet-name>ControllerDataCuentaAxtel</servlet-name>
         <url-pattern>/ControllerDataCuentaAxtel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerSolicitud</servlet-name>
+        <url-pattern>/ControllerSolicitud</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

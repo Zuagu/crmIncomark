@@ -72,11 +72,11 @@ public class ModelUsuario {
     }
 
     /* ====================================================================== */
-    public static String cargar_menu(int id_perfil, String id_usuario) {
+    public static String cargar_menu(String id_usuario) {
         try {
             StartConexion inicioConexion = new StartConexion();
             String resultado = "";
-            String sql = "call cargar_menu(" + id_perfil + ",'" + id_usuario + "');";
+            String sql = "call cargar_menu('" + id_usuario + "');";
 //            System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             while (inicioConexion.rs.next()) {

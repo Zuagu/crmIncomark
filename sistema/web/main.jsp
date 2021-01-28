@@ -13,7 +13,7 @@
         id_usuario = request.getParameter("id_usuario");
         password = request.getParameter("password");
         // llamadas a metodos
-        menu = ModelUsuario.cargar_menu(id_perfil, id_usuario);
+        menu = ModelUsuario.cargar_menu(id_usuario);
         String id_puesto = ModelUsuario.id_puesto(id_usuario);
         String id_puesto2 = ModelUsuario.id_puesto2(id_usuario);
         String id_puesto3 = ModelUsuario.id_puesto3(id_usuario);
