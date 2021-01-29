@@ -22,16 +22,21 @@
 <ul id="dropdown_app" class="dropdown-content">
     <li><a href="https://incomarkpbx.systelvoice.com/index.php"  class="center-align" target="_blank"><img class="width_ext size_ul" src="image/issabel.png"></a></li>
 </ul>
-<nav class="header_nav blue darken-1">
+
+
+<i class="material-icons img_log">menu</i>
+<a class="size_perfil dropdown-trigger right black-text" href="#!" data-target="dropdown1"><i id="foto_perfil" class="material-icons">account_circle</i></a>
+
+<!--<nav class="header_nav blue darken-1">
     <div class="nav-wrapper icon_nav">
         <ul>
-            <li href="#!" class=""><img src="image/logoInco.fw.png" alt="image/logoInco.fw.png" class="img_log"></li> 
+            
         </ul> 
         <ul class="right size_ul ul_margin_top">
-            <li><a class="size_ul dropdown-trigger" href="#!" data-target="dropdown1"><img id="foto_perfil" class="circle size_ul margin_17_top" src="image/icon-user.png"></a></li>
+            
         </ul>
     </div>
-</nav>
+</nav>-->
 <ul id="slide-out" class="sidenav login1 collapsible">
 </ul>
 
