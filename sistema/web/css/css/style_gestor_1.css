@@ -42,7 +42,9 @@ nav .btn-flat {
 
 #info_gestor input{
     margin: 0px !important;
-    height: 1rem !important;
+    border: none;
+    border-radius: 2px;
+    height: 1.4rem !important;
     font-size: 14px;
     color: #000;
     font-weight: bold;
@@ -65,7 +67,9 @@ input[type="text"]:not(.browser-default).validate + label {
 
 #info_gestor_secundario input{
     margin: 0px !important;
-    height: 1.43rem !important;
+    border: none;
+    border-radius: 2px;
+    height: 1.4rem !important;
     font-size: 14px;
     color: #000;
     font-weight: bold;
@@ -236,4 +240,39 @@ input[type="text"]:not(.browser-default).validate + label {
 
 .div_btn_pwd .input-field {
     margin-bottom: 0.1rem;
+}
+
+.collection {
+    border: 0px !important;
+}
+
+.tabs {
+    height: 35px;
+    line-height: 38px !important;
+}
+.tabs .tab{
+    line-height: 38px !important;
+}
+
+.gestor_tab {
+    
+    color: #000 !important;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: #02010133;
+    outline: none;
+}
+.grey.lighten-1 {
+    background-color: #d6d7da !important;
+}
+
+#info_gestor #buscador_cuentas_gestor {
+    margin: 0px !important;
+    border: none;
+    height: 2rem !important;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
 }

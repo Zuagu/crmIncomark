@@ -13,9 +13,35 @@
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <title>Sistema Gestor</title>
         <style type="text/css">
-            body {
-                background-color: #FFF;
+
+            .contenedor_principal {
+                background: #354152;
             }
+/*            .contenedor_principal {
+                background: linear-gradient(-45deg, #002750, #192655, #291a31);
+                background-size: 600% 600%;
+
+                -webkit-animation: AnimationName 12s ease infinite;
+                -moz-animation: AnimationName 12s ease infinite;
+                animation: AnimationName 12s ease infinite;
+            }
+
+            @-webkit-keyframes AnimationName {
+                0%{background-position:0% 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0% 50%}
+            }
+            @-moz-keyframes AnimationName {
+                0%{background-position:0% 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0% 50%}
+            }
+            @keyframes AnimationName {
+                0%{background-position:0% 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0% 50%}
+            }*/
+
             .contenedor_principal {
                 display: table;
                 width: 100%;
@@ -28,6 +54,7 @@
                 width: 100%;
             }
             .login {
+                border-radius: 4px;
                 padding: 2rem 1rem !important;
             }
             .boton {
@@ -83,8 +110,9 @@
         <div class="contenedor_principal">
             <div class="centrar">
                 <div class="row">
-                    <div class="col s10 offset-s1 m4 l4 offset-m4 offset-l4 white login z-depth-2 hoverable">
+                    <div class="col s10 offset-s1 m4 l4 offset-m4 offset-l4 white login z-depth-5 hoverable">
                         <!--<img src="./imagenes/Allsafe-Financial-Services.jpg" width="100%"/>-->
+                        <h4 class="center-align">Iniciar Sesion</h4>
                         <form action="/sistema/main.jsp" method="POST" class="center-align">
                             <div class="input-field">
                                 <input type="text" name="id_usuario" name="id_usuario" id="_user" class="validate">
@@ -101,7 +129,7 @@
                 </div>
             </div>
         </div>
-        
+
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
     </body>

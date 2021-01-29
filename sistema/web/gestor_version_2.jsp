@@ -40,17 +40,17 @@
                     <div class=" col s12 m12 l12">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1  grey lighten-1">
                             <div class=" col s12 m12 l12">
-                                <div class="input-field col s3 m3 l3">
+                                <div class="input-field col s5 m5 l5">
                                     <h6><b>INFORMACION DEL CLIENTE</b></h6>
                                 </div>
-                                <div class=" input-field col s3 m3 l3 offset-l6 offset-s6 offset-m6">
-                                     <div class=" col s2 m2 l2 grey lighten-1 left-align">
+                                <div class=" input-field col s4 m4 l4 offset-l3 offset-s3 offset-m3">
+                                    <div class="col s2 m2 l2 grey lighten-1 left-align">
                                         <a id="buscar_cuentas" class="btn-flat col s12"><i class="material-icons ">search</i></a>
                                     </div>
-                                    <div class=" col s10 m10 l10">
+                                    <div class="col s10 m10 l10">
                                         <input id="buscador_cuentas_gestor" class="buscador search_cuentas center-align white" type="text" placeholder="Buscar">
                                     </div>
-                                   
+
                                 </div>
                             </div>
                             <div class="input-field col s3 m3 l3">
@@ -70,12 +70,12 @@
                                 <label for="CAMPANIA">PRODUCTO</label>
                             </div>
                             <div class="input-field col s3 m3 l3">
-                                <input id="doce" type="text" class="validate white" placeholder="" readonly="readonly" value="">
-                                <label for="">SUBPRODUCTO</label>
-                            </div>
-                            <div class="input-field col s3 m3 l3">
                                 <input id="GERENTE" type="text" class="validate white" placeholder="" readonly="readonly" value="">
                                 <label for="GERENTE">GERENTE</label>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <input id="doce" type="text" class="validate white" placeholder="" readonly="readonly" value="">
+                                <label for="">SUBPRODUCTO</label>
                             </div>
                             <div class="input-field col s3 m3 l3">
                                 <input id="ETAPA" type="text" class="validate white" placeholder="" readonly="readonly" value="">
@@ -133,19 +133,19 @@
                     </div>
                     <div class="col s8 m8 l8">
                         <div class="col s12 l12 m12 marcacion_directa grey lighten-1 z-depth-1">
-                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa col s6">
+                            <ul id="datos_marcacion_directa1" class="collection datos_marcacion_directa col s6">
                                 <label>Referencia 3</label>
                                 <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
                                 <label>Referencia 4</label>
                                 <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
                             </ul>
-                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa col s6">
+                            <ul id="datos_marcacion_directa2" class="collection datos_marcacion_directa col s6">
                                 <label>Referencia 1</label>
                                 <li class="collection-item black-text">Nombre 1<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
                                 <label>Referencia 2</label>
                                 <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
                             </ul>
-                            
+
                             <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
                                 <div class="col s12 m12 l12">
                                     <h6>Referencias</h6>
@@ -198,15 +198,15 @@
                                     <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
                                     <label for="TELEFONO4_2">Tel. 2</label>
                                 </div>
-                                <div class="input-field col s6 m6 l6">
+                                <div class="input-field col s6 m6 l6 hide">
                                     <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
                                     <label for="NOM_TEL5">Contacto 5</label>
                                 </div>
-                                <div class="input-field col s3 m3 l3">
+                                <div class="input-field col s3 m3 l3 hide">
                                     <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
                                     <label for="TELEFONO5">Tel. 1</label>
                                 </div>
-                                <div class="input-field col s3 m3 l3">
+                                <div class="input-field col s3 m3 l3 hide">
                                     <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
                                     <label for="TELEFONO5_2">Tel. 2</label>
                                 </div>
@@ -245,19 +245,19 @@
                     <div class="col s8 m8 l8 margin_top_7px">
                         <div class=" col s12 m12 l12 grey lighten-1 z-depth-1">  
                             <div class=" col s12 m12 l12 grey lighten-1">
-                                <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">       
-                                    <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e">gestiones</a></li>
-                                    <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e">pagos</a></li>
-                                    <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e">convenios</a></li>
-                                    <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e">agenda</a></li>
-                                    <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e">visitas</a></li>
-                                    <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e">saldo</a></li>
+                                <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs grey lighten-1">       
+                                    <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones">gestiones</a></li>
+                                    <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos">pagos</a></li>
+                                    <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios">convenios</a></li>
+                                    <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas">agenda</a></li>
+                                    <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas">visitas</a></li>
+                                    <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos">saldo</a></li>
                                 </ul>
                             </div>
                         </div>
                         <!--componente de secciones de las tabs de tabs-->
-                        <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido white"> 
-                            <table class="highlight" id="tabla_gestiones">
+                        <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido grey lighten-1"> 
+                            <table class="highlight white" id="tabla_gestiones">
                                 <thead class="blue">
                                     <tr class="text-white">
                                         <td> <b>FECHA</b></td>
@@ -274,8 +274,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
-                            <table class="highlight" id="tabla_pagos">
+                        <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align grey lighten-1">
+                            <table class="highlight white" id="tabla_pagos">
                                 <thead class="blue">
                                     <tr class="text-white">
                                         <td><b>FOLIO</b></td>
@@ -291,10 +291,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido white">
+                        <div id="div_agendas" class="col s12 z-depth-1 div_gestor_contenido grey lighten-1">
                             <input id="id_reg_agenda" type="hidden">
                             <div class="col s12 m9 l9">
-                                <table>
+                                <table class="white">
                                     <thead>
                                         <tr class="blue">
                                             <th>ID</th>
@@ -322,11 +322,11 @@
 
                             <div id="tabla_agendas" class="col s12 m12 l12"></div>
                         </div>
-                        <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
+                        <div id="div_visitas" class="col s12 z-depth-1 div_gestor_contenido center center-align grey lighten-1">
 
                         </div>
-                        <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
-                            <table class="highlight" id="tabla_convenios">
+                        <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align grey lighten-1">
+                            <table class="highlight white" id="tabla_convenios">
                                 <thead class="blue">
                                     <tr class="text-white">
                                         <td><b>CUENTA</b></td>
@@ -345,7 +345,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
+                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align grey lighten-1">
 
                         </div>
                     </div>
@@ -353,7 +353,8 @@
                         <ul id="datos_marcacion_aval" class="collection coll_1 datos_marcacion_directa">
                             <!--<label>Aval Calle: Num: Colonia: Municipio: Estado: </label>-->
                             <label >Aval Calle:</label>
-                            <li class="collection-item black-text">Nombre del Aval <a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
+                            <li class="collection-item black-text">Nombre del Aval</li>
+                            <li class="collection-item black-text">.<a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
                         </ul>
                         <div id="edit_datos_marcacion_aval" class="col s9 m9 l9 margin_top_7px hide">
                             <div class="input-field col s6 m6 l6">
@@ -378,6 +379,39 @@
                             <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
                             <a id="editar_info_aval" class="btn-small blue">editar</a>
                         </ul>
+
+                        <div class="col s12 input-field">
+                            <!--componente de tiempos -->
+                            <div id="div_input_gestor_tiempos" class="col s12 m12 l12 white z-depth-1 div_input_gestor_tiempos">
+                                <div class="col s12 m12 l12">
+                                    <h6>Tiempos</h6>
+                                </div>
+                                <div class="input-field col s12 hide">
+                                    <input id="primera_llamada" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
+                                    <label for="primera_llamada">P.llamada</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="tiempo_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
+                                    <label for="tiempo_actual">Actual</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="retraso_actual" type="text" class="validate" placeholder="" readonly="readonly" value="00:00:00">
+                                    <label for="retraso_actual">R. Actual</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="cuentas_tocadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                                    <label for="cuentas_tocadas">Cuentas</label>
+                                </div>
+                                <div class="input-field col s12 hide">
+                                    <input id="llamadas_realizadas" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                                    <label for="llamadas_realizadas" class="centro">Llamadas</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="convenios" type="text" class="validate" placeholder="" readonly="readonly" value="0000">
+                                    <label for="convenios">Convenios</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -797,6 +831,6 @@
 
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/js/Script_Azteca.js"></script>
+        <script type="text/javascript" src="js/js/Script_Azteca_1.js"></script>
     </body>
 </html>
