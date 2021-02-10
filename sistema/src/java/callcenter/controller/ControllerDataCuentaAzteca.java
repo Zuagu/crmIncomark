@@ -25,16 +25,16 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             throws ServletException, IOException {
         // Usamos el metodo del get para generar la pantalla del predictivo
         String cuenta = request.getParameter("cuenta");
-
         String telefono = request.getParameter("telefono");
         String id_usuario = request.getParameter("id_usuario");
+        
         System.out.println("cuenta: " + cuenta + " id_usuario: " + id_usuario + " telefono: " + telefono);
 
         request.setAttribute("telefono", telefono);
         request.setAttribute("id_usuario", id_usuario);
         request.setAttribute("cuenta", cuenta);
-        getServletContext().getRequestDispatcher("/predictivo_oscar.jsp").forward(request, response);
-//        getServletContext().getRequestDispatcher("/predictivo_azteca.jsp").forward(request, response);
+//        getServletContext().getRequestDispatcher("/predictivo_oscar.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/predictivo_azteca.jsp").forward(request, response);
     }
 
     @Override

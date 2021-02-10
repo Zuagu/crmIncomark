@@ -132,8 +132,6 @@ input[type="text"]:not(.browser-default).validate + label {
 }
 
 
-
-
 .marcacion_directa .collection .collection-item a {
     margin-left: 1rem;
 }

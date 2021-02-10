@@ -1,136 +1,89 @@
-<%-- 
-    Document   : index-mod-1
-    Created on : 28/01/2021, 07:54:47 AM
-    Author     : zuagu
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>                                                                                                                                                                                 
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CALLCENTER</title>
+        <!--icono de la pestaña del explorador-->
+        <link rel="shortcut icon" href="image/logoInco.fw.png">
+        <link rel="apple-touch-icon" href="">
+        <link href="css/css/icons-material.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <title>Sistema Gestor</title>
-        <style type="text/css">
-
-            .contenedor_principal {
-                background: #354152;
-            }
-/*            .contenedor_principal {
-                background: linear-gradient(-45deg, #002750, #192655, #291a31);
-                background-size: 600% 600%;
-
-                -webkit-animation: AnimationName 12s ease infinite;
-                -moz-animation: AnimationName 12s ease infinite;
-                animation: AnimationName 12s ease infinite;
-            }
-
-            @-webkit-keyframes AnimationName {
-                0%{background-position:0% 50%}
-                50%{background-position:100% 50%}
-                100%{background-position:0% 50%}
-            }
-            @-moz-keyframes AnimationName {
-                0%{background-position:0% 50%}
-                50%{background-position:100% 50%}
-                100%{background-position:0% 50%}
-            }
-            @keyframes AnimationName {
-                0%{background-position:0% 50%}
-                50%{background-position:100% 50%}
-                100%{background-position:0% 50%}
-            }*/
-
-            .contenedor_principal {
-                display: table;
-                width: 100%;
-                height: 100%;
-                position: absolute;
-            }
-            .centrar {
-                display: table-cell;
-                vertical-align: middle;
-                width: 100%;
-            }
-            .login {
-                border-radius: 4px;
-                padding: 2rem 1rem !important;
-            }
-            .boton {
-                width: 100%;
-                margin-top: 1rem;
-            }
-            .boton {
-                transition: 0.6s;
-                background-color: rgba(0,0,0,0.2);
-            }
-            .boton:hover {
-                transition: 0.6s;
-                background-color: rgba(41, 128, 185,0.7);
-                color: #FFF;
-            }
-            input[type=text]:not(.browser-default) {
-                border-bottom: 0px solid #9e9e9e;
-            }
-            input[type=text]:not(.browser-default):focus:not([readonly]) {
-                border-bottom: 0px solid #26a69a;
-                -webkit-box-shadow: 0 1px 0 0 #26a69a;
-                box-shadow: 0px 0px 3px 0px #868686;
-            }
-            input.valid[type=text]:not(.browser-default) {
-                border-bottom: 0px solid #4CAF50;
-                -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-                box-shadow: 0px 0px 3px 0px #868686;
-            }
-            input[type=password]:not(.browser-default) {
-                border-bottom: 0px solid #9e9e9e;
-            }
-            input[type=password]:not(.browser-default):focus:not([readonly]) {
-                border-bottom: 0px solid #26a69a;
-                -webkit-box-shadow: 0 1px 0 0 #26a69a;
-                box-shadow: 0px 0px 3px 0px #868686;
-            }
-            input.valid[type=password]:not(.browser-default) {
-                border-bottom: 0px solid #4CAF50;
-                -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-                box-shadow: 0px 0px 3px 0px #868686;
-            }
-            input {
-                background-color: rgba(0,0,0,0.06) !important;
-                border: none;
-                border-radius: 5px !important;
-            }
-            .img_login {
-                margin-bottom: 1rem;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="css/css/login.css">
     </head>
-    <body>
-        <div class="contenedor_principal">
-            <div class="centrar">
-                <div class="row">
-                    <div class="col s10 offset-s1 m4 l4 offset-m4 offset-l4 white login z-depth-5 hoverable">
-                        <!--<img src="./imagenes/Allsafe-Financial-Services.jpg" width="100%"/>-->
-                        <h4 class="center-align">Iniciar Sesion</h4>
-                        <form action="/sistema/main.jsp" method="POST" class="center-align">
-                            <div class="input-field">
-                                <input type="text" name="id_usuario" name="id_usuario" id="_user" class="validate">
-                                <label for="_user">Usuario</label>
-                            </div>
-                            <div class="input-field">
-                                <input type="password" name="password" name="password" id="_pass" class="validate">
-                                <label for="_pass">Password</label>
-                            </div>
-                            <button class="btn-flat boton waves-effect waves-green">Enviar</button>
-                            <input id="id_perfil" value="2" type="hidden" name="id_perfil" tabindex="3">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="js/js/materialize.min.js"></script>
+    <body id="loginjsp" class="style">
+        <div class="container">
+            <div class="row margin_bot_0"  >
+                <div class="outer">
+                    <div class="middle">
+                        <div class="inner ">
+                            <div class="col s12 m12 l12">
+                                <div id="box_image" class="col s12 m6 l6  offset-m3 offset-l3 padding_40 back">
+                                    <img class="width_100" src="">
+                                </div>
+                                <form id="login" class="back" style="" name="login" action="/sistema/main.jsp" method="post">
+                                    <div class="col s12 m6 l6  offset-m3 offset-l3 padding_40 back">
+                                        <input id="ip" type="hidden">
+
+                                        <div class="input-field width_100 color_true">
+                                            <i class="material-icons prefix icon-white ">account_circle</i>
+                                            <input id="id_usuario" type="text" name="id_usuario" class="validate input_color">
+                                            <label class="width_50" for="id_usuario">ID</label>
+                                        </div>
+                                        <div class="input-field width_100">
+                                            <i class="material-icons prefix icon-white ">fingerprint</i>
+                                            <input id="password" type="password" name="password" class="validate input_color">
+                                            <label class="width_50" for="password">Contraseña</label>
+                                        </div>
+                                        <a id="iniciar_sesion" class="waves-effect  waves-light btn width_100"><i class="material-icons right">send</i>Ingresar</a>
+<!--                                        <div  class="preloader-wrapper big active" style="display: none;">
+                                            <div class="spinner-layer spinner-blue-only">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div><div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div><div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div id="cargando" class="progress" style="display: none;">
+                                            <div class="indeterminate"></div>
+                                        </div>
+                                        <p class="align_center white-text">Volver al menu principal</p>
+                                    </div>
+                                    <div>                
+                                        <div style=" left: 10px; width: auto; font-size: 10px; color:#2a010180;display:none;">
+                                            <input id="id_perfil" value="2" type="hidden" name="id_perfil" tabindex="3">
+                                            <div class="input-field ">
+                                                <select id="marcacion" class="icons estilo center-align" style=";background-color: #2a010180;">
+                                                    <option value="/sistema/main.jsp" data-icon="images/manual.png" class="left circle">     MANUAL</option>
+                                                    <option value="/sistema/marcador.jsp" data-icon="images/pre.png" class="left circle">     PREDIC</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </form>                                          
+                            </div>
+                        </div>  
+                    </div>     
+                </div>
+            </div>    
+        </div>
+        <%
+            //System.out.println(request.getSession().getAttribute("id_usuario"));
+            if (request.getSession().getAttribute("id_usuario") != null) {
+                System.out.println(request.getSession().getAttribute("puesto"));
+                out.write("<script> location.replace('" + request.getSession().getAttribute("puesto") + ".jsp'); </script>");
+            } else if (request.getParameter("cerrar") != null) {
+                HttpSession sesion = request.getSession();
+                sesion.invalidate();
+            }
+        %>
+        <script src="js/js/jquery-2.2.4.min.js"></script>
+        <script src="js/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/js/login.js"></script>
     </body>
 </html>

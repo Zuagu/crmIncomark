@@ -37,7 +37,7 @@ function iniciar_sesion() {
             password: $("#password").val(),
             ip: $("#ip").val()
         };
-        console.log(params);
+//        console.log(params);
         $.ajax({
             type: "POST",
             url: "/sistema/ControllerUsuario",

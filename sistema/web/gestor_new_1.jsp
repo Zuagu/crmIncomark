@@ -59,16 +59,16 @@
                                 <label for="GERENCIA">Gerencia</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="doce" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="">Subproducto</label>
+                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ETAPA">Subproducto</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="GERENTE">Gerente</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="ETAPA">Tipo</label>
+                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="TIPO_CTE">Tipo</label>
                             </div>
                             <div class=" col s12 m12 l12">
                                 <textarea id="Direccion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
@@ -579,9 +579,9 @@
                             <thead>
                                 <tr>
                                     <th>CLIENTE_UNICO</th>
-                                    <th>DESCRIPCION</th>
-                                    <th>FECHA</th>
-                                    <th>HORA</th>
+                                    <th>NOMBRE</th>
+                                    <th>AVAL</th>
+                                    <th>ESTATUS</th>
                                 </tr>
                             </thead>
                             <tbody id="tb_cont_busqueda">
@@ -704,102 +704,102 @@
                     <div class="col s12 m12 l12">
                         <div class="slider">
                             <ul id="cont_de_imagenes" class="slides">
-                                <li>
-                                    <img src="image/banco_1.png"> <!-- random image -->
+<!--                                <li>
+                                    <img src="image/banco_1.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_2.png"> <!-- random image -->
+                                    <img src="image/banco_2.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_3.png"> <!-- random image -->
+                                    <img src="image/banco_3.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_4.png"> <!-- random image -->
+                                    <img src="image/banco_4.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_5.png"> <!-- random image -->
+                                    <img src="image/banco_5.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_6.png"> <!-- random image -->
+                                    <img src="image/banco_6.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_7.png"> <!-- random image -->
+                                    <img src="image/banco_7.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_8.png"> <!-- random image -->
+                                    <img src="image/banco_8.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_9.png"> <!-- random image -->
+                                    <img src="image/banco_9.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_10.png"> <!-- random image -->
+                                    <img src="image/banco_10.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_11.png"> <!-- random image -->
+                                    <img src="image/banco_11.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_12.png"> <!-- random image -->
+                                    <img src="image/banco_12.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_13.png"> <!-- random image -->
+                                    <img src="image/banco_13.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_14.png"> <!-- random image -->
+                                    <img src="image/banco_14.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_15.png"> <!-- random image -->
+                                    <img src="image/banco_15.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_16.png"> <!-- random image -->
+                                    <img src="image/banco_16.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_17.png"> <!-- random image -->
+                                    <img src="image/banco_17.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_18.png"> <!-- random image -->
+                                    <img src="image/banco_18.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_19.png"> <!-- random image -->
+                                    <img src="image/banco_19.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_20.png"> <!-- random image -->
+                                    <img src="image/banco_20.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_21.png"> <!-- random image -->
+                                    <img src="image/banco_21.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_22.png"> <!-- random image -->
+                                    <img src="image/banco_22.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_23.png"> <!-- random image -->
+                                    <img src="image/banco_23.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_24.png"> <!-- random image -->
+                                    <img src="image/banco_24.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_25.png"> <!-- random image -->
+                                    <img src="image/banco_25.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_26.png"> <!-- random image -->
+                                    <img src="image/banco_26.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_27.png"> <!-- random image -->
+                                    <img src="image/banco_27.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_28.png"> <!-- random image -->
+                                    <img src="image/banco_28.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_29.png"> <!-- random image -->
+                                    <img src="image/banco_29.png">  random image 
                                 </li>
                                 <li>
-                                    <img src="image/banco_30.png"> <!-- random image -->
+                                    <img src="image/banco_30.png">  random image -->
                                     <div class="caption center-align">
                                         <h3>This is our big Tagline!</h3>
                                         <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                                     </div>
                                 </li>
                                 <li>
-                                    <img src="image/banco_31.png"> <!-- random image -->
+                                    <!--<img src="image/banco_31.png">  random image -->
                                 </li>
                             </ul>
                         </div>

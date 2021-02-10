@@ -778,7 +778,7 @@
         </session-timeout>
     </session-config>
     <display-name>
-        INCOMARK CALL CENTER.
+        System Call Center
     </display-name>
     <servlet-mapping>
         <servlet-name>ControllerEquipos</servlet-name>

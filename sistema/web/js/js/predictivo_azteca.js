@@ -349,13 +349,14 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-            console.log(datos_cuenta);
+//            console.log(datos_cuenta);
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
             }
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#CANAL2").val(datos_cuenta.CANAL);
+            $("#TIPO_CTE").val(datos_cuenta.CANAL);
             $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
             $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);

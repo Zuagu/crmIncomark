@@ -416,6 +416,7 @@ function select_datos_cuenta(_cuenta) {
             }
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#CANAL2").val(datos_cuenta.CANAL);
+            $("#TIPO_CTE").val(datos_cuenta.CANAL);
             $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
             $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);
@@ -723,6 +724,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 }
                 $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#CANAL2").val(datos_cuenta.CANAL);
+                $("#TIPO_CTE").val(datos_cuenta.CANAL);
                 $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
                 $("#SALDO_TOTAL").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#IMP_ULTIMO_PAGO").val('$ ' + datos_cuenta.IMP_ULTIMO_PAGO);
@@ -829,10 +831,10 @@ function insertar_gestion(myObj) {
 }
 
 $("#guardar_gestion").click(function () {
-    console.log($("#codigo_llamada").val());
-    console.log($("#gestion").val());
-    console.log($("#numero_marcado_deudor").val());
-    console.log($("#estatus").val());
+//    console.log($("#codigo_llamada").val());
+//    console.log($("#gestion").val());
+//    console.log($("#numero_marcado_deudor").val());
+//    console.log($("#estatus").val());
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {

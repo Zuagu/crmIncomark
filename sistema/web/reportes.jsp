@@ -60,11 +60,18 @@
                                     <select id="id_ter_gestion" name="id_region"></select>
                                     <label>Territorio</label>
                                 </div>
-                                <div class="input-field col s9" >
-                                    <input id="desde_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
-                                    <label class="" for="desde_gestiones"></label>
-                                    <input id="hasta_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
-                                    <label class="" for="hasta_gestiones"></label>
+                                <div class="input-field col s6 m2 l2">
+                                    <input id="desde_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
+                                    <label class="" for="desde_gestiones">Desde</label>
+                                </div>
+
+                                <div class="input-field col s6 m2 l2">
+                                    <input id="hasta_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="">
+                                    <label class="" for="hasta_gestiones">Hasta</label>
+                                </div>
+
+                                <div class="input-field col s5 m5 l5" >
+
                                     <a id="enviar_gestiones" class="waves-effect waves-light btn blue"><i class="material-icons">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_gestiones', 'GESTIONES')" class="waves-effect waves-light btn green"><i class="material-icons">explicit</i></a> 
                                     <a id="ver_resumen_gestion" class="btn blue waves-effect">ver resumen</a>
@@ -186,11 +193,18 @@
                                     <select id="id_ter_convenio" name="id_region"></select>
                                     <label>Territorio</label>
                                 </div>
-                                <div class="input-field col s9" >
-                                    <input id="desde_convenios" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
-                                    <label class="" for="desde_convenios"></label>
-                                    <input id="hasta_convenios" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
-                                    <label class="" for="hasta_convenios"></label>
+
+                                <div class="input-field col s6 m2 l2">
+                                    <input id="desde_convenios" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
+                                    <label class="" for="desde_convenios">Desde</label>
+                                </div>
+                                <div class="input-field col s6 m2 l2">
+                                    <input id="hasta_convenios" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="">
+                                    <label class="" for="hasta_convenios">Hasta</label>
+                                </div>
+
+
+                                <div class="input-field col s5" >
                                     <a id="enviar_convenios" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_convenios', 'CONVENIOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a>
                                     <a id="descarga_directa_convenios" class="waves-effect waves-light btn blue">Descarga Directa</a> 
@@ -232,11 +246,20 @@
                                     <select id="id_ter_pagos" name="id_region"></select>
                                     <label>ZONA</label>
                                 </div>
-                                <div class="input-field col s9" >
-                                    <input id="desde_pagos" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
-                                    <label class="" for="desde_pagos"></label>
-                                    <input id="hasta_pagos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
-                                    <label class="" for="hasta_pagos"></label>
+
+                                <div class="input-field col s6 m2 l2">
+                                    <input id="desde_pagos" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
+                                    <label for="desde_pagos">Desde</label>
+
+                                </div>
+
+                                <div class="input-field col s6 m2 l2">
+                                    <input id="hasta_pagos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="">
+                                    <label for="hasta_pagos">Hasta</label>
+
+                                </div>
+
+                                <div class="input-field col s12 m5 l5" >
                                     <a id="enviar_pagos" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a> 
                                     <a id="ver_resumen_pagos" class="btn blue">ver resumen</a>
@@ -302,13 +325,17 @@
                     <div id="test-swipe-5" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <h4>Reporte de horas Gestor</h4>
+                                <h4 class="black-text">Reporte de horas gestor</h4>
                             </div>
-                            <div class="input-field col s12" >
-                                <input id="desde_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;margin-left: 10px;"></td>
+                            <div class="input-field col s6 m2 l2">
+                                <input id="desde_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
                                 <label class="" for="desde_tiempos"></label>
-                                <input id="hasta_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="" style="text-align: center;border: solid 1px gray !important;border-radius: 4px !important;font-weight: bold; width:100px; padding:-5px;margin-bottom: -5px;height: 27px;"></td>
+                            </div>
+                            <div class="input-field col s6 m2 l2">
+                                <input id="hasta_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="">
                                 <label class="" for="hasta_tiempos"></label>
+                            </div>
+                            <div class="input-field col s12 m5 l5">
                                 <a id="enviar_tiempos" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                 <a onclick="tableToExcel('datos_tabla_tiempos', 'PAGOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a>
                                 <a id="descarga_directa_tiempos" class="waves-effect waves-light btn blue">Descarga Directa</a>

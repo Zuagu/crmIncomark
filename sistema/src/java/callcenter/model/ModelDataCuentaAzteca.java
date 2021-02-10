@@ -25,7 +25,7 @@ public class ModelDataCuentaAzteca {
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql2 = "select * from azteca_base_genenral_original as bg left join azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
+            String sql2 = "SELECT * FROM azteca_base_genenral_original AS bg LEFT JOIN azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
 //            System.out.println(sql2);
             ic.rs = ic.st.executeQuery(sql2);
             JSONObject objCuenta = new JSONObject();
@@ -95,6 +95,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
+                objCuenta.put("ETAPA", ic.rs.getString("ETAPA"));
 
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
@@ -413,6 +414,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_ESTATUS_LLAMADA", ic.rs.getString("ID_ESTATUS_LLAMADA"));
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
+                objCuenta.put("ETAPA", ic.rs.getString("ETAPA"));
 
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
