@@ -25,7 +25,8 @@ public class ModelDataCuentaAzteca {
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql2 = "SELECT * FROM azteca_base_genenral_original AS bg LEFT JOIN azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
+            String sql2 = "SELECT *, nombre_estatus_llamada_azteca(id_estatus_llamada) AS TXT_CODIGO "
+                    + " FROM azteca_base_genenral_original AS bg LEFT JOIN azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
 //            System.out.println(sql2);
             ic.rs = ic.st.executeQuery(sql2);
             JSONObject objCuenta = new JSONObject();
@@ -123,6 +124,7 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("TELAVAL2", ic.rs.getString("TELAVAL2"));
 
                 objCuenta.put("CRM", ic.rs.getString("CRM"));
+                objCuenta.put("TXT_CODIGO", ic.rs.getString("TXT_CODIGO"));
 
             }
             ic.rs.close();

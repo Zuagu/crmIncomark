@@ -200,7 +200,7 @@ $("#estatus").change(function () {
 
     } else {
         $("#codigo_llamada").empty();
-        options_estatus_llamadas = `<option value="0" selected>Selecciona Codigo</option>
+        options_estatus_llamadas = `<option value="4" selected>Selecciona Codigo</option>
         <option value="1">SIN CLASIFICAR</option>
         <option value="2">SIN DATOS</option>
         <option value="3">NO EXISTE</option>
@@ -423,7 +423,7 @@ function select_datos_cuenta(_cuenta) {
             $("#FECHA_ULTIMO_PAGO").val(datos_cuenta.FECHA_ULTIMO_PAGO.split(' ')[0]);
 
             $("#estatus").empty();
-            $("#estatus").append('<option value=""  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
+            $("#estatus").append('<option value="1"  selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
             $("#codigo_llamada").empty();
             $("#codigo_llamada").append(options_estatus_llamadas);
             $('select').formSelect();
@@ -731,7 +731,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#FECHA_ULTIMO_PAGO").val(datos_cuenta.FECHA_ULTIMO_PAGO.split(' ')[0]);
 
                 $("#estatus").empty();
-                $("#estatus").append('<option value="" selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
+                $("#estatus").append('<option value="1" selected>Selecciona Estatus</option>' + datos_cuenta["ESTATUS_POSIBLES_TXT"]);
                 $("#codigo_llamada").empty();
                 $("#codigo_llamada").append(options_estatus_llamadas);
                 $('select').formSelect();
@@ -1343,7 +1343,7 @@ function select_agendas() {
         data: {action: 'select_agendas', id_gestor: id_usuario},
         dataType: "json",
         success: function (result) {
-            console.log(result);
+//            console.log(result);
             $('#tb_list_agenda').empty();
             for (let item of result) {
                 $('#tb_list_agenda').append(`<tr id='row_agenda_${item.ID_REGISTRO}' class='row_reg_agenda ${item.F_ACTIVE}'>
@@ -1441,6 +1441,7 @@ function actualizar_informacion_contacto() {
         tel5_2: $('#TELEFONO5_2').val(),
         cuenta: $('#CLIENTE_UNICO').val()
     };
+    
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",
