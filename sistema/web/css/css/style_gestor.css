@@ -92,7 +92,7 @@ input[type="text"]:not(.browser-default).validate + label {
     display: inline-block;
 }
 .div_data_aval ul .btn-small {
-     margin: 5px 0px;
+    margin: 5px 0px;
 }
 .div_data_aval .coll_1 {
     width: 80%;
@@ -242,4 +242,20 @@ input[type="text"]:not(.browser-default).validate + label {
     overflow: auto;
     height: 45vh;
     margin-bottom: 1rem;
+}
+
+#modal_busqueda {
+    width: 70%;
+}
+
+.div_gestor_contenido thead tr th, .tabla_resultado_busqueda thead tr th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #2196F3;
+    color: white;
+}
+
+.tabla_resultado_busqueda td, .tabla_resultado_busqueda th {
+    padding: 5px 5px;
 }

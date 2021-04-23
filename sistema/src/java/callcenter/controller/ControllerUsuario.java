@@ -40,10 +40,7 @@ public class ControllerUsuario extends HttpServlet {
         else if ("cerrar_sesion".equals(action)) {
             HttpSession sesion = request.getSession();
             sesion.invalidate();
-            
-            ModelUsuario.cerrar_sesion(
-                    Integer.parseInt(request.getParameter("id_usuario"))
-            );
+            ModelUsuario.cerrar_sesion(Integer.parseInt(request.getParameter("id_usuario")));
             System.out.println("Controlador usuario" + request.getParameter("id_usuario"));
         } //====================================================================
         else if (action.equals("select_id_puesto")) {

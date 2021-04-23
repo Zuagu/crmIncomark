@@ -24,7 +24,7 @@
         </style>
     </head>
 
-    <body class="grey lighten-3" style="font-size: 12px">
+    <body class="grey lighten-3">
         <jsp:include page="header.jsp"/>
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
@@ -51,28 +51,32 @@
                                 <label for="CLIENTE_UNICO">Cuenta</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CAMPANIA">Producto</label>
+                                <input id="PRODUCTO" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="PRODUCTO">Producto</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="GERENCIA">Gerencia</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="ETAPA">Subproducto</label>
+                                <input id="_123" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="_123">Subproducto</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="GERENTE">Gerente</label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="TIPO_CTE">Tipo</label>
+                                <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="ETAPA">Tipo</label>
                             </div>
-                            <div class=" col s12 m12 l12">
+                            <div class="input-field col s12 m12 l12">
+                                <input id="Direccion" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="Direccion">Direccion</label>
+                            </div>
+<!--                            <div class=" col s12 m12 l12">
                                 <textarea id="Direccion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
@@ -301,14 +305,14 @@
                             <table class="highlight" id="tabla_gestiones">
                                 <thead class="blue">
                                     <tr class="text-white">
-                                        <td> <b>FECHA</b></td>
-                                        <td> <b>HORA</b></td>
-                                        <td> <b>NUMERO</b></td>
-                                        <td> <b>AGENTE</b></td>
-                                        <td> <b>ESTATUS</b></td>
-                                        <td> <b>CODIGO</b></td>
-                                        <td> <b>DISPOCISION</b></td>
-                                        <td> <b>TIEMPO</b></td>
+                                        <th>FECHA</th>
+                                        <th>HORA</th>
+                                        <th>NUMERO</th>
+                                        <th>AGENTE</th>
+                                        <th>ESTATUS</th>
+                                        <th>CODIGO</th>
+                                        <th>DISPOCISION</th>
+                                        <th>TIEMPO</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_tabla_gestiones">
@@ -319,13 +323,13 @@
                             <table class="highlight" id="tabla_pagos">
                                 <thead class="blue">
                                     <tr class="text-white">
-                                        <td><b>FOLIO</b></td>
-                                        <td><b>CLIENTE UNICO</b></td>
-                                        <td><b>ZONA</b></td>
-                                        <td><b>GERENTE</b></td>
-                                        <td><b>FECHA GESTION</b></td>
-                                        <td><b>RECUPERACION CAPITAL</b></td>
-                                        <td><b>RECUPERACION MORATORIOS</b></td>
+                                        <th>FOLIO</th>
+                                        <th>CLIENTE UNICO</th>
+                                        <th>ZONA</th>
+                                        <th>GERENTE</th>
+                                        <th>FECHA GESTION</th>
+                                        <th>RECUPERACION CAPITAL</th>
+                                        <th>RECUPERACION MORATORIOS</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_tabla_pagos">
@@ -370,16 +374,16 @@
                             <table class="highlight" id="tabla_convenios">
                                 <thead class="blue">
                                     <tr class="text-white">
-                                        <td><b>CUENTA</b></td>
-                                        <td><b>GESTOR</b></td>
-                                        <td><b>CONVENIO</b></td>
-                                        <td><b>FECHA GESTION</b></td>
-                                        <td><b>PLAZO</b></td>
-                                        <td><b>FECHA</b></td>
-                                        <td><b>PAGOS</b></td>
-                                        <td><b>FECHA PAGOS</b></td>
-                                        <td><b>EFECTIVIDAD</b></td>
-                                        <td><b>STATUS</b></td>
+                                        <th>CUENTA</th>
+                                        <th>GESTOR</th>
+                                        <th>CONVENIO</th>
+                                        <th>FECHA GESTION</th>
+                                        <th>PLAZO</th>
+                                        <th>FECHA</th>
+                                        <th>PAGOS</th>
+                                        <th>FECHA PAGOS</th>
+                                        <th>EFECTIVIDAD</th>
+                                        <th>STATUS</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_tabla_convenios">
@@ -569,13 +573,13 @@
 
             <div id="modal_busqueda" class="modal">
                 <div class="modal-content">
-                    <h3 class="center">Resutado</h3>
+                    <h3 class="center">Busqueda de Cuenta</h3>
                     <div class="input-field col s6 offset-s3">
                         <input id="buqueda_relacionada" type="text" class="validate">
                         <label for="buqueda_relacionada">Busqueda </label>
                     </div>
                     <div class="col s12 tabla_resultado_busqueda">
-                        <table>
+                        <table class="striped highlight">
                             <thead>
                                 <tr>
                                     <th>CLIENTE_UNICO</th>

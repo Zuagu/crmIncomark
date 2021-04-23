@@ -52,6 +52,7 @@ $(document).ready(function () {
     $("#retraso_actual").val("00:00:00");
 });
 window.onload = function () {
+    limpiar_pantalla();
     select_cuenta_siguiente(id_usuario);
     select_agendas();
 //    select_llamadas_gestor(id_usuario);
@@ -105,6 +106,11 @@ function Cerrar(id) {
         url: "/sistema/ControllerUsuario",
         data: {action: "cerrar_sesion", id_usuario: id}
     });
+}
+
+function limpiar_pantalla() {
+    $("#info_gestor input").val("");
+    $("#info_gestor_secundario input").val("");
 }
 
 // funcion que lanza el menu lateral
@@ -406,7 +412,7 @@ function select_datos_cuenta(_cuenta) {
         data: params,
         dataType: "json",
         success: function (datos_cuenta) {
-//            console.log(datos_cuenta);
+            console.log(datos_cuenta);
             if (datos_cuenta.IDENTIFICADOR === '0') {
                 alert('Esta cuenta ya esta inactiva y asignada a otro despacho');
             }
