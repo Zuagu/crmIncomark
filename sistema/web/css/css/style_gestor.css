@@ -45,12 +45,11 @@ nav .btn-flat {
     height: 1rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 
 #info_gestor .input-field {
-    margin-top: 0.5rem;
-    margin-bottom: 0.2rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
 }
 
 input.invalid[type="text"]:not(.browser-default) {
@@ -63,25 +62,13 @@ input[type="text"]:not(.browser-default).validate + label {
     color: #000;
 }
 
-#info_gestor_secundario input{
-    margin: 0px !important;
-    height: 1.43rem !important;
-    font-size: 14px;
-    color: #000;
-    font-weight: bold;
-}
-
-#info_gestor_secundario .input-field {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.2rem !important;
-}
 
 #div_gestor_gestion input{
     margin: 0px !important;
     height: 1.43rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
+    
 }
 
 .div_data_aval .coll_2 {

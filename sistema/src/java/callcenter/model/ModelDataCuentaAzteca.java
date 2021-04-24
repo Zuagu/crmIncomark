@@ -98,6 +98,8 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
                 objCuenta.put("ETAPA", ic.rs.getString("ETAPA"));
                 objCuenta.put("PRODUCTO", ic.rs.getString("PRODUCTO"));
+                objCuenta.put("EDAD", ic.rs.getString("EDAD"));
+                objCuenta.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
 
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
