@@ -51,6 +51,17 @@ nav .btn-flat {
     margin-top: 0.6rem;
     margin-bottom: 0.3rem;
 }
+#info_gestor_secundario input{
+    margin: 0px !important;
+    height: 1rem !important;
+    font-size: 14px;
+    color: #000;
+}
+
+#info_gestor_secundario .input-field {
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+}
 
 input.invalid[type="text"]:not(.browser-default) {
     border-bottom: 1px solid #000;

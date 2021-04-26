@@ -1,3 +1,8 @@
+<%-- 
+    Document   : gestor_multiservicios
+    Created on : 10/03/2021, 08:04:46 PM
+    Author     : zuagu
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +15,7 @@
         <link rel="shortcut icon" href="image/logoInco.fw.png">
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
+        <link rel="stylesheet" type="text/css" href="css/css/style_multi.css">
         <style>
             #modal_capacitacion {
                 max-width: 70%;
@@ -21,10 +26,11 @@
             .slider .slides li img {
                 background-size: contain;
             }
+            
         </style>
     </head>
 
-    <body class="grey lighten-3">
+    <body>
         <jsp:include page="header.jsp"/>
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
@@ -35,7 +41,7 @@
                     <input id="ID_CLIENTE" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
-                    <div class=" col s12 m7 l7">
+                    <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
                             <div class="col s12 m12 l12">
                                 <h6><b>INFORMACION PERSONAL</b></h6>
@@ -78,9 +84,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col s12 m5 l5">
+                    <div class=" col s5 m5 l5">
                         <div id="info_gestor_secundario" class="col s12 m12 l12 z-depth-1 div_input_gestor_info white">
-                            <div class="col s12 m12 l12">
+                           <div class="col s12 m12 l12">
                                 <h6><b>INFORMACION ECONOMICA</b></h6>
                             </div>
                             <div class="input-field col s6 m6 l6">
@@ -157,7 +163,7 @@
 
                             <ul class="collection coll_2 datos_marcacion_directa center">
                                 <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
-                                <a id="editar_info_aval" class="btn-small blue">editar</a>
+                                <a id="editar_info_aval" class="btn-small blue btn_secundario">editar</a>
                             </ul>
                         </div>
 
@@ -292,7 +298,7 @@
 
 
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
-                                <a id="edit_num" class="btn-small blue">editar</a>
+                                <a id="edit_num" class="btn-small blue btn_secundario">editar</a>
                                 <a id="save_num" class="btn-small blue hide">actualizar</a>
                             </div>
 
@@ -310,16 +316,16 @@
                         <!--componente de secciones de las tabs de tabs-->
                         <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido white"> 
                             <table class="highlight" id="tabla_gestiones">
-                                <thead class="blue">
+                                <thead class="green">
                                     <tr class="text-white">
-                                        <th>FECHA</th>
-                                        <th>HORA</th>
-                                        <th>NUMERO</th>
-                                        <th>AGENTE</th>
-                                        <th>ESTATUS</th>
-                                        <th>CODIGO</th>
-                                        <th>DISPOCISION</th>
-                                        <th>TIEMPO</th>
+                                        <td> <b>FECHA</b></td>
+                                        <td> <b>HORA</b></td>
+                                        <td> <b>NUMERO</b></td>
+                                        <td> <b>AGENTE</b></td>
+                                        <td> <b>ESTATUS</b></td>
+                                        <td> <b>CODIGO</b></td>
+                                        <td> <b>DISPOCISION</b></td>
+                                        <td> <b>TIEMPO</b></td>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_tabla_gestiones">
@@ -328,15 +334,15 @@
                         </div>
                         <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_pagos">
-                                <thead class="blue">
+                                <thead class="green">
                                     <tr class="text-white">
-                                        <th>FOLIO</th>
-                                        <th>CLIENTE UNICO</th>
-                                        <th>ZONA</th>
-                                        <th>GERENTE</th>
-                                        <th>FECHA GESTION</th>
-                                        <th>RECUPERACION CAPITAL</th>
-                                        <th>RECUPERACION MORATORIOS</th>
+                                        <td><b>FOLIO</b></td>
+                                        <td><b>CLIENTE UNICO</b></td>
+                                        <td><b>ZONA</b></td>
+                                        <td><b>GERENTE</b></td>
+                                        <td><b>FECHA GESTION</b></td>
+                                        <td><b>RECUPERACION CAPITAL</b></td>
+                                        <td><b>RECUPERACION MORATORIOS</b></td>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_tabla_pagos">
@@ -348,7 +354,7 @@
                             <div class="col s12 m9 l9">
                                 <table>
                                     <thead>
-                                        <tr class="blue">
+                                        <tr class="green">
                                             <th>ID</th>
                                             <th>CLIENTE_UNICO</th>
                                             <th>DESCRIPCION</th>
@@ -379,18 +385,18 @@
                         </div>
                         <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_convenios">
-                                <thead class="blue">
+                                <thead class="green">
                                     <tr class="text-white">
-                                        <th>CUENTA</th>
-                                        <th>GESTOR</th>
-                                        <th>CONVENIO</th>
-                                        <th>FECHA GESTION</th>
-                                        <th>PLAZO</th>
-                                        <th>FECHA</th>
-                                        <th>PAGOS</th>
-                                        <th>FECHA PAGOS</th>
-                                        <th>EFECTIVIDAD</th>
-                                        <th>STATUS</th>
+                                        <td><b>CUENTA</b></td>
+                                        <td><b>GESTOR</b></td>
+                                        <td><b>CONVENIO</b></td>
+                                        <td><b>FECHA GESTION</b></td>
+                                        <td><b>PLAZO</b></td>
+                                        <td><b>FECHA</b></td>
+                                        <td><b>PAGOS</b></td>
+                                        <td><b>FECHA PAGOS</b></td>
+                                        <td><b>EFECTIVIDAD</b></td>
+                                        <td><b>STATUS</b></td>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_tabla_convenios">
@@ -561,7 +567,7 @@
                         </div>
                         <div class="col s12 div_btn right-align">
                             <a class="btn red waves-effect modal-close">Cancelar</a>
-                            <a id="insertar_agenda" class="btn blue waves-effect">Aceptar</a>
+                            <a id="insertar_agenda" class="btn green waves-effect">Aceptar</a>
                         </div>
 
                     </div>
@@ -580,13 +586,13 @@
 
             <div id="modal_busqueda" class="modal">
                 <div class="modal-content">
-                    <h3 class="center">Busqueda de Cuenta</h3>
+                    <h3 class="center">Resutado</h3>
                     <div class="input-field col s6 offset-s3">
                         <input id="buqueda_relacionada" type="text" class="validate">
                         <label for="buqueda_relacionada">Busqueda </label>
                     </div>
                     <div class="col s12 tabla_resultado_busqueda">
-                        <table class="striped highlight">
+                        <table>
                             <thead>
                                 <tr>
                                     <th>CLIENTE_UNICO</th>
@@ -715,102 +721,14 @@
                     <div class="col s12 m12 l12">
                         <div class="slider">
                             <ul id="cont_de_imagenes" class="slides">
-                                <!--                                <li>
-                                                                    <img src="image/banco_1.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_2.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_3.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_4.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_5.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_6.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_7.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_8.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_9.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_10.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_11.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_12.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_13.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_14.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_15.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_16.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_17.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_18.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_19.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_20.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_21.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_22.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_23.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_24.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_25.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_26.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_27.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_28.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_29.png">  random image 
-                                                                </li>
-                                                                <li>
-                                                                    <img src="image/banco_30.png">  random image -->
-                                <div class="caption center-align">
-                                    <h3>This is our big Tagline!</h3>
-                                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                                </div>
+                                
+                                    <div class="caption center-align">
+                                        <h3>This is our big Tagline!</h3>
+                                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                    </div>
                                 </li>
                                 <li>
-                                    <!--<img src="image/banco_31.png">  random image -->
+                                    
                                 </li>
                             </ul>
                         </div>

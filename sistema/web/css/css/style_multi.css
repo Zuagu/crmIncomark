@@ -43,10 +43,9 @@ nav .btn-flat {
 
 #info_gestor input{
     margin: 0px !important;
-    height: 1rem !important;
+    height: 1.2rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 
 #info_gestor .input-field {
@@ -64,17 +63,20 @@ input[type="text"]:not(.browser-default).validate + label {
     color: #000;
 }
 
+#info_gestor .input-field {
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+}
 #info_gestor_secundario input{
     margin: 0px !important;
-    height: 1.43rem !important;
+    height: 1rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 
 #info_gestor_secundario .input-field {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.2rem !important;
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
 }
 
 #div_gestor_gestion input{
@@ -82,7 +84,6 @@ input[type="text"]:not(.browser-default).validate + label {
     height: 1.43rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 
 .div_data_aval .coll_2 {
@@ -93,7 +94,7 @@ input[type="text"]:not(.browser-default).validate + label {
     display: inline-block;
 }
 .div_data_aval ul .btn-small {
-     margin: 5px 0px;
+    margin: 5px 0px;
 }
 .div_data_aval .coll_1 {
     width: 80%;
@@ -126,7 +127,6 @@ input[type="text"]:not(.browser-default).validate + label {
     height: 1.43rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 .div_input_gestor_tiempos {
     margin-top: 0px;
@@ -170,7 +170,6 @@ input[type="text"]:not(.browser-default).validate + label {
     height: 1.43rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 #editar_marcacion_directa .input-field {
     margin-top: 0.87rem !important;
@@ -186,12 +185,9 @@ input[type="text"]:not(.browser-default).validate + label {
     height: 1.43rem !important;
     font-size: 14px;
     color: #000;
-    font-weight: bold;
 }
 
-#Direccion {
-    font-weight: bold;
-}
+
 
 
 .margin_top_7px {
@@ -254,10 +250,7 @@ input[type="text"]:not(.browser-default).validate + label {
 }
 
 body {
-    background-color: #89bf9e !important;
-}
-.white {
-    background-color: #ffffffa8 !important;
+    background-color: #ddffea !important;
 }
 .div_input_gestor_info {
     border-radius: 1rem;
@@ -272,7 +265,16 @@ body {
 .modal {
     border: 2px solid #43A047;
     border-radius: 1rem;
+    width:70%;
 }
 .slide-out a i {
     font-size: 14px !important;
+}
+.btn, .btn-small{
+    border-radius: 1rem;
+}
+.btn_secundario{
+    color: #2196F3;
+    background-color: #FFF !important;
+    border: 1px solid #2196F3;
 }

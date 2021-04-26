@@ -25,7 +25,7 @@ public class ModelDataCuentaAzteca {
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql2 = "SELECT *, nombre_estatus_llamada_azteca(id_estatus_llamada) AS TXT_CODIGO "
+            String sql2 = "SELECT *, nombre_estatus_llamada_azteca(id_estatus_llamada) AS TXT_CODIGO ,DATE_FORMAT(FECHA_INSERT,'%Y-%m-%d') as _FECHA_INSERT "
                     + " FROM azteca_base_genenral_original AS bg LEFT JOIN azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
 //            System.out.println(sql2);
             ic.rs = ic.st.executeQuery(sql2);
@@ -100,6 +100,8 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("PRODUCTO", ic.rs.getString("PRODUCTO"));
                 objCuenta.put("EDAD", ic.rs.getString("EDAD"));
                 objCuenta.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objCuenta.put("PLAN", ic.rs.getString("PLAN"));
+                objCuenta.put("FECHA_INSERT", ic.rs.getString("_FECHA_INSERT"));
 
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
@@ -420,6 +422,11 @@ public class ModelDataCuentaAzteca {
                 objCuenta.put("ID_SUCURSAL", ic.rs.getString("ID_SUCURSAL"));
                 objCuenta.put("ID_CLIENTE", ic.rs.getString("ID_CLIENTE"));
                 objCuenta.put("ETAPA", ic.rs.getString("ETAPA"));
+                objCuenta.put("PRODUCTO", ic.rs.getString("PRODUCTO"));
+                objCuenta.put("EDAD", ic.rs.getString("EDAD"));
+                objCuenta.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objCuenta.put("PLAN", ic.rs.getString("PLAN"));
+                objCuenta.put("FECHA_INSERT", ic.rs.getString("_FECHA_INSERT"));
 
                 objCuenta.put("NOM_TEL1", ic.rs.getString("NOM_TEL1"));
                 objCuenta.put("NOM_TEL2", ic.rs.getString("NOM_TEL2"));
