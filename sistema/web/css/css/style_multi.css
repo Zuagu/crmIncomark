@@ -278,3 +278,29 @@ body {
     background-color: #FFF !important;
     border: 1px solid #2196F3;
 }
+.modal{
+    overflow: visible!important; 
+}
+#div_ref_tel{
+    overflow: auto;
+    height: 237px;
+}
+#datos_marcacion_directa th, #datos_marcacion_directa td {
+    padding: 5px 5px;
+    font-size: 14px;
+    
+}
+#datos_marcacion_directa tr th{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #424242;
+    
+}
+.tabla_resultado_busqueda tr th{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    
+}

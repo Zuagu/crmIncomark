@@ -173,7 +173,7 @@ $("#editar_info_aval").click(function () {
 
     $('#datos_marcacion_aval').addClass('hide');
     $('#edit_datos_marcacion_aval').removeClass('hide');
-    
+
     $('#guardar_gestion').addClass('btn_secundario');
     $('#cuenta_siguiente').addClass('btn_secundario');
 });
@@ -191,7 +191,7 @@ $("#save_info_aval").click(function () {
 //        alert(cliente_unico);
         actualizar_informacion_aval();
     }
-    
+
     $('#guardar_gestion').removeClass('btn_secundario');
     $('#cuenta_siguiente').removeClass('btn_secundario');
 
@@ -275,26 +275,26 @@ $("#edit_num").click(function () {
         TELEFONO5: $("#TELEFONO5").val(),
         TELEFONO5_2: $("#TELEFONO5_2").val()
     };
-    
+
     for (let tel in data_tel) {
-        if ( data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
+        if (data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
         } else {
-            $("#" + tel).attr("readonly","readonly");
+            $("#" + tel).attr("readonly", "readonly");
         }
     }
-    
-    
+
+
 //    console.log(data_tel);
 
     $('#edit_num').addClass('hide');
     $('#save_num').removeClass('hide');
-    
-    
+
+
 
     $('#datos_marcacion_directa').addClass('hide');
     $('#editar_marcacion_directa').removeClass('hide');
-    
-    
+
+
     $('#guardar_gestion').addClass('btn_secundario');
     $('#cuenta_siguiente').addClass('btn_secundario');
 
@@ -313,7 +313,7 @@ $("#save_num").click(function () {
     if ($("#CLIENTE_UNICO").val().length > 5) {
         actualizar_informacion_contacto();
     }
-    
+
     $('#guardar_gestion').removeClass('btn_secundario');
     $('#cuenta_siguiente').removeClass('btn_secundario');
 });
@@ -417,9 +417,15 @@ function select_datos_cuenta(_cuenta) {
             if (datos_cuenta.IDENTIFICADOR === '0') {
                 alert('Esta cuenta ya esta inactiva y asignada a otro despacho');
             }
+            
+            $("#tbody_telefonos").empty();
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
+                if (dato.toLowerCase().indexOf('TELEFONO'.toLowerCase()) === 0) {
+                    $('#tbody_telefonos').append(`<tr><td>${dato}</td><td><i class="material-icons">phone_iphone</i></td>
+                        <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
+                }
             }
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#CANAL2").val(datos_cuenta.CANAL);
@@ -439,19 +445,18 @@ function select_datos_cuenta(_cuenta) {
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
-            $("#datos_marcacion_directa").empty();
-            $("#datos_marcacion_directa").append(`
-                <label>Referencia 1</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
-                <label>Referencia 2</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
-                <label>Referencia 3</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
-                <label>Referencia 4</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
-                <label>Referencia 5</label>
-                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
-            `);
+//            $("#datos_marcacion_directa").append(`
+//                <label>Referencia 1</label>
+//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
+//                <label>Referencia 2</label>
+//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
+//                <label>Referencia 3</label>
+//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
+//                <label>Referencia 4</label>
+//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
+//                <label>Referencia 5</label>
+//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
+//            `);
             $("#datos_marcacion_aval").empty();
             $("#datos_marcacion_aval").append(`<label>Aval Direcion: ${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
@@ -1448,7 +1453,7 @@ function actualizar_informacion_contacto() {
         tel5_2: $('#TELEFONO5_2').val(),
         cuenta: $('#CLIENTE_UNICO').val()
     };
-    
+
     $.ajax({
         type: "POST",
         url: "ControllerDataCuentaAzteca",

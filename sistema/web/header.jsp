@@ -31,7 +31,7 @@
         <div class="contenedor_buscar white">
             <input id="buscador_cuentas_gestor" class="search_cuentas center-align" type="text" placeholder="Buscar">
         </div>
-        <a id="buscar_cuentas" class="btn-flat col s12"><i class="material-icons tiny right">search</i></a>
+        <a id="buscar_cuentas" class="btn-flat col s12"><i class="material-icons tiny right white-text">search</i></a>
 
         <ul class="right size_ul ul_margin_top">
             <li><a class="size_ul dropdown-trigger" href="#!" data-target="dropdown1"><img id="foto_perfil" class="circle size_ul margin_17_top" src="image/icon-user.png"></a></li>

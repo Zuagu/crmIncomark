@@ -26,7 +26,7 @@
             .slider .slides li img {
                 background-size: contain;
             }
-            
+
         </style>
     </head>
 
@@ -86,7 +86,7 @@
                     </div>
                     <div class=" col s5 m5 l5">
                         <div id="info_gestor_secundario" class="col s12 m12 l12 z-depth-1 div_input_gestor_info white">
-                           <div class="col s12 m12 l12">
+                            <div class="col s12 m12 l12">
                                 <h6><b>INFORMACION ECONOMICA</b></h6>
                             </div>
                             <div class="input-field col s6 m6 l6">
@@ -105,7 +105,7 @@
                                 <input id="PLAN" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="PLAN"><b>PLAN</b></label>
                             </div>
-                             <div class="input-field col s6 m6 l6">
+                            <div class="input-field col s6 m6 l6">
                                 <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="IMP_ULTIMO_PAGO"><b>ULTIMO PAGO</b></label>
                             </div>
@@ -113,7 +113,7 @@
                                 <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="ATRASO_MAXIMO"><b>SEMANAS</b></label>
                             </div>
-                             <div class="input-field col s6 m6 l6">
+                            <div class="input-field col s6 m6 l6">
                                 <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="DIA_DE_PAGO"><b>DIA DE PAGO</b></label>
                             </div>
@@ -121,7 +121,7 @@
                                 <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="FECHA_ULTIMO_PAGO"><b>FECHA ULTIMO PAGO</b></label>
                             </div>
-                           
+
                             <div class="input-field col s6 m6 l6">
                                 <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
                                 <label for="SALDO_TOTAL"><b>SALDO TOTAL</b></label>
@@ -137,6 +137,7 @@
                     <div class="col s7 m7 l7">
                         <!--componente de datos aval -->
                         <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
+                            <h6><b>Informacion Aval</b></h6>
                             <ul id="datos_marcacion_aval" class="collection coll_1 datos_marcacion_directa">
                                 <label>Aval Calle: Num: Colonia: Municipio: Estado: </label>
                                 <li class="collection-item black-text">Nombre del Aval <a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
@@ -199,12 +200,12 @@
                         <!--componente de vista de tabs-->
                         <div class=" col s12 m12 l12 div_tabs white z-depth-1">
                             <ul id="tabs-swipe-demo" class="tabs hide_print ul_tabs">
-                                <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">contact_phone</i></a></li>
-                                <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">monetization_on</i></a></li>
-                                <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
-                                <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
-                                <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
-                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
+                                <li class="tab col s2"><a id="tab_gestiones" class="active gestor_tab tooltipped" data-position="bottom" data-tooltip="Gestiones" href="#div_gestiones" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">contact_phone</i></a></li>
+                                <li class="tab col s2"><a id="tab_pagos" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Pagos" href="#div_pagos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">monetization_on</i></a></li>
+                                <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">stars</i></a></li>
+                                <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">insert_invitation</i></a></li>
+                                <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">location_on</i></a></li>
+                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">pie_chart</i></a></li>
                             </ul>
                         </div>
 
@@ -215,18 +216,34 @@
                         <!--componente de datos de contactacion directa -->
 
                         <div class="col s12 l12 m12 marcacion_directa white z-depth-1">
-                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa">
-                                <label>Referencia 1</label>
-                                <li class="collection-item black-text">Nombre 1<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 2</label>
-                                <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 3</label>
-                                <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 4</label>
-                                <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 5</label>
-                                <li class="collection-item black-text">Nombre 5<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                            </ul>
+                            <h6><b>Referencias Telefonicas</b></h6>
+                            <div id="div_ref_tel">
+                                <table id="datos_marcacion_directa" class="highlight ">
+
+                                    <thead class="grey darken-3">
+                                        <tr class="white-text">
+                                            <th>NOMBRE</th>
+                                            <th>TIPO</th>
+                                            <th>TELEFONO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_telefonos">
+
+                                    </tbody>
+                                </table>
+                            </div>     
+                            <!--                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa hide">
+                                                            <label>Referencia 1</label>
+                                                            <li class="collection-item black-text">Nombre 1<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 2</label>
+                                                            <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 3</label>
+                                                            <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 4</label>
+                                                            <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 5</label>
+                                                            <li class="collection-item black-text">Nombre 5<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                        </ul>-->
 
                             <!--componente de editar_marcacion_directa-->
                             <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
@@ -709,14 +726,14 @@
                     <div class="col s12 m12 l12">
                         <div class="slider">
                             <ul id="cont_de_imagenes" class="slides">
-                                
-                                    <div class="caption center-align">
-                                        <h3>This is our big Tagline!</h3>
-                                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                                    </div>
+
+                                <div class="caption center-align">
+                                    <h3>This is our big Tagline!</h3>
+                                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                </div>
                                 </li>
                                 <li>
-                                    
+
                                 </li>
                             </ul>
                         </div>
