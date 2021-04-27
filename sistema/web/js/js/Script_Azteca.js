@@ -112,6 +112,7 @@ function Cerrar(id) {
 function limpiar_pantalla() {
     $("#info_gestor input").val("");
     $("#info_gestor_secundario input").val("");
+    $("#tbody_telefonos").empty();
 }
 
 // funcion que lanza el menu lateral
@@ -403,6 +404,7 @@ $("#buscador_cuentas_gestor").click(function () {
 });
 // funciones de datos cuenta
 function select_datos_cuenta(_cuenta) {
+    limpiar_pantalla();
     var params = {
         action: "datos_cuenta_azteca",
         cuenta: _cuenta
@@ -417,7 +419,7 @@ function select_datos_cuenta(_cuenta) {
             if (datos_cuenta.IDENTIFICADOR === '0') {
                 alert('Esta cuenta ya esta inactiva y asignada a otro despacho');
             }
-            
+
             $("#tbody_telefonos").empty();
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
@@ -445,18 +447,8 @@ function select_datos_cuenta(_cuenta) {
             $("#tiempo_actual").val("00:00:00");
             $("#retraso_actual").val("00:00:00");
             $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
-//            $("#datos_marcacion_directa").append(`
-//                <label>Referencia 1</label>
-//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
-//                <label>Referencia 2</label>
-//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
-//                <label>Referencia 3</label>
-//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
-//                <label>Referencia 4</label>
-//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
-//                <label>Referencia 5</label>
-//                <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
-//            `);
+
+
             $("#datos_marcacion_aval").empty();
             $("#datos_marcacion_aval").append(`<label>Aval Direcion: ${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
@@ -710,6 +702,7 @@ function select_llamadas_gestor(_id_usuario) {
 
 // funciones de select Cuenta siguete
 function select_cuenta_siguiente(_id_usuario) {
+    limpiar_pantalla();
     var params = {
         action: "select_cuenta_siguiente",
         id_usuario: _id_usuario
@@ -734,6 +727,21 @@ function select_cuenta_siguiente(_id_usuario) {
                     $("#" + dato).empty();
                     $("#" + dato).val(datos_cuenta[dato]);
                 }
+                $("#tbody_telefonos").empty();
+                
+                for (var dato in datos_cuenta) {
+                    $("#" + dato).empty();
+                    $("#" + dato).val(datos_cuenta[dato]);
+                    if (dato.toLowerCase().indexOf('TELEFONO'.toLowerCase()) === 0) {
+                        $('#tbody_telefonos').append(`<tr><td>${dato}</td><td><i class="material-icons">phone_iphone</i></td>
+                        <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
+                    }
+                }
+                
+                $("#CLASIFICACION_CTE").empty();
+                $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
+                
+                
                 $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#CANAL2").val(datos_cuenta.CANAL);
                 $("#TIPO_CTE").val(datos_cuenta.CANAL);
@@ -752,19 +760,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
                 $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
-                $("#datos_marcacion_directa").empty();
-                $("#datos_marcacion_directa").append(`
-                    <label>Referencia 1</label>
-                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL1}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO1_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO1}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO1}</a></li>
-                    <label>Referencia 2</label>
-                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL2}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO2_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO2}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO2}</a></li>
-                    <label>Referencia 3</label>
-                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL3}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO3_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO3}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO3}</a></li>
-                    <label>Referencia 4</label>
-                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL4}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO4_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO4}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO4}</a></li>
-                    <label>Referencia 5</label>
-                    <li class="collection-item black-text">${datos_cuenta.NOM_TEL5}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5_2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELEFONO5_2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELEFONO5}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELEFONO5}</a></li>
-                `);
+
                 $("#datos_marcacion_aval").empty();
                 $("#datos_marcacion_aval").append(`<label>Aval Direcion: ${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                     <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
@@ -879,11 +875,26 @@ $("#guardar_gestion").click(function () {
                 '- Disposicion <br>- Codigo de llamada <br>- Numero marcado');
     }
 });
-$("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
+//$("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
+//    $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+//    $(".num_phone").removeClass("numero_marcado");
+//    $(this).addClass("numero_marcado");
+//    let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
+//    if (num.length >= 8) {
+//        $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+//        $("#gestion").removeAttr("readonly");
+//    } else {
+//        alert("El dato selecionado no es numero");
+//    }
+//
+//});
+$("#datos_marcacion_directa").on("click", ".number_call", function () {
+
     $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
-    $(".num_phone").removeClass("numero_marcado");
+    $(".number_call").removeClass("numero_marcado");
     $(this).addClass("numero_marcado");
     let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
+
     if (num.length >= 8) {
         $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
         $("#gestion").removeAttr("readonly");

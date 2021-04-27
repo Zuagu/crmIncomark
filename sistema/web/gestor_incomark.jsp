@@ -41,10 +41,13 @@
                     <input id="ID_CLIENTE" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
-                    <div class=" col s7 m7 l7">
+                    <div class=" col s12 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
-                            <div class="col s12 m12 l12">
+                            <div class="col s12 m7 l7">
                                 <h6><b>INFORMACION PERSONAL</b></h6>
+                            </div>
+                            <div class="col s12 m5 l5">
+                                <span id="CLASIFICACION_CTE" class="truncate"></span>
                             </div>
                             <div class="input-field col s11 m11 l11">
                                 <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
@@ -84,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col s5 m5 l5">
+                    <div class=" col s12 m5 l5">
                         <div id="info_gestor_secundario" class="col s12 m12 l12 z-depth-1 div_input_gestor_info white">
                             <div class="col s12 m12 l12">
                                 <h6><b>INFORMACION ECONOMICA</b></h6>
@@ -134,7 +137,7 @@
                     </div>
 
 
-                    <div class="col s7 m7 l7">
+                    <div class="col s12 m7 l7">
                         <!--componente de datos aval -->
                         <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
                             <h6><b>Informacion Aval</b></h6>
@@ -211,7 +214,7 @@
 
                     </div>
 
-                    <div class="col s5 m5 l5">
+                    <div class="col s12 m5 l5">
 
                         <!--componente de datos de contactacion directa -->
 
@@ -231,6 +234,72 @@
 
                                     </tbody>
                                 </table>
+
+                                <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
+                                    <div class="col s12 m12 l12">
+                                        <h6>Referencias</h6>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL1">Contacto 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO1">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO1_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL2">Contacto 2</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO2">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO2_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL3">Contacto 3</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO3">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO3_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL4">Contacto 4</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO4">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO4_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL5">Contacto 5</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO5">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO5_2">Tel. 2</label>
+                                    </div>
+                                </div>
                             </div>     
                             <!--                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa hide">
                                                             <label>Referencia 1</label>
@@ -246,71 +315,7 @@
                                                         </ul>-->
 
                             <!--componente de editar_marcacion_directa-->
-                            <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
-                                <div class="col s12 m12 l12">
-                                    <h6>Referencias</h6>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL1">Contacto 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO1">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO1_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL2">Contacto 2</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL3">Contacto 3</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL4">Contacto 4</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO4">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO4_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL5">Contacto 5</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO5">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO5_2">Tel. 2</label>
-                                </div>
-                            </div>
+
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
                                 <a id="edit_num" class="btn-small blue btn_secundario">editar</a>
                                 <a id="save_num" class="btn-small blue hide">actualizar</a>
@@ -413,7 +418,7 @@
                         </div>
                     </div>
 
-                    <div class="col s2 m2 l2 margin_top_7px">
+                    <div class="col s12 m2 l2 margin_top_7px">
                         <!--componente de tiempos -->
                         <div id="div_input_gestor_tiempos" class="col s12 m12 l12 white z-depth-1 div_input_gestor_tiempos">
                             <div class="col s12 m12 l12">
@@ -471,7 +476,7 @@
                             <option value="4">PLAN PAGO RECURENTE</option>
                         </select>
                     </div>
-                    <div id="CAJA_SEMANAS_PAGO" class="input-field col s12 m4 l4 hide">
+                    <div id="CAJA_SEMANAS_PAGO" class="input-field col s12 m4 l4 offset-m2 offset-l2 hide">
                         <select id="SEMANAS_PAGO">
                             <option value="0" disabled selected>SELECIONA LAS SEMANAS</option>
                             <option value="1">1 SEMANA</option>

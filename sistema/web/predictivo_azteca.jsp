@@ -10,12 +10,12 @@
         <link rel="shortcut icon" href="image/logoInco.fw.png">
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
+        <link rel="stylesheet" type="text/css" href="css/css/style_multi.css">
         <style>
         </style>
     </head>
 
-    <body class="grey lighten-3" style="font-size: 12px">
+    <body>
         <jsp:include page="header.jsp"/>
         <div class="row gestor_font" id="contenido">
             <div class="container-fluid">
@@ -25,85 +25,97 @@
                     <input id="ID_SUCURSAL" type="hidden">
                     <input id="ID_CLIENTE" type="hidden">
                     <input id="ID_CLIENTE_CLIENTE_UNICO" type="hidden"  value="${cuenta}">
-                    <input id="TERRITORIO" type="hidden">
                     <input id="CANAL" type="hidden">
                     <input id="ID_EQUIPO" type="hidden">
                     <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
-
                             <div class="col s12 m12 l12">
-                                <h6>Informacion del cliente</h6>
+                                <h6><b>INFORMACION PERSONAL</b></h6>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s11 m11 l11">
                                 <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="NOMBRE_CTE">Titular</label>
+                                <label for="NOMBRE_CTE"><b>TITULAR</b></label>
+                            </div>
+                            <div class="input-field col s1 m1 l1">
+                                <input id="EDAD" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="EDAD"><b>EDAD</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="CLIENTE_UNICO" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CLIENTE_UNICO">Cuenta</label>
+                                <label for="CLIENTE_UNICO"><b>CUENTA</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CAMPANIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="CAMPANIA">Producto</label>
+                                <input id="PRODUCTO" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="PRODUCTO"><b>PRODUCTO</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENCIA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="GERENCIA">Gerencia</label>
+                                <label for="GERENCIA"><b>GERENCIA</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="ETAPA" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="ETAPA">Subproducto</label>
+                                <label for="ETAPA"><b>TIPO</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="GERENTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="GERENTE">Gerente</label>
+                                <label for="GERENTE"><b>GERENTE</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="TIPO_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
-                                <label for="TIPO_CTE">Tipo</label>
+                                <input id="TERRITORIO" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="TERRITORIO"><b>ZONA</b></label>
                             </div>
-                            <div class=" col s12 m12 l12">
-                                <textarea id="Direccion" readonly="" class="materialize-textarea limpiar_texto" data-length="500" placeholder="Dirección"></textarea>
+                            <div class="input-field col s12 m12 l12">
+                                <input id="Direccion" type="text" class="validate" placeholder="" readonly="readonly" value="">
+                                <label for="Direccion"><b>DIRECCION</b></label>
                             </div>
-
                         </div>
                     </div>
+
                     <div class=" col s5 m5 l5">
-                        <div id="info_gestor_secundario" class="col s12 m12 l12 z-depth-1 div_info_secundaria white">
+                        <div id="info_gestor_secundario" class="col s12 m12 l12 z-depth-1 div_input_gestor_info white">
                             <div class="col s12 m12 l12">
-                                <h6>Informacion Economica</h6>
+                                <h6><b>INFORMACION ECONOMICA</b></h6>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="SALDO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="SALDO">Capital</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="MORATORIOS">Moratorios</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="ATRASO_MAXIMO">Semanas</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="DIA_DE_PAGO">Día de Pago</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="IMP_ULTIMO_PAGO">Ultimo Pago</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="FECHA_ULTIMO_PAGO">Fecha Ultimo Pago</label>
+                                <label for="SALDO"><b>CAPITAL</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="CRM">estatus</label>
+                                <label for="CRM"><b>ESTATUS</b></label>
                             </div>
-                            <div class="input-field col s12 m12 l12">
+                            <div class="input-field col s6 m6 l6">
+                                <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="MORATORIOS"><b>MORATORIOS</b></label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="PLAN" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="PLAN"><b>PLAN</b></label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="IMP_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="IMP_ULTIMO_PAGO"><b>ULTIMO PAGO</b></label>
+                            </div>
+                            <div class="input-field col S6 m6 l6">
+                                <input id="ATRASO_MAXIMO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="ATRASO_MAXIMO"><b>SEMANAS</b></label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="DIA_DE_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="DIA_DE_PAGO"><b>DIA DE PAGO</b></label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="FECHA_ULTIMO_PAGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_ULTIMO_PAGO"><b>FECHA ULTIMO PAGO</b></label>
+                            </div>
+
+                            <div class="input-field col s6 m6 l6">
                                 <input id="SALDO_TOTAL" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="SALDO_TOTAL">Saldo Total</label>
+                                <label for="SALDO_TOTAL"><b>SALDO TOTAL</b></label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="FECHA_INSERT" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="FECHA_INSERT"><b>F. ASIGNACION</b></label>
                             </div>
                         </div>
                     </div>
@@ -112,6 +124,7 @@
                     <div class="col s7 m7 l7">
                         <!--componente de datos aval -->
                         <div class="col s12 m12 l12 white div_data_aval marcacion_directa z-depth-1">
+                            <h6><b>Informacion Aval</b></h6>
                             <ul id="datos_marcacion_aval" class="collection coll_1 datos_marcacion_directa">
                                 <label>Aval Calle: Num: Colonia: Municipio: Estado: </label>
                                 <li class="collection-item black-text">Nombre del Aval <a class="right" href="zoiper://">Telefono 2</a><a class="right" href="zoiper://">Telefono 1</a></li>
@@ -163,7 +176,7 @@
                                     <select id="codigo_llamada"></select>
                                 </div>
                                 <div class=" input-field  col s12 m12 l12 right-align">
-                                    <a id="guardar_gestion" class="waves-effect waves-light btn green btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
+                                    <a id="guardar_gestion" class="waves-effect waves-light col s12 btn green btn_guardar_gestiones"><i class="material-icons right">save</i>Guardar</a>
                                 </div>
                             </div>
                         </div>
@@ -187,103 +200,104 @@
                         <!--componente de datos de contactacion directa -->
 
                         <div class="col s12 l12 m12 marcacion_directa white z-depth-1">
-                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa">
-                                <label>Referencia 1</label>
-                                <li class="collection-item black-text">Nombre 1<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 2</label>
-                                <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 3</label>
-                                <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 4</label>
-                                <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                                <label>Referencia 5</label>
-                                <li class="collection-item black-text">Nombre 5<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
-                            </ul>
+                            <h6><b>Referencias Telefonicas</b></h6>
+                            <div id="div_ref_tel">
+                                <table id="datos_marcacion_directa" class="highlight ">
+
+                                    <thead class="grey darken-3">
+                                        <tr class="white-text">
+                                            <th>NOMBRE</th>
+                                            <th>TIPO</th>
+                                            <th>TELEFONO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_telefonos">
+
+                                    </tbody>
+                                </table>
+
+                                <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
+                                    <div class="col s12 m12 l12">
+                                        <h6>Referencias</h6>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL1">Contacto 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO1">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO1_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL2">Contacto 2</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO2">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO2_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL3">Contacto 3</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO3">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO3_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL4">Contacto 4</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO4">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO4_2">Tel. 2</label>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
+                                        <label for="NOM_TEL5">Contacto 5</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO5">Tel. 1</label>
+                                    </div>
+                                    <div class="input-field col s3 m3 l3">
+                                        <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
+                                        <label for="TELEFONO5_2">Tel. 2</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--                            <ul id="datos_marcacion_directa" class="collection datos_marcacion_directa">
+                                                            <label>Referencia 1</label>
+                                                            <li class="collection-item black-text">Nombre 1<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 2</label>
+                                                            <li class="collection-item black-text">Nombre 2<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 3</label>
+                                                            <li class="collection-item black-text">Nombre 3<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 4</label>
+                                                            <li class="collection-item black-text">Nombre 4<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                            <label>Referencia 5</label>
+                                                            <li class="collection-item black-text">Nombre 5<a class="right" href="zoiper://"></a> <a class="right" href="zoiper://"></a></li>
+                                                        </ul>-->
 
                             <!--componente de editar_marcacion_directa-->
-                            <div id="editar_marcacion_directa" class="col s12 m12 l12 hide">
-                                <div class="col s12 m12 l12">
-                                    <h6>Referencias</h6>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL1">Contacto 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO1" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO1">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO1_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO1_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL2">Contacto 2</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO2_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO2_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL3" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL3">Contacto 3</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO3" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO3_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO3_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL4" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL4">Contacto 4</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO4" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO4">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO4_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO4_2">Tel. 2</label>
-                                </div>
-                                <div class="input-field col s6 m6 l6">
-                                    <input id="NOM_TEL5" type="text" class="validate" placeholder=""  value="">
-                                    <label for="NOM_TEL5">Contacto 5</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO5" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO5">Tel. 1</label>
-                                </div>
-                                <div class="input-field col s3 m3 l3">
-                                    <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
-                                    <label for="TELEFONO5_2">Tel. 2</label>
-                                </div>
 
-                                <!--                                <div class="input-field col s6 m6 l6">
-                                                                    <input id="NOMBRE_AVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="NOMBRE_AVAL">Contacto Aval</label>
-                                                                </div>
-                                                                <div class="input-field col s3 m3 l3">
-                                                                    <input id="TELAVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="TELAVAL">Tel. 1</label>
-                                                                </div>
-                                                                <div class="input-field col s3 m3 l3">
-                                                                    <input id="TELAVAL2" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="TELAVAL2">Tel. 2</label>
-                                                                </div>
-                                                                <div class="input-field col s12 m12 l12">
-                                                                    <input id="CALLEAVAL" type="text" class="validate" placeholder=""  value="">
-                                                                    <label for="CALLEAVAL">Direccion Aval </label>
-                                                                </div>-->
-
-                            </div>
 
 
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
@@ -455,7 +469,7 @@
                             <option value="4">PLAN PAGO RECURENTE</option>
                         </select>
                     </div>
-                    <div id="CAJA_SEMANAS_PAGO" class="input-field col s12 m4 l4 hide">
+                    <div id="CAJA_SEMANAS_PAGO" class="input-field col s12 m4 l4 offset-m2 offset-l2 hide">
                         <select id="SEMANAS_PAGO">
                             <option value="0" disabled selected>SELECIONA LAS SEMANAS</option>
                             <option value="1">1 SEMANA</option>
