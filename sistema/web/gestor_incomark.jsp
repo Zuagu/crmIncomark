@@ -293,31 +293,19 @@
                                     <input id="TELEFONO5_2" type="text" class="validate" placeholder=""  value="">
                                     <label for="TELEFONO5_2">Tel. 2</label>
                                 </div>
-
                             </div>
-
-
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
                                 <a id="edit_num" class="btn-small blue btn_secundario">editar</a>
                                 <a id="save_num" class="btn-small blue hide">actualizar</a>
                             </div>
-
                         </div>
-
-                        <!--componente de editar_marcacion_directa-->
-
-
-
-
-
                     </div>
-
                     <div class="col s12 m10 l10 margin_top_7px">
                         <!--componente de secciones de las tabs de tabs-->
                         <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido white"> 
                             <table class="highlight" id="tabla_gestiones">
-                                <thead class="green">
-                                    <tr class="text-white">
+                                <thead class="teal">
+                                    <tr class="white-text">
                                         <td> <b>FECHA</b></td>
                                         <td> <b>HORA</b></td>
                                         <td> <b>NUMERO</b></td>
@@ -334,8 +322,8 @@
                         </div>
                         <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_pagos">
-                                <thead class="green">
-                                    <tr class="text-white">
+                                <thead class="teal">
+                                    <tr class="white-text">
                                         <td><b>FOLIO</b></td>
                                         <td><b>CLIENTE UNICO</b></td>
                                         <td><b>ZONA</b></td>
@@ -353,8 +341,8 @@
                             <input id="id_reg_agenda" type="hidden">
                             <div class="col s12 m9 l9">
                                 <table>
-                                    <thead>
-                                        <tr class="green">
+                                    <thead class="teal">
+                                        <tr class="white-text">
                                             <th>ID</th>
                                             <th>CLIENTE_UNICO</th>
                                             <th>DESCRIPCION</th>
@@ -385,8 +373,8 @@
                         </div>
                         <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_convenios">
-                                <thead class="green">
-                                    <tr class="text-white">
+                                <thead class="teal">
+                                    <tr class="white-text">
                                         <td><b>CUENTA</b></td>
                                         <td><b>GESTOR</b></td>
                                         <td><b>CONVENIO</b></td>
