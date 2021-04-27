@@ -9,6 +9,7 @@ $(document).ready(function () {
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
 
+    $('#modal_convenio').modal({dismissible: false});
 
     $(".sidenav").empty();
     $(".sidenav").append(`<li class="center"><img src="image/icon-user.png"><li>`);

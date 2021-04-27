@@ -6,6 +6,7 @@ $(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
     $('select').formSelect({container: 'body'});
     $('.modal').modal();
+    $('#modal_convenio').modal({dismissible: false});
     $(".dropdown-trigger").dropdown({constrainWidth: false});
     $('.sidenav').sidenav();
     $('.slider').slider();
@@ -172,6 +173,9 @@ $("#editar_info_aval").click(function () {
 
     $('#datos_marcacion_aval').addClass('hide');
     $('#edit_datos_marcacion_aval').removeClass('hide');
+    
+    $('#guardar_gestion').addClass('btn_secundario');
+    $('#cuenta_siguiente').addClass('btn_secundario');
 });
 
 $("#save_info_aval").click(function () {
@@ -187,6 +191,9 @@ $("#save_info_aval").click(function () {
 //        alert(cliente_unico);
         actualizar_informacion_aval();
     }
+    
+    $('#guardar_gestion').removeClass('btn_secundario');
+    $('#cuenta_siguiente').removeClass('btn_secundario');
 
 });
 
@@ -281,25 +288,18 @@ $("#edit_num").click(function () {
 
     $('#edit_num').addClass('hide');
     $('#save_num').removeClass('hide');
+    
+    
 
     $('#datos_marcacion_directa').addClass('hide');
     $('#editar_marcacion_directa').removeClass('hide');
+    
+    
+    $('#guardar_gestion').addClass('btn_secundario');
+    $('#cuenta_siguiente').addClass('btn_secundario');
 
 });
 
-$("#editar_marcacion_directa input").click( function () {
-    let atrib = $(this).attr("readonly");
-    let id = $(this).attr("id");
-    console.log(atrib);
-    if (atrib === "readonly") {
-        var person = prompt("Favor de ingresar el codigo de autorizacion", "");
-        if (person === "pjcruz20") {
-            $("#" + id).removeAttr("readonly");
-        }else {
-            alert("Clave de acceso no autorizado");
-        }
-    }
-}); 
 
 
 $("#save_num").click(function () {
@@ -313,6 +313,9 @@ $("#save_num").click(function () {
     if ($("#CLIENTE_UNICO").val().length > 5) {
         actualizar_informacion_contacto();
     }
+    
+    $('#guardar_gestion').removeClass('btn_secundario');
+    $('#cuenta_siguiente').removeClass('btn_secundario');
 });
 
 $("#buscar_cuentas").click(function () {
@@ -348,8 +351,6 @@ $('#tbody_tabla_gestiones').on('dblclick', '.tb_gestion_cuenta', function () {
     $('#mod_gestion').empty();
     $('#mod_gestion').append($('.g_gestion', this).text());
 });
-
-
 
 
 //funcion de buscador
