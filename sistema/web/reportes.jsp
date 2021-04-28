@@ -56,9 +56,13 @@
                     <div id="test-swipe-1" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s12 hide_print">
-                                <div class="input-field col s3 " >
+                                <div class="input-field col s2 " >
                                     <select id="id_ter_gestion" name="id_region"></select>
                                     <label>Territorio</label>
+                                </div>
+                                <div class="input-field col s2 " >
+                                    <select id="id_etapa_gestion" name="id_etapa"></select>
+                                    <label>Etapa</label>
                                 </div>
                                 <div class="input-field col s6 m2 l2">
                                     <input id="desde_gestiones" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
@@ -70,7 +74,7 @@
                                     <label class="" for="hasta_gestiones">Hasta</label>
                                 </div>
 
-                                <div class="input-field col s5 m5 l5" >
+                                <div class="input-field col s4 m4 l4" >
 
                                     <a id="enviar_gestiones" class="waves-effect waves-light btn blue"><i class="material-icons">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_gestiones', 'GESTIONES')" class="waves-effect waves-light btn green"><i class="material-icons">explicit</i></a> 
@@ -189,9 +193,13 @@
                     <div id="test-swipe-2" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s12 hide_print">
-                                <div class="input-field col s3" >
+                                <div class="input-field col s2" >
                                     <select id="id_ter_convenio" name="id_region"></select>
                                     <label>Territorio</label>
+                                </div>
+                                <div class="input-field col s2" >
+                                    <select id="id_ter_etapa_2" name="id_ter_etapa_2"></select>
+                                    <label>Etapa</label>
                                 </div>
 
                                 <div class="input-field col s6 m2 l2">
@@ -204,7 +212,7 @@
                                 </div>
 
 
-                                <div class="input-field col s5" >
+                                <div class="input-field col s4" >
                                     <a id="enviar_convenios" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_convenios', 'CONVENIOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a>
                                     <a id="descarga_directa_convenios" class="waves-effect waves-light btn blue">Descarga Directa</a> 
@@ -242,9 +250,13 @@
                     <div id="test-swipe-3" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s12 hide_print">
-                                <div class="input-field col s3" >
+                                <div class="input-field col s2" >
                                     <select id="id_ter_pagos" name="id_region"></select>
                                     <label>ZONA</label>
+                                </div>
+                                <div class="input-field col s2" >
+                                    <select id="id_etapa_pagos" name="id_etapa_pagos"></select>
+                                    <label>Etapa</label>
                                 </div>
 
                                 <div class="input-field col s6 m2 l2">
@@ -259,7 +271,7 @@
 
                                 </div>
 
-                                <div class="input-field col s12 m5 l5" >
+                                <div class="input-field col s12 m4 l4" >
                                     <a id="enviar_pagos" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a> 
                                     <a id="ver_resumen_pagos" class="btn blue">ver resumen</a>
@@ -327,6 +339,10 @@
                             <div class="col s12 m12 l12">
                                 <h4 class="black-text">Reporte de horas gestor</h4>
                             </div>
+                            <div class="input-field col s6 m2 l2" >
+                                    <select id="id_etapa_tiempos" name="id_etapa_tiempos"></select>
+                                    <label>Etapa</label>
+                                </div>
                             <div class="input-field col s6 m2 l2">
                                 <input id="desde_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
                                 <label class="" for="desde_tiempos"></label>
@@ -335,7 +351,7 @@
                                 <input id="hasta_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Hasta" readonly="">
                                 <label class="" for="hasta_tiempos"></label>
                             </div>
-                            <div class="input-field col s12 m5 l5">
+                            <div class="input-field col s12 m4 l4">
                                 <a id="enviar_tiempos" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                 <a onclick="tableToExcel('datos_tabla_tiempos', 'PAGOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a>
                                 <a id="descarga_directa_tiempos" class="waves-effect waves-light btn blue">Descarga Directa</a>

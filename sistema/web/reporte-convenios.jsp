@@ -83,6 +83,8 @@
                 <select id="id_cliente"></select>
                 <b>REGION:</b>
                 <select id="id_region"></select>
+                <b>ETAPA:</b>
+                <select id="id_etapa"></select>
                 <b>DESDE:</b>
                 <input id="desde" type="text" class="datepicker" readonly>
                 <b>HASTA:</b>
