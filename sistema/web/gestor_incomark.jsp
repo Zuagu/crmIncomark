@@ -166,8 +166,8 @@
                             </div>
 
                             <ul class="collection coll_2 datos_marcacion_directa center">
-                                <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
-                                <a id="editar_info_aval" class="btn-small blue btn_secundario">editar</a>
+                                <a id="save_info_aval" class="btn-small hide blue btn_secundario">actualizar</a>
+                                <a id="editar_info_aval" class="btn-small blue ">editar</a>
                             </ul>
                         </div>
 

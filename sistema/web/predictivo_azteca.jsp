@@ -153,8 +153,8 @@
                             </div>
 
                             <ul class="collection coll_2 datos_marcacion_directa center">
-                                <a id="save_info_aval" class="btn-small hide blue btn_secundario">actualizar</a>
-                                <a id="editar_info_aval" class="btn-small blue">editar</a>
+                                <a id="save_info_aval" class="btn-small hide blue ">actualizar</a>
+                                <a id="editar_info_aval" class="btn-small blue btn_secundario">editar</a>
                             </ul>
                         </div>
 
@@ -304,8 +304,8 @@
 
 
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
-                                <a id="edit_num" class="btn-small blue">editar</a>
-                                <a id="save_num" class="btn-small blue hide btn_secundario">actualizar</a>
+                                <a id="edit_num" class="btn-small blue btn_secundario">editar</a>
+                                <a id="save_num" class="btn-small blue hide ">actualizar</a>
                             </div>
 
                         </div>
@@ -322,7 +322,7 @@
                         <!--componente de secciones de las tabs de tabs-->
                         <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido white"> 
                             <table class="highlight" id="tabla_gestiones">
-                                <thead class="blue">
+                                <thead class="teal">
                                     <tr class="text-white">
                                         <td> <b>FECHA</b></td>
                                         <td> <b>HORA</b></td>
@@ -340,7 +340,7 @@
                         </div>
                         <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_pagos">
-                                <thead class="blue">
+                                <thead class="teal">
                                     <tr class="text-white">
                                         <td><b>FOLIO</b></td>
                                         <td><b>CLIENTE UNICO</b></td>
@@ -360,7 +360,7 @@
                             <div class="col s12 m9 l9">
                                 <table>
                                     <thead>
-                                        <tr class="blue">
+                                        <tr class="teal">
                                             <th>ID</th>
                                             <th>CLIENTE_UNICO</th>
                                             <th>DESCRIPCION</th>
@@ -391,7 +391,7 @@
                         </div>
                         <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_convenios">
-                                <thead class="blue">
+                                <thead class="teal">
                                     <tr class="text-white">
                                         <td><b>CUENTA</b></td>
                                         <td><b>GESTOR</b></td>
