@@ -625,6 +625,8 @@
                     <li><a id="m_tercero" class="btn-floating yellow darken-1 tooltipped" data-position="left" data-tooltip="Mensaje a Tercero"><i class="material-icons">format_quote</i></a></li>
                     <li><a id="m_aval" class="btn-floating green tooltipped" data-position="left" data-tooltip="Mensaje a Aval"><i class="material-icons">publish</i></a></li>
                     <li><a id="m_tt"class="btn-floating blue tooltipped" data-position="left" data-tooltip="Mensaje a Cliente"><i class="material-icons">attach_file</i></a></li>
+                    <li><a id="m_speach"class="btn-floating orange tooltipped" data-position="left" data-tooltip="Speach"><i class="material-icons">announcement</i></a></li>
+                    <li><a id="m_capacitacion"class="btn-floating purple tooltipped" data-position="left" data-tooltip="Capacitacion"><i class="material-icons">book</i></a></li>
                 </ul>
             </div>
             <div id="modal_mensaje_familiar" class="modal">
@@ -676,6 +678,65 @@
                         <h6>•	¿Algún teléfono adicional donde me pueda comunicar con usted?</h6>
                         <h6>•	¿Maneja alguna tarjeta de debito o cuenta de guardadito?</h6>
                         <h6>•	Sabe que tiene la posibilidad de aperturar un plan de pagos para liquidación ?</h6>
+                    </div>
+                </div>
+            </div>
+            <div id="modal_speach" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">SPEECH MAZ Y ARGUMENTO-OBJECIONES LEGALES</h3>
+                    <div class="col s12 m12 l12">
+                        <h6>Buenas tardes ¡</h6>
+                        <h6>Me puede comunicar con __________________, </h6>
+                        <h6>me presento soy el abogado _______________ </h6>
+                        <h6>del Despacho Legal _________ en representación de Micronegocio Azteca,</h6>
+                        <h6>el motivo de la llamada es por la deuda que tiene como DEUDOR Y AVAL DE LOS INTEGRANTES del grupo de Micronegocio Azteca denominado________</h6>
+                        <h6>que solicito con las siguientes personas de nombre____________________,</h6>
+                        <h6>por un saldo total  grupal de $_____________</h6>
+                        <h6>con un periodo de atraso de _____ semanas.</h6>
+                        <h6>En este momento nos ponemos en contacto para demandarle el pago del adeudo total grupal,</h6>
+                        <h6>¿Esta consiente del adeudo y la responsabilidad legal?..................................................(SI O NO)</h6>
+                        </h6>
+                        <h6>•   Recuerde que usted también firmo como AVAL de todos los integrantes (PAGARE y CONTRATO), QUE, A FALTA DEL PAGO DE LOS INTEGRANTES DEL GRUPO, USTED TIENE LA RESPONSABILIDAD DE PAGAR LA DEUDA TOTAL DEL GRUPO, YA QUE FIRMO VARIOS CONTRATOS Y PAGARES, lo cual tiene una responsabilidad legal ante sus firmas.</h6>
+                        <h6>•	Por tal motivo le ofrezco las siguientes alternativas de pago:</h6>
+                        <h6>•	1.- Liquidar la deuda en una sola exhibición CONDICIONANDO A LA REUNION DE TODOS LOS INTEGRANTES PARA TENER BENEFICIO DE COBRO INDIVIDUAL “Puedes utilizar para obtener datos y te junte a todos los integrantes” (Tienes margen para bonificar del 1% al 100% de moratorios) “Cobra más-bonificando menos”</h6>
+                        <h6>•   2.- Liquidación de dos a tres pagos semanales CONDICIONANDO ALA REUNION DE TODOS LOS INTEGRANTES PARA TENER BENEFICIO DE COBRO INDIVIDUAL (Tienes margen para bonificar del 1% al 85% de moratorios) “Cobra más-bonificando menos”</h6>
+                        <h6>•   3.- Plan a Plazos CONDICIONANDO A LA REUNION DE TODOS LOS INTEGRANTES PARA TENER BENEFICIO DE COBRO INDIVIDUAL (Trata de solicitar el 50% de enganche, y plazos hasta 24 semanas) Menor plazo aumenta probabilidad de cumplimiento”</h6>
+                        <h6>•   4.- ………………………………………………….. Escucha al cliente y objeta en bases sustentables y legales sus argumentos o pretextos para no pagar ………………………………………………….</h6>
+                        <h6>•   5.- Menciona beneficios si paga (Buró de crédito, calificación, evita más gastos, abre puertas para adquirir otros crédito en otras instituciones, oportunidades laborables, hay empresas que revisan el historial crediticio, entre otras.)</h6>
+                        </h6>
+                        <h6><b> Recomendaciones:</b></h6>
+                        <h6>• Nunca empezar con el descuento: se inicia solicitando el saldo total del grupo y así mismo la reunión de todos para el cobro GRUPAL.</h6>
+                        <h6 style="background:yellow;">• Si se requiere se ofrece un DESCUENTO PARCIAL sobre intereses moratorios para liquidar TOTALIDAD (20, 30, 40, 50% (Tienes un margen muy amplio para negociar y cobrar mucho dinero)</h6>
+                        <h6>• ¡El plan a plazos NO se debe ofrecer al inicio! )</h6>
+                        <h6>• Inicia con liquidación, o tal vez liquidación en dos partes, pero procura NO usar el plazo de las 40 semanas jamás al inicio o si es el caso pide un pago inicial alto y el menor plazo posible <p style="background:yellow;">MÁXIMO 20 SEMANAS)</p></h6>
+                        <h6 style="background:yellow;">• Mencionar documentos proporcionados (Pagaré Contrato) de cada uno de los integrantes como clientes y avales unos de otros)</h6>
+                        <h6><p style="background:yellow;">• No dar tiempo, hoy mismo o en su caso 24 horas como máximo, </p>para que no ponga en riesgo su patrimonio familiar por la falta de pago de todo el grupo. )</h6>
+                        <h6>• Hacerle mención que defina, programa y formaliza fecha de pago. )</h6>
+                        <h6>• Tener confianza en decirle que solo nosotros podemos darle una opción accesible para resolver la situación legal, y los pagos son directamente en ventanillas de sucursales Banco Azteca. )</h6>
+                        <h6>• Menciona las consecuencias legales en caso de no llegar a un acuerdo sobre el adeudo y se cumpla. )</h6>
+                        <h6>Ten presente el siguiente articulo</h6>
+                        <h6 style="background:red;">Artículo 284 Bis. En su último párrafo menciona No se considerará como intimidación ilícita informar aquellas consecuencias posibles y jurídicamente válidas del impago o la capacidad de iniciar acciones legales en contra del deudor, aval, obligado solidario o cualquier tercero relacionado a éstos cuando éstas sean jurídicamente posibles. </h6>
+                        <h6 style="background:yellow;">ES DECIR, NO ESTAMOS AMENAZANDO, SINO INFORMANDO.</h6>
+                    </div>
+                </div> 
+            </div>
+            <div id="modal_capacitacion" class="modal">
+                <div class="modal-content">
+                    <h3 class="center">GUIA CAPACITACIÓN  A AGENCIAS Y/O DESPACHOS EXTERNOS</h3>
+                    <div class="col s12 m12 l12">
+                        <div class="slider">
+                            <ul id="cont_de_imagenes" class="slides">
+
+                                <div class="caption center-align">
+                                    <h3>This is our big Tagline!</h3>
+                                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                </div>
+                                </li>
+                                <li>
+
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
