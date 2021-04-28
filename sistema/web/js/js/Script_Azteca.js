@@ -429,6 +429,9 @@ function select_datos_cuenta(_cuenta) {
                         <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
                 }
             }
+            $("#CLASIFICACION_CTE").empty();
+            $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
+
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#CANAL2").val(datos_cuenta.CANAL);
             $("#TIPO_CTE").val(datos_cuenta.CANAL);
@@ -728,7 +731,7 @@ function select_cuenta_siguiente(_id_usuario) {
                     $("#" + dato).val(datos_cuenta[dato]);
                 }
                 $("#tbody_telefonos").empty();
-                
+
                 for (var dato in datos_cuenta) {
                     $("#" + dato).empty();
                     $("#" + dato).val(datos_cuenta[dato]);
@@ -737,11 +740,11 @@ function select_cuenta_siguiente(_id_usuario) {
                         <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
                     }
                 }
-                
+
                 $("#CLASIFICACION_CTE").empty();
                 $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
-                
-                
+
+
                 $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#CANAL2").val(datos_cuenta.CANAL);
                 $("#TIPO_CTE").val(datos_cuenta.CANAL);

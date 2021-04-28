@@ -32,6 +32,9 @@
                             <div class="col s12 m12 l12">
                                 <h6><b>INFORMACION PERSONAL</b></h6>
                             </div>
+                            <div class="col s12 m5 l5">
+                                <span id="CLASIFICACION_CTE" class="truncate"></span>
+                            </div>
                             <div class="input-field col s11 m11 l11">
                                 <input id="NOMBRE_CTE" type="text" class="validate" placeholder="" readonly="readonly" value="">
                                 <label for="NOMBRE_CTE"><b>TITULAR</b></label>
@@ -150,7 +153,7 @@
                             </div>
 
                             <ul class="collection coll_2 datos_marcacion_directa center">
-                                <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
+                                <a id="save_info_aval" class="btn-small hide blue btn_secundario">actualizar</a>
                                 <a id="editar_info_aval" class="btn-small blue">editar</a>
                             </ul>
                         </div>
@@ -302,7 +305,7 @@
 
                             <div class="col s12 m12 l12 div_btn_act_datos right-align">
                                 <a id="edit_num" class="btn-small blue">editar</a>
-                                <a id="save_num" class="btn-small blue hide">actualizar</a>
+                                <a id="save_num" class="btn-small blue hide btn_secundario">actualizar</a>
                             </div>
 
                         </div>

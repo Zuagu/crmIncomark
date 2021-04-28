@@ -205,15 +205,15 @@ $("#edit_num").click(function () {
         TELEFONO5: $("#TELEFONO5").val(),
         TELEFONO5_2: $("#TELEFONO5_2").val()
     };
-    
+
     for (let tel in data_tel) {
-        if ( data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
+        if (data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
         } else {
-            $("#" + tel).attr("readonly","readonly");
+            $("#" + tel).attr("readonly", "readonly");
         }
     }
-    
-    
+
+
 //    console.log(data_tel);
 
     $('#edit_num').addClass('hide');
@@ -224,7 +224,7 @@ $("#edit_num").click(function () {
 
 });
 
-$("#editar_marcacion_directa input").click( function () {
+$("#editar_marcacion_directa input").click(function () {
     let atrib = $(this).attr("readonly");
     let id = $(this).attr("id");
     console.log(atrib);
@@ -232,11 +232,11 @@ $("#editar_marcacion_directa input").click( function () {
         var person = prompt("Favor de ingresar el codigo de autorizacion", "");
         if (person === "1234") {
             $("#" + id).removeAttr("readonly");
-        }else {
+        } else {
             alert("Clave de acceso no autorizado");
         }
     }
-}); 
+});
 
 
 
@@ -355,7 +355,7 @@ function select_datos_cuenta(_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
             }
-            
+
             $("#tbody_telefonos").empty();
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
@@ -365,7 +365,9 @@ function select_datos_cuenta(_cuenta) {
                         <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
                 }
             }
-            
+            $("#CLASIFICACION_CTE").empty();
+            $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
+
             $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
             $("#CANAL2").val(datos_cuenta.CANAL);
             $("#TIPO_CTE").val(datos_cuenta.CANAL);
@@ -603,9 +605,9 @@ function select_cuenta_siguiente(_id_usuario) {
                     $("#" + dato).empty();
                     $("#" + dato).val(datos_cuenta[dato]);
                 }
-                
+
                 $("#tbody_telefonos").empty();
-                
+
                 for (var dato in datos_cuenta) {
                     $("#" + dato).empty();
                     $("#" + dato).val(datos_cuenta[dato]);
@@ -614,7 +616,9 @@ function select_cuenta_siguiente(_id_usuario) {
                         <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
                     }
                 }
-                
+                $("#CLASIFICACION_CTE").empty();
+                $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
+
                 $("#SALDO").val('$ ' + datos_cuenta.SALDO_TOTAL);
                 $("#CANAL2").val(datos_cuenta.CANAL);
                 $("#MORATORIOS").val('$ ' + datos_cuenta.MORATORIOS);
@@ -632,7 +636,7 @@ function select_cuenta_siguiente(_id_usuario) {
                 $("#tiempo_actual").val("00:00:00");
                 $("#retraso_actual").val("00:00:00");
                 $("#DIRECCION").val(`${datos_cuenta.DIRECCION_CTE}  #${datos_cuenta.NUM_EXT_CTE}`);
-                
+
                 $("#datos_marcacion_aval").empty();
                 $("#datos_marcacion_aval").append(`<label>Aval Direcion: ${datos_cuenta.COLONIAAVAL} ${datos_cuenta.CALLEAVAL} ${datos_cuenta.NUMEXTAVAL}</label>
                     <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
