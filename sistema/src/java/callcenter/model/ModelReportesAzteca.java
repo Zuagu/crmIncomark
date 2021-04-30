@@ -185,10 +185,11 @@ public class ModelReportesAzteca {
 
     public static String reporte_gestiones_tabla(String desde, String hasta, String territrio, String etapa) {
         try {
-
+// ID_GESTION, HORA, TERRITORIO, CANAL, FECHA_LARGA, ATRASO_MAXIMO, CUENTA, NUMERO_MARCADO, 
+// ID_ESTATUS_CUENTA, ID_ESTATUS_LLAMADA, USUARIO, GESTION, DURACION, RETASO, PROMESA, F_PREDICTIVO, ETAPA
             StartConexion ic = new StartConexion();
             String sql = "call azteca_reporte_gestiones('" + desde + "', '" + hasta + "', '" + territrio + "', '" + etapa + "');";
-//            System.out.println(sql);
+            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listGestiones = new JSONArray();
 
@@ -267,6 +268,8 @@ public class ModelReportesAzteca {
             fw.append("PROMESA");
             fw.append(',');
             fw.append("F_PREDICTIVO");
+            fw.append(',');
+            fw.append("ETAPA");
             fw.append('\n');
 
             while (ic.rs.next()) {
@@ -302,6 +305,8 @@ public class ModelReportesAzteca {
                 fw.append(ic.rs.getString("PROMESA").replace("\n", ""));
                 fw.append(',');
                 fw.append(ic.rs.getString("F_PREDICTIVO").replace("\n", ""));
+                fw.append(',');
+                fw.append(ic.rs.getString("ETAPA").replace("\n", ""));
                 fw.append('\n');
             }
 
@@ -320,8 +325,8 @@ public class ModelReportesAzteca {
 
     public static String reporte_convenios_descarga(String desde, String hasta, String territrio, String etapa) throws IOException {
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ConveniosBaseCrm.csv";
-        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
-//        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
+//        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
+        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
 
@@ -363,6 +368,8 @@ public class ModelReportesAzteca {
             fw.append("EFECTIVIDAD");
             fw.append(',');
             fw.append("ID_EQUIPO");
+            fw.append(',');
+            fw.append("ETAPA");
             fw.append('\n');
 
             while (ic.rs.next()) {
@@ -397,6 +404,8 @@ public class ModelReportesAzteca {
                 fw.append(ic.rs.getString("EFECTIVIDAD").replace("\n", ""));
                 fw.append(',');
                 fw.append(ic.rs.getString("ID_EQUIPO").replace("\n", ""));
+                fw.append(',');
+                fw.append(ic.rs.getString("ETAPA").replace("\n", ""));
                 fw.append('\n');
             }
 
@@ -765,7 +774,7 @@ public class ModelReportesAzteca {
     public static String select_options_territorios() {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "SELECT TERRITORIO FROM azteca_base_genenral_original GROUP BY TERRITORIO;";
+            String sql = "SELECT TERRITORIO FROM azteca_base_genenral_original where IDENTIFICADOR != '0' GROUP BY TERRITORIO;";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray territorios = new JSONArray();
@@ -884,8 +893,8 @@ public class ModelReportesAzteca {
     public static String descargar_base() throws IOException {
 
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/BaseAztecaCrm.csv";
-        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
-//        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
+//        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
+        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
         System.out.println("FILE NAME: " + filename);
 
         try {
@@ -893,7 +902,7 @@ public class ModelReportesAzteca {
             FileWriter fw = new FileWriter(filename);
             StartConexion s = new StartConexion();
             String sql = "SELECT CLIENTE_UNICO,PLAN, \n"
-                    + "    nombre_estatus_llamada_azteca(ID_ESTATUS_LLAMADA) as ESTATUS_LLAMADA, \n"
+                    + "    ifnull(nombre_estatus_llamada_azteca(ID_ESTATUS_LLAMADA),'NO MARCADO') as ESTATUS_LLAMADA, \n"
                     + "    GRUPO,NOMBRE_CTE,EDAD,RANGO_DE_EDAD,ATRASO_MAXIMO,\n"
                     + "    ETAPA,SCORE,SALDO,RANGO,MORATORIOS,\n"
                     + "    SALDO_TOTAL,GERENTE,TERRITORIO,GERENCIA,DIA_DE_PAGO,\n"
@@ -903,8 +912,9 @@ public class ModelReportesAzteca {
                     + "    TIPOTEL2,TELEFONO3,TIPOTEL3,TELEFONO4,TIPOTEL4,\n"
                     + "    IDENTIFICADOR2,"
                     + "    nombre_estatus_llamada_azteca(ID_MEJOR_ESTATUS) as MEJOR_ESTATUS,"
-                    + "    date_format(ULTIMA_GESTION,'%Y-%m-%d') as FECHA_ULTIMA_GESTION, time(ULTIMA_GESTION) as HORA_ULTIMA_GESTION,\n"
-                    + "    nombre_estatus_llamada_azteca(ID_ESTATUS_CUENTA) AS ESTATUS_CUENTA\n"
+                    + "    ifnull(date_format(ULTIMA_GESTION,'%Y-%m-%d'),'NO MARCADO') as FECHA_ULTIMA_GESTION, "
+                    + "    ifnull(time(ULTIMA_GESTION),'NO MARCADO') as HORA_ULTIMA_GESTION,\n"
+                    + "    ifnull(nombre_estatus_llamada_azteca(ID_ESTATUS_CUENTA),'NO MARCADO') AS ESTATUS_CUENTA \n"
                     + "FROM azteca_base_genenral_original where IDENTIFICADOR != '0' ORDER BY ULTIMA_GESTION DESC;";
             System.out.println(sql);
 

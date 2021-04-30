@@ -263,7 +263,7 @@ body {
 }
 
 .modal {
-    border: 2px solid #43A047;
+    border: 2px solid #90caf9;
     border-radius: 1rem;
     width:70%;
 }
@@ -288,21 +288,19 @@ body {
 #datos_marcacion_directa th, #datos_marcacion_directa td {
     padding: 5px 5px;
     font-size: 14px;
-    
+
 }
 #datos_marcacion_directa tr th{
     position: sticky;
     top: 0;
     z-index: 10;
     background-color: #424242;
-    
 }
 .tabla_resultado_busqueda tr th{
     position: sticky;
     top: 0;
     z-index: 10;
     background-color: white;
-    
 }
 
 .numero_marcado {
@@ -321,4 +319,18 @@ body {
 }
 .color_INCUMPLIDO {
     background-color: #ff9e80;
+}
+
+
+/*css para scrool nada mas funciona para google chrome*/
+.inner::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+    background-color: rgb(202 202 202 / 50%);
+}
+.inner::-webkit-scrollbar-thumb {
+    width: 5px;
+    height: 0px;
+    border-radius: 10px;
+    background: #0d47a1;
 }

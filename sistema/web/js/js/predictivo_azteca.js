@@ -338,6 +338,13 @@ $("#buscador_cuentas_gestor").keyup(function (e) {
 $("#buscador_cuentas_gestor").click(function () {
 //    $("#div_cuentas_encontradas").empty();
 });
+
+
+$("#tab_saldos").click( function (){
+    select_convenios_gestor(id_usuario);
+});
+
+
 // funciones de datos cuenta
 function select_datos_cuenta(_cuenta) {
     var params = {
@@ -1455,6 +1462,37 @@ function descartar_agenda_gestor(_id_registro) {
         dataType: "json",
         success: function (result) {
             console.log(result);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function select_convenios_gestor(_id_usuario) {
+    $.ajax({
+        type: "POST",
+        url: "ControllerGestor",
+        data: {action: 'select_convenios_gestor', id_usuario: _id_usuario},
+        dataType: "json",
+        success: function (result) {
+            $("#tbody_tabla_mis_convenios").empty();
+            for (let item of result) {
+//                console.log(item);
+                $("#tbody_tabla_mis_convenios").append(`<tr class="color_${item.ID_ESTATUS}">
+                    <td>${item.CUENTA}</td>
+                    <td>${item.ID_USUARIO}</td>
+                    <td>${item.CONVENIO}</td>
+                    <td>${item.FECHA_INSET}</td>
+                    <td>${item.FECHA}</td>
+                    <td>${item.PAGOS}</td>
+                    <td>${item.FECHA_PAGO}</td>
+                    <td>${item.EFECTIVIDAD}</td>
+                    <td>${item.ID_ESTATUS}</td>
+                </tr>`);
+            }
+            
+//            console.log(result);
         },
         error: function (error) {
             console.log(error);

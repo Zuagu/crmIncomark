@@ -21,7 +21,8 @@
             }
             .dt {
                 overflow: auto;
-                height: 75vh;
+                height: 65vh;
+                border-radius: 1rem;
             }
             .div_resumen {
                 overflow: auto;
@@ -32,11 +33,19 @@
             }
             td, th {
                 padding: 5px 5px !important;
-                
+
             }
             td {
                 font-size: 13px;
             }
+            #tabla_gestiones tr th{
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                color: black;
+                background-color: #2196F3;
+            }
+
         </style>
     </head>
     <body>
@@ -81,6 +90,8 @@
                                     <a id="ver_resumen_gestion" class="btn blue waves-effect">ver resumen</a>
                                     <a id="ver_lista_gestion" class="btn blue hide waves-effect">lista gestiones</a>
                                     <a id="descarga_directa_lista_gestion" class="btn blue waves-effect">Descarga Directa</a>
+
+
                                 </div>
                             </div>
                             <div id="resumen_gestiones" class="col s12 m12 l12 hide">
@@ -165,23 +176,23 @@
                                 </div>
                             </div>
 
-                            <div id="datos_tabla_gestiones" class="col s12 z-depth-2 dt">
-                                <table class="highlight" id="tabla_pagos">
+                            <div id="datos_tabla_gestiones" class="col s12 dt inner">
+                                <table class="highlight  z-depth-2" id="tabla_gestiones">
                                     <thead class="blue">
-                                        <tr class="text-white">
-                                            <td><b>HORA</b></td>
-                                            <td><b>TERRITORIO</b></td>
-                                            <td><b>FECHA_LARGA</b></td>
-                                            <td><b>CUENTA</b></td>
-                                            <td><b>NUMERO_MARCADO</b></td>
-                                            <td><b>ID_ESTATUS_LLAMADA</b></td>
-                                            <td><b>USUARIO</b></td>
-                                            <td><b>GESTION</b></td>
-                                            <td><b>DURACION</b></td>
-                                            <td><b>RETASO</b></td>
-                                            <td><b>PROMESA</b></td>
-                                            <td><b>PREDICTIVO</b></td>
-                                            <td><b>ETAPA</b></td>
+                                        <tr class="white-text">
+                                            <th>HORA</th>
+                                            <th>TERRITORIO</th>
+                                            <th>FECHA</th>
+                                            <th>CUENTA</th>
+                                            <th>NUMERO_MARCADO</th>
+                                            <th>ESTATUS_LLAMADA</th>
+                                            <th>USUARIO</th>
+                                            <th>GESTION</th>
+                                            <th>DURACION</th>
+                                            <th>RETASO</th>
+                                            <th>PROMESA</th>
+                                            <th>PREDICTIVO</th>
+                                            <th>ETAPA</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_gestiones">
@@ -220,7 +231,7 @@
                                 </div>
                             </div>
                             <div id="datos_tabla_convenios" class="col s12 z-depth-2 dt">
-                                <table class="highlight" id="tabla_pagos">
+                                <table class="highlight" id="tabla_convenios">
                                     <thead class="blue">
                                         <tr class="text-white">
                                             <td><b>CONVENIO</b></td>
@@ -337,7 +348,7 @@
                             <div class="col s12 m12 l12">
                                 <h4 class="black-text">Reporte de horas gestor</h4>
                             </div>
-                            
+
                             <div class="input-field col s6 m2 l2">
                                 <input id="desde_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
                                 <label class="" for="desde_tiempos"></label>
@@ -352,7 +363,7 @@
                                 <a id="descarga_directa_tiempos" class="waves-effect waves-light btn blue">Descarga Directa</a>
                             </div>
                             <div id="datos_tabla_tiempos" class="col s12 m12 l12">
-                                <table class="highlight" id="tabla_pagos">
+                                <table class="highlight" id="tabla_tiempos">
                                     <thead class="blue">
                                         <tr class="text-white">
                                             <td><b>ID USUARIO</b></td>

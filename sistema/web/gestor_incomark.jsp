@@ -220,7 +220,7 @@
 
                         <div class="col s12 l12 m12 marcacion_directa white z-depth-1">
                             <h6><b>Referencias Telefonicas</b></h6>
-                            <div id="div_ref_tel">
+                            <div id="div_ref_tel" class="inner">
                                 <table id="datos_marcacion_directa" class="highlight ">
 
                                     <thead class="grey darken-3">
@@ -413,7 +413,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
+                        <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align white inner">
                             <table class="highlight" id="tabla_mis_convenios">
                                 <thead class="grey lighten-1">
                                     <tr class="">

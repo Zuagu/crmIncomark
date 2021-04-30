@@ -192,7 +192,7 @@
                                 <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">stars</i></a></li>
                                 <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">insert_invitation</i></a></li>
                                 <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">location_on</i></a></li>
-                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
+                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Mis Convenios" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons">pie_chart</i></a></li>
                             </ul>
                         </div>
 
@@ -410,6 +410,23 @@
                             </table>
                         </div>
                         <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
+                            <table class="highlight" id="tabla_mis_convenios">
+                                <thead class="grey lighten-1">
+                                    <tr class="">
+                                        <td><b>CUENTA</b></td>
+                                        <td><b>GESTOR</b></td>
+                                        <td><b>CONVENIO</b></td>
+                                        <td><b>FECHA GESTION</b></td>
+                                        <td><b>FECHA</b></td>
+                                        <td><b>PAGOS</b></td>
+                                        <td><b>FECHA PAGO</b></td>
+                                        <td><b>EFECTIVIDAD</b></td>
+                                        <td><b>STATUS</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_tabla_mis_convenios">
+                                </tbody>
+                            </table>
 
                         </div>
                     </div>
