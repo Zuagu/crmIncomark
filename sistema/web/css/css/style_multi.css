@@ -312,3 +312,13 @@ body {
     padding: 0 8px;
     cursor: pointer;
 }
+
+.color_CUMPLIDO {
+    background-color: #69f0ae;
+}
+.color_VIGENTE {
+    background-color: #ffff8d;
+}
+.color_INCUMPLIDO {
+    background-color: #ff9e80;
+}

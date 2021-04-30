@@ -421,10 +421,9 @@
                                         <td><b>GESTOR</b></td>
                                         <td><b>CONVENIO</b></td>
                                         <td><b>FECHA GESTION</b></td>
-                                        <td><b>PLAZO</b></td>
                                         <td><b>FECHA</b></td>
                                         <td><b>PAGOS</b></td>
-                                        <td><b>FECHA PAGOS</b></td>
+                                        <td><b>FECHA PAGO</b></td>
                                         <td><b>EFECTIVIDAD</b></td>
                                         <td><b>STATUS</b></td>
                                     </tr>
