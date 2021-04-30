@@ -206,12 +206,12 @@ $("#edit_num").click(function () {
         TELEFONO5_2: $("#TELEFONO5_2").val()
     };
 
-    for (let tel in data_tel) {
-        if (data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
-        } else {
-            $("#" + tel).attr("readonly", "readonly");
-        }
-    }
+//    for (let tel in data_tel) {
+//        if (data_tel[tel] === "" || data_tel[tel] === "SIN INFORMACION") {
+//        } else {
+//            $("#" + tel).attr("readonly", "readonly");
+//        }
+//    }
 
 
 //    console.log(data_tel);
@@ -360,11 +360,24 @@ function select_datos_cuenta(_cuenta) {
             for (var dato in datos_cuenta) {
                 $("#" + dato).empty();
                 $("#" + dato).val(datos_cuenta[dato]);
-                if (dato.toLowerCase().indexOf('TELEFONO'.toLowerCase()) === 0) {
-                    $('#tbody_telefonos').append(`<tr><td>${dato}</td><td><i class="material-icons">phone_iphone</i></td>
-                        <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
-                }
+//                if (dato.toLowerCase().indexOf('TELEFONO'.toLowerCase()) === 0) {
+//                    $('#tbody_telefonos').append(`<tr><td>${dato}</td><td><i class="material-icons">phone_iphone</i></td>
+//                        <td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
+//                }
             }
+
+           $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2_2}">${datos_cuenta.TELEFONO2_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3}">${datos_cuenta.TELEFONO3}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3_2}">${datos_cuenta.TELEFONO3_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4}">${datos_cuenta.TELEFONO4}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4_2}">${datos_cuenta.TELEFONO4_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5}">${datos_cuenta.TELEFONO5}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5_2}">${datos_cuenta.TELEFONO5_2}</a></td></tr>
+                `);
+            
             $("#CLASIFICACION_CTE").empty();
             $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
 
@@ -611,11 +624,24 @@ function select_cuenta_siguiente(_id_usuario) {
                 for (var dato in datos_cuenta) {
                     $("#" + dato).empty();
                     $("#" + dato).val(datos_cuenta[dato]);
-                    if (dato.toLowerCase().indexOf('TELEFONO'.toLowerCase()) === 0) {
-                        $('#tbody_telefonos').append(`<tr><td>${dato}</td><td><i class="material-icons">phone_iphone</i></td>
-                        <td><a class="font_number_monospace number_call" ref="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
-                    }
+//                    if (dato.toLowerCase().indexOf('TELEFONO'.toLowerCase()) === 0) {
+//                        $('#tbody_telefonos').append(`<tr><td>${dato}</td><td><i class="material-icons">phone_iphone</i></td>
+//                        <td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
+//                    }
                 }
+                $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2_2}">${datos_cuenta.TELEFONO2_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3}">${datos_cuenta.TELEFONO3}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3_2}">${datos_cuenta.TELEFONO3_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4}">${datos_cuenta.TELEFONO4}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4_2}">${datos_cuenta.TELEFONO4_2}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5}">${datos_cuenta.TELEFONO5}</a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5_2}">${datos_cuenta.TELEFONO5_2}</a></td></tr>
+                `);
+                
+                
                 $("#CLASIFICACION_CTE").empty();
                 $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
 

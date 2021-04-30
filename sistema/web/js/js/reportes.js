@@ -5,6 +5,7 @@
  */
 
 window.onload = function () {
+    select_clientes_cartera();
     select_options_territorios_convenios();
     select_options_territorios();
     select_options_zona();
@@ -168,8 +169,10 @@ function reporte_gestiones_tabla() {
         action: 'reporte_gestiones_tabla',
         desde: $('#desde_gestiones').val(),
         hasta: $('#hasta_gestiones').val(),
-        territorio: $('#id_ter_gestion').val()
+        territorio: $('#id_ter_gestion').val(),
+        id_despacho: $('#id_etapa_gestion').val()
     };
+//    console.log('parametros de reporte_gestiones_tabla: ', params);
     $.ajax({
         type: "POST",
         url: "ControllerReportesAzteca",
@@ -223,7 +226,6 @@ function reporte_gestiones_tabla() {
                 }
 
                 $('#tbody_tabla_gestiones').append(`<tr>
-                    <td>${item.ID_GESTION}</td>
                     <td>${item.HORA}</td>
                     <td>${item.TERRITORIO}</td>
                     <td>${item.FECHA_LARGA}</td>
@@ -236,6 +238,7 @@ function reporte_gestiones_tabla() {
                     <td>${item.RETASO}</td>
                     <td>${item.PROMESA}</td>
                     <td>${item.F_PREDICTIVO}</td>
+                    <td>${item.ETAPA}</td>
                     </tr>`);
                 cantidad = cantidad + 1;
             }
@@ -291,7 +294,8 @@ function azteca_reporte_convenios() {
         action: 'azteca_reporte_convenios',
         desde: $('#desde_convenios').val(),
         hasta: $('#hasta_convenios').val(),
-        territorio: $('#id_ter_convenio').val()
+        territorio: $('#id_ter_convenio').val(),
+        id_despacho: $('#id_ter_etapa_2').val()
     };
     $.ajax({
         type: "POST",
@@ -304,10 +308,7 @@ function azteca_reporte_convenios() {
             let cantidad = 0;
             for (let item of response) {
                 $('#tbody_tabla_convenios').append(`<tr>
-                    <td>${item.ID_CONVENIO}</td>
                     <td>${item.CONVENIO}</td>
-                    <td>${item.RESTO}</td>
-                    <td>${item.APLICA}</td>
                     <td>${item.TERRITORIO}</td>
                     <td>${item.CANAL}</td>
                     <td>${item.ATRASO_MAXIMO}</td>
@@ -319,7 +320,7 @@ function azteca_reporte_convenios() {
                     <td>${item.PAGOS}</td>
                     <td>${item.FECHA_PAGO}</td>
                     <td>${item.EFECTIVIDAD}</td>
-                    <td>${item.ID_EQUIPO}</td>
+                    <td>${item.ETAPA}</td>
                     </tr>`);
                 cantidad = cantidad + 1;
             }
@@ -369,7 +370,8 @@ function azteca_reporte_pagos() {
         action: 'azteca_reporte_pagos',
         desde: $('#desde_pagos').val(),
         hasta: $('#hasta_pagos').val(),
-        zona: $('#id_ter_pagos').val()
+        zona: $('#id_ter_pagos').val(),
+        etapa: $('#id_etapa_pagos').val()
     };
     $.ajax({
         type: "POST",
@@ -415,8 +417,6 @@ function azteca_reporte_pagos() {
                 }
                 $('#tbody_tabla_pagos').append(`<tr>
                     <td>${item.CLIENTE_UNICO}</td>
-                    <td>${item.ANIO}</td>
-                    <td>${item.SEMANA}</td>
                     <td>${item.DIA}</td>
                     <td>${item.RECUPERACION_CAPITAL}</td>
                     <td>${item.RECUPERACION_MORATORIOS}</td>
@@ -424,8 +424,11 @@ function azteca_reporte_pagos() {
                     <td>${item.MORATORIO}</td>
                     <td>${item.FECHA_GESTION}</td>
                     <td>${item.CARGO_AUTOMATICO}</td>
-                    <td>${item.ZONA}</td>
+                    <td>${item.ETAPA}</td>
                     <td>${item.GERENTE}</td>
+                    <td>${item.GERENCIA}</td>
+                    <td>${item.TERRITORIO}</td>
+                    <td>${item.ID_GESTOR}</td>
                     </tr>`);
                 cantidad = cantidad + 1;
             }
@@ -465,7 +468,7 @@ function descargar_base() {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            let url_sever = document.URL.replace('reportes.jsp','excel/');
+            let url_sever = document.URL.replace('reportes.jsp', 'excel/');
 //            downloadDataUrlFromJavascript('BaseAztecaCrm.csv',url_sever);
 //            document.execCommand('SaveAs',true,url_sever + 'excel/BaseAztecaCrm.csv');
             window.open("excel/BaseAztecaCrm.csv");
@@ -479,19 +482,19 @@ function descargar_base() {
 
 function downloadDataUrlFromJavascript(filename, dataUrl) {
 
-       // Construct the a element
-       var link = document.createElement("a");
-       link.download = filename;
-       link.target = "_blank";
+    // Construct the a element
+    var link = document.createElement("a");
+    link.download = filename;
+    link.target = "_blank";
 
-       // Construct the uri
-       link.href = dataUrl;
-       document.body.appendChild(link);
-       link.click();
+    // Construct the uri
+    link.href = dataUrl;
+    document.body.appendChild(link);
+    link.click();
 
-       // Cleanup the DOM
-       document.body.removeChild(link);
-       delete link;
+    // Cleanup the DOM
+    document.body.removeChild(link);
+    delete link;
 }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $("#descarga_directa_lista_gestion").click(function () {
@@ -502,7 +505,8 @@ $("#descarga_directa_lista_gestion").click(function () {
             action: "reporte_gestiones_descarga",
             desde: $('#desde_gestiones').val(),
             hasta: $('#hasta_gestiones').val(),
-            territorio: $('#id_ter_gestion').val()
+            territorio: $('#id_ter_gestion').val(),
+            id_despacho: $('#id_ter_gestion').val()
         },
         dataType: "json",
         success: function (response) {
@@ -522,7 +526,8 @@ $("#descarga_directa_convenios").click(function () {
             action: "reporte_convenios_descarga",
             desde: $('#desde_convenios').val(),
             hasta: $('#hasta_convenios').val(),
-            territorio: $('#id_ter_convenio').val()
+            territorio: $('#id_ter_convenio').val(),
+            id_despacho: $('#id_ter_etapa_2').val()
         },
         dataType: "json",
         success: function (response) {
@@ -834,6 +839,35 @@ function reporte_promesas_por_gestor() {
 }
 
 
+
+function select_clientes_cartera() {
+    let params = {
+        action: 'select_clientes_cartera'
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerReportesAzteca",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log("Response de select_clientes_cartera: ", response);
+            $("#id_etapa_gestion").empty();
+            $("#id_etapa_gestion").append(`<option value="0">TODOS</option>`);
+            $("#id_ter_etapa_2").append(`<option value="0">TODOS</option>`);
+            $("#id_etapa_pagos").append(`<option value="0">TODOS</option>`);
+            for (let item of response) {
+                $("#id_etapa_gestion").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
+                $("#id_ter_etapa_2").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
+                $("#id_etapa_pagos").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
+//                console.log(item.CLASIFICACION_CTE);
+            }
+            $('select').formSelect();
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

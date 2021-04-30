@@ -97,8 +97,8 @@
                                 <label for="SALDO"><b>CAPITAL</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
-                                <input id="CRM" type="text" class="validate" placeholder="" readonly="readonly"  value="">
-                                <label for="CRM"><b>ESTATUS</b></label>
+                                <input id="TXT_CODIGO" type="text" class="validate" placeholder="" readonly="readonly"  value="">
+                                <label for="TXT_CODIGO"><b>ESTATUS</b></label>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 <input id="MORATORIOS" type="text" class="validate" placeholder="" readonly="readonly"  value="">
@@ -166,8 +166,8 @@
                             </div>
 
                             <ul class="collection coll_2 datos_marcacion_directa center">
-                                <a id="save_info_aval" class="btn-small hide blue btn_secundario">actualizar</a>
-                                <a id="editar_info_aval" class="btn-small blue ">editar</a>
+                                <a id="save_info_aval" class="btn-small hide blue">actualizar</a>
+                                <a id="editar_info_aval" class="btn-small blue btn_secundario">editar</a>
                             </ul>
                         </div>
 
@@ -208,7 +208,7 @@
                                 <li class="tab col s2"><a id="tab_convenios" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Convenios" href="#div_convenios" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">stars</i></a></li>
                                 <li class="tab col s2"><a id="tab_agendas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Agenda" href="#div_agendas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">insert_invitation</i></a></li>
                                 <li class="tab col s2"><a id="tab_visitas" class="gestor_tab tooltipped" data-position="bottom" data-tooltip="Visitas" href="#div_visitas" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">location_on</i></a></li>
-                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Saldos" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">pie_chart</i></a></li>
+                                <li class="tab col s2"><a id="tab_saldos" class="gestor_tab tooltipped"data-position="bottom" data-tooltip="Mis Convenios" href="#div_saldos" style="color:#db040e"><i class="icon_gestor_tab tiny material-icons black-text">pie_chart</i></a></li>
                             </ul>
                         </div>
 
@@ -414,6 +414,24 @@
                             </table>
                         </div>
                         <div id="div_saldos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
+                            <table class="highlight" id="tabla_mis_convenios">
+                                <thead class="teal">
+                                    <tr class="white-text">
+                                        <td><b>CUENTA</b></td>
+                                        <td><b>GESTOR</b></td>
+                                        <td><b>CONVENIO</b></td>
+                                        <td><b>FECHA GESTION</b></td>
+                                        <td><b>PLAZO</b></td>
+                                        <td><b>FECHA</b></td>
+                                        <td><b>PAGOS</b></td>
+                                        <td><b>FECHA PAGOS</b></td>
+                                        <td><b>EFECTIVIDAD</b></td>
+                                        <td><b>STATUS</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_tabla_mis_convenios">
+                                </tbody>
+                            </table>
 
                         </div>
                     </div>

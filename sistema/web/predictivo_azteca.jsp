@@ -29,7 +29,7 @@
                     <input id="ID_EQUIPO" type="hidden">
                     <div class=" col s7 m7 l7">
                         <div id="info_gestor" class=" col s12 m12 l12 div_input_gestor_info  z-depth-1 white">
-                            <div class="col s12 m12 l12">
+                            <div class="col s12 m7 l7">
                                 <h6><b>INFORMACION PERSONAL</b></h6>
                             </div>
                             <div class="col s12 m5 l5">

@@ -204,6 +204,15 @@ public class ControllerGestor extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        } else if (action.equals("select_convenios_gestor")) {
+            String Respuesta = ModelGestor.select_convenios_gestor(
+                    request.getParameter("id_usuario")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
 
     }

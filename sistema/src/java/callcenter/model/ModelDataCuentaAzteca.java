@@ -25,7 +25,7 @@ public class ModelDataCuentaAzteca {
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
-            String sql2 = "SELECT *, nombre_estatus_llamada_azteca(id_estatus_llamada) AS TXT_CODIGO ,DATE_FORMAT(FECHA_INSERT,'%Y-%m-%d') as _FECHA_INSERT "
+            String sql2 = "SELECT *, nombre_estatus_llamada_azteca(ID_MEJOR_ESTATUS) AS TXT_CODIGO ,DATE_FORMAT(FECHA_INSERT,'%Y-%m-%d') as _FECHA_INSERT "
                     + " FROM azteca_base_genenral_original AS bg LEFT JOIN azteca_estatus_cuenta as sc on bg.ID_ESTATUS_CUENTA = sc.id_estatus_cuenta where bg.CLIENTE_UNICO = '" + cuenta + "';";
 //            System.out.println(sql2);
             ic.rs = ic.st.executeQuery(sql2);
@@ -171,7 +171,7 @@ public class ModelDataCuentaAzteca {
 
             StartConexion ic = new StartConexion();
             String sql = "call azteca_insert_gestion(" + _ID_SUCURSAL + ", " + _ID_CLIENTE + ", '" + _TERRITORIO + "', '" + _CANAL + "', " + _ATRASO_MAXIMO + ", '" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ", " + _ID_EQUIPO + ");";
-//            System.out.println(sql);
+            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 
             JSONObject objRes = new JSONObject();

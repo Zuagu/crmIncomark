@@ -715,5 +715,41 @@ public class ModelGestor {
             return "sql code" + e;
         }
     }
+    
+    public static String select_convenios_gestor(String id_usuario) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "call azteca_convenios_gestor(" + id_usuario + ");";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            JSONArray convenios = new JSONArray();
+            // ID_CONVENIO, CONVENIO, TERRITORIO, ATRASO_MAXIMO, FECHA, ID_USUARIO, CUENTA, ID_ESTATUS, FECHA_INSET, PAGOS, FECHA_PAGO, EFECTIVIDAD, ID_EQUIPO
+            while (inicioConexion.rs.next()) {
+                JSONObject convenio = new JSONObject();
+                convenio.put("ID_CONVENIO", inicioConexion.rs.getString("ID_CONVENIO"));
+                convenio.put("CONVENIO", inicioConexion.rs.getString("CONVENIO"));
+                convenio.put("TERRITORIO", inicioConexion.rs.getString("TERRITORIO"));
+                convenio.put("ATRASO_MAXIMO", inicioConexion.rs.getString("ATRASO_MAXIMO"));
+                convenio.put("FECHA", inicioConexion.rs.getString("FECHA"));
+                convenio.put("ID_USUARIO", inicioConexion.rs.getString("ID_USUARIO"));
+                convenio.put("CUENTA", inicioConexion.rs.getString("CUENTA"));
+                convenio.put("FECHA_INSET", inicioConexion.rs.getString("FECHA_INSET"));
+                convenio.put("PAGOS", inicioConexion.rs.getString("PAGOS"));
+                convenio.put("FECHA_PAGO", inicioConexion.rs.getString("FECHA_PAGO"));
+                convenio.put("EFECTIVIDAD", inicioConexion.rs.getString("EFECTIVIDAD"));
+                convenio.put("ID_ESTATUS", inicioConexion.rs.getString("ID_ESTATUS"));
+                convenios.add(convenio);
 
+            }
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            inicioConexion.conn.close();
+
+            return convenios.toString();
+        } catch (Exception e) {
+            return "sql code" + e;
+        }
+    }
 }
+
+

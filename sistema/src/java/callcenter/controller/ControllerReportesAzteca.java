@@ -38,7 +38,8 @@ public class ControllerReportesAzteca extends HttpServlet {
             String Respuesta = ModelReportesAzteca.reporte_gestiones_tabla(
                     request.getParameter("desde"),
                     request.getParameter("hasta"),
-                    request.getParameter("territorio")
+                    request.getParameter("territorio"),
+                    request.getParameter("id_despacho")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -50,7 +51,8 @@ public class ControllerReportesAzteca extends HttpServlet {
             String Respuesta = ModelReportesAzteca.reporte_gestiones_descarga(
                     request.getParameter("desde"),
                     request.getParameter("hasta"),
-                    request.getParameter("territorio")
+                    request.getParameter("territorio"),
+                    request.getParameter("id_despacho")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -62,7 +64,8 @@ public class ControllerReportesAzteca extends HttpServlet {
             String Respuesta = ModelReportesAzteca.reporte_convenios_descarga(
                     request.getParameter("desde"),
                     request.getParameter("hasta"),
-                    request.getParameter("territorio")
+                    request.getParameter("territorio"),
+                    request.getParameter("id_despacho")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -85,7 +88,8 @@ public class ControllerReportesAzteca extends HttpServlet {
             String Respuesta = ModelReportesAzteca.reporte_convenios_tabla(
                     request.getParameter("desde"),
                     request.getParameter("hasta"),
-                    request.getParameter("territorio")
+                    request.getParameter("territorio"),
+                    request.getParameter("id_despacho")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -113,7 +117,8 @@ public class ControllerReportesAzteca extends HttpServlet {
             String Respuesta = ModelReportesAzteca.azteca_reporte_pagos(
                     request.getParameter("desde"),
                     request.getParameter("hasta"),
-                    request.getParameter("zona")
+                    request.getParameter("zona"),
+                    request.getParameter("etapa")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -226,6 +231,14 @@ public class ControllerReportesAzteca extends HttpServlet {
                     request.getParameter("gerente"),
                     request.getParameter("gerencia")
             );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_clientes_cartera")) {
+            String Respuesta = ModelReportesAzteca.select_clientes_cartera();
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
             writer.print(Respuesta);

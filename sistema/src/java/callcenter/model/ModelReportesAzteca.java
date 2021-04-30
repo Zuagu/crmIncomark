@@ -21,11 +21,11 @@ import org.json.simple.parser.JSONParser;
  */
 public class ModelReportesAzteca {
 
-    public static String reporte_convenios_tabla(String desde, String hasta, String territrio) {
+    public static String reporte_convenios_tabla(String desde, String hasta, String territrio, String id_despacho) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_reporte_convenios('" + desde + "', '" + hasta + "', '" + territrio + "');";
+            String sql = "call azteca_reporte_convenios('" + desde + "', '" + hasta + "', '" + territrio + "', '" + id_despacho + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listConvenios = new JSONArray();
@@ -48,6 +48,8 @@ public class ModelReportesAzteca {
                 objConvenio.put("FECHA_PAGO", ic.rs.getString("FECHA_PAGO"));
                 objConvenio.put("EFECTIVIDAD", ic.rs.getString("EFECTIVIDAD"));
                 objConvenio.put("ID_EQUIPO", ic.rs.getString("ID_EQUIPO"));
+                objConvenio.put("ID_DESPACHO", ic.rs.getString("ID_DESPACHO"));
+                objConvenio.put("ETAPA", ic.rs.getString("ETAPA"));
                 listConvenios.add(objConvenio);
             }
             ic.rs.close();
@@ -179,12 +181,12 @@ public class ModelReportesAzteca {
         }
     }
 
-    public static String reporte_gestiones_tabla(String desde, String hasta, String territrio) {
+    public static String reporte_gestiones_tabla(String desde, String hasta, String territrio, String etapa) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_reporte_gestiones('" + desde + "', '" + hasta + "', '" + territrio + "');";
-            System.out.println(sql);
+            String sql = "call azteca_reporte_gestiones('" + desde + "', '" + hasta + "', '" + territrio + "', '" + etapa + "');";
+//            System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listGestiones = new JSONArray();
 
@@ -206,6 +208,7 @@ public class ModelReportesAzteca {
                 objGestion.put("RETASO", ic.rs.getString("RETASO"));
                 objGestion.put("PROMESA", ic.rs.getString("PROMESA"));
                 objGestion.put("F_PREDICTIVO", ic.rs.getString("F_PREDICTIVO"));
+                objGestion.put("ETAPA", ic.rs.getString("ETAPA"));
                 listGestiones.add(objGestion);
             }
             ic.rs.close();
@@ -219,15 +222,15 @@ public class ModelReportesAzteca {
 
     }
 
-    public static String reporte_gestiones_descarga(String desde, String hasta, String territrio) throws IOException {
+    public static String reporte_gestiones_descarga(String desde, String hasta, String territrio, String etapa) throws IOException {
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/GestionesBaseCrm.csv";
-//        String filename = "/opt/tomcat/webapps/sistema/excel/GestionesBaseCrm.csv";
-        String filename = "C:\\Users\\Public\\GestionesBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/GestionesBaseCrm.csv";
+//        String filename = "C:\\Users\\Public\\GestionesBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
             StartConexion ic = new StartConexion();
             FileWriter fw = new FileWriter(filename);
-            String sql = "call azteca_reporte_gestiones('" + desde + "', '" + hasta + "', '" + territrio + "');";
+            String sql = "call azteca_reporte_gestiones('" + desde + "', '" + hasta + "', '" + territrio + "', '" + etapa + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 
@@ -313,17 +316,17 @@ public class ModelReportesAzteca {
         }
     }
 
-    public static String reporte_convenios_descarga(String desde, String hasta, String territrio) throws IOException {
+    public static String reporte_convenios_descarga(String desde, String hasta, String territrio, String etapa) throws IOException {
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ConveniosBaseCrm.csv";
-        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
-//        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
+//        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
+        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
 
             StartConexion ic = new StartConexion();
 
             FileWriter fw = new FileWriter(filename);
-            String sql = "call azteca_reporte_convenios('" + desde + "', '" + hasta + "', '" + territrio + "');";
+            String sql = "call azteca_reporte_convenios('" + desde + "', '" + hasta + "', '" + territrio + "', '" + etapa + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 
@@ -513,10 +516,10 @@ public class ModelReportesAzteca {
 
     }
 
-    public static String azteca_reporte_pagos(String desde, String hasta, String zona) {
+    public static String azteca_reporte_pagos(String desde, String hasta, String zona, String etapa) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_reporte_pagos('" + desde + "', '" + hasta + "',  '" + zona + "')";
+            String sql = "call azteca_reporte_pagos('" + desde + "', '" + hasta + "',  '" + zona + "',  '" + etapa + "')";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listPagos = new JSONArray();
@@ -524,13 +527,7 @@ public class ModelReportesAzteca {
             while (ic.rs.next()) {
                 JSONObject objPago = new JSONObject();
                 objPago.put("ID_PAGO", ic.rs.getString("ID_PAGO"));
-                objPago.put("ANIO", ic.rs.getString("ANIO"));
-                objPago.put("SEMANA", ic.rs.getString("SEMANA"));
                 objPago.put("DIA", ic.rs.getString("DIA"));
-                objPago.put("PAIS", ic.rs.getString("PAIS"));
-                objPago.put("CANAL", ic.rs.getString("CANAL"));
-                objPago.put("SUCURSAL", ic.rs.getString("SUCURSAL"));
-                objPago.put("FOLIO", ic.rs.getString("FOLIO"));
                 objPago.put("RECUPERACION_CAPITAL", ic.rs.getString("RECUPERACION_CAPITAL"));
                 objPago.put("RECUPERACION_MORATORIOS", ic.rs.getString("RECUPERACION_MORATORIOS"));
                 objPago.put("SALDO_ACTUAL", ic.rs.getString("SALDO_ACTUAL"));
@@ -538,8 +535,10 @@ public class ModelReportesAzteca {
                 objPago.put("FECHA_GESTION", ic.rs.getString("FECHA_GESTION"));
                 objPago.put("CARGO_AUTOMATICO", ic.rs.getString("CARGO_AUTOMATICO"));
                 objPago.put("CLIENTE_UNICO", ic.rs.getString("CLIENTE_UNICO"));
-                objPago.put("ZONA", ic.rs.getString("ZONA"));
+                objPago.put("ETAPA", ic.rs.getString("ETAPA"));
                 objPago.put("GERENTE", ic.rs.getString("GERENTE"));
+                objPago.put("GERENCIA", ic.rs.getString("GERENCIA"));
+                objPago.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
                 objPago.put("ID_GESTOR", ic.rs.getString("ID_GESTOR"));
                 listPagos.add(objPago);
             }
@@ -629,9 +628,9 @@ public class ModelReportesAzteca {
     public static String generar_csv_telefonos(String _tipo_base, String territorio, String gerente, String gerencia) throws IOException {
 
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/NumerosBaseCrm.csv";
-//        String filename = "/opt/tomcat/webapps/sistema/excel/NumerosBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/NumerosBaseCrm.csv";
         // /var/lib/tomcat8/webapps/sistema/excel
-        String filename = "C:\\Users\\Public\\NumerosBaseCrm.csv";
+//        String filename = "C:\\Users\\Public\\NumerosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
 
         try {
@@ -780,6 +779,28 @@ public class ModelReportesAzteca {
             return territorios.toJSONString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    // =========================================================================
+    public static String select_clientes_cartera() {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT ETAPA FROM azteca_base_genenral_original where IDENTIFICADOR != '0' group by ETAPA;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray clientes_cartera = new JSONArray();
+            while (ic.rs.next()) {
+                JSONObject cliente = new JSONObject();
+                cliente.put("ETAPA", ic.rs.getString("ETAPA") );
+                clientes_cartera.add( cliente );
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return clientes_cartera.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al seleccionar clientes cartera : " + e;
         }
     }
 

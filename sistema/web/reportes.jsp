@@ -169,7 +169,6 @@
                                 <table class="highlight" id="tabla_pagos">
                                     <thead class="blue">
                                         <tr class="text-white">
-                                            <td><b>ID</b></td>
                                             <td><b>HORA</b></td>
                                             <td><b>TERRITORIO</b></td>
                                             <td><b>FECHA_LARGA</b></td>
@@ -182,6 +181,7 @@
                                             <td><b>RETASO</b></td>
                                             <td><b>PROMESA</b></td>
                                             <td><b>PREDICTIVO</b></td>
+                                            <td><b>ETAPA</b></td>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_gestiones">
@@ -223,13 +223,10 @@
                                 <table class="highlight" id="tabla_pagos">
                                     <thead class="blue">
                                         <tr class="text-white">
-                                            <td><b>ID_CONVENIO</b></td>
                                             <td><b>CONVENIO</b></td>
-                                            <td><b>RESTO</b></td>
-                                            <td><b>APLICA</b></td>
                                             <td><b>TERRITORIO</b></td>
                                             <td><b>CANAL</b></td>
-                                            <td><b>ATRASO_MAXIMO</b></td>
+                                            <td><b>ATRASO</b></td>
                                             <td><b>FECHA</b></td>
                                             <td><b>USUARIO</b></td>
                                             <td><b>CUENTA</b></td>
@@ -238,7 +235,7 @@
                                             <td><b>PAGOS</b></td>
                                             <td><b>FECHA_PAGO</b></td>
                                             <td><b>EFECTIVIDAD</b></td>
-                                            <td><b>ID_EQUIPO</b></td>
+                                            <td><b>ETAPA</b></td>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_convenios">
@@ -303,17 +300,18 @@
                                     <thead class="blue">
                                         <tr class="text-white">
                                             <td><b>CLIENTE UNICO</b></td>
-                                            <td><b>AÑO</b></td>
-                                            <td><b>SEMANA</b></td>
                                             <td><b>DIA</b></td>
-                                            <td><b>RECUPERACION_CAPITAL</b></td>
-                                            <td><b>RECUPERACION_MORATORIOS</b></td>
+                                            <td><b>REC_CAPITAL</b></td>
+                                            <td><b>REC_MORATORIOS</b></td>
                                             <td><b>SALDO_ACTUAL</b></td>
                                             <td><b>MORATORIO</b></td>
                                             <td><b>FECHA_GESTION</b></td>
-                                            <td><b>CARGO_AUTOMATICO</b></td>
-                                            <td><b>ZONA</b></td>
+                                            <td><b>CARGO_AUT</b></td>
+                                            <td><b>ETAPA</b></td>
                                             <td><b>GERENTE</b></td>
+                                            <td><b>GERENCIA</b></td>
+                                            <td><b>TERRITORIO</b></td>
+                                            <td><b>ID_GESTOR</b></td>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_pagos">
@@ -339,10 +337,7 @@
                             <div class="col s12 m12 l12">
                                 <h4 class="black-text">Reporte de horas gestor</h4>
                             </div>
-                            <div class="input-field col s6 m2 l2" >
-                                    <select id="id_etapa_tiempos" name="id_etapa_tiempos"></select>
-                                    <label>Etapa</label>
-                                </div>
+                            
                             <div class="input-field col s6 m2 l2">
                                 <input id="desde_tiempos" name="fecha" type="text" class="validate datepicker" placeholder="Desde" readonly="">
                                 <label class="" for="desde_tiempos"></label>
