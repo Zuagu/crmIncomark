@@ -250,7 +250,7 @@ input[type="text"]:not(.browser-default).validate + label {
 }
 
 body {
-    background-color: #454846 !important;
+    background-color: #90caf9  !important;
 }
 .div_input_gestor_info {
     border-radius: 1rem;

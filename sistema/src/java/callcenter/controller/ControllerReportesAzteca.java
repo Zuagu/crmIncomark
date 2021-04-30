@@ -156,7 +156,8 @@ public class ControllerReportesAzteca extends HttpServlet {
         else if (action.equals("reporte_promesado_diario")) {
             String Respuesta = ModelReportesAzteca.reporte_promesado_diario(
                     request.getParameter("territorio"),
-                    request.getParameter("desde")
+                    request.getParameter("desde"),
+                    request.getParameter("etapa")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
@@ -177,7 +178,8 @@ public class ControllerReportesAzteca extends HttpServlet {
         else if (action.equals("reporte_promesado_al_momento")) {
             String Respuesta = ModelReportesAzteca.reporte_promesado_al_momento(
                     request.getParameter("territorio"),
-                    request.getParameter("desde")
+                    request.getParameter("desde"),
+                    request.getParameter("etapa")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();

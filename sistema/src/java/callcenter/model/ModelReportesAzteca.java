@@ -63,11 +63,11 @@ public class ModelReportesAzteca {
 
     }
 
-    public static String reporte_promesado_diario(String territorio, String desde) {
+    public static String reporte_promesado_diario(String territorio, String desde, String etapa) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_promesado_diario('" + territorio + "','" + desde + "');";
+            String sql = "call azteca_promesado_diario('" + territorio + "','" + desde + "','" + etapa + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listConvenios = new JSONArray();
@@ -84,6 +84,7 @@ public class ModelReportesAzteca {
                 objConvenio.put("FECHA", ic.rs.getString("FECHA"));
                 objConvenio.put("ESTATUS_PAGO", ic.rs.getString("ESTATUS_PAGO"));
                 objConvenio.put("FECHA_PAGO", ic.rs.getString("FECHA_PAGO"));
+                objConvenio.put("ETAPA", ic.rs.getString("ETAPA"));
                 listConvenios.add(objConvenio);
             }
             ic.rs.close();
@@ -95,11 +96,11 @@ public class ModelReportesAzteca {
         }
     }
 
-    public static String reporte_promesado_al_momento(String territorio, String desde) {
+    public static String reporte_promesado_al_momento(String territorio, String desde, String etapa) {
         try {
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_prmesado_al_momento('" + territorio + "','" + desde + "');";
+            String sql = "call azteca_prmesado_al_momento('" + territorio + "','" + desde + "','" + etapa + "');";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray listConvenios = new JSONArray();
@@ -116,6 +117,7 @@ public class ModelReportesAzteca {
                 objConvenio.put("HORA", ic.rs.getString("HORA"));
                 objConvenio.put("ESTATUS_PAGO", ic.rs.getString("ESTATUS_PAGO"));
                 objConvenio.put("FECHA", ic.rs.getString("FECHA"));
+                objConvenio.put("ETAPA", ic.rs.getString("ETAPA"));
                 listConvenios.add(objConvenio);
             }
             ic.rs.close();

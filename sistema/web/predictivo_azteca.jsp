@@ -322,8 +322,8 @@
                         <!--componente de secciones de las tabs de tabs-->
                         <div id="div_gestiones" class="col s12 z-depth-1 div_gestor_contenido white"> 
                             <table class="highlight" id="tabla_gestiones">
-                                <thead class="teal">
-                                    <tr class="text-white">
+                                <thead class="grey lighten-1">
+                                    <tr class="">
                                         <td> <b>FECHA</b></td>
                                         <td> <b>HORA</b></td>
                                         <td> <b>NUMERO</b></td>
@@ -340,8 +340,8 @@
                         </div>
                         <div id="div_pagos" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_pagos">
-                                <thead class="teal">
-                                    <tr class="text-white">
+                                <thead class="grey lighten-1">
+                                    <tr class="">
                                         <td><b>FOLIO</b></td>
                                         <td><b>CLIENTE UNICO</b></td>
                                         <td><b>ZONA</b></td>
@@ -391,8 +391,8 @@
                         </div>
                         <div id="div_convenios" class="col s12 z-depth-1 div_gestor_contenido center center-align white">
                             <table class="highlight" id="tabla_convenios">
-                                <thead class="teal">
-                                    <tr class="text-white">
+                                <thead class="grey lighten-1">
+                                    <tr class="">
                                         <td><b>CUENTA</b></td>
                                         <td><b>GESTOR</b></td>
                                         <td><b>CONVENIO</b></td>

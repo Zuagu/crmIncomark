@@ -568,7 +568,8 @@ function reporte_promesado_diario() {
     let params = {
         action: 'reporte_promesado_diario',
         desde: $('#fecha_promesado_diario').val(),
-        territorio: $('#territorio_promesado_diario').val()
+        territorio: $('#territorio_promesado_diario').val(),
+        etapa: $('#etapa_promesado_diario_org').val()
     };
     $.ajax({
         type: "POST",
@@ -591,6 +592,7 @@ function reporte_promesado_diario() {
                     <td>${item.FECHA}</td>
                     <td>${item.ESTATUS_PAGO}</td>
                     <td>${item.FECHA_PAGO}</td>
+                    <td>${item.ETAPA}</td>
                     </tr>`);
                 monto += parseFloat(item.CONVENIO);
                 cantidad = cantidad + 1;
@@ -612,7 +614,8 @@ function reporte_promesado_diario_org() {
     let params = {
         action: 'reporte_promesado_al_momento',
         desde: $('#fecha_promesado_al_momento_org').val(),
-        territorio: $('#territorio_promesado_diario_org').val()
+        territorio: $('#territorio_promesado_diario_org').val(),
+        etapa: $('#etapa_promesado_diario_org').val()
     };
     $.ajax({
         type: "POST",
@@ -636,6 +639,7 @@ function reporte_promesado_diario_org() {
                     <td>${item.HORA}</td>
                     <td>${item.ESTATUS_PAGO}</td>
                     <td>${item.FECHA}</td>
+                    <td>${item.ETAPA}</td>
                     </tr>`);
                 monto += parseFloat(item.CONVENIO);
                 cantidad = cantidad + 1;
@@ -855,10 +859,14 @@ function select_clientes_cartera() {
             $("#id_etapa_gestion").append(`<option value="0">TODOS</option>`);
             $("#id_ter_etapa_2").append(`<option value="0">TODOS</option>`);
             $("#id_etapa_pagos").append(`<option value="0">TODOS</option>`);
+            $("#etapa_promesado_diario_org").append(`<option value="0">TODOS</option>`);
+            $("#etapa_promesado_diario").append(`<option value="0">TODOS</option>`);
             for (let item of response) {
                 $("#id_etapa_gestion").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
                 $("#id_ter_etapa_2").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
                 $("#id_etapa_pagos").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
+                $("#etapa_promesado_diario_org").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
+                $("#etapa_promesado_diario").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
 //                console.log(item.CLASIFICACION_CTE);
             }
             $('select').formSelect();

@@ -69,11 +69,15 @@
                     <div id="test-swipe-0" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
-                                <div class="input-field col s3" >
+                                <div class="input-field col s2" >
                                     <select id="territorio_promesado_diario_org"  type="text"></select>
                                     <label for="territorio_promesado_diario_org">Territorio</label>
                                 </div>
-                                <div class="input-field col s3" >
+                                <div class="input-field col s2" >
+                                    <select id="etapa_promesado_diario_org"  type="text"></select>
+                                    <label for="etapa_promesado_diario_org">Etapa</label>
+                                </div>
+                                <div class="input-field col s2" >
                                     <input id="fecha_promesado_al_momento_org" name="fecha" type="text" class="validate datepicker" placeholder="Fecha" readonly=""></td>
                                     <label class="" for="fecha_promesado_al_momento_org">Fecha</label>
                                     <!--<input id="hora_promesado_al_momento" name="hora" type="text" class="validate timepicker" placeholder="desde" readonly=""></td>-->
@@ -96,6 +100,7 @@
                                                 <td><b>HORA</b></td>
                                                 <td><b>ESTATUS PAGO</b></td>
                                                 <td><b>FECHA PAGO</b></td>
+                                                <td><b>ETAPA</b></td>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody_tabla_promesado_diario_org">
@@ -108,11 +113,15 @@
                     <div id="test-swipe-1" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
-                                <div class="input-field col s3" >
+                                <div class="input-field col s2" >
                                     <select id="territorio_promesado_diario"  type="text"></select>
                                     <label for="territorio_promesado_diario">Territorio</label>
                                 </div>
-                                <div class="input-field col s3" >
+                                <div class="input-field col s2" >
+                                    <select id="etapa_promesado_diario"  type="text"></select>
+                                    <label for="etapa_promesado_diario">Etapa</label>
+                                </div>
+                                <div class="input-field col s2" >
                                     <input id="fecha_promesado_diario" name="fecha" type="text" class="validate datepicker" placeholder="desde" readonly=""></td>
                                     <label class="" for="fecha_promesado_diario"></label>
                                 </div>
@@ -133,6 +142,7 @@
                                                 <td><b>FECHA</b></td>
                                                 <td><b>ESTATUS PAGO</b></td>
                                                 <td><b>FECHA PAGO</b></td>
+                                                <td><b>ETAPA</b></td>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody_tabla_promesado_diario">
