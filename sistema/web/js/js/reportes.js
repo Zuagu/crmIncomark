@@ -569,7 +569,7 @@ function reporte_promesado_diario() {
         action: 'reporte_promesado_diario',
         desde: $('#fecha_promesado_diario').val(),
         territorio: $('#territorio_promesado_diario').val(),
-        etapa: $('#etapa_promesado_diario_org').val()
+        etapa: $('#etapa_promesado_diario').val()
     };
     $.ajax({
         type: "POST",
