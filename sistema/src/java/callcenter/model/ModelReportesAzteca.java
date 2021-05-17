@@ -325,8 +325,8 @@ public class ModelReportesAzteca {
 
     public static String reporte_convenios_descarga(String desde, String hasta, String territrio, String etapa) throws IOException {
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/ConveniosBaseCrm.csv";
-//        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
-        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/ConveniosBaseCrm.csv";
+//        String filename = "C:\\Users\\Public\\ConveniosBaseCrm.csv";
         System.out.println("FILE NAME: " + filename);
         try {
 
@@ -893,8 +893,8 @@ public class ModelReportesAzteca {
     public static String descargar_base() throws IOException {
 
 //        String filename = "/var/lib/tomcat8/webapps/sistema/excel/BaseAztecaCrm.csv";
-//        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
-        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
+        String filename = "/opt/tomcat/webapps/sistema/excel/BaseAztecaCrm.csv";
+//        String filename = "C:\\Users\\Public\\BaseAztecaCrm.csv";
         System.out.println("FILE NAME: " + filename);
 
         try {

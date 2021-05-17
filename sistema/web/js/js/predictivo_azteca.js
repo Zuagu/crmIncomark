@@ -751,6 +751,7 @@ $("#guardar_gestion").click(function () {
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
+            _id_cuenta: $('#id_cuenta').val(),
             _ID_SUCURSAL: $('#ID_SUCURSAL').val(),
             _ID_CLIENTE: $('#ID_CLIENTE').val(),
             _TERRITORIO: $('#TERRITORIO').val(),
@@ -780,13 +781,47 @@ $("#guardar_gestion").click(function () {
                 '- Disposicion <br>- Codigo de llamada <br>- Numero marcado');
     }
 });
-$("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
+
+
+//$("#datos_marcacion_directa").delegate(".num_phone", "click", function () {
+//    $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+//    $(".num_phone").removeClass("numero_marcado");
+//    $(this).addClass("numero_marcado");
+//    $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+//    $("#gestion").removeAttr("readonly");
+//});
+
+$("#datos_marcacion_directa").on("click", ".number_call", function () {
+
+    $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+    $(".number_call").removeClass("numero_marcado");
+    $(this).addClass("numero_marcado");
+    let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
+
+    if (num.length >= 8) {
+        $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+        $("#gestion").removeAttr("readonly");
+    } else {
+        alert("El dato selecionado no es numero");
+    }
+});
+
+$("#datos_marcacion_aval").delegate(".num_phone", "click", function () {
     $("#numero_marcado_deudor").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
     $(".num_phone").removeClass("numero_marcado");
     $(this).addClass("numero_marcado");
-    $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
-    $("#gestion").removeAttr("readonly");
+    let num = $(this).text().replace('phone_iphone', '').replace('local_phone', '');
+    if (num.length >= 8) {
+        $("#gestion").val($(this).text().replace('phone_iphone', '').replace('local_phone', ''));
+        $("#gestion").removeAttr("readonly");
+    } else {
+        alert("El dato selecionado no es numero");
+    }
 });
+
+
+
+
 // Insert Convenio 
 function insertar_convenio(_myObjConvenio, _myObjGestion) {
 //    console.log(_myObjConvenio);
@@ -826,6 +861,7 @@ $("#codigo_llamada").change(function () {
     if ($("#codigo_llamada").val() === "22" || $("#codigo_llamada").val() === "23" || $("#codigo_llamada").val() === "24" || $("#codigo_llamada").val() === "25" || $("#codigo_llamada").val() === "19") {
         var validacion = 0;
         var myObjGestion = {
+            _id_cuenta: $('#id_cuenta').val(),
             id_cuenta: $("#id_cuenta_deudor").val(),
             id_asignacion: $("#id_asignacion_deudor").val(),
             id_region: $("#id_region_deudor").val(),
@@ -842,7 +878,7 @@ $("#codigo_llamada").change(function () {
             duracion: $("#tiempo_actual").val(),
             retraso_llamada: $("#retraso_actual").val(),
             expediente: $("#expediente_deudor").val(),
-            f_predictivo: 0
+            f_predictivo: 1
         };
         for (var obj in myObjGestion) {
             if (myObjGestion[obj] === "") {
@@ -868,6 +904,7 @@ $("#codigo_llamada").change(function () {
 });
 $("#insert_convenio").click(function () {
     var myObjGestion = {
+        _id_cuenta: $('#id_cuenta').val(),
         _ID_SUCURSAL: $('#ID_SUCURSAL').val(),
         _ID_CLIENTE: $('#ID_CLIENTE').val(),
         _TERRITORIO: $('#TERRITORIO').val(),
@@ -883,7 +920,7 @@ $("#insert_convenio").click(function () {
         _RETASO: $('#retraso_actual').val(),
         _ID_PUESTO: id_puesto_usuario,
         _PROMESA: 1,
-        _F_PREDICTIVO: 0,
+        _F_PREDICTIVO: 1,
         _ID_EQUIPO: $('#ID_EQUIPO').val()
     };
     var myObjConvenio = {

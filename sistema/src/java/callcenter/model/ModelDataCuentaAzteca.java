@@ -151,6 +151,7 @@ public class ModelDataCuentaAzteca {
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(objGestion);
 
+            Object _id_cuenta = jsonObject.get("_id_cuenta");
             Object _ID_SUCURSAL = jsonObject.get("_ID_SUCURSAL");
             Object _ID_CLIENTE = jsonObject.get("_ID_CLIENTE");
             Object _TERRITORIO = jsonObject.get("_TERRITORIO");
@@ -170,7 +171,7 @@ public class ModelDataCuentaAzteca {
             Object _ID_EQUIPO = jsonObject.get("_ID_EQUIPO");
 
             StartConexion ic = new StartConexion();
-            String sql = "call azteca_insert_gestion(" + _ID_SUCURSAL + ", " + _ID_CLIENTE + ", '" + _TERRITORIO + "', '" + _CANAL + "', " + _ATRASO_MAXIMO + ", '" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ", " + _ID_EQUIPO + ");";
+            String sql = "call azteca_insert_gestion_id(" + _id_cuenta + ", " + _ID_SUCURSAL + ", " + _ID_CLIENTE + ", '" + _TERRITORIO + "', '" + _CANAL + "', " + _ATRASO_MAXIMO + ", '" + _CUENTA + "', '" + _NUMERO_MARCADO + "', " + _ID_ESTATUS_CUENTA + ", " + _ID_ESTATUS_LLAMADA + ", " + _ID_USUARIO + ", '" + _GESTION + "', '" + _DURACION + "', '" + _RETASO + "', " + _ID_PUESTO + ", " + _PROMESA + ", " + _F_PREDICTIVO + ", " + _ID_EQUIPO + ");";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
 

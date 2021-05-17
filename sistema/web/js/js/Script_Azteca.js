@@ -434,6 +434,8 @@ function select_datos_cuenta(_cuenta) {
 //                }
             }
             
+            select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], "0000-00-00", "tbody_tabla_gestiones");
+            
             $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td></tr>
                 <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td></tr>
                 <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td></tr>
@@ -474,7 +476,7 @@ function select_datos_cuenta(_cuenta) {
                 <li class="collection-item black-text">${datos_cuenta.NOMBRE_AVAL}.<a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL2}"><i class="material-icons small">local_phone</i>${datos_cuenta.TELAVAL2}</a> <a class="right num_phone" href="zoiper://${datos_cuenta.TELAVAL}"><i class="material-icons small">phone_iphone</i>${datos_cuenta.TELAVAL}</a></li>
             `);
 
-            select_gestiones_cuenta(datos_cuenta["CLIENTE_UNICO"], "0000-00-00", "tbody_tabla_gestiones");
+            
 
             $("#Direccion").val(`${datos_cuenta.COLONIA_CTE} ${datos_cuenta.DIRECCION_CTE} ${datos_cuenta.NUM_EXT_CTE} CP: ${datos_cuenta.CP_CTE}, ${datos_cuenta.POBLACION_CTE}, ${datos_cuenta.ESTADO_CTE}`);
 
@@ -878,6 +880,7 @@ $("#guardar_gestion").click(function () {
 
     if ($("#codigo_llamada").val() !== "0" && $("#gestion").val() !== "" && $("#numero_marcado_deudor").val() !== "" && $("#estatus").val() !== "") {
         var myObjGestion = {
+            _id_cuenta: $('#id_cuenta').val(),
             _ID_SUCURSAL: $('#ID_SUCURSAL').val(),
             _ID_CLIENTE: $('#ID_CLIENTE').val(),
             _TERRITORIO: $('#TERRITORIO').val(),
@@ -989,6 +992,7 @@ $("#codigo_llamada").change(function () {
     if ($("#codigo_llamada").val() === "22" || $("#codigo_llamada").val() === "23" || $("#codigo_llamada").val() === "24" || $("#codigo_llamada").val() === "25" || $("#codigo_llamada").val() === "19") {
         var validacion = 0;
         var myObjGestion = {
+            _id_cuenta: $('#id_cuenta').val(),
             id_cuenta: $("#id_cuenta_deudor").val(),
             id_asignacion: $("#id_asignacion_deudor").val(),
             id_region: $("#id_region_deudor").val(),
@@ -1028,6 +1032,7 @@ $("#codigo_llamada").change(function () {
 });
 $("#insert_convenio").click(function () {
     var myObjGestion = {
+        _id_cuenta: $('#id_cuenta').val(),
         _ID_SUCURSAL: $('#ID_SUCURSAL').val(),
         _ID_CLIENTE: $('#ID_CLIENTE').val(),
         _TERRITORIO: $('#TERRITORIO').val(),
