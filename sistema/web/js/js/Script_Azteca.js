@@ -199,7 +199,14 @@ $("#save_info_aval").click(function () {
 });
 
 $("#estatus").change(function () {
-    if ($("#estatus").val() === '6') {
+    if ($("#estatus").val() === '3') {
+        $("#codigo_llamada").empty();
+        $("#codigo_llamada").append(`
+        <option value="39">WHATSAPP ENVIADO</option>
+        <option value="40">SIN WHATSAPP</option>
+        `);
+
+    } else if ($("#estatus").val() === '6') {
         $("#codigo_llamada").empty();
         $("#codigo_llamada").append(`<option value="31">MENSAJE BAJO PUERTA</option>
         <option value="32">NO VIVE EN DOMICILIO</option>

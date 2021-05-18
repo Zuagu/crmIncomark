@@ -547,6 +547,7 @@ public class ModelReportesAzteca {
                 objPago.put("CARGO_AUTOMATICO", ic.rs.getString("CARGO_AUTOMATICO"));
                 objPago.put("CLIENTE_UNICO", ic.rs.getString("CLIENTE_UNICO"));
                 objPago.put("ETAPA", ic.rs.getString("ETAPA"));
+                objPago.put("ZONA", ic.rs.getString("ZONA"));
                 objPago.put("GERENTE", ic.rs.getString("GERENTE"));
                 objPago.put("GERENCIA", ic.rs.getString("GERENCIA"));
                 objPago.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
@@ -901,28 +902,16 @@ public class ModelReportesAzteca {
             String resultado;
             FileWriter fw = new FileWriter(filename);
             StartConexion s = new StartConexion();
-            String sql = "SELECT CLIENTE_UNICO,PLAN, \n"
-                    + "    ifnull(nombre_estatus_llamada_azteca(ID_ESTATUS_LLAMADA),'NO MARCADO') as ESTATUS_LLAMADA, \n"
-                    + "    GRUPO,NOMBRE_CTE,EDAD,RANGO_DE_EDAD,ATRASO_MAXIMO,\n"
-                    + "    ETAPA,SCORE,SALDO,RANGO,MORATORIOS,\n"
-                    + "    SALDO_TOTAL,GERENTE,TERRITORIO,GERENCIA,DIA_DE_PAGO,\n"
-                    + "    PRODUCTO,MICRO,ITALICA,CANAL,FECHA_ULTIMO_PAGO,\n"
-                    + "    ANO,IMP_ULTIMO_PAGO,ESTADOAVAL,NOMBRE_AVAL,CUADRANTE,\n"
-                    + "    RFC_CTE,TELAVAL,TELEFONO1,TIPOTEL1,TELEFONO2,\n"
-                    + "    TIPOTEL2,TELEFONO3,TIPOTEL3,TELEFONO4,TIPOTEL4,\n"
-                    + "    IDENTIFICADOR2,"
-                    + "    nombre_estatus_llamada_azteca(ID_MEJOR_ESTATUS) as MEJOR_ESTATUS,"
-                    + "    ifnull(date_format(ULTIMA_GESTION,'%Y-%m-%d'),'NO MARCADO') as FECHA_ULTIMA_GESTION, "
-                    + "    ifnull(time(ULTIMA_GESTION),'NO MARCADO') as HORA_ULTIMA_GESTION,\n"
-                    + "    ifnull(nombre_estatus_llamada_azteca(ID_ESTATUS_CUENTA),'NO MARCADO') AS ESTATUS_CUENTA \n"
-                    + "FROM azteca_base_genenral_original where IDENTIFICADOR != '0' ORDER BY ULTIMA_GESTION DESC;";
+            String sql = "call azteca_base_maestra();";
             System.out.println(sql);
 
             fw.append("CLIENTE_UNICO");
             fw.append(',');
             fw.append("PLAN");
             fw.append(',');
-            fw.append("ESTATUS_LLAMADA");
+            fw.append("INTENCION_DE_PAGO");
+            fw.append(',');
+            fw.append("MEJOR_ESTATUS_LLAMADA");
             fw.append(',');
             fw.append("GRUPO");
             fw.append(',');
@@ -946,9 +935,9 @@ public class ModelReportesAzteca {
             fw.append(',');
             fw.append("SALDO_TOTAL");
             fw.append(',');
-            fw.append("GERENTE");
-            fw.append(',');
             fw.append("TERRITORIO");
+            fw.append(',');
+            fw.append("GERENTE");
             fw.append(',');
             fw.append("GERENCIA");
             fw.append(',');
@@ -964,7 +953,7 @@ public class ModelReportesAzteca {
             fw.append(',');
             fw.append("FECHA_ULTIMO_PAGO");
             fw.append(',');
-            fw.append("ANO");
+            fw.append("ANO_PAGO");
             fw.append(',');
             fw.append("IMP_ULTIMO_PAGO");
             fw.append(',');
@@ -972,48 +961,37 @@ public class ModelReportesAzteca {
             fw.append(',');
             fw.append("NOMBRE_AVAL");
             fw.append(',');
+            fw.append("MIGRADO_A_CYBER");
+            fw.append(',');
             fw.append("CUADRANTE");
+            fw.append(',');
+            fw.append("ZONA_GEO");
             fw.append(',');
             fw.append("RFC_CTE");
             fw.append(',');
-            fw.append("TELAVAL");
+            fw.append("IDENTIFICADOR");
             fw.append(',');
-            fw.append("TELEFONO1");
-            fw.append(',');
-            fw.append("TIPOTEL1");
-            fw.append(',');
-            fw.append("TELEFONO2");
-            fw.append(',');
-            fw.append("TIPOTEL2");
-            fw.append(',');
-            fw.append("TELEFONO3");
-            fw.append(',');
-            fw.append("TIPOTEL3");
-            fw.append(',');
-            fw.append("TELEFONO4");
-            fw.append(',');
-            fw.append("TIPOTEL4");
-            fw.append(',');
-            fw.append("IDENTIFICADOR2");
-            fw.append(',');
-            fw.append("MEJOR_ESTATUS");
+            fw.append("ESTATUS_LLAMADA_ACTUAL");
             fw.append(',');
             fw.append("FECHA_ULTIMA_GESTION");
             fw.append(',');
             fw.append("HORA_ULTIMA_GESTION");
-            fw.append(',');
-            fw.append("ESTATUS_ACT_CUENTA");
             fw.append('\n');
+            
+            
+            String regex = "\r|\n"; 
 
             s.rs = s.st.executeQuery(sql);
             while (s.rs.next()) {
                 fw.append(s.rs.getString("CLIENTE_UNICO"));
                 fw.append(',');
-                fw.append(s.rs.getString("PLAN").replace("\n", ""));
+                fw.append(s.rs.getString("PLAN").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("ESTATUS_LLAMADA").replace("\n", ""));
+                fw.append(s.rs.getString("INTENCION_DE_PAGO").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("GRUPO").replace("\n", ""));
+                fw.append(s.rs.getString("MEJOR_ESTATUS_LLAMADA").replace("\n", ""));
+                fw.append(',');
+                fw.append(s.rs.getString("GRUPO").replaceAll(regex, ""));
                 fw.append(',');
                 fw.append(s.rs.getString("NOMBRE_CTE").replace("\n", ""));
                 fw.append(',');
@@ -1023,7 +1001,7 @@ public class ModelReportesAzteca {
                 fw.append(',');
                 fw.append(s.rs.getString("ATRASO_MAXIMO").replace("\n", ""));
                 fw.append(',');
-                fw.append(s.rs.getString("ETAPA").replace("\n", ""));
+                fw.append(s.rs.getString("ETAPA").replaceAll(regex, ""));
                 fw.append(',');
                 fw.append(s.rs.getString("SCORE").replace("\n", ""));
                 fw.append(',');
@@ -1035,63 +1013,47 @@ public class ModelReportesAzteca {
                 fw.append(',');
                 fw.append(s.rs.getString("SALDO_TOTAL").replace("\n", ""));
                 fw.append(',');
-                fw.append(s.rs.getString("GERENTE").replace("\n", ""));
+                fw.append(s.rs.getString("TERRITORIO").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("TERRITORIO").replace("\n", ""));
+                fw.append(s.rs.getString("GERENTE").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("GERENCIA").replace("\n", ""));
+                fw.append(s.rs.getString("GERENCIA").replaceAll(regex, ""));
                 fw.append(',');
                 fw.append(s.rs.getString("DIA_DE_PAGO").replace("\n", ""));
                 fw.append(',');
-                fw.append(s.rs.getString("PRODUCTO").replace("\n", ""));
+                fw.append(s.rs.getString("PRODUCTO").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("MICRO").replace("\n", ""));
+                fw.append(s.rs.getString("MICRO").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("ITALICA").replace("\n", ""));
+                fw.append(s.rs.getString("ITALICA").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("CANAL").replace("\n", ""));
+                fw.append(s.rs.getString("CANAL").replaceAll(regex, ""));
                 fw.append(',');
                 fw.append(s.rs.getString("FECHA_ULTIMO_PAGO").replace("\n", ""));
                 fw.append(',');
-                fw.append(s.rs.getString("ANO").replace("\n", ""));
+                fw.append(s.rs.getString("ANO_PAGO").replace("\n", ""));
                 fw.append(',');
                 fw.append(s.rs.getString("IMP_ULTIMO_PAGO").replace("\n", ""));
                 fw.append(',');
-                fw.append(s.rs.getString("ESTADOAVAL").replace("\n", ""));
+                fw.append(s.rs.getString("ESTADOAVAL").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("NOMBRE_AVAL").replace("\n", ""));
+                fw.append(s.rs.getString("NOMBRE_AVAL").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("CUADRANTE").replace("\n", ""));
+                fw.append(s.rs.getString("MIGRADO_A_CYBER").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("RFC_CTE").replace("\n", ""));
+                fw.append(s.rs.getString("CUADRANTE").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("TELAVAL").replace("\n", ""));
+                fw.append(s.rs.getString("ZONA_GEO").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("TELEFONO1").replace("\n", ""));
+                fw.append(s.rs.getString("RFC_CTE").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("TIPOTEL1").replace("\n", ""));
+                fw.append(s.rs.getString("IDENTIFICADOR2").replaceAll(regex, ""));
                 fw.append(',');
-                fw.append(s.rs.getString("TELEFONO2").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("TIPOTEL2").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("TELEFONO3").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("TIPOTEL3").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("TELEFONO4").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("TIPOTEL4").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("IDENTIFICADOR2").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("MEJOR_ESTATUS").replace("\n", ""));
+                fw.append(s.rs.getString("ESTATUS_LLAMADA_ACTUAL").replace("\n", ""));
                 fw.append(',');
                 fw.append(s.rs.getString("FECHA_ULTIMA_GESTION").replace("\n", ""));
                 fw.append(',');
                 fw.append(s.rs.getString("HORA_ULTIMA_GESTION").replace("\n", ""));
-                fw.append(',');
-                fw.append(s.rs.getString("ESTATUS_CUENTA").replace("\n", ""));
                 fw.append('\n');
             }
 

@@ -288,6 +288,67 @@ $('#tbody_tabla_gestiones').on('dblclick', '.tb_gestion_cuenta', function () {
 });
 
 
+$("#estatus").change(function () {
+    if ($("#estatus").val() === '3') {
+        $("#codigo_llamada").empty();
+        $("#codigo_llamada").append(`
+        <option value="39">WHATSAPP ENVIADO</option>
+        <option value="40">SIN WHATSAPP</option>
+        `);
+
+    } else if ($("#estatus").val() === '6') {
+        $("#codigo_llamada").empty();
+        $("#codigo_llamada").append(`<option value="31">MENSAJE BAJO PUERTA</option>
+        <option value="32">NO VIVE EN DOMICILIO</option>
+        <option value="33">DOMICILIO NO EXISTE</option>
+        <option value="34">SE ENTREGA CARTA CON FAMILIAR</option>
+        <option value="35">PROPORCIONA TELEFONO</option>
+        <option value="25">PROMESA DE PAGO</option>
+        <option value="36">CAMBIO DE DOMICILIO</option>
+        <option value="37">MENSAJE CON TERCERO</option>
+        <option value="38">TITULAR NO DEFINE</option>
+        `);
+
+    } else {
+        $("#codigo_llamada").empty();
+        options_estatus_llamadas = `<option value="4" selected>Selecciona Codigo</option>
+        <option value="1">SIN CLASIFICAR</option>
+        <option value="2">SIN DATOS</option>
+        <option value="3">NO EXISTE</option>
+        <option value="4">NO DISPONIBLE</option>
+        <option value="5">NO CONTESTA</option>
+        <option value="6">NUMERO OCUPADO</option>
+        <option value="7">NO LO CONOCE</option>
+        <option value="8">FUERA DE SERVICIO</option>
+        <option value="9">CUELGA LLAMADA</option>
+        <option value="10">CLIENTE NO VIVE AHÍ</option>
+        <option value="11">MENSAJE EN BUZON</option>
+        <option value="12">MENSAJE TERCERO</option>
+        <option value="13">MENSAJE FAMILIAR</option>
+        <option value="14">CLIENTE COLGO</option>
+        <option value="15">NEGATIVA DE PAGO</option>
+        <option value="16">SEGUIMIENTO</option>
+        <option value="17">AVAL NO DEFINE</option>
+        <option value="18">CLIENTE NO DEFINE</option>
+        <option value="19">LIQUIDACION</option>
+        <option value="20">REESTRUCTURA</option>
+        <option value="21">PLAN ACTIVO</option>
+        <option value="22">PROMESA RECURRENTE</option>
+        <option value="23">PROMESA PAGO PARCIAL</option>
+        <option value="24">PROMESA PAGO INICIAL</option>
+        <option value="25">PROMESA DE PAGO</option>
+        <option value="26">PLAN CANCELADO</option>
+        <option value="27">PLAN INCUMPLIDO</option>
+        <option value="28">PROMESA INCUMPLIDA</option>
+        <option value="29">DEFUNCION</option>
+        <option value="30">CUENTA LIQUIDADA</option>`;
+        $("#codigo_llamada").append(options_estatus_llamadas);
+
+    }
+    $('select').formSelect();
+});
+
+
 
 
 //funcion de buscador

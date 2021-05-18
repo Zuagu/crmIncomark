@@ -400,7 +400,7 @@ function azteca_reporte_pagos() {
                     zona[item.ZONA].importe_moatorios += parseFloat(item.RECUPERACION_MORATORIOS);
                     zona[item.ZONA].importe_saldo_actual += parseFloat(item.SALDO_ACTUAL);
                     zona[item.ZONA].importe_moratorio += parseFloat(item.MORATORIO);
-                    let exist = zona[item.ZONA].gerente.indexOf(item.GERENTE)
+                    let exist = zona[item.ZONA].gerente.indexOf(item.GERENTE);
                     if (exist < 0) {
                         zona[item.ZONA].gerente.push(item.GERENTE);
                     }

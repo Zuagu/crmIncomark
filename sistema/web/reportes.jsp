@@ -283,7 +283,7 @@
                                     <a id="enviar_pagos" class="waves-effect waves-light btn blue"><i class="material-icons right-align">send</i></a> 
                                     <a onclick="tableToExcel('datos_tabla_pagos', 'PAGOS')" class="waves-effect waves-light btn green"><i class="material-icons right-align">explicit</i></a> 
                                     <a id="ver_resumen_pagos" class="btn blue">ver resumen</a>
-                                    <a id="ver_lista_pagos" class="btn blue hide">lista gestiones</a>
+                                    <a id="ver_lista_pagos" class="btn blue hide">lista de pagos</a>
                                 </div>
                             </div>
 
