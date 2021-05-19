@@ -91,12 +91,12 @@
         </style>
 
     </head>
-    <body style="background-image: url('images/font.jpg');background-size:100% auto;background-repeat: no-repeat; background-attachment: fixed;  -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover; ">
+    <body style="background-image: url('images/bluefont.png');background-size:100% auto;background-repeat: no-repeat; background-attachment: fixed;  -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover; ">
         <!--BEGIN TITLE & BREADCRUMB PAGE-->
         <div class="row">
             <div class="col s10 offset-s1 center-align">
-                <div class="col s10 offset-s1"><img id="imagen_empleado" width="300"  onerror="this.src='images/1.jpg'" style="margin-top: 4%;border-radius: 9px;"></div>                    
-                <div class="z-depth-5 col s6 offset-s3 colore " style="margin-top: -6px;border-radius: 9px;">
+                <div class="col s10 offset-s1"><img id="imagen_empleado" width="300"  onerror="this.src='images/1.jpg'" style="margin-top: 3%;border-radius: 9px;"></div>                    
+                <div class="z-depth-5 col s6 offset-s3 blue " style="margin-top: -6px;border-radius: 9px;">
                     <div>
                         <h4 id="dato1" class=" font"></h4>
                     </div>
