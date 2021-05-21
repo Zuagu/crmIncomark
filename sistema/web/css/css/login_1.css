@@ -46,7 +46,7 @@ a {
 
 button {
     border-radius: 20px;
-    border: 1px solid #bd2329;
+    border: 1px solid #ffffff;
     background-color: #175a87;
     color: #FFFFFF;
     font-size: 12px;
@@ -67,12 +67,12 @@ button:focus {
 
 button.ghost {
     background-color: transparent;
-    border-color: #bd2329;
+    border-color: #FFFFFF;
 }
 
 .boton_login {
     border-radius: 20px;
-    border: 1px solid #bd2329;
+    border: 1px solid #ffffff;
     background-color: #175a87;
     color: #FFFFFF;
     font-size: 12px;
