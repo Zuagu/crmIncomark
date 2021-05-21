@@ -14,7 +14,7 @@ public class HorarioDao {
             StartConn s = new StartConn();
             String sql = "select \n"
                     + "	u.id, \n"
-                    + "    u.nombre,\n"
+                    + "    u.nombre,u.alias,\n"
                     + "    ifnull(ht.descripcion,'No Tienen Horario') as horario,\n"
                     + "    ifnull(ht.entrada,'00:00:00') as entrada,\n"
                     + "    ifnull(ht.salida,'00:00:00') as salida\n"
@@ -30,6 +30,7 @@ public class HorarioDao {
                 Horario c = new Horario();
                 // ESTOS SON LOS ENCABEZADOS DE LA COLUMNA DE LA TABLA EN MYSQL
                 c.setId_usuario(s.rs.getInt("id"));
+                c.setAlias(s.rs.getString("alias"));
                 c.setNombre(s.rs.getString("nombre"));
                 c.setDescripcion(s.rs.getString("horario"));
                 c.setHora_entrada(s.rs.getString("entrada"));
@@ -42,13 +43,14 @@ public class HorarioDao {
                     // ESTOS SON LOS ENCABEZADOS DE LA COLUMNA DE LA TABLA
 //                    + "<th>Id</th>"
                     + "<th style='padding-left: 5px; padding-right: 16px;'>Id</th>"
+                    + "<th style='padding-left: 5px; padding-right: 50px;'>Alias</th>"
                     + "<th style='padding-left: 6px; padding-right: 175px;'>Nombre</th>"
                     + "<th style='padding-left: 0px; padding-right: 94px;'>Horario</th>"
                     + "<th style='padding-left: 0px; padding-right: 0px;'>Entrada</th>"
                     + "<th style='padding-left: 0px; padding-right: 8px;'>Salida</th>"
                     + "</tr></thead>"
                     + "<tbody>"
-                    + "<tr><td colspan='5'>"
+                    + "<tr><td colspan='6'>"
                     + "<div class='innerb'>"
                     + "<table class='striped bordered highlight'>"
                     + "<tbody>";
@@ -58,6 +60,7 @@ public class HorarioDao {
                 renglones += ""
                         + "<tr id='" + c.getId_usuario() + "' class='renglon1 renglon'>"
                         + "<td>" + c.getId_usuario() + "</td>"
+                        + "<td>" + c.getAlias()+ "</td>"
                         + "<td class='get_usuarioName'>" + c.getNombre() + "</td>"
                         + "<td class='get_horarioName'>" + c.getDescripcion()+ "</td>"
                         + "<td>" + c.getHora_entrada()+ "</td>"

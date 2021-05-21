@@ -16,6 +16,7 @@ public class Horario {
     private String turno;
 
     private String nombre;
+    private String alias;
     private String puesto;
 
     public Horario() {
@@ -123,6 +124,14 @@ public class Horario {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
     
 }
