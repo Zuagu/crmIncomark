@@ -12,7 +12,7 @@
 
 
         <!--ICONS PARA MATERIALIZE-->
-        <link rel="shortcut icon" href="http://leimihost.com/mx/images/favicon.ico" />
+        <link rel="shortcut icon" href="image/logoInco.fw.png" />
         <link rel="stylesheet" type="text/css" href="css/arcade-style-frame.css" media="screen">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--ICONS PARA MATERIALIZE-->
