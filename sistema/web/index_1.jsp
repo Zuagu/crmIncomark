@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SICSA CALLCENTER</title>
         <!--icono de la pestaña del explorador-->
-        <link rel="shortcut icon" href="image/logoSicsa/icon.png">
+        <link rel="shortcut icon" href="image/logoInco.fw.png">
         <link rel="apple-touch-icon" href="">
         <link href="css/css/icons-material.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
@@ -17,7 +17,7 @@
         <div class="container" id="container">
             <div class="form-container sign-up-container">
                 <form id="solicitud"  name="solicitud" action="/sistema/solicitud.jsp" method="post">
-                    <img class="width_10" src="image/logoSicsa/logo.png">
+                    <img  width="100%" src="image/incomark.png">
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -34,8 +34,8 @@
             <div class="form-container sign-in-container">
                 <form id="login" class="" style="" name="login" action="/sistema/main.jsp" method="post">
                     <input id="ip" type="hidden">
-                    <input id="id_perfil" type="hidden" value="2">
-                    <img class="width_10" src="image/logoSicsa/logo.png">
+                    <input id="id_perfil" name="id_perfil" type="hidden" value="2">
+                    <img width="100%" src="image/incomark.png">
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
