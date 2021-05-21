@@ -128,6 +128,7 @@ function select_horarios() {
         url: '/sistema/ManageUsuario', type: 'POST',
         data: {accion: "select_lista_horarios"},
         success: function (ress) {
+            console.log(' hora',ress);
             horarios = JSON.parse(ress);
 //            console.log(horarios);
         }
@@ -135,12 +136,11 @@ function select_horarios() {
 }
 $("#horario").click(function () {
     $('#modal_schedules').modal("open");
+    console.log('Horarios ',horarios);
     $('#h_name_user').text(users[index_pos].nombre);
     $("#select_schedules").empty();
     for (var i in horarios) {
-        if (horarios[i].tipo_admin === users[index_pos].f_administrativo) {
-            $("#select_schedules").append('<option value="' + horarios[i].descripcion + '">' + horarios[i].descripcion + '</option>');
-        }
+        $("#select_schedules").append('<option value="' + horarios[i].descripcion + '">' + horarios[i].descripcion + '</option>');
     }
     $.ajax({
         url: '/sistema/ManageUsuario', type: 'POST',
