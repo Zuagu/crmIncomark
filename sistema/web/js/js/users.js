@@ -48,6 +48,15 @@ window.onload = function () {
     select_usuarios('table_user');
     select_horarios();
 };
+
+$("#gestor_call_center").click( function () {
+    $("#modal_nuevo_usuario").modal("open");
+    $("#modal_tipo_usuarios").modal("close");
+});
+$("#gestor_domiciliario").click( function () {
+    $("#modal_nuevo_usuario_domiciliario").modal("open");
+});
+
 // pintar datos del usuarios en el modal =========================================================================================================
 function print_data_user_modal(index_pos) {
     $(".cont_img").css('background-image', 'url("image/icon-user.png")');
@@ -496,12 +505,52 @@ $("#btn_add_user").click(function () {
         },
         error: function (error) {
             console.log(error);
-
             $("#sms_agregado").empty();
             $("#sms_agregado").append(error.responseText);
         }
     });
 });
+
+$("#btn_add_user_dom").click(function () {
+    $.ajax({
+        url: 'ControllerUsuario',
+        type: 'POST',
+        dataType: "json",
+        data: {
+            action: "add_user_dom",
+            nombre_m: $("#nombre_m_dom").val(),
+            alias_m: $("#alias_m_dom").val(),
+            telefono_m: $("#telefono_m_dom").val(),
+            celular_m: $("#celular_m_dom").val(),
+            email_m: $("#email_m_dom").val(),
+            estado_m: $("#estado_dom").val(),
+            localidad_m: $("#localidad_dom").val(),
+            edad_m: $("#edad_dom").val(),
+            
+            sexo_m: $("#sexo_m").val(),
+            puesto_m: $("#puesto_m").val(),
+            jefe_m: $("#jefe_m").val()
+        },
+        success: function (ress) {
+            console.log(ress);
+            console.log(ress['mensaje']);
+            if (ress.response === 'ok') {
+                $("#nombre_m").val('');
+                $("#sms_agregado").append(ress['mensaje']);
+            } else {
+                $("#sms_agregado").empty();
+                $("#sms_agregado").append(ress['mensaje']);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            $("#sms_agregado").empty();
+            $("#sms_agregado").append(error.responseText);
+        }
+    });
+});
+
+
 $('#modal_nuevo_usuario input').click( function () {
     $("#sms_agregado").empty();
 });
@@ -517,7 +566,7 @@ function hide_inactives() {
 }
 ;
 
-function select_puestos_disponobles() {
+function select_puestos_disponbles() {
     let params = {
         action: 'select_puestos_disponobles'
     };
@@ -527,6 +576,7 @@ function select_puestos_disponobles() {
         data: params,
         dataType: "json",
         success: function (response) {
+            console.log(response);
 //            console.log(response);
 
         },

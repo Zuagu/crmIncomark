@@ -20,7 +20,8 @@
         <div class="row">
             <div class="col s10 m10 l10 offset-s1 options offset-m1 offset-l1 right-align">
                 <div class="col s12 m12 l12">
-                    <a class="waves-effect waves-light btn blue modal-trigger add_user" href="#modal_nuevo_usuario">Nuevo</a>
+                    <a class="waves-effect waves-light btn blue modal-trigger add_user" href="#modal_tipo_usuarios">Nuevo</a>
+                    <!--<a class="waves-effect waves-light btn blue modal-trigger add_user" href="#modal_nuevo_usuario">Nuevo</a>-->
                 </div>
             </div>
 
@@ -423,7 +424,7 @@
                         <h5 class="center-align"><b>Nuevo Usuario</b></h5>
                         <h6 id="sms_agregado"class="center-align"></h6>
                     </div>
-                    
+
                     <div class="col s12 m10 l10 offset-l1 offset-s1">
                         <div class="input-field col s6">
                             <input  id="nombre_m" type="text" class="validate">
@@ -474,6 +475,107 @@
                 </div>
             </div>
         </div>
+        <div id="modal_nuevo_usuario_domiciliario" class="modal">
+            <div class="modal-content center-align">
+                <div class="row">
+                    <div class="col s12 m10 offset-m1">
+                        <h5 class="center-align"><b>Nuevo Domiciliario</b></h5>
+                        <h6 id="sms_agregado_dom"class="center-align"></h6>
+                    </div>
+
+                    <div class="col s12 m10 l10 offset-l1 offset-s1">
+                        <div class="input-field col s6">
+                            <input  id="nombre_m_dom" type="text" class="validate">
+                            <label for="nombre_m_dom">Nombre</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input  id="alias_m_dom" type="text" class="validate">
+                            <label for="alias_m_dom">Alias</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input  id="telefono_m_dom" type="text" class="validate">
+                            <label for="telefono_m_dom">Telefono</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="celular_m_dom" type="text" class="validate">
+                            <label for="celular_m_dom">Celular</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="email_m_dom" type="text" class="validate">
+                            <label for="email_m_dom">Email</label>
+                        </div>
+                        
+                        
+                        <div class="input-field col s6">
+                            <input id="estado_dom" type="text" class="validate">
+                            <label for="estado_dom">Estado</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="localidad_dom" type="text" class="validate">
+                            <label for="localidad_dom">Localidad</label>
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <input id="edad_dom" type="text" class="validate">
+                            <label for="edad_dom">Edad</label>
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <select id="sexo_m_dom">
+                                <option value="H">HOMBRE</option>
+                                <option value="M">MUJER</option>
+                            </select>
+                            <label>Sexo</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="puesto_m_dom">
+                                <option value="H">OPERACION</option>
+                                <option value="M">ADMINISTRATIVO</option>
+                            </select>
+                            <label>Puesto</label>
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <select id="jefe_m_dom">
+                            </select>
+                            <label>Jefe inmediato</label>
+                        </div>
+                        <div class="col s10 offset-s1 right-align box_btn">
+                            <a class="waves-effect modal-close waves-teal red btn-small">Cancelar</a>
+                            <a id="btn_add_user_dom" class="waves-effect waves-teal blue btn-small">Crear</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="modal_tipo_usuarios" class="modal">
+
+                <div class="modal-content">
+                    <div class="col s12 m12 l12 input-field center">
+                        <h3>Tipo de usuario</h3>
+                    </div>
+                    
+                    <div class="col s12 m12 l12 input-field center">
+                        <div id="gestor_call_center" class="col s4 opcion_user valign-wrapper offset-s1 blue hoverable">
+                            <h4 class="center-align">Call Center</h4>
+                        </div>
+                        <div id="gestor_domiciliario" class="col s4 offset-s2 opcion_user valign-wrapper blue hoverable">
+                            <h4 class="center-align">Domiciliario</h4>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+
+
+
         <script src="js/js/jquery-2.2.4.min.js"></script>
         <script src="js/js/materialize.min.js"></script>
         <script src="js/js/menu.js"></script>
