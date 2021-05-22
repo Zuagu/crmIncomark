@@ -115,6 +115,7 @@
         </nav>-->
 
         <div class="container" style="padding-top: 40px;">
+            <div><h5 class="center">HORARIOS</h5></div>
             <div  id="div_datos" class="datagrid col s12 z-depth-2"></div>
             <div class="row">
                 <div class="col s12 center-align">
