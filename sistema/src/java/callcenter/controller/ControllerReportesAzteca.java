@@ -257,6 +257,16 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if (action.equals("select_reporte_visitas")) {
+            String Respuesta = ModelReportesAzteca.select_reporte_visitas(
+            request.getParameter("territorio")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
     }
     
     @Override

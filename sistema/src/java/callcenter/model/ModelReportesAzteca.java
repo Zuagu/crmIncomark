@@ -1123,5 +1123,59 @@ public class ModelReportesAzteca {
         }
 
     }
+    public static String select_reporte_visitas(String territorio) {
+        try {
+
+
+            StartConexion ic = new StartConexion();
+            String sql = "CALL azteca_reporte_visitas_territorio();";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray usuarios = new JSONArray();
+            while (ic.rs.next()) {
+           // 
+            JSONObject objUsuario = new JSONObject();
+            objUsuario.put("TERRITORIO",ic.rs.getString("TERRITORIO"));
+            objUsuario.put("gestor",ic.rs.getString("gestor"));
+            objUsuario.put("PP",ic.rs.getString("PP"));
+            objUsuario.put("CT",ic.rs.getString("CT"));
+            objUsuario.put("CLL",ic.rs.getString("CLL"));
+            objUsuario.put("SG",ic.rs.getString("SG"));
+            objUsuario.put("PI",ic.rs.getString("PI"));
+            objUsuario.put("PT",ic.rs.getString("PT"));
+            objUsuario.put("NO",ic.rs.getString("NO"));
+            objUsuario.put("FI",ic.rs.getString("FI"));
+            objUsuario.put("PC",ic.rs.getString("PC"));
+            objUsuario.put("PA",ic.rs.getString("PA"));
+            objUsuario.put("RE",ic.rs.getString("RE"));
+            objUsuario.put("ND",ic.rs.getString("ND"));
+            objUsuario.put("NP",ic.rs.getString("NP"));
+            objUsuario.put("BZ",ic.rs.getString("BZ"));
+            objUsuario.put("NE",ic.rs.getString("NE"));
+            objUsuario.put("CN",ic.rs.getString("CN"));
+            objUsuario.put("NL",ic.rs.getString("NL"));
+            objUsuario.put("NC",ic.rs.getString("NC"));
+            objUsuario.put("SD",ic.rs.getString("SD"));
+            objUsuario.put("SG",ic.rs.getString("SG"));
+            objUsuario.put("suma",ic.rs.getString("suma"));
+            objUsuario.put("cuentas",ic.rs.getString("cuentas"));
+            objUsuario.put("total_general",ic.rs.getString("total_general"));
+            objUsuario.put("color",ic.rs.getString("color"));
+            
+            usuarios.add( objUsuario);
+//                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
+
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return usuarios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }    
+        
 
 }
