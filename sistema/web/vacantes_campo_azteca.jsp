@@ -76,19 +76,11 @@
                             </div>
                             <div id="promesado_diario_org" class="col s12 m12 l12">
                                 <div id="datos_tabla_promesado_diario_org" class="col s12 z-depth-2 dt">
+                                    <div id="cargando_datos" class="progress">
+                                        <div class="indeterminate"></div>
+                                    </div>
                                     <table class="highlight">
-                                        <thead class="blue">
-                                            <tr class="text-white">
-                                                <td><b>ZONA</b></td>
-                                                <td><b>LOCALIDAD</b></td>
-                                                <td><b>PUESTO</b></td>
-                                                <td><b>CUENTAS ASIGNADAS A LA VACANTE</b></td>
-                                                <td><b>VACANTES</b></td>
-                                                <td><b>SALDO</b></td>
-                                                <td><b>% DE CUENTAS POR ZONA</b></td>
-                                                <td><b>% DE SALDO POR ZONA</b></td>
-                                            </tr>
-                                        </thead>
+                                        
                                         <tbody id="tbody_tabla_promesado_diario_org">
                                         </tbody>
                                     </table>
@@ -105,6 +97,6 @@
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/menu.js"></script>
-        <script type="text/javascript" src="js/js/reportes.js"></script>
+        <script type="text/javascript" src="js/js/vacantes_campo.js"></script>
     </body>
 </html>

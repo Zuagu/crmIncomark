@@ -20,11 +20,12 @@ function select_usuarios(_box) {
 
 function pintar_tabla_usuarios(user_data, _box) {
     $("#" + _box).empty();
-    var row_print = '<table id="tabla_usuarios" class="highlight striped"><thead><tr><th>Id</th><th>Nombre</th><th>Puesto</th><th>Fecha Alta</th><th>Celular</th><th>Jefe Inmediato</th><th>Estatus</th></thead><tbody>';
+    var row_print = '<table id="tabla_usuarios" class="highlight striped"><thead><tr><th>Id</th><th>Nombre</th><th>Alias</th><th>Puesto</th><th>Fecha Alta</th><th>Celular</th><th>Jefe Inmediato</th><th>Estatus</th></thead><tbody>';
     for (var i in user_data) {
         row_print += '<tr id="' + i + '" class="row_user ' + user_data[i].active + '" style="' + (user_data[i].f_active == 0 ? "display:none; background-image: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 255, 255, 0.77), rgba(255, 0, 0, 0.2));" : "") + '">';
         row_print += '<td>' + user_data[i].id + '</td>';
         row_print += '<td>' + user_data[i].nombre + '<br>' + user_data[i].sucursal + '</td>';
+        row_print += '<td>' + user_data[i].alias + '</td>';
         row_print += '<td>' + user_data[i].puesto + '</td>';
         row_print += '<td>' + user_data[i].fecha_alta + '</td>';
         row_print += '<td>' + user_data[i].celular + '</td>';
@@ -35,7 +36,7 @@ function pintar_tabla_usuarios(user_data, _box) {
     }
     $("#" + _box).append(row_print);
     row_print += '</tbody></table>';
-    console.log(users);
+//    console.log(users);
 //    console.log(jefes);
 
 }
@@ -49,12 +50,17 @@ window.onload = function () {
     select_horarios();
 };
 
-$("#gestor_call_center").click( function () {
+$("#gestor_call_center").click(function () {
     $("#modal_nuevo_usuario").modal("open");
     $("#modal_tipo_usuarios").modal("close");
+    select_puestos_disponbles();
+    select_jefes_puesto();
 });
-$("#gestor_domiciliario").click( function () {
+$("#gestor_domiciliario").click(function () {
     $("#modal_nuevo_usuario_domiciliario").modal("open");
+    $("#modal_tipo_usuarios").modal("close");
+    select_puestos_disponbles();
+    select_jefes_puesto();
 });
 
 // pintar datos del usuarios en el modal =========================================================================================================
@@ -137,7 +143,7 @@ function select_horarios() {
         url: '/sistema/ManageUsuario', type: 'POST',
         data: {accion: "select_lista_horarios"},
         success: function (ress) {
-            console.log(' hora',ress);
+//            console.log(' hora',ress);
             horarios = JSON.parse(ress);
 //            console.log(horarios);
         }
@@ -145,7 +151,7 @@ function select_horarios() {
 }
 $("#horario").click(function () {
     $('#modal_schedules').modal("open");
-    console.log('Horarios ',horarios);
+    console.log('Horarios ', horarios);
     $('#h_name_user').text(users[index_pos].nombre);
     $("#select_schedules").empty();
     for (var i in horarios) {
@@ -465,43 +471,54 @@ $("#modal_user_puestos").delegate('tbody tr', 'click', function () {
 });
 // funcion de Agregar nuevo Usuario =======================================================================================================
 $("#btn_add_user").click(function () {
+//    let d = {
+//        action: "add_user",
+//        nombre_m: $("#nombre_m").val(),
+//        alias_m: $("#alias_m").val(),
+//        telefono_m: $("#telefono_m").val(),
+//        celular_m: $("#celular_m").val(),
+//        email_m: $("#email_m").val(),
+//        edad_m: $("#edad_m").val(),
+//        sexo_m: $("#sexo_m").val(),
+//        puesto_m: $("#puesto_m").val(),
+//        jefe_m: $("#jefe_m").val()
+//    };
+//    
     $.ajax({
         url: 'ControllerUsuario',
         type: 'POST',
         dataType: "json",
         data: {
             action: "add_user",
+            tipo_user_m: 1,
             nombre_m: $("#nombre_m").val(),
             alias_m: $("#alias_m").val(),
             telefono_m: $("#telefono_m").val(),
             celular_m: $("#celular_m").val(),
             email_m: $("#email_m").val(),
+            edad_m: $("#edad_m").val(),
             sexo_m: $("#sexo_m").val(),
             puesto_m: $("#puesto_m").val(),
             jefe_m: $("#jefe_m").val()
-
         },
         success: function (ress) {
             console.log(ress);
             console.log(ress['mensaje']);
             if (ress.response === 'ok') {
-                $("#nombre_m").val('');
-                $("#alias_m").val('');
-                $("#telefono_m").val('');
-                $("#celular_m").val('');
-                $("#email_m").val('');
-                $("#sexo_m").val('');
-                $("#puesto_m").val('');
-                $("#jefe_m").val('');
+//                $("#nombre_m").val('');
+//                $("#alias_m").val('');
+//                $("#telefono_m").val('');
+//                $("#celular_m").val('');
+//                $("#email_m").val('');
+//                $("#sexo_m").val('');
+//                $("#puesto_m").val('');
+//                $("#jefe_m").val('');
                 $("#sms_agregado").empty();
                 $("#sms_agregado").append(ress['mensaje']);
-
             } else {
                 $("#sms_agregado").empty();
                 $("#sms_agregado").append(ress['mensaje']);
-
             }
-
         },
         error: function (error) {
             console.log(error);
@@ -517,29 +534,31 @@ $("#btn_add_user_dom").click(function () {
         type: 'POST',
         dataType: "json",
         data: {
-            action: "add_user_dom",
+            action: "add_user_visitador",
+            tipo_user_m: 2,
             nombre_m: $("#nombre_m_dom").val(),
             alias_m: $("#alias_m_dom").val(),
             telefono_m: $("#telefono_m_dom").val(),
             celular_m: $("#celular_m_dom").val(),
             email_m: $("#email_m_dom").val(),
+            edad_m: $("#edad_dom").val(),
+
             estado_m: $("#estado_dom").val(),
             localidad_m: $("#localidad_dom").val(),
-            edad_m: $("#edad_dom").val(),
-            
-            sexo_m: $("#sexo_m").val(),
-            puesto_m: $("#puesto_m").val(),
-            jefe_m: $("#jefe_m").val()
+
+            sexo_m: $("#sexo_m_dom").val(),
+            puesto_m: $("#puesto_m_dom").val(),
+            jefe_m: $("#jefe_m_dom").val()
         },
         success: function (ress) {
             console.log(ress);
             console.log(ress['mensaje']);
             if (ress.response === 'ok') {
-                $("#nombre_m").val('');
-                $("#sms_agregado").append(ress['mensaje']);
+                $("#nombre_m_dom").val('');
+                $("#sms_agregado_dom").append(ress['mensaje']);
             } else {
-                $("#sms_agregado").empty();
-                $("#sms_agregado").append(ress['mensaje']);
+                $("#sms_agregado_dom").empty();
+                $("#sms_agregado_dom").append(ress['mensaje']);
             }
         },
         error: function (error) {
@@ -551,7 +570,7 @@ $("#btn_add_user_dom").click(function () {
 });
 
 
-$('#modal_nuevo_usuario input').click( function () {
+$('#modal_nuevo_usuario input').click(function () {
     $("#sms_agregado").empty();
 });
 // funcion de filtro =====================================================================================================================
@@ -576,9 +595,50 @@ function select_puestos_disponbles() {
         data: params,
         dataType: "json",
         success: function (response) {
+            $("#puesto_m").empty();
+            $("#puesto_m_dom").empty();
+
+            $("#puesto_m").append(`<option value="0">Selecciona</option>`);
+            $("#puesto_m_dom").append(`<option value="0">Selecciona</option>`);
+
+            for (let item of response) {
+                $("#puesto_m").append(`<option value="${item.id_puesto}">${item.puesto}</option>`);
+                $("#puesto_m_dom").append(`<option value="${item.id_puesto}">${item.puesto}</option>`);
+            }
+            $('select').formSelect();
             console.log(response);
 //            console.log(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
 
+
+function select_jefes_puesto() {
+    let params = {
+        action: 'select_jefes_puesto'
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerUsuario",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            $("#jefe_m_dom").empty();
+            $("#jefe_m").empty();
+
+            $("#jefe_m_dom").append(`<option value="0">Selecciona</option>`);
+            $("#jefe_m").append(`<option value="0">Selecciona</option>`);
+
+            for (let item of response) {
+                $("#jefe_m_dom").append(`<option value="${item.id}">${item.nombre}</option>`);
+                $("#jefe_m").append(`<option value="${item.id}">${item.nombre}</option>`);
+            }
+            $('select').formSelect();
+            console.log(response);
+//            console.log(response);
         },
         error: function (error) {
             console.log(error);

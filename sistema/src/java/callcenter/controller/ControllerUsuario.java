@@ -90,11 +90,36 @@ public class ControllerUsuario extends HttpServlet {
         }
         else if (action.equals("add_user")) {
             String Respuesta = ModelUsuario.add_user(
+                    Integer.parseInt(request.getParameter("tipo_user_m")),
                     request.getParameter("nombre_m"),
                     request.getParameter("alias_m"),
                     request.getParameter("telefono_m"),
                     request.getParameter("celular_m"),
                     request.getParameter("email_m"),
+                    request.getParameter("edad_m"),
+                    request.getParameter("sexo_m"),
+                    request.getParameter("puesto_m"),
+                    request.getParameter("jefe_m")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("add_user_visitador")) {
+            String Respuesta = ModelUsuario.add_user_visitador(
+                    Integer.parseInt(request.getParameter("tipo_user_m")),
+                    request.getParameter("nombre_m"),
+                    request.getParameter("alias_m"),
+                    request.getParameter("telefono_m"),
+                    request.getParameter("celular_m"),
+                    request.getParameter("email_m"),
+                    request.getParameter("edad_m"),
+                    
+                    request.getParameter("estado_m"),
+                    request.getParameter("localidad_m"),
+                    
                     request.getParameter("sexo_m"),
                     request.getParameter("puesto_m"),
                     request.getParameter("jefe_m")
@@ -107,6 +132,14 @@ public class ControllerUsuario extends HttpServlet {
         }
         else if (action.equals("select_puestos_disponobles")) {
             String Respuesta = ModelUsuario.select_puestos_disponobles();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if (action.equals("select_jefes_puesto")) {
+            String Respuesta = ModelUsuario.select_jefes_puesto();
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
             writer.print(Respuesta);

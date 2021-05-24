@@ -225,7 +225,7 @@ public class ModelUsuario {
     public static String select_puestos_disponobles() {
         try {
             StartConexion inicioConexion = new StartConexion();
-            String sql = "select id_puesto,puesto from sic_puestos;";
+            String sql = "select id_puesto, puesto from sic_puestos;";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
             
@@ -233,6 +233,29 @@ public class ModelUsuario {
             while (inicioConexion.rs.next()) {
                 JSONObject puesto = new JSONObject();
                 puesto.put("id_puesto", inicioConexion.rs.getInt("id_puesto"));
+                puesto.put("puesto", inicioConexion.rs.getString("puesto"));
+                puestos.add(puesto);
+            }
+            inicioConexion.conn.close();
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            return puestos.toJSONString();
+        } catch (SQLException ex) {
+            return "SQL Code: " + ex;
+        }
+    }
+    //==========================================================================
+    public static String select_jefes_puesto() {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            String sql = "select id, nombre from arcade_usuarios where id_puesto in (1,2,3,4,5,6,7,8,9,11,18) and f_active = 1;";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+            
+            JSONArray puestos = new JSONArray();
+            while (inicioConexion.rs.next()) {
+                JSONObject puesto = new JSONObject();
+                puesto.put("id", inicioConexion.rs.getInt("id"));
                 puesto.put("nombre", inicioConexion.rs.getString("nombre"));
                 puestos.add(puesto);
             }
@@ -274,11 +297,64 @@ public class ModelUsuario {
     }
 
     //==========================================================================
-    public static String add_user(String nom, String alias, String tel, String cel, String mail, String sexo, String puesto, String jefe) {
+    public static String add_user(int tipo_user, String nom, String alias, String tel, String cel, String mail, String edad, String sexo, String puesto, String jefe) {
+        try {
+            StartConexion inicioConexion = new StartConexion();
+            System.out.println("tipo: " + tipo_user);
+            System.out.println("nom: " + nom);
+            System.out.println("alias: " + alias);
+            System.out.println("tel: " + tel);
+            System.out.println("cel: " + cel);
+            System.out.println("mail: " + mail);
+            System.out.println("edad: " + edad);
+            System.out.println("sexo: " + sexo);
+            System.out.println("puesto: " + puesto);
+            System.out.println("jefe: " + jefe);
+            
+            /* 
+            _tipo int,
+            _nombre varchar(100),
+            _alias varchar(45),
+            _id_sucursal int,
+            _id_puesto int,
+            _id_jefe_inmediato int,
+            _sexo varchar(2),
+            _telefono varchar(45),
+            _celular varchar(45),
+            _email varchar(60),
+            _estado TEXT,
+            _localidad TEXT,
+            _territorio TEXT,
+            _id_reclutador int
+            */
+            /*                                       |                |              |               |              */
+            String sql = "CALL arcade_insert_usuario(" + tipo_user + ", '" + nom + "','" + alias + "', 1, " + puesto + ", " + jefe + ",'" + sexo + 
+                    "','" + tel + "','" + cel + "','" + mail + "', 'SIN ESTADO', 'SIN LOCALIDAD', 'SIN TERRITORIO', 211);";
+            System.out.println(sql);
+            inicioConexion.rs = inicioConexion.st.executeQuery(sql);
+
+            JSONObject gestor = new JSONObject();
+            // mensaje, response
+            while (inicioConexion.rs.next()) {
+                gestor.put("mensaje", inicioConexion.rs.getString("mensaje"));
+                gestor.put("response", inicioConexion.rs.getString("response"));
+                
+            }
+            inicioConexion.conn.close();
+            inicioConexion.rs.close();
+            inicioConexion.st.close();
+            return gestor.toJSONString();
+        } catch (SQLException ex) {
+            return "SQL Code: " + ex;
+        }
+    }
+    //==========================================================================
+    public static String add_user_visitador(int tipo_user, String nom, String alias, String tel, String cel, String mail, String edad, String estado, String localidad, String sexo, String puesto, String jefe) {
         try {
             StartConexion inicioConexion = new StartConexion();
 
-            String sql = "CALL arcade_insert_usuario('" + nom + "','" + alias + "', 1, 24, 1,'" + sexo + "','" + tel + "','" + cel + "','" + mail + "', 1);";
+            String sql = "CALL arcade_insert_usuario(" + tipo_user + ", '" + nom + "','" + alias + "', 1, " + puesto + ", " + jefe + ",'" + sexo + 
+                    "','" + tel + "','" + cel + "','" + mail + "', '" + estado + "', '" + localidad + "', 'SIN TERRITORIO', 211);";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
 

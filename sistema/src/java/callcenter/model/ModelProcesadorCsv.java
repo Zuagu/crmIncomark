@@ -119,7 +119,7 @@ public class ModelProcesadorCsv {
             return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
         }
     }
-    
+
     public static String cargar_pagos_azteca(String dirFile) {
         try {
             // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
@@ -156,7 +156,7 @@ public class ModelProcesadorCsv {
             return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
         }
     }
-    
+
     public static String cargar_gestiones_azteca(String dirFile) {
         try {
             // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
@@ -179,7 +179,7 @@ public class ModelProcesadorCsv {
 //            System.out.println(sql_import_csv);
             ic.st.executeUpdate("truncate azteca_carga_gestiones;");
             ic.st.executeUpdate(sql_import_csv);
-            
+
             ic.st.executeQuery("CALL azteca_completar_carga_gestiones();");
 
             ic.st.close();
@@ -189,7 +189,7 @@ public class ModelProcesadorCsv {
             return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
         }
     }
-    
+
     public static String cargar_equipos_azteca(String dirFile) {
         try {
             // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
@@ -211,6 +211,84 @@ public class ModelProcesadorCsv {
             ic.st.close();
             ic.conn.close();
             return "La base a sido cargada corectamente";
+        } catch (SQLException e) {
+            return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
+        }
+    }
+
+    public static String cargar_base_visitas(String dirFile) {
+        try {
+            // ID_PAGO, ANIO, SEMANA, DIA, PAIS, CANAL, SUCURSAL, FOLIO, RECUPERACION_CAPITAL, RECUPERACION_MORATORIOS, SALDO_ACTUAL, MORATORIO, FECHA_GESTION, CARGO_AUTOMATICO
+            StartConexion ic = new StartConexion();
+            String sql_import_csv = "LOAD DATA LOCAL INFILE '" + dirFile + "' INTO TABLE azteca_base_visitas \n"
+                    + "FIELDS TERMINATED BY ',' \n"
+                    + "LINES TERMINATED BY '\\n' \n"
+                    + "IGNORE 1 ROWS (@col1, @col2, @col3, @col4, @col5, @col6, @col7, @col8, @col9, @col10,\n"
+                    + "@col11, @col12, @col13, @col14, @col15, @col16, @col17, @col18, @col19, @col20,\n"
+                    + "@col21, @col22, @col23, @col24, @col25, @col26, @col27, @col28, @col29, @col30,\n"
+                    + "@col31, @col32, @col33, @col34, @col35, @col36, @col37, @col38, @col39, @col40,\n"
+                    + "@col41, @col42, @col43, @col44, @col45, @col46, @col47, @col48, @col49, @col50,\n"
+                    + "@col51)\n"
+                    + "set \n"
+                    + "CLIENTE = @col1,\n"
+                    + "MICRO = @col2,\n"
+                    + "GRUPO = @col3,\n"
+                    + "PLAN_DE_PAGO = @col4,\n"
+                    + "CAMPANA = @col5,\n"
+                    + "ZONA = @col6,\n"
+                    + "REGION = @col7,\n"
+                    + "GERENCIA = @col8,\n"
+                    + "ETAPA = @col9,\n"
+                    + "SALDO_REAL_CARTERA = @col10,\n"
+                    + "DESCUENTO = @col11,\n"
+                    + "DATOS = @col12,\n"
+                    + "FECHA = @col13,\n"
+                    + "VISITADA = @col14,\n"
+                    + "RESULTADO = @col15,\n"
+                    + "TELEFONO = @col16,\n"
+                    + "GESTION = @col17,\n"
+                    + "SL_PERFIL = @col18,\n"
+                    + "PRODUCTO = @col19,\n"
+                    + "DESPACHO = @col20,\n"
+                    + "VISITA = @col21,\n"
+                    + "NOMBRE = @col22,\n"
+                    + "RFC = @col23,\n"
+                    + "DIRECCION = @col24,\n"
+                    + "NUMERO = @col25,\n"
+                    + "NUMERO_INTERIOR = @col26,\n"
+                    + "CP = @col27,\n"
+                    + "COLONIA = @col28,\n"
+                    + "LOCALIDAD = @col29,\n"
+                    + "ESTADO = @col30,\n"
+                    + "ATRASO = @col31,\n"
+                    + "SALDO = @col32,\n"
+                    + "MORATORIOS = @col33,\n"
+                    + "X3 = @col34,\n"
+                    + "DIA = @col35,\n"
+                    + "FECHA_PAGO = @col36,\n"
+                    + "COORDENADAS = @col37,\n"
+                    + "REFERENCIAS = @col38,\n"
+                    + "AVAL = @col39,\n"
+                    + "DIRECCION_AVAL = @col40,\n"
+                    + "NUMERO_EXT_AVAL = @col41,\n"
+                    + "CP_AVAL = @col42,\n"
+                    + "COLONIA_AVAL = @col43,\n"
+                    + "LOCALIDAD_AVAL = @col44,\n"
+                    + "ESTADO_AVAL = @col45,\n"
+                    + "DATOS_V = @col46,\n"
+                    + "STATUS = @col47,\n"
+                    + "INT_DE_PAGO = @col48,\n"
+                    + "PRODUCTO_V = @col49,\n"
+                    + "LATITUD = @col50,\n"
+                    + "LONGITUD = @col51;";
+            ic.st.executeUpdate("truncate azteca_base_visitas;");
+            System.out.println(sql_import_csv);
+            ic.st.executeUpdate(sql_import_csv);
+            ic.st.executeQuery("CALL azteca_match_datos_visitas();");
+
+            ic.st.close();
+            ic.conn.close();
+            return "La base de visitas ha sido cargada corectamente";
         } catch (SQLException e) {
             return "SQL: Error al ingresar los datos del CSV a la tabla Code Error: " + e;
         }

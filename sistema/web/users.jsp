@@ -446,24 +446,30 @@
                             <input id="email_m" type="text" class="validate">
                             <label for="email_m">Email</label>
                         </div>
+                        
+                        <div class="input-field col s6">
+                            <input id="edad_m" type="text" class="validate">
+                            <label for="edad_m">Edad</label>
+                        </div>
+                        
                         <div class="input-field col s6">
                             <select id="sexo_m">
                                 <option value="H">HOMBRE</option>
                                 <option value="M">MUJER</option>
                             </select>
-                            <label>Sexo</label>
+                            <label for="sexo_m">Sexo</label>
                         </div>
                         <div class="input-field col s6">
                             <select id="puesto_m">
                                 <option value="H">OPERACION</option>
                                 <option value="M">ADMINISTRATIVO</option>
                             </select>
-                            <label>Puesto</label>
+                            <label for="puesto_m">Puesto</label>
                         </div>
                         <div class="input-field col s6">
                             <select id="jefe_m">
                             </select>
-                            <label>Jefe inmediato</label>
+                            <label for="jefe_m">Jefe inmediato</label>
                         </div>
                         <div class="col s10 offset-s1 right-align box_btn">
                             <a class="waves-effect modal-close waves-teal red btn-small">Cancelar</a>
@@ -505,6 +511,10 @@
                             <label for="email_m_dom">Email</label>
                         </div>
                         
+                        <div class="input-field col s6">
+                            <input id="edad_dom" type="text" class="validate">
+                            <label for="edad_dom">Edad</label>
+                        </div>
                         
                         <div class="input-field col s6">
                             <input id="estado_dom" type="text" class="validate">
@@ -515,10 +525,7 @@
                             <label for="localidad_dom">Localidad</label>
                         </div>
                         
-                        <div class="input-field col s6">
-                            <input id="edad_dom" type="text" class="validate">
-                            <label for="edad_dom">Edad</label>
-                        </div>
+                        
                         
                         <div class="input-field col s6">
                             <select id="sexo_m_dom">
@@ -536,8 +543,7 @@
                         </div>
                         
                         <div class="input-field col s6">
-                            <select id="jefe_m_dom">
-                            </select>
+                            <select id="jefe_m_dom"></select>
                             <label>Jefe inmediato</label>
                         </div>
                         <div class="col s10 offset-s1 right-align box_btn">

@@ -841,7 +841,7 @@ public class UsuarioDao {
             String resultado = "";
             String sql = "select \n"
                     + "	id,\n"
-                    + "    nombre,\n"
+                    + "    nombre,alias, \n"
                     + "	nombre_puesto(id_puesto) as puesto,\n"
                     + "	DATE_FORMAT(date(fecha_alta), '%Y-%m-%d') as fecha_alta,\n"
                     + "    celular,\n"
@@ -889,6 +889,7 @@ public class UsuarioDao {
                 JSONObject datos = new JSONObject();
                 datos.put("id", s.rs.getInt("id"));
                 datos.put("nombre", s.rs.getString("nombre"));
+                datos.put("alias", s.rs.getString("alias"));
                 datos.put("puesto", s.rs.getString("puesto"));
                 datos.put("fecha_alta", s.rs.getString("fecha_alta"));
                 datos.put("celular", s.rs.getString("celular"));

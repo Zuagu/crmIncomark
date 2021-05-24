@@ -5,78 +5,18 @@
  */
 
 window.onload = function () {
-    select_clientes_cartera();
-    select_options_territorios_convenios();
-    select_options_territorios();
-    select_options_zona();
-    $('.contenedor_buscar').addClass('hide');
-    $('#buscar_cuentas').addClass('hide');
+    azteca_select_requerimetos_campo();
+//    select_clientes_cartera();
+//    select_options_territorios_convenios();
+//    select_options_territorios();
+//    select_options_zona();
+//    $('.contenedor_buscar').addClass('hide');
+//    $('#buscar_cuentas').addClass('hide');
 };
 //var reporte_estiones = [];
 
-$('#enviar_gestiones').click(function () {
-    reporte_gestiones_tabla();
-});
-
-$('#obt_promesado_diario').click(function () {
-    reporte_promesado_diario();
-});
-
-$('#obt_promesado_diario_org').click(function () {
-    reporte_promesado_diario_org();
-});
-
-$('#enviar_promesas_incumplidas').click(function () {
-    reporte_promesas_incumplidas_semana();
-});
-
-$('#enviar_convenios').click(function () {
-    azteca_reporte_convenios();
-});
 
 
-$('#enviar_pagos').click(function () {
-    azteca_reporte_pagos();
-});
-
-$('#enviar_tiempos').click(function () {
-    azteca_reporte_operacion();
-});
-
-$('#ver_resumen_gestion').click(function () {
-    $('#ver_lista_gestion').removeClass('hide');
-    $('#ver_resumen_gestion').addClass('hide');
-    $('#datos_tabla_gestiones').addClass('hide');
-    $('#resumen_gestiones').removeClass('hide');
-});
-$('#ver_lista_gestion').click(function () {
-    $('#ver_lista_gestion').addClass('hide');
-    $('#ver_resumen_gestion').removeClass('hide');
-
-    $('#datos_tabla_gestiones').removeClass('hide');
-    $('#resumen_gestiones').addClass('hide');
-});
-
-
-$('#ver_resumen_pagos').click(function () {
-    $('#ver_resumen_pagos').addClass('hide');
-    $('#ver_lista_pagos').removeClass('hide');
-
-    $('#resumen_pagos').removeClass('hide');
-    $('#datos_tabla_pagos').addClass('hide');
-});
-
-$('#ver_lista_pagos').click(function () {
-    $('#ver_lista_pagos').addClass('hide');
-    $('#ver_resumen_pagos').removeClass('hide');
-
-    $('#resumen_pagos').addClass('hide');
-    $('#datos_tabla_pagos').removeClass('hide');
-});
-
-$('#descargar_base').click(function () {
-    descargar_base();
-});
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -85,6 +25,80 @@ $('#descargar_base').click(function () {
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function azteca_select_requerimetos_campo() {
+    let params = {
+        action: 'azteca_select_requerimetos_campo'
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerVacantes",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            $("#tbody_tabla_promesado_diario_org").empty();
+            let tit_sum_zona = {};
+            let orden = [];
+            for (let row of response) {
+
+                if (orden.includes(row.TERRITORIO)) {
+
+                } else {
+                    orden.push(row.TERRITORIO);
+                }
+
+                if (tit_sum_zona[row.TERRITORIO]) {
+//                    console.log('si esta');
+                    tit_sum_zona[row.TERRITORIO].valor += parseFloat(row.SALDO_TOTAL.replace(',', ''));
+                    tit_sum_zona[row.TERRITORIO].cuentas += parseInt(row.CANTIDAD);
+                } else {
+//                    console.log('no esta');
+                    tit_sum_zona[row.TERRITORIO] = {
+                        valor: parseFloat(row.SALDO_TOTAL.replace(',', '')),
+                        cuentas: parseInt(row.CANTIDAD)
+                    };
+                }
+
+
+            }
+//            console.log('jsoninf', tit_sum_zona);
+//            console.log('orden', orden);
+            let col1 = '0';
+
+            for (let item of orden) {
+//                console.log(item);
+                $("#tbody_tabla_promesado_diario_org").append(`<tr class='grey'><th>${item}</th><th></th><th></th><th>${tit_sum_zona[item].cuentas} Cuentas</th><th></th><th>$ ${tit_sum_zona[item].valor.toFixed(2)} MNX</th><th></th> <tr>`);
+                for (let row of response) {
+//                    if (col1 === '0' || col1 !== row.TERRITORIO) {
+//                        col1 = row.TERRITORIO;
+////                    console.log(row.TERRITORIO);
+//                        $("#tbody_tabla_promesado_diario_org").append(`<tr class='grey'><th>${item}</th><th></th><tr>`);
+//                    }
+                     if ( row.TERRITORIO === item ) {
+                         
+                         $("#tbody_tabla_promesado_diario_org").append(`<tr class='blue'>
+                                <th>${row.LOCALIDAD_V}</th><th></th><th></th><th>${row.CANTIDAD} Cuentas</th><th></th><th>$ ${ parseFloat(row.SALDO_TOTAL).toFixed(2)} MNX</th><th></th> </tr>
+                                <tr> <td>Cartero: </td><td>0/${row.CARTEROS}</td><td>0%</td><td>${row.RESULTADO_NA} NA</td><td>${(( parseFloat(row.RESULTADO_NA) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_NA).toFixed(2)}</td><td>% ${ (( parseFloat(row.val_RESULTADO_NA) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }</td> </tr>
+                                <tr> <td>Notificador: </td><td>0/${row.NOTIFICADOR}</td><td>0%</td><td>${row.RESULTADO_AP} AP</td><td>${(( parseFloat(row.RESULTADO_AP) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_AP).toFixed(2)}</td><td>% ${ (( parseFloat(row.val_RESULTADO_AP) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }</td> </tr>
+                                <tr> <td>Cerrador: </td><td>0/${row.CERRADOR}</td><td>0%</td><td>${row.RESULTADO_CCERRADOR} Contacto</td><td>${(( parseFloat(row.RESULTADO_CCERRADOR) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_CCERRADOR).toFixed(2)}</td><td>% ${ ( ( parseFloat(row.val_RESULTADO_CCERRADOR) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }</td> </tr>
+                            `);
+                     }
+                    
+                }
+            }
+
+
+//            console.log(response);
+            $("#cargando_datos").addClass('hide');
+
+        },
+        error: function (error) {
+            console.log(error);
+            $("#cargando_datos").addClass('hide');
+        }
+    });
+}
+
 
 function select_options_territorios() {
     let params = {
@@ -112,34 +126,7 @@ function select_options_territorios() {
         }
     });
 }
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function select_options_territorios_convenios() {
-    let params = {
-        action: 'select_options_territorios_convenios'
-    };
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-            console.log(response);
-            $('#territorio_promesado_diario').empty();
-            $('#territorio_promesado_diario_org').empty();
-            $('#territorio_promesado_diario').append(`<option value="0">Todos</option>`);
-            $('#territorio_promesado_diario_org').append(`<option value="0">Todos</option>`);
-            for (let item of response) {
-                $('#territorio_promesado_diario').append(`<option value="${item}">${item}</option>`);
-                $('#territorio_promesado_diario_org').append(`<option value="${item}">${item}</option>`);
-            }
-            $('select').formSelect();
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 function select_options_zona() {
     let params = {
         action: 'select_options_zona'
@@ -163,452 +150,8 @@ function select_options_zona() {
         }
     });
 }
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function reporte_gestiones_tabla() {
-    let params = {
-        action: 'reporte_gestiones_tabla',
-        desde: $('#desde_gestiones').val(),
-        hasta: $('#hasta_gestiones').val(),
-        territorio: $('#id_ter_gestion').val(),
-        id_despacho: $('#id_etapa_gestion').val()
-    };
-//    console.log('parametros de reporte_gestiones_tabla: ', params);
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-//            console.log(response);
-            $('#tbody_tabla_gestiones').empty();
-            let cantidad = 0;
-            let canal = {};
-            let atraso_maximo = {};
-            let gestor = {};
-            let estatus_cuenta = {};
-            let estatus_llamda = {};
-            let territorio = {};
-            for (let item of response) {
-                if (canal[item.CANAL] >= 0) {
-                    canal[item.CANAL] = canal[item.CANAL] + 1;
-                } else {
-                    canal[item.CANAL] = 1;
-                }
-
-                if (gestor[item.USUARIO] >= 0) {
-                    gestor[item.USUARIO] = gestor[item.USUARIO] + 1;
-                } else {
-                    gestor[item.USUARIO] = 1;
-                }
-
-                if (atraso_maximo[item.ATRASO_MAXIMO] >= 0) {
-                    atraso_maximo[item.ATRASO_MAXIMO] = atraso_maximo[item.ATRASO_MAXIMO] + 1;
-                } else {
-                    atraso_maximo[item.ATRASO_MAXIMO] = 1;
-                }
-
-                if (estatus_cuenta[item.ID_ESTATUS_CUENTA] >= 0) {
-                    estatus_cuenta[item.ID_ESTATUS_CUENTA] = estatus_cuenta[item.ID_ESTATUS_CUENTA] + 1;
-                } else {
-                    estatus_cuenta[item.ID_ESTATUS_CUENTA] = 1;
-                }
-
-                if (estatus_llamda[item.ID_ESTATUS_LLAMADA] >= 0) {
-                    estatus_llamda[item.ID_ESTATUS_LLAMADA] = estatus_llamda[item.ID_ESTATUS_LLAMADA] + 1;
-                } else {
-                    estatus_llamda[item.ID_ESTATUS_LLAMADA] = 1;
-                }
-
-                if (territorio[item.TERRITORIO] >= 0) {
-                    territorio[item.TERRITORIO] = territorio[item.TERRITORIO] + 1;
-                } else {
-                    territorio[item.TERRITORIO] = 1;
-                }
-
-                $('#tbody_tabla_gestiones').append(`<tr>
-                    <td>${item.HORA}</td>
-                    <td>${item.TERRITORIO}</td>
-                    <td>${item.FECHA_LARGA}</td>
-                    <td>${item.CUENTA}</td>
-                    <td>${item.NUMERO_MARCADO}</td>
-                    <td>${item.ID_ESTATUS_LLAMADA}</td>
-                    <td>${item.USUARIO}</td>
-                    <td>${item.GESTION}</td>
-                    <td>${item.DURACION}</td>
-                    <td>${item.RETASO}</td>
-                    <td>${item.PROMESA}</td>
-                    <td>${item.F_PREDICTIVO}</td>
-                    <td>${item.ETAPA}</td>
-                    </tr>`);
-                cantidad = cantidad + 1;
-            }
-//            reporte_estiones.push(canal);
-//            reporte_estiones.push(atraso_maximo);
-//            reporte_estiones.push(gestor);
-//            reporte_estiones.push(estatus_cuenta);
-//            reporte_estiones.push(estatus_llamda);
-//            reporte_estiones.push(territorio);
-//            console.log(reporte_estiones);
-            $('#tb_territorio').empty();
-            for (let item in territorio) {
-                $('#tb_territorio').append(`<tr><td>${item}</td><td>${territorio[item]}</td></tr>`);
-            }
-
-            $('#tb_canal').empty();
-            for (let item in canal) {
-                $('#tb_canal').append(`<tr><td>${item}</td><td>${canal[item]}</td></tr>`);
-            }
-
-            $('#tb_atraso_maximo').empty();
-            for (let item in atraso_maximo) {
-                $('#tb_atraso_maximo').append(`<tr><td>${item}</td><td>${atraso_maximo[item]}</td></tr>`);
-            }
-
-            $('#tb_gestor').empty();
-            for (let item in gestor) {
-                $('#tb_gestor').append(`<tr><td>${item}</td><td>${gestor[item]}</td></tr>`);
-            }
-
-            $('#tb_estatus_cuenta').empty();
-            for (let item in estatus_cuenta) {
-                $('#tb_estatus_cuenta').append(`<tr><td>${item}</td><td>${estatus_cuenta[item]}</td></tr>`);
-            }
-
-            $('#tb_estatus_llamda').empty();
-            for (let item in estatus_llamda) {
-                $('#tb_estatus_llamda').append(`<tr><td>${item}</td><td>${estatus_llamda[item]}</td></tr>`);
-            }
 
 
-            $('#cantidad_gestiones').empty();
-            $('#cantidad_gestiones').append(cantidad + ' Gestiones');
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function azteca_reporte_convenios() {
-    let params = {
-        action: 'azteca_reporte_convenios',
-        desde: $('#desde_convenios').val(),
-        hasta: $('#hasta_convenios').val(),
-        territorio: $('#id_ter_convenio').val(),
-        id_despacho: $('#id_ter_etapa_2').val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-//            console.log(response);
-            $('#tbody_tabla_convenios').empty();
-            let cantidad = 0;
-            for (let item of response) {
-                $('#tbody_tabla_convenios').append(`<tr>
-                    <td>${item.CONVENIO}</td>
-                    <td>${item.TERRITORIO}</td>
-                    <td>${item.CANAL}</td>
-                    <td>${item.ATRASO_MAXIMO}</td>
-                    <td>${item.FECHA}</td>
-                    <td>${item.USUARIO}</td>
-                    <td>${item.CUENTA}</td>
-                    <td>${item.ID_ESTATUS}</td>
-                    <td>${item.FECHA_INSET}</td>
-                    <td>${item.PAGOS}</td>
-                    <td>${item.FECHA_PAGO}</td>
-                    <td>${item.EFECTIVIDAD}</td>
-                    <td>${item.ETAPA}</td>
-                    </tr>`);
-                cantidad = cantidad + 1;
-            }
-            $('#cantidad_convenios').empty();
-            $('#cantidad_convenios').append(cantidad + ' Cuentas');
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function azteca_reporte_operacion() {
-    let params = {
-        action: 'azteca_reporte_operacion',
-        desde: $('#desde_tiempos').val(),
-        hasta: $('#hasta_tiempos').val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-//            console.log(response);
-            $('#tbody_tabla_tiempos').empty();
-            for (let item of response) {
-                $('#tbody_tabla_tiempos').append(`<tr>
-                    <td>${item.id_usuario}</td>
-                    <td>${item.nombre}</td>
-                    <td>${item.fecha}</td>
-                    <td>${item.hora_inicial}</td>
-                    <td>${item.tiempo_conectado}</td>
-                    <td>${item.semana}</td>
-                    </tr>`);
-            }
-
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function azteca_reporte_pagos() {
-    let params = {
-        action: 'azteca_reporte_pagos',
-        desde: $('#desde_pagos').val(),
-        hasta: $('#hasta_pagos').val(),
-        zona: $('#id_ter_pagos').val(),
-        etapa: $('#id_etapa_pagos').val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-//            console.log(response);
-            let dias = {};
-            let zona = {};
-            $('#tbody_tabla_pagos').empty();
-            let cantidad = 0;
-
-            for (let item of response) {
-//                if(zona.hasOwnProperty(item.DIA)) {
-//                
-//                } else {
-//                    dias[item.DIA] = {
-//                        "":""
-//                    }
-//                }
-
-                if (zona.hasOwnProperty(item.ZONA)) {
-                    zona[item.ZONA].pagos += 1;
-                    zona[item.ZONA].importe_capital += parseFloat(item.RECUPERACION_CAPITAL);
-                    zona[item.ZONA].importe_moatorios += parseFloat(item.RECUPERACION_MORATORIOS);
-                    zona[item.ZONA].importe_saldo_actual += parseFloat(item.SALDO_ACTUAL);
-                    zona[item.ZONA].importe_moratorio += parseFloat(item.MORATORIO);
-                    let exist = zona[item.ZONA].gerente.indexOf(item.GERENTE);
-                    if (exist < 0) {
-                        zona[item.ZONA].gerente.push(item.GERENTE);
-                    }
-                } else {
-                    zona[item.ZONA] = {
-                        "pagos": 1,
-                        "importe_capital": parseFloat(item.RECUPERACION_CAPITAL),
-                        "importe_moatorios": parseFloat(item.RECUPERACION_MORATORIOS),
-                        "importe_saldo_actual": parseFloat(item.SALDO_ACTUAL),
-                        "importe_moratorio": parseFloat(item.MORATORIO),
-                        "gerente": []
-                    };
-                    zona[item.ZONA].gerente.push(item.GERENTE);
-                }
-                $('#tbody_tabla_pagos').append(`<tr>
-                    <td>${item.CLIENTE_UNICO}</td>
-                    <td>${item.DIA}</td>
-                    <td>${item.RECUPERACION_CAPITAL}</td>
-                    <td>${item.RECUPERACION_MORATORIOS}</td>
-                    <td>${item.SALDO_ACTUAL}</td>
-                    <td>${item.MORATORIO}</td>
-                    <td>${item.FECHA_GESTION}</td>
-                    <td>${item.CARGO_AUTOMATICO}</td>
-                    <td>${item.ETAPA}</td>
-                    <td>${item.GERENTE}</td>
-                    <td>${item.GERENCIA}</td>
-                    <td>${item.TERRITORIO}</td>
-                    <td>${item.ID_GESTOR}</td>
-                    </tr>`);
-                cantidad = cantidad + 1;
-            }
-            console.log(zona);
-
-            $('#tb_resumen_pagos').empty();
-            for (let z in zona) {
-                $('#tb_resumen_pagos').append(`<tr>
-                <td>${z}</td>
-                <td>${ JSON.stringify(zona[z].gerente).replace(/\[|]|"/gi, "").replace(/,/gi, "<br>") }</td>
-                <td>${zona[z].pagos}</td>
-                <td>$ ${zona[z].importe_capital}</td>
-                <td>$ ${zona[z].importe_moatorios}</td>
-                <td>$ ${zona[z].importe_saldo_actual}</td>
-                </tr>`);
-            }
-
-            $('#cantidad_pagos').empty();
-            $('#cantidad_pagos').append(cantidad + ' Pagos');
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
-        }
-    });
-}
-
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function descargar_base() {
-    let params = {
-        action: 'descargar_base'
-    };
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-            console.log(response);
-            let url_sever = document.URL.replace('reportes.jsp', 'excel/');
-//            downloadDataUrlFromJavascript('BaseAztecaCrm.csv',url_sever);
-//            document.execCommand('SaveAs',true,url_sever + 'excel/BaseAztecaCrm.csv');
-            window.open("excel/BaseAztecaCrm.csv");
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
-
-
-function downloadDataUrlFromJavascript(filename, dataUrl) {
-
-    // Construct the a element
-    var link = document.createElement("a");
-    link.download = filename;
-    link.target = "_blank";
-
-    // Construct the uri
-    link.href = dataUrl;
-    document.body.appendChild(link);
-    link.click();
-
-    // Cleanup the DOM
-    document.body.removeChild(link);
-    delete link;
-}
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-$("#descarga_directa_lista_gestion").click(function () {
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: {
-            action: "reporte_gestiones_descarga",
-            desde: $('#desde_gestiones').val(),
-            hasta: $('#hasta_gestiones').val(),
-            territorio: $('#id_ter_gestion').val(),
-            id_despacho: $('#id_ter_gestion').val()
-        },
-        dataType: "json",
-        success: function (response) {
-            console.log(response);
-            window.open("excel/GestionesBaseCrm.csv");
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-});
-$("#descarga_directa_convenios").click(function () {
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: {
-            action: "reporte_convenios_descarga",
-            desde: $('#desde_convenios').val(),
-            hasta: $('#hasta_convenios').val(),
-            territorio: $('#id_ter_convenio').val(),
-            id_despacho: $('#id_ter_etapa_2').val()
-        },
-        dataType: "json",
-        success: function (response) {
-            console.log(response);
-            window.open("excel/ConveniosBaseCrm.csv");
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-});
-$("#descarga_directa_tiempos").click(function () {
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: {
-            action: "azteca_reporte_operacion_descarga",
-            desde: $('#desde_tiempos').val(),
-            hasta: $('#hasta_tiempos').val()
-        },
-        dataType: "json",
-        success: function (response) {
-            console.log(response);
-            window.open("excel/ReporteOperacionBaseCrm.csv");
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-});
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function reporte_promesado_diario() {
-    let params = {
-        action: 'reporte_promesado_diario',
-        desde: $('#fecha_promesado_diario').val(),
-        territorio: $('#territorio_promesado_diario').val(),
-        etapa: $('#etapa_promesado_diario').val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "ControllerReportesAzteca",
-        data: params,
-        dataType: "json",
-        success: function (response) {
-//            console.log(response);
-            $('#tbody_tabla_promesado_diario').empty();
-            let cantidad = 0;
-            let monto = 0;
-            for (let item of response) {
-                $('#tbody_tabla_promesado_diario').append(`<tr class="color_${item.ESTATUS_PAGO}">
-                    <td>${item.GESTOR}</td>
-                    <td>${item.CUENTA}</td>
-                    <td>${item.NOMBRE}</td>
-                    <td>${item.GERENTE}</td>
-                    <td>${item.ESTATUS_LLAMADA}</td>
-                    <td>${item.CONVENIO}</td>
-                    <td>${item.FECHA}</td>
-                    <td>${item.ESTATUS_PAGO}</td>
-                    <td>${item.FECHA_PAGO}</td>
-                    <td>${item.ETAPA}</td>
-                    </tr>`);
-                monto += parseFloat(item.CONVENIO);
-                cantidad = cantidad + 1;
-            }
-            $('#tbody_tabla_promesado_diario').append(`<tr class="">
-                <td class="right-align" colspan="3"><h6></h6></td>
-                <td class="right-align" colspan="3"><h6>${cantidad} Promesas</h6></td>
-                <td class="right-align" colspan="3"><h6>Importe: $${monto}</h6></td>
-            </tr>`);
-
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function reporte_promesado_diario_org() {
     let params = {
@@ -710,8 +253,6 @@ function reporte_promesas_incumplidas_semana() {
                     gerente1 = item.GERENTE;
                 }
 
-//                $('#tbody_tabla_promesas_incumplidas').append(`<tr class="color">
-//                    <td>${item.GESTOR}</td>`);
             }
             $('#tbody_tabla_promesas_incumplidas').append(`<tr class="color_CUMPLIDO">
                 <td>${dias[0]}</td>
@@ -796,8 +337,6 @@ function reporte_promesas_por_gestor() {
             for (let row of response) {
                 gestor[row.GESTOR][parseInt(row.DIA_SEM)] = row.PAGOS;
             }
-
-
             let cumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             let incumplidos = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
             let vigentes = ["", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00", ""];
