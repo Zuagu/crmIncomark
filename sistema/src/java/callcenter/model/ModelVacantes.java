@@ -15,15 +15,63 @@ import org.json.simple.JSONArray;
  * @author zuagu
  */
 public class ModelVacantes {
+
     //==========================================================================
-    public static String azteca_select_requerimetos_campo() {
+    public static String azteca_select_requerimetos_campo(String territorio, String etapa) {
         try {
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_select_requerimetos_campo()";
+            String sql = "SELECT TERRITORIO, LOCALIDAD_V, count(CLIENTE_UNICO) as CANTIDAD, sum(SALDO) as SALDO_TOTAL,\n"
+                    + "sum(RESULTADO_V='N/A') as RESULTADO_NA,\n"
+                    + "sum(if(RESULTADO_V='N/A',SALDO,0)) as val_RESULTADO_NA,\n"
+                    + "sum(RESULTADO_V='AP-Aviso debajo de la puerta') as RESULTADO_AP,\n"
+                    + "sum(if(RESULTADO_V='AP-Aviso debajo de la puerta',SALDO,0)) as val_RESULTADO_AP,\n"
+                    + "sum(RESULTADO_V='NM-No concreta en este momento') + sum(RESULTADO_V='PP-PROMESA DE PAGO') + \n"
+                    + "sum(RESULTADO_V='PP-Promete devolver el producto') + sum(RESULTADO_V='PP-Promete liquidar en plazos') + \n"
+                    + "sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
+                    + "sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
+                    + "sum(RESULTADO_V='CI-CLIENTE NO DEFINE') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR')\n"
+                    + "as RESULTADO_CCERRADOR,\n"
+                    + "sum(if(RESULTADO_V='NM-No concreta en este momento',SALDO,\n"
+                    + "		if(RESULTADO_V='PP-PROMESA DE PAGO',SALDO,\n"
+                    + "			if(RESULTADO_V='PP-Promete devolver el producto',SALDO,\n"
+                    + "				if(RESULTADO_V='PP-Promete liquidar en plazos',SALDO,\n"
+                    + "					if(RESULTADO_V='PP-Promete liquidar en un solo pago',SALDO,\n"
+                    + "						if(RESULTADO_V='RF-Recado con familiar',SALDO,\n"
+                    + "							if(RESULTADO_V='Se recomienda volver a verificar',SALDO,\n"
+                    + "								if(RESULTADO_V='MT-Mensaje con terceros',SALDO,\n"
+                    + "									if(RESULTADO_V='CI-CLIENTE NO DEFINE',SALDO,\n"
+                    + "										if(RESULTADO_V='AD-ACUDIRA AL DESPACHO',SALDO,\n"
+                    + "											if(RESULTADO_V='SE NECESITARA UN CERRADOR',SALDO,0)\n"
+                    + "											)\n"
+                    + "										)\n"
+                    + "									)\n"
+                    + "								)\n"
+                    + "							)\n"
+                    + "						)\n"
+                    + "					)\n"
+                    + "				)\n"
+                    + "			)\n"
+                    + "		)\n"
+                    + ") as val_RESULTADO_CCERRADOR,\n"
+                    + "FORMAT( sum(RESULTADO_V='N/A') / 1500, 0) as CARTEROS,\n"
+                    + "-- sum(RESULTADO_V='N/A') / 1500 as CARTEROS,\n"
+                    + "FORMAT( sum(RESULTADO_V='AP-Aviso debajo de la puerta') / 1500, 0) AS NOTIFICADOR,\n"
+                    + "FORMAT( (sum(RESULTADO_V='NM-No concreta en este momento') + sum(RESULTADO_V='PP-PROMESA DE PAGO') + \n"
+                    + "sum(RESULTADO_V='PP-Promete devolver el producto') + sum(RESULTADO_V='PP-Promete liquidar en plazos') + \n"
+                    + "sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
+                    + "sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
+                    + "sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500, 0) AS CERRADOR\n"
+                    + "from azteca_base_genenral_original\n"
+                    + "where IDENTIFICADOR != 0\n"
+                    + "and if( concat("+territorio+") = '0', TERRITORIO like '%%' , TERRITORIO in (" + territorio + ") ) \n"
+                    + "and if( concat("+etapa+") = '0', ETAPA like '%%' , ETAPA in (" + etapa + ") ) \n"
+                    + "group by LOCALIDAD_V\n"
+                    + "having cantidad > 500\n"
+                    + "order by cantidad desc,CARTEROS,NOTIFICADOR,CERRADOR;";
             System.out.println(sql);
-            
+
             ic.rs = ic.st.executeQuery(sql);
-            
+
             JSONArray vacantes = new JSONArray();
             // TERRITORIO, LOCALIDAD_V, CANTIDAD, SALDO_TOTAL, RESULTADO_NA, RESULTADO_AP, RESULTADO_CCERRADOR, CARTEROS, NOTIFICADOR, CERRADOR
             while (ic.rs.next()) {
@@ -42,7 +90,7 @@ public class ModelVacantes {
                 newObj.put("NOTIFICADOR", ic.rs.getString("NOTIFICADOR"));
                 newObj.put("CERRADOR", ic.rs.getString("CERRADOR"));
                 vacantes.add(newObj);
-                
+
             }
             ic.conn.close();
             ic.rs.close();

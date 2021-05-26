@@ -63,30 +63,55 @@
                     <div id="test-swipe-0" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
-                                <div class="input-field col s3" >
-                                    <select id="territorio_promesado_diario_org"  type="text"></select>
-                                    <label for="territorio_promesado_diario_org">Territorio</label>
+                                <div class="input-field col s2">
+                                    <select id="territorio" multiple  type="text"></select>
+                                    <label for="territorio">Territorio</label>
                                 </div>
-                                <div class="input-field col s3" >
-                                    <select id="etapa_promesado_diario_org"  type="text"></select>
-                                    <label for="etapa_promesado_diario_org">Etapa</label>
+                                <div class="input-field col s2">
+                                    <select id="etapa" multiple type="text"></select>
+                                    <label for="etapa">Etapa</label>
                                 </div>
-                                <a id="obt_promesado_diario_org" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
+                                <div class="input-field col s2">
+                                    <input id="desde" type="text" class="datepicker">
+                                    <label for="desde">Desde</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="hasta" type="text" class="datepicker">
+                                    <label for="hasta">Hasta</label>
+                                </div>
+                                <a id="obt_avance" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>
                             <div id="promesado_diario_org" class="col s12 m12 l12">
                                 <div id="datos_tabla_promesado_diario_org" class="col s12 z-depth-2 dt">
-                                    <table class="highlight">
+                                    <table id="avance_gestores" class="highlight">
                                         <thead class="blue">
                                             <tr class="text-white">
-                                                <td><b>ZONA</b></td>
-                                                <td><b>LOCALIDAD</b></td>
-                                                <td><b>PUESTO</b></td>
-                                                <td><b>CUENTAS ASIGNADAS A LA VACANTE</b></td>
-                                                <td><b>VACANTES</b></td>
-                                                <td><b>SALDO</b></td>
-                                                <td><b>% DE CUENTAS POR ZONA</b></td>
-                                                <td><b>% DE SALDO POR ZONA</b></td>
+                                                <th>GESTOR</th>
+                                                <th>PP</th>
+                                                <th>CT</th>
+                                                <th>CLL</th>
+                                                <th>SG</th>
+                                                <th>PI</th>
+                                                <th>PT</th>
+                                                <th>NO</th>
+                                                <th>FI</th>
+                                                <th>PC</th>
+                                                <th>PA</th>
+                                                <th>RE</th>
+                                                <th>ND</th>
+                                                <th>NP</th>
+                                                <th>BZ</th>
+                                                <th>NE</th>
+                                                <th>CN</th>
+                                                <th>NL</th>
+                                                <th>NC</th>
+                                                <th>SD</th>
+                                                <th>SG</th>
+                                                <th>LLAMADAS</th>
+                                                <th>CUENTAS</th>
+                                                <th>CONTACTACION</th>
+                                                <th>PROMESADO</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody_resporte_gestiones">

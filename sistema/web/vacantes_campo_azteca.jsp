@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Reportes Azteca</title>
+        <title>Vacantes Campo</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
@@ -64,14 +64,14 @@
                         <div class="row">
                             <div class="col s10 hide_print">
                                 <div class="input-field col s3" >
-                                    <select id="territorio_promesado_diario_org"  type="text"></select>
-                                    <label for="territorio_promesado_diario_org">Territorio</label>
+                                    <select id="territorio_visitas" multiple type="text"></select>
+                                    <label for="territorio_visitas">Territorio</label>
                                 </div>
                                 <div class="input-field col s3" >
-                                    <select id="etapa_promesado_diario_org"  type="text"></select>
-                                    <label for="etapa_promesado_diario_org">Etapa</label>
+                                    <select id="etapa_visitas" multiple type="text"></select>
+                                    <label for="etapa_visitas">Etapa</label>
                                 </div>
-                                <a id="obt_promesado_diario_org" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
+                                <a id="getTableRequerimentos" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>
                             <div id="promesado_diario_org" class="col s12 m12 l12">

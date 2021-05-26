@@ -696,10 +696,10 @@ public class ModelReportesAzteca {
             fw.append('\n');
 
             s.rs = s.st.executeQuery(sql);
-            
+
             ArrayList<ArrayList<String>> aNumeros = new ArrayList<ArrayList<String>>();
             String[] columnas = {"CLIENTE_UNICO", "NOMBRE_CTE", "NOM_TEL1", "TELEFONO1", "TELEFONO1_2", "NOM_TEL2",
-                "TELEFONO2", "TELEFONO2_2", "NOM_TEL3", "TELEFONO3", "TELEFONO3_2", "NOM_TEL4", "TELEFONO4", 
+                "TELEFONO2", "TELEFONO2_2", "NOM_TEL3", "TELEFONO3", "TELEFONO3_2", "NOM_TEL4", "TELEFONO4",
                 "TELEFONO4_2", "NOM_TEL5", "TELEFONO5", "TELEFONO5_2", "NOMBRE_AVAL", "TELAVAL", "TELAVAL2"};
 
             while (s.rs.next()) {
@@ -749,7 +749,7 @@ public class ModelReportesAzteca {
                             fw.append(',');
                             fw.append(nombre);
                             fw.append(',');
-                            fw.append( columnas[j] );
+                            fw.append(columnas[j]);
                             fw.append('\n');
 //                            System.out.println(aNumeros.get(i).get(0) + " " + j + ".- " + aNumeros.get(i).get(j) + " tit:" + aNumeros.get(i).get(1) + " nom_ref:" + nombre);
                         }
@@ -793,6 +793,7 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
     }
+
     // =========================================================================
     public static String select_clientes_cartera() {
         try {
@@ -803,8 +804,8 @@ public class ModelReportesAzteca {
             JSONArray clientes_cartera = new JSONArray();
             while (ic.rs.next()) {
                 JSONObject cliente = new JSONObject();
-                cliente.put("ETAPA", ic.rs.getString("ETAPA") );
-                clientes_cartera.add( cliente );
+                cliente.put("ETAPA", ic.rs.getString("ETAPA"));
+                clientes_cartera.add(cliente);
             }
             ic.rs.close();
             ic.st.close();
@@ -977,9 +978,8 @@ public class ModelReportesAzteca {
             fw.append(',');
             fw.append("HORA_ULTIMA_GESTION");
             fw.append('\n');
-            
-            
-            String regex = "\r|\n"; 
+
+            String regex = "\r|\n";
 
             s.rs = s.st.executeQuery(sql);
             while (s.rs.next()) {
@@ -1056,7 +1056,6 @@ public class ModelReportesAzteca {
                 fw.append(s.rs.getString("HORA_ULTIMA_GESTION").replace("\n", ""));
                 fw.append('\n');
             }
-            
 
             fw.flush();
             fw.close();
@@ -1070,46 +1069,91 @@ public class ModelReportesAzteca {
             return "SQL COde:" + ex;
         }
     }
-        public static String select_reporte_llamadas(String territorio) {
+
+    public static String select_reporte_llamadas(String territorio, String etapa, String desde, String hasta) {
         try {
 
-
             StartConexion ic = new StartConexion();
-            String sql = "CALL azteca_reporte_gestiones_territorio();";
+            String sql = "select\n"
+                    + "	g.ID_USUARIO,\n"
+                    + "	g.TERRITORIO,\n"
+                    + "    b.ETAPA,\n"
+                    + "	ifnull(nombre_usuario_alias(g.ID_USUARIO),'NO REGISTRADO') as gestor,\n"
+                    + "    sum(g.ID_ESTATUS_LLAMADA in (19,22,23,24,25) ) as PP, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (12, 13)) as CT, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA = 9) as CLL,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA=16) as SG, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (27, 28)) as PI,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA = 30) as PT, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA=6) as NO, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA=29) as FI, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA=26) as PC, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA=21) as PA, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA=20) as RE, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (17,18)) as ND,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (15)) as NP, \n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (11)) as BZ,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (3,4,8)) as NE,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (10)) as CN,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (7)) as NL,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (5)) as NC,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (2)) as SD,\n"
+                    + "	sum(g.ID_ESTATUS_LLAMADA in (1)) as SG,\n"
+                    + "    sum(g.id_estatus_llamada in (19,22,23,24,25,12,13,9,16,27,28,30,6,29,26,21,20,17,18,15,11,3,4,8,10,7,5,2,1)) as suma,\n"
+                    + "    format(count( distinct(g.cuenta)) ,0) as cuentas,\n"
+                    + "    format(ifnull((sum(g.id_estatus_llamada in (12,13,16,17,18,19,21,22,23,24,25,28)) /\n"
+                    + "    sum(g.id_estatus_llamada in (19,22,23,24,25,12,13,9,16,27,28,30,6,29,26,21,20,17,18,15,11,3,4,8,10,7,5,2,1)) * 100),0.00), 2) as contacto,\n"
+                    + "	ifnull(promesado_por_gestor(g.ID_USUARIO, '"+desde+"','"+hasta+"'), 0.00) as promesado,\n"
+                    + "	sum(1) as total_general, datediff('"+hasta+"','"+desde+"') + 1 as dias, \n"
+                    + "    'dato' as color\n"
+                    + "    -- concat('$',format(promesado_gestor(id_asignacion, id_gestor, _desde, _hasta),2)) as promesado\n"
+                    + "from\n"
+                    + "	azteca_gestiones g\n"
+                    + "left join azteca_base_genenral_original b on b.CLIENTE_UNICO = g.CUENTA\n"
+                    + "where \n"
+                    + "IF ( concat("+territorio+") = '0', g.TERRITORIO LIKE '%%' ,  g.TERRITORIO in ("+territorio+") )\n"
+                    + "and IF ( concat("+etapa+") = '0', b.ETAPA LIKE '%%' , b.ETAPA in ("+etapa+") )\n"
+                    + "AND date(g.FECHA_LARGA) between '"+desde+"' and '"+hasta+"' \n"
+                    + "-- and id_region = _id_region\n"
+                    + "and g.ID_USUARIO != '1'\n"
+                    + "group by g.ID_USUARIO ;";
             System.out.println(sql);
             ic.rs = ic.st.executeQuery(sql);
             JSONArray usuarios = new JSONArray();
             while (ic.rs.next()) {
-           // 
-            JSONObject objUsuario = new JSONObject();
-            objUsuario.put("TERRITORIO",ic.rs.getString("TERRITORIO"));
-            objUsuario.put("gestor",ic.rs.getString("gestor"));
-            objUsuario.put("PP",ic.rs.getString("PP"));
-            objUsuario.put("CT",ic.rs.getString("CT"));
-            objUsuario.put("CLL",ic.rs.getString("CLL"));
-            objUsuario.put("SG",ic.rs.getString("SG"));
-            objUsuario.put("PI",ic.rs.getString("PI"));
-            objUsuario.put("PT",ic.rs.getString("PT"));
-            objUsuario.put("NO",ic.rs.getString("NO"));
-            objUsuario.put("FI",ic.rs.getString("FI"));
-            objUsuario.put("PC",ic.rs.getString("PC"));
-            objUsuario.put("PA",ic.rs.getString("PA"));
-            objUsuario.put("RE",ic.rs.getString("RE"));
-            objUsuario.put("ND",ic.rs.getString("ND"));
-            objUsuario.put("NP",ic.rs.getString("NP"));
-            objUsuario.put("BZ",ic.rs.getString("BZ"));
-            objUsuario.put("NE",ic.rs.getString("NE"));
-            objUsuario.put("CN",ic.rs.getString("CN"));
-            objUsuario.put("NL",ic.rs.getString("NL"));
-            objUsuario.put("NC",ic.rs.getString("NC"));
-            objUsuario.put("SD",ic.rs.getString("SD"));
-            objUsuario.put("SG",ic.rs.getString("SG"));
-            objUsuario.put("suma",ic.rs.getString("suma"));
-            objUsuario.put("cuentas",ic.rs.getString("cuentas"));
-            objUsuario.put("total_general",ic.rs.getString("total_general"));
-            objUsuario.put("color",ic.rs.getString("color"));
-            
-            usuarios.add( objUsuario);
+                // 
+                JSONObject objUsuario = new JSONObject();
+                objUsuario.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objUsuario.put("gestor", ic.rs.getString("gestor"));
+                objUsuario.put("PP", ic.rs.getString("PP"));
+                objUsuario.put("CT", ic.rs.getString("CT"));
+                objUsuario.put("CLL", ic.rs.getString("CLL"));
+                objUsuario.put("SG", ic.rs.getString("SG"));
+                objUsuario.put("PI", ic.rs.getString("PI"));
+                objUsuario.put("PT", ic.rs.getString("PT"));
+                objUsuario.put("NO", ic.rs.getString("NO"));
+                objUsuario.put("FI", ic.rs.getString("FI"));
+                objUsuario.put("PC", ic.rs.getString("PC"));
+                objUsuario.put("PA", ic.rs.getString("PA"));
+                objUsuario.put("RE", ic.rs.getString("RE"));
+                objUsuario.put("ND", ic.rs.getString("ND"));
+                objUsuario.put("NP", ic.rs.getString("NP"));
+                objUsuario.put("BZ", ic.rs.getString("BZ"));
+                objUsuario.put("NE", ic.rs.getString("NE"));
+                objUsuario.put("CN", ic.rs.getString("CN"));
+                objUsuario.put("NL", ic.rs.getString("NL"));
+                objUsuario.put("NC", ic.rs.getString("NC"));
+                objUsuario.put("SD", ic.rs.getString("SD"));
+                objUsuario.put("SG", ic.rs.getString("SG"));
+                objUsuario.put("contacto", ic.rs.getString("contacto"));
+                objUsuario.put("promesado", ic.rs.getString("promesado"));
+                objUsuario.put("suma", ic.rs.getString("suma"));
+                objUsuario.put("cuentas", ic.rs.getString("cuentas"));
+                objUsuario.put("total_general", ic.rs.getString("total_general"));
+                objUsuario.put("color", ic.rs.getString("color"));
+                objUsuario.put("dias", ic.rs.getString("dias"));
+
+                usuarios.add(objUsuario);
 //                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
 
             }
@@ -1123,9 +1167,9 @@ public class ModelReportesAzteca {
         }
 
     }
+
     public static String select_reporte_visitas(String territorio) {
         try {
-
 
             StartConexion ic = new StartConexion();
             String sql = "CALL azteca_reporte_visitas_territorio();";
@@ -1133,36 +1177,36 @@ public class ModelReportesAzteca {
             ic.rs = ic.st.executeQuery(sql);
             JSONArray usuarios = new JSONArray();
             while (ic.rs.next()) {
-           // 
-            JSONObject objUsuario = new JSONObject();
-            objUsuario.put("TERRITORIO",ic.rs.getString("TERRITORIO"));
-            objUsuario.put("gestor",ic.rs.getString("gestor"));
-            objUsuario.put("PP",ic.rs.getString("PP"));
-            objUsuario.put("CT",ic.rs.getString("CT"));
-            objUsuario.put("CLL",ic.rs.getString("CLL"));
-            objUsuario.put("SG",ic.rs.getString("SG"));
-            objUsuario.put("PI",ic.rs.getString("PI"));
-            objUsuario.put("PT",ic.rs.getString("PT"));
-            objUsuario.put("NO",ic.rs.getString("NO"));
-            objUsuario.put("FI",ic.rs.getString("FI"));
-            objUsuario.put("PC",ic.rs.getString("PC"));
-            objUsuario.put("PA",ic.rs.getString("PA"));
-            objUsuario.put("RE",ic.rs.getString("RE"));
-            objUsuario.put("ND",ic.rs.getString("ND"));
-            objUsuario.put("NP",ic.rs.getString("NP"));
-            objUsuario.put("BZ",ic.rs.getString("BZ"));
-            objUsuario.put("NE",ic.rs.getString("NE"));
-            objUsuario.put("CN",ic.rs.getString("CN"));
-            objUsuario.put("NL",ic.rs.getString("NL"));
-            objUsuario.put("NC",ic.rs.getString("NC"));
-            objUsuario.put("SD",ic.rs.getString("SD"));
-            objUsuario.put("SG",ic.rs.getString("SG"));
-            objUsuario.put("suma",ic.rs.getString("suma"));
-            objUsuario.put("cuentas",ic.rs.getString("cuentas"));
-            objUsuario.put("total_general",ic.rs.getString("total_general"));
-            objUsuario.put("color",ic.rs.getString("color"));
-            
-            usuarios.add( objUsuario);
+                // 
+                JSONObject objUsuario = new JSONObject();
+                objUsuario.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objUsuario.put("gestor", ic.rs.getString("gestor"));
+                objUsuario.put("PP", ic.rs.getString("PP"));
+                objUsuario.put("CT", ic.rs.getString("CT"));
+                objUsuario.put("CLL", ic.rs.getString("CLL"));
+                objUsuario.put("SG", ic.rs.getString("SG"));
+                objUsuario.put("PI", ic.rs.getString("PI"));
+                objUsuario.put("PT", ic.rs.getString("PT"));
+                objUsuario.put("NO", ic.rs.getString("NO"));
+                objUsuario.put("FI", ic.rs.getString("FI"));
+                objUsuario.put("PC", ic.rs.getString("PC"));
+                objUsuario.put("PA", ic.rs.getString("PA"));
+                objUsuario.put("RE", ic.rs.getString("RE"));
+                objUsuario.put("ND", ic.rs.getString("ND"));
+                objUsuario.put("NP", ic.rs.getString("NP"));
+                objUsuario.put("BZ", ic.rs.getString("BZ"));
+                objUsuario.put("NE", ic.rs.getString("NE"));
+                objUsuario.put("CN", ic.rs.getString("CN"));
+                objUsuario.put("NL", ic.rs.getString("NL"));
+                objUsuario.put("NC", ic.rs.getString("NC"));
+                objUsuario.put("SD", ic.rs.getString("SD"));
+                objUsuario.put("SG", ic.rs.getString("SG"));
+                objUsuario.put("suma", ic.rs.getString("suma"));
+                objUsuario.put("cuentas", ic.rs.getString("cuentas"));
+                objUsuario.put("total_general", ic.rs.getString("total_general"));
+                objUsuario.put("color", ic.rs.getString("color"));
+
+                usuarios.add(objUsuario);
 //                objCuenta.put("id_cuenta", ic.rs.getInt("id_cuenta"));
 
             }
@@ -1175,7 +1219,6 @@ public class ModelReportesAzteca {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
 
-    }    
-        
+    }
 
 }
