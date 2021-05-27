@@ -102,6 +102,28 @@ function agregar_sucursal(_nombre_sucursal) {
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function select_departamentos() {
+    let params = {
+        action: 'select_departamentos'
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            $('#tbody_sucursales').empty();
+            for (let item of response) {
+                $('#tbody_sucursales').append(`<tr class="center"><td>${item.id_sucursal}</td><td>${item.sucursal}</td><td><i id="${item.id_sucursal}" class="material-icons cursor_pointer elimimar_sucursal">delete</i></td></tr>`);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
