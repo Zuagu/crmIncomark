@@ -392,6 +392,18 @@
         <servlet-name>ControllerSolicitud</servlet-name>
         <servlet-class>callcenter.controller.ControllerSolicitud</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerUploadFileVisitas</servlet-name>
+        <servlet-class>callcenter.controller.ControllerUploadFileVisitas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllerVacantes</servlet-name>
+        <servlet-class>callcenter.controller.ControllerVacantes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllerSucursales</servlet-name>
+        <servlet-class>callcenter.controller.ControllerSucursales</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -771,6 +783,18 @@
     <servlet-mapping>
         <servlet-name>ControllerSolicitud</servlet-name>
         <url-pattern>/ControllerSolicitud</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerUploadFileVisitas</servlet-name>
+        <url-pattern>/ControllerUploadFileVisitas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerVacantes</servlet-name>
+        <url-pattern>/ControllerVacantes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerSucursales</servlet-name>
+        <url-pattern>/ControllerSucursales</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

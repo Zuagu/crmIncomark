@@ -17,27 +17,98 @@
             <div class="col offset-m1 offset-l1 s12 m10 l10 ">
                 <h4>SUCURSALES</h4>    
             </div>
+
+
+
             <div class="col offset-m1 offset-l1 s12 m10 l10 ">
-                <div class="input-field col s6">
-                    <input placeholder="Nueva Sucursal" id="nombre_sucursal" type="text" class="validate">
-                    <label for="nombre_sucursal">Nombre Sucursal</label>
-                </div>
-                <div class="input-field col s6">
-                    <a id="agregar_nueva_sucursal" class="btn waves-effect waves-light"><i class="material-icons right">send</i>Agregar</a>
+
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s4"><a class="active" href="#test1">Sucursal</a></li>
+                            <li class="tab col s4"><a href="#test2">Departamento</a></li>
+                            <li class="tab col s4"><a href="#test3">Area</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div id="test1" class="col s12">
+                        <!--Sucursal-->
+                        <div class="input-field col s6">
+                            <input placeholder="Nueva Sucursal" id="nombre_sucursal" type="text" class="validate">
+                            <label for="nombre_sucursal">Nombre Sucursal</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <a id="agregar_nueva_sucursal" class="btn waves-effect waves-light"><i class="material-icons right">send</i>Agregar</a>
+                        </div>
+
+                        <div class="col s12">
+                            <table>
+                                <thead class="blue">
+                                    <tr>
+                                        <th>id</th>
+                                        <th>Sucursal</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_sucursales"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!--Departamentos-->
+                    <div id="test2" class="col s12">
+
+                        <div class="input-field col s6">
+                            <input placeholder="Nuevo Departamentos" id="nombre_departamento" type="text" class="validate">
+                            <label for="nombre_departamento">Nombre Departamento</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <a id="agregar_nuevo_departamento" class="btn waves-effect waves-light"><i class="material-icons right">send</i>Agregar</a>
+                        </div>
+                        <div class="col s12">
+                            <table>
+                                <thead class="blue">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Departamento</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_departamentos"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <!--Area-->
+                    <div id="test3" class="col s12">
+                        <div class="input-field col s6">
+                            <input placeholder="Nueva Area" id="nombre_area" type="text" class="validate">
+                            <label for="nombre_area">Nombre Area</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <a id="agregar_nueva_area" class="btn waves-effect waves-light"><i class="material-icons right">send</i>Agregar</a>
+                        </div>
+                        
+                        <div class="col s12">
+                            <table>
+                                <thead class="blue">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Area</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_areas"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col offset-m1 offset-l1 s12 m10 l10 ">
-                <table>
-                    <thead class="blue">
-                        <tr>
-                            <th>id</th>
-                            <th>Sucursal</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody_sucursales"></tbody>
-                </table>
-            </div>
+
+
+
             <div id="error"></div>
         </div>
 

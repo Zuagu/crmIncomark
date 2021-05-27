@@ -35,7 +35,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody id="tbody_departamento"></tbody>
+                    <tbody id="tbody_departamentos"></tbody>
                 </table>
             </div>
             <div id="error"></div>

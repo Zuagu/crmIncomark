@@ -58,6 +58,63 @@ public class ControllerSucursales extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if(action.equals("select_departamentos")) {
+            String Respuesta = ModelSucursal.select_departamentos();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if(action.equals("delete_departamento")) {
+            String Respuesta = ModelSucursal.delete_departamento(
+                    request.getParameter("id_departamento")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if(action.equals("agregar_departamento")) {
+            String Respuesta = ModelSucursal.agregar_departamento(
+                    request.getParameter("nombre_departamento")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if(action.equals("select_areas")) {
+            String Respuesta = ModelSucursal.select_areas();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if(action.equals("delete_area")) {
+            String Respuesta = ModelSucursal.delete_area(
+                    request.getParameter("id_area")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if(action.equals("agregar_area")) {
+            String Respuesta = ModelSucursal.agregar_area(
+                    request.getParameter("nombre_area")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        
     }
 
     @Override

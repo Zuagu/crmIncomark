@@ -6,18 +6,45 @@
 
 window.onload = function () {
     select_sucursales();
+    select_departamentos();
+    select_areas();
 };
 //var reporte_estiones = [];
 
-
+// sucursal}
 $("#tbody_sucursales").on('click', '.elimimar_sucursal', function () {
     let id_sucursal = $(this).attr("id");
-    
+
     deleted_sucursales(id_sucursal);
 });
-$("#agregar_nueva_sucursal").click (function () {
+
+$("#agregar_nueva_sucursal").click(function () {
     let nombre_sucursal = $("#nombre_sucursal").val();
     agregar_sucursal(nombre_sucursal);
+});
+
+// Departamentos
+
+$("#tbody_departamentos").on('click', '.elimimar_departamento', function () {
+    let id_departamento = $(this).attr("id");
+    delete_departamento(id_departamento);
+});
+
+$("#agregar_nuevo_departamento").click(function () {
+    let nombre_departamento = $("#nombre_departamento").val();
+    agregar_departamento(nombre_departamento);
+});
+
+// Areas
+
+$("#tbody_areas").on('click', '.elimimar_area', function () {
+    let id_area = $(this).attr("id");
+    delete_area(id_area);
+});
+
+$("#agregar_nueva_area").click(function () {
+    let nombre_area = $("#nombre_area").val();
+    agregar_area(nombre_area);
 });
 
 
@@ -55,7 +82,7 @@ function select_sucursales() {
 function deleted_sucursales(_id_sucursal) {
     let params = {
         action: 'deleted_sucursales',
-        id_sucursal:_id_sucursal
+        id_sucursal: _id_sucursal
     };
     $.ajax({
         type: "POST",
@@ -64,7 +91,7 @@ function deleted_sucursales(_id_sucursal) {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            alert( response.message );
+            alert(response.message);
             select_sucursales();
         },
         error: function (error) {
@@ -79,7 +106,7 @@ function deleted_sucursales(_id_sucursal) {
 function agregar_sucursal(_nombre_sucursal) {
     let params = {
         action: 'agregar_sucursal',
-        nombre_sucursal:_nombre_sucursal
+        nombre_sucursal: _nombre_sucursal
     };
     $.ajax({
         type: "POST",
@@ -88,7 +115,7 @@ function agregar_sucursal(_nombre_sucursal) {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            alert( response.message );
+            alert(response.message);
             $("#nombre_sucursal").val("");
             select_sucursales();
         },
@@ -106,16 +133,17 @@ function select_departamentos() {
     let params = {
         action: 'select_departamentos'
     };
+    console.log(params);
     $.ajax({
         type: "POST",
         url: "ControllerSucursales",
         data: params,
         dataType: "json",
         success: function (response) {
-            console.log(response);
-            $('#tbody_sucursales').empty();
+            console.log('select_departamentos', response);
+            $('#tbody_departamentos').empty();
             for (let item of response) {
-                $('#tbody_sucursales').append(`<tr class="center"><td>${item.id_sucursal}</td><td>${item.sucursal}</td><td><i id="${item.id_sucursal}" class="material-icons cursor_pointer elimimar_sucursal">delete</i></td></tr>`);
+                $('#tbody_departamentos').append(`<tr class="center"><td>${item.id_departamento}</td><td>${item.departamento}</td><td><i id="${item.id_departamento}" class="material-icons cursor_pointer elimimar_departamento">delete</i></td></tr>`);
             }
         },
         error: function (error) {
@@ -123,6 +151,132 @@ function select_departamentos() {
         }
     });
 }
+
+
+function delete_departamento(_id_departamento) {
+    let params = {
+        action: 'delete_departamento',
+        id_departamento: _id_departamento
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+            select_departamentos();
+        },
+        error: function (error) {
+            $('#error').empty();
+            $('#error').append(error.responseText);
+            console.log(error);
+        }
+    });
+}
+
+
+function agregar_departamento(_nombre_departamento) {
+    let params = {
+        action: 'agregar_departamento',
+        nombre_departamento: _nombre_departamento
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+            $("#nombre_departamento").val("");
+            select_departamentos();
+        },
+        error: function (error) {
+            $('#error').empty();
+            $('#error').append(error.responseText);
+            console.log(error);
+        }
+    });
+}
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function select_areas() {
+    let params = {
+        action: 'select_areas'
+    };
+    console.log(params);
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log('select_areas', response);
+            $('#tbody_areas').empty();
+            for (let item of response) {
+                $('#tbody_areas').append(`<tr class="center"><td>${item.id_area}</td><td>${item.area}</td><td><i id="${item.id_area}" class="material-icons cursor_pointer elimimar_area">delete</i></td></tr>`);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            $('#error').empty();
+            $('#error').append(error.responseText);
+        }
+    });
+}
+
+function delete_area(_id_area) {
+    let params = {
+        action: 'delete_area',
+        id_area: _id_area
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+            select_areas();
+        },
+        error: function (error) {
+            $('#error').empty();
+            $('#error').append(error.responseText);
+            console.log(error);
+        }
+    });
+}
+
+function agregar_area(_nombre_area) {
+    let params = {
+        action: 'agregar_area',
+        nombre_area: _nombre_area
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+            $("#nombre_area").val("");
+            select_areas();
+        },
+        error: function (error) {
+            $('#error').empty();
+            $('#error').append(error.responseText);
+            console.log(error);
+        }
+    });
+}
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
