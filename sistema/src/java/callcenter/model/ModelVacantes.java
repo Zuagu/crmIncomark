@@ -63,8 +63,8 @@ public class ModelVacantes {
                     + "sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500, 0) AS CERRADOR\n"
                     + "from azteca_base_genenral_original\n"
                     + "where IDENTIFICADOR != 0\n"
-                    + "and if( concat("+territorio+") = '0', TERRITORIO like '%%' , TERRITORIO in (" + territorio + ") ) \n"
-                    + "and if( concat("+etapa+") = '0', ETAPA like '%%' , ETAPA in (" + etapa + ") ) \n"
+                    + "and if( concat(" + territorio + ") = '0', TERRITORIO like '%%' , TERRITORIO in (" + territorio + ") ) \n"
+                    + "and if( concat(" + etapa + ") = '0', ETAPA like '%%' , ETAPA in (" + etapa + ") ) \n"
                     + "group by LOCALIDAD_V\n"
                     + "having cantidad > 500\n"
                     + "order by cantidad desc,CARTEROS,NOTIFICADOR,CERRADOR;";
@@ -96,6 +96,89 @@ public class ModelVacantes {
             ic.rs.close();
             ic.st.close();
             return vacantes.toJSONString();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + ex;
+        }
+    }
+
+    public static String azteca_select_requerimetos_campo_rh(String territorio, String etapa) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT \n"
+                    + "  TERRITORIO,\n"
+                    + "  LOCALIDAD_V, \n"
+                    + "  sum(RESULTADO_V in ('N/A', '#N/D')) as RESULTADO_NA,\n"
+                    + "  sum(RESULTADO_V='AP-Aviso debajo de la puerta') as RESULTADO_AP,\n"
+                    + "  sum(RESULTADO_V='NM-No concreta en este momento') + sum(RESULTADO_V='PP-PROMESA DE PAGO') + \n"
+                    + "  sum(RESULTADO_V='PP-Promete devolver el producto') + sum(RESULTADO_V='PP-Promete liquidar en plazos') + \n"
+                    + "  sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
+                    + "  sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
+                    + "  sum(RESULTADO_V='CI-CLIENTE NO DEFINE') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') as RESULTADO_CCERRADOR,\n"
+                    + "    \n"
+                    + "  FORMAT( sum(RESULTADO_V='N/A') / 1500, 0) as CARTEROS,\n"
+                    + "  FORMAT( sum(RESULTADO_V='AP-Aviso debajo de la puerta') / 1500, 0) AS NOTIFICADOR,\n"
+                    + "  FORMAT( (sum(RESULTADO_V='NM-No concreta en este momento') + sum(RESULTADO_V='PP-PROMESA DE PAGO') + \n"
+                    + "  sum(RESULTADO_V='PP-Promete devolver el producto') + sum(RESULTADO_V='PP-Promete liquidar en plazos') + \n"
+                    + "  sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
+                    + "  sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
+                    + "  sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500, 0) AS CERRADOR,\n"
+                    + "    FORMAT( (sum(RESULTADO_V='N/A') / 1500) + ( sum(RESULTADO_V='AP-Aviso debajo de la puerta') / 1500) +\n"
+                    + "    ((sum(RESULTADO_V='NM-No concreta en este momento') + sum(RESULTADO_V='PP-PROMESA DE PAGO') + \n"
+                    + "  sum(RESULTADO_V='PP-Promete devolver el producto') + sum(RESULTADO_V='PP-Promete liquidar en plazos') + \n"
+                    + "  sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
+                    + "  sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
+                    + "  sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500),0) AS SUMA\n"
+                    + "from azteca_base_genenral_original \n"
+                    + "where IDENTIFICADOR != 0 and ETAPA in ('EXTRAJUDICIAL', 'PREVENTA')\n"
+                    + "group by LOCALIDAD_V;",
+                    sql2 = "select \n"
+                    + "localidad, \n"
+                    + "count(id_puesto = 13) as Notificador, \n"
+                    + "count(id_puesto = 14) as Cartero, \n"
+                    + "count(id_puesto = 12) as Cerrador,\n"
+                    + "count(id_puesto = 12) + count(id_puesto = 14) + count(id_puesto = 12) as suma\n"
+                    + "from arcade_usuarios \n"
+                    + "group by id_puesto,localidad\n"
+                    + "having not localidad is null;";
+            System.out.println(sql);
+            System.out.println(sql2);
+
+            ic.rs = ic.st.executeQuery(sql);
+
+            JSONArray vacantes = new JSONArray();
+            // TERRITORIO, LOCALIDAD_V, CANTIDAD, SALDO_TOTAL, RESULTADO_NA, RESULTADO_AP, RESULTADO_CCERRADOR, CARTEROS, NOTIFICADOR, CERRADOR
+            while (ic.rs.next()) {
+                JSONObject newObj = new JSONObject();
+                newObj.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                newObj.put("LOCALIDAD_V", ic.rs.getString("LOCALIDAD_V"));
+                newObj.put("CARTEROS", ic.rs.getString("CARTEROS"));
+                newObj.put("NOTIFICADOR", ic.rs.getString("NOTIFICADOR"));
+                newObj.put("CERRADOR", ic.rs.getString("CERRADOR"));
+                newObj.put("SUMA", ic.rs.getString("SUMA"));
+                vacantes.add(newObj);
+
+            }
+            ic.rs = ic.st.executeQuery(sql2);
+
+            JSONArray ocupados = new JSONArray();
+            // TERRITORIO, LOCALIDAD_V, CANTIDAD, SALDO_TOTAL, RESULTADO_NA, RESULTADO_AP, RESULTADO_CCERRADOR, CARTEROS, NOTIFICADOR, CERRADOR
+            while (ic.rs.next()) {
+                JSONObject objocupados = new JSONObject();
+                objocupados.put("Notificador", ic.rs.getString("Notificador"));
+                objocupados.put("Cartero", ic.rs.getString("Cartero"));
+                objocupados.put("Cerrador", ic.rs.getString("Cerrador"));
+                objocupados.put("suma", ic.rs.getString("suma"));
+                ocupados.add(objocupados);
+
+            }
+            JSONArray res = new JSONArray();
+            res.add(vacantes);
+            res.add(ocupados);
+            ic.conn.close();
+            ic.rs.close();
+            ic.st.close();
+            return res.toJSONString();
         } catch (SQLException ex) {
             System.out.println(ex);
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + ex;

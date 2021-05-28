@@ -669,7 +669,23 @@ public class ModelDataCuentaAzteca {
 
     }
 
-    public static String actualizar_informacion_contacto(String nom_tel1, String tel1_1, String tel1_2, String nom_tel2, String tel2_1, String tel2_2, String nom_tel3, String tel3_1, String tel3_2, String nom_tel4, String tel4_1, String tel4_2, String nom_tel5, String tel5_1, String tel5_2, String cuenta) {
+    public static String actualizar_informacion_contacto(
+            String nom_tel1, 
+            String tel1_1, 
+            String tel1_2, 
+            String nom_tel2, 
+            String tel2_1, 
+            String tel2_2, 
+            String nom_tel3, 
+            String tel3_1, 
+            String tel3_2, 
+            String nom_tel4, 
+            String tel4_1, 
+            String tel4_2, 
+            String nom_tel5, 
+            String tel5_1, 
+            String tel5_2, 
+            String cuenta) {
         try {
             StartConexion ic = new StartConexion();
             /*
@@ -694,7 +710,7 @@ public class ModelDataCuentaAzteca {
                     + "TELEFONO5 = '" + tel5_1 + "',\n"
                     + "TELEFONO5_2 = '" + tel5_2 + "'\n"
                     + "WHERE CLIENTE_UNICO = '" + cuenta + "';";
-//            System.out.println(sql);
+            System.out.println(sql);
 
             ic.st.executeUpdate(sql);
             ic.st.close();

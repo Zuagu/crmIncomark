@@ -46,6 +46,17 @@ public class ControllerVacantes extends HttpServlet {
             writer.flush();
             writer.close();
         }
+          if(action.equals("azteca_select_requerimetos_campo_rh")) {
+            String Respuesta = ModelVacantes.azteca_select_requerimetos_campo(
+                    request.getParameter("territorio"),
+                    request.getParameter("etapa")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
     }
 
     @Override
