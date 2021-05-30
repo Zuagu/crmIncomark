@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Vacantes Campo</title>
+        <title>Vacantes Campo RH</title>
         <link rel="stylesheet" type="text/css" href="css/css/icons-material.css">
         <link rel="stylesheet" type="text/css" href="css/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/css/style_gestor.css">
@@ -50,6 +50,9 @@
             .color_CUMPLIDO {
                 background-color: #69f0ae;
             }
+            #tbody_actual {
+                border: 1px solid grey;
+            }
         </style>
     </head>
     <body>
@@ -71,6 +74,7 @@
                                     <select id="etapa_visitas" multiple type="text"></select>
                                     <label for="etapa_visitas">Etapa</label>
                                 </div>
+                                <input id="tipo" type="hidden" value="vacantes_visitador_rh">
                                 <a id="getTableRequerimentos" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>
@@ -79,11 +83,35 @@
                                     <div id="cargando_datos" class="progress">
                                         <div class="indeterminate"></div>
                                     </div>
-                                    <table class="highlight">
-                                        
-                                        <tbody id="tbody_tabla_promesado_diario_org">
+                                    <table class="highlight col s12 m5 l5">
+                                        <thead>
+                                            <tr>
+                                                <th>ESTADO</th>
+                                                <th>LOCALIDAD</th>
+                                                <th>CARTERO</th>
+                                                <th>NOTIFICADOR</th>
+                                                <th>CERRADOR</th>
+                                                <th>TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_requerido">
                                         </tbody>
                                     </table>
+                                    
+                                    <table class="highlight col s12 m4 l4">
+                                        <thead>
+                                            <tr>
+                                                <th>LOCALIDAD</th>
+                                                <th>CARTERO</th>
+                                                <th>NOTIFICADOR</th>
+                                                <th>CERRADOR</th>
+                                                <th>TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_actual">
+                                        </tbody>
+                                    </table>
+                                    
                                 </div>
                             </div>
                         </div>

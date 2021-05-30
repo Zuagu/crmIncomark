@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package callcenter.controller;
+
 import callcenter.model.ModelVacantes;
 
 import java.io.IOException;
@@ -19,23 +20,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ControllerVacantes extends HttpServlet {
 
-   
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String action = request.getParameter("action");
         System.out.println(action);
-        
-        if(action.equals("azteca_select_requerimetos_campo")) {
+
+        if (action.equals("azteca_select_requerimetos_campo")) {
             String Respuesta = ModelVacantes.azteca_select_requerimetos_campo(
                     request.getParameter("territorio"),
                     request.getParameter("etapa")
@@ -46,8 +44,19 @@ public class ControllerVacantes extends HttpServlet {
             writer.flush();
             writer.close();
         }
-          if(action.equals("azteca_select_requerimetos_campo_rh")) {
+        if (action.equals("azteca_select_requerimetos_campo")) {
             String Respuesta = ModelVacantes.azteca_select_requerimetos_campo(
+                    request.getParameter("territorio"),
+                    request.getParameter("etapa")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        if (action.equals("azteca_select_requerimetos_campo_rh")) {
+            String Respuesta = ModelVacantes.azteca_select_requerimetos_campo_rh(
                     request.getParameter("territorio"),
                     request.getParameter("etapa")
             );

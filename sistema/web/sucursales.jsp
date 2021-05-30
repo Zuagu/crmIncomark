@@ -25,9 +25,10 @@
                 <div class="row">
                     <div class="col s12">
                         <ul class="tabs">
-                            <li class="tab col s4"><a class="active" href="#test1">Sucursal</a></li>
-                            <li class="tab col s4"><a href="#test2">Departamento</a></li>
-                            <li class="tab col s4"><a href="#test3">Area</a></li>
+                            <li class="tab col s3"><a class="active" href="#test1">Sucursal</a></li>
+                            <li class="tab col s3"><a href="#test3">Area</a></li>
+                            <li class="tab col s3"><a href="#test2">Departamento</a></li>
+                            <li class="tab col s3"><a href="#test4">Puesto</a></li>
                         </ul>
                     </div>
 
@@ -101,6 +102,29 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbody_areas"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!--Puestos-->
+                    <div id="test4" class="col s12">
+                        <div class="input-field col s6">
+                            <input placeholder="Nueva Puesto" id="nombre_puesto" type="text" class="validate">
+                            <label for="nombre_puesto">Nombre Puesto</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <a id="agregar_nuevo_puesto" class="btn waves-effect waves-light"><i class="material-icons right">send</i>Agregar</a>
+                        </div>
+                        
+                        <div class="col s12">
+                            <table>
+                                <thead class="blue">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Puesto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_puesto"></tbody>
                             </table>
                         </div>
                     </div>

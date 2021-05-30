@@ -50,6 +50,7 @@
             .color_CUMPLIDO {
                 background-color: #69f0ae;
             }
+
         </style>
     </head>
     <body>
@@ -63,7 +64,7 @@
                     <div id="test-swipe-0" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
-                                <div class="input-field col s3" >
+                                <div class="input-field col s3">
                                     <select id="territorio_visitas" multiple type="text"></select>
                                     <label for="territorio_visitas">Territorio</label>
                                 </div>
@@ -80,7 +81,7 @@
                                         <div class="indeterminate"></div>
                                     </div>
                                     <table class="highlight">
-                                        
+
                                         <tbody id="tbody_tabla_promesado_diario_org">
                                         </tbody>
                                     </table>

@@ -106,7 +106,7 @@ public class ModelVacantes {
         try {
             StartConexion ic = new StartConexion();
             String sql = "SELECT \n"
-                    + "  TERRITORIO,\n"
+                    + "  TERRITORIO,ESTADO_V,\n"
                     + "  LOCALIDAD_V, \n"
                     + "  sum(RESULTADO_V in ('N/A', '#N/D')) as RESULTADO_NA,\n"
                     + "  sum(RESULTADO_V='AP-Aviso debajo de la puerta') as RESULTADO_AP,\n"
@@ -131,7 +131,8 @@ public class ModelVacantes {
                     + "  sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500),0) AS SUMA\n"
                     + "from azteca_base_genenral_original \n"
                     + "where IDENTIFICADOR != 0 and ETAPA in ('EXTRAJUDICIAL', 'PREVENTA')\n"
-                    + "group by LOCALIDAD_V;",
+                    + "group by LOCALIDAD_V  having SUMA > 0 order by ESTADO_V;",
+                    
                     sql2 = "select \n"
                     + "localidad, \n"
                     + "count(id_puesto = 13) as Notificador, \n"
@@ -147,11 +148,12 @@ public class ModelVacantes {
             ic.rs = ic.st.executeQuery(sql);
 
             JSONArray vacantes = new JSONArray();
-            // TERRITORIO, LOCALIDAD_V, CANTIDAD, SALDO_TOTAL, RESULTADO_NA, RESULTADO_AP, RESULTADO_CCERRADOR, CARTEROS, NOTIFICADOR, CERRADOR
+            // TERRITORIO, LOCALIDAD_V, RESULTADO_NA, RESULTADO_AP, RESULTADO_CCERRADOR, CARTEROS, NOTIFICADOR, CERRADOR, SUMA
             while (ic.rs.next()) {
                 JSONObject newObj = new JSONObject();
                 newObj.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
                 newObj.put("LOCALIDAD_V", ic.rs.getString("LOCALIDAD_V"));
+                newObj.put("ESTADO_V", ic.rs.getString("ESTADO_V"));
                 newObj.put("CARTEROS", ic.rs.getString("CARTEROS"));
                 newObj.put("NOTIFICADOR", ic.rs.getString("NOTIFICADOR"));
                 newObj.put("CERRADOR", ic.rs.getString("CERRADOR"));
@@ -162,9 +164,10 @@ public class ModelVacantes {
             ic.rs = ic.st.executeQuery(sql2);
 
             JSONArray ocupados = new JSONArray();
-            // TERRITORIO, LOCALIDAD_V, CANTIDAD, SALDO_TOTAL, RESULTADO_NA, RESULTADO_AP, RESULTADO_CCERRADOR, CARTEROS, NOTIFICADOR, CERRADOR
+            // localidad, Notificador, Cartero, Cerrador, suma
             while (ic.rs.next()) {
                 JSONObject objocupados = new JSONObject();
+                objocupados.put("localidad", ic.rs.getString("localidad"));
                 objocupados.put("Notificador", ic.rs.getString("Notificador"));
                 objocupados.put("Cartero", ic.rs.getString("Cartero"));
                 objocupados.put("Cerrador", ic.rs.getString("Cerrador"));
@@ -175,6 +178,7 @@ public class ModelVacantes {
             JSONArray res = new JSONArray();
             res.add(vacantes);
             res.add(ocupados);
+            
             ic.conn.close();
             ic.rs.close();
             ic.st.close();

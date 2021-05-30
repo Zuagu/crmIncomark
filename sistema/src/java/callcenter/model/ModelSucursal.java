@@ -186,4 +186,46 @@ public class ModelSucursal {
             return "SQL: Error al insertar azteca Code Error: " + e;
         }
     }
+    //    Puestos   
+
+    public static String select_puestos() {
+        try {
+
+            StartConexion ic = new StartConexion();
+            String sql = "select * from sic_puestos;";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listPuestos = new JSONArray();
+            // id_area, area, f_deleted
+            while (ic.rs.next()) {
+                JSONObject objPuesto = new JSONObject();
+                objPuesto.put("id_puesto", ic.rs.getString("id_puesto"));
+                objPuesto.put("puesto", ic.rs.getString("puesto"));
+                listPuestos.add(objPuesto);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+            return listPuestos.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+    }
+    
+    public static String agregar_puesto(String nombre_puesto) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "insert into sic_puestos(puesto) values('" + nombre_puesto + "');";
+            System.out.println(sql);
+            ic.st.executeUpdate(sql);
+            JSONObject objSucursal = new JSONObject();
+            objSucursal.put("message", "Puesto Agregado");
+            ic.st.close();
+            ic.conn.close();
+            return objSucursal.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al insertar azteca Code Error: " + e;
+        }
+    }
+
 }

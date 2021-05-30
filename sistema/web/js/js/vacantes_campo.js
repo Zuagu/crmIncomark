@@ -7,13 +7,18 @@
 window.onload = function () {
     select_options_territorios();
     select_etapas_cartera();
-    
-    azteca_select_requerimetos_campo();
+    let tipo_jsp = $("#tipo").val();
+    if (tipo_jsp === "vacantes_visitador_rh") {
+        azteca_select_requerimetos_campo_RH();
+//        $("#cargando_datos").addClass("hide");
+    }
+
+//    azteca_select_requerimetos_campo();
 };
 //var reporte_estiones = [];
 
 
-$("#getTableRequerimentos").click( function () {
+$("#getTableRequerimentos").click(function () {
     azteca_select_requerimetos_campo();
 });
 
@@ -66,7 +71,7 @@ function select_etapas_cartera() {
             $("#etapa_visitas").empty();
             $("#etapa_visitas").append(`<option value="0" selected>TODOS</option>`);
             for (let item of response) {
-                
+
                 $("#etapa_visitas").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
 //                console.log(item.CLASIFICACION_CTE);
             }
@@ -85,7 +90,7 @@ function azteca_select_requerimetos_campo() {
     let params = {
         action: 'azteca_select_requerimetos_campo',
         territorio: JSON.stringify($("#territorio_visitas").val() || '0').replace(/"/gm, "'").replace(/\\|\[|]/gm, ""),
-        etapa: JSON.stringify($("#etapa_visitas").val()  || '0').replace(/"/gm, "'").replace(/\\|\[|]/gm, "")
+        etapa: JSON.stringify($("#etapa_visitas").val() || '0').replace(/"/gm, "'").replace(/\\|\[|]/gm, "")
     };
     console.log(params);
     $.ajax({
@@ -124,19 +129,125 @@ function azteca_select_requerimetos_campo() {
 //                console.log(item);
                 $("#tbody_tabla_promesado_diario_org").append(`<tr class='grey'><th>${item}</th><th></th><th></th><th>${tit_sum_zona[item].cuentas} Cuentas</th><th></th><th>$ ${tit_sum_zona[item].valor.toFixed(2)} MNX</th><th></th> <tr>`);
                 for (let row of response) {
-                     if ( row.TERRITORIO === item ) {
-                         
-                         $("#tbody_tabla_promesado_diario_org").append(`<tr class='blue'>
+                    if (row.TERRITORIO === item) {
+
+                        $("#tbody_tabla_promesado_diario_org").append(`<tr class='blue'>
                                 <th>${row.LOCALIDAD_V}</th><th></th><th></th><th>${row.CANTIDAD} Cuentas</th><th></th><th>$ ${ parseFloat(row.SALDO_TOTAL).toFixed(2)} MNX</th><th></th> </tr>
-                                <tr> <td>Cartero: </td><td>0/${row.CARTEROS}</td><td>0%</td><td>${row.RESULTADO_NA} NA</td><td>${(( parseFloat(row.RESULTADO_NA) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_NA).toFixed(2)}</td><td>${ (( parseFloat(row.val_RESULTADO_NA) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
-                                <tr> <td>Notificador: </td><td>0/${row.NOTIFICADOR}</td><td>0%</td><td>${row.RESULTADO_AP} AP</td><td>${(( parseFloat(row.RESULTADO_AP) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_AP).toFixed(2)}</td><td>${ (( parseFloat(row.val_RESULTADO_AP) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
-                                <tr> <td>Cerrador: </td><td>0/${row.CERRADOR}</td><td>0%</td><td>${row.RESULTADO_CCERRADOR} Contacto</td><td>${(( parseFloat(row.RESULTADO_CCERRADOR) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_CCERRADOR).toFixed(2)}</td><td>${ ( ( parseFloat(row.val_RESULTADO_CCERRADOR) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
+                                <tr> <td>Cartero: </td><td>0/${row.CARTEROS}</td><td>0%</td><td>${row.RESULTADO_NA} NA</td><td>${((parseFloat(row.RESULTADO_NA) / parseFloat(row.CANTIDAD)) * 100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_NA).toFixed(2)}</td><td>${ ((parseFloat(row.val_RESULTADO_NA) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
+                                <tr> <td>Notificador: </td><td>0/${row.NOTIFICADOR}</td><td>0%</td><td>${row.RESULTADO_AP} AP</td><td>${((parseFloat(row.RESULTADO_AP) / parseFloat(row.CANTIDAD)) * 100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_AP).toFixed(2)}</td><td>${ ((parseFloat(row.val_RESULTADO_AP) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
+                                <tr> <td>Cerrador: </td><td>0/${row.CERRADOR}</td><td>0%</td><td>${row.RESULTADO_CCERRADOR} Contacto</td><td>${((parseFloat(row.RESULTADO_CCERRADOR) / parseFloat(row.CANTIDAD)) * 100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_CCERRADOR).toFixed(2)}</td><td>${ ((parseFloat(row.val_RESULTADO_CCERRADOR) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
                             `);
-                     }
-                    
+                    }
+
                 }
             }
 //            console.log(response);
+            $("#cargando_datos").addClass('hide');
+
+        },
+        error: function (error) {
+            console.log(error);
+            $("#cargando_datos").addClass('hide');
+        }
+    });
+}
+
+
+function azteca_select_requerimetos_campo_RH() {
+    $("#tbody_tabla_promesado_diario_org").empty();
+    $("#cargando_datos").removeClass('hide');
+    let params = {
+        action: 'azteca_select_requerimetos_campo_rh',
+        territorio: JSON.stringify($("#territorio_visitas").val() || '0').replace(/"/gm, "'").replace(/\\|\[|]/gm, ""),
+        etapa: JSON.stringify($("#etapa_visitas").val() || '0').replace(/"/gm, "'").replace(/\\|\[|]/gm, "")
+    };
+    console.log(params);
+    $.ajax({
+        type: "POST",
+        url: "ControllerVacantes",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+//            console.log(response);
+            let vacantes_requeridos = response[0];
+            let vacantes_actuales = response[1];
+            $("#tbody_requerido").empty();
+            let estados = {};
+            let identificador = '0';
+            for (let row of vacantes_requeridos) {
+                if (estados[row.ESTADO_V]) {
+                    estados[row.ESTADO_V] += 1;
+                } else {
+                    estados[row.ESTADO_V] = 1;
+                }
+            }
+
+            console.log('ESTADOS: ', estados);
+            for (let row of vacantes_requeridos) {
+
+                if (identificador === '0' || row.ESTADO_V != identificador) {
+                    identificador = row.ESTADO_V;
+//                    console.log(estados[row.ESTADO_V], identificador);
+                    $("#tbody_requerido").append(`<tr><td rowspan="${estados[row.ESTADO_V]}">${row.ESTADO_V}</td><td>${row.LOCALIDAD_V}</td><td>${row.CARTEROS}</td><td>${row.NOTIFICADOR}</td><td>${row.CERRADOR}</td><td>${row.SUMA}</td></tr>`);
+                    $("#tbody_actual").append(`<tr><td>${row.LOCALIDAD_V}</td><td id="cart_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td><td id="not_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td><td id="cerr_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td><td id="total_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td></tr>`);
+                } else {
+                    $("#tbody_requerido").append(`<tr><td>${row.LOCALIDAD_V}</td><td>${row.CARTEROS}</td><td>${row.NOTIFICADOR}</td><td>${row.CERRADOR}</td><td>${row.SUMA}</td></tr>`);
+                    $("#tbody_actual").append(`<tr><td>${row.LOCALIDAD_V}</td><td id="cart_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td><td id="not_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td><td id="cerr_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td><td id="total_${row.LOCALIDAD_V.replace(/ /gm, "_")}"></td></tr>`);
+                }
+            }
+
+            for (let row of vacantes_actuales) {
+                console.log(row);
+                $("#cart_" + row.localidad.replace(/ /gm, "_")).empty();
+                $("#cart_" + row.localidad.replace(/ /gm, "_")).append(row.Cartero);
+                $("#not_" + row.localidad.replace(/ /gm, "_")).empty();
+                $("#not_" + row.localidad.replace(/ /gm, "_")).append(row.Notificador);
+                $("#cerr_" + row.localidad.replace(/ /gm, "_")).empty();
+                $("#cerr_" + row.localidad.replace(/ /gm, "_")).append(row.Cerrador);
+                $("#total_" + row.localidad.replace(/ /gm, "_")).empty();
+                $("#total_" + row.localidad.replace(/ /gm, "_")).append(row.suma);
+
+            }
+
+//            $("#tbody_tabla_promesado_diario_org").empty();
+//            let tit_sum_zona = {};
+//            let orden = [];
+//            for (let row of response) {
+//
+//                if (orden.includes(row.TERRITORIO)) {
+//                } else {
+//                    orden.push(row.TERRITORIO);
+//                }
+//
+//                if (tit_sum_zona[row.TERRITORIO]) {
+////                    console.log('si esta');
+//                    tit_sum_zona[row.TERRITORIO].valor += parseFloat(row.SALDO_TOTAL.replace(',', ''));
+//                    tit_sum_zona[row.TERRITORIO].cuentas += parseInt(row.CANTIDAD);
+//                } else {
+////                    console.log('no esta');
+//                    tit_sum_zona[row.TERRITORIO] = {
+//                        valor: parseFloat(row.SALDO_TOTAL.replace(',', '')),
+//                        cuentas: parseInt(row.CANTIDAD)
+//                    };
+//                }
+//            }
+//            let col1 = '0';
+//
+//            for (let item of orden) {
+//                $("#tbody_tabla_promesado_diario_org").append(`<tr class='grey'><th>${item}</th><th></th><th></th><th>${tit_sum_zona[item].cuentas} Cuentas</th><th></th><th>$ ${tit_sum_zona[item].valor.toFixed(2)} MNX</th><th></th> <tr>`);
+//                for (let row of response) {
+//                     if ( row.TERRITORIO === item ) {
+//                         
+//                         $("#tbody_tabla_promesado_diario_org").append(`<tr class='blue'>
+//                                <th>${row.LOCALIDAD_V}</th><th></th><th></th><th>${row.CANTIDAD} Cuentas</th><th></th><th>$ ${ parseFloat(row.SALDO_TOTAL).toFixed(2)} MNX</th><th></th> </tr>
+//                                <tr> <td>Cartero: </td><td>0/${row.CARTEROS}</td><td>0%</td><td>${row.RESULTADO_NA} NA</td><td>${(( parseFloat(row.RESULTADO_NA) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_NA).toFixed(2)}</td><td>${ (( parseFloat(row.val_RESULTADO_NA) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
+//                                <tr> <td>Notificador: </td><td>0/${row.NOTIFICADOR}</td><td>0%</td><td>${row.RESULTADO_AP} AP</td><td>${(( parseFloat(row.RESULTADO_AP) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_AP).toFixed(2)}</td><td>${ (( parseFloat(row.val_RESULTADO_AP) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
+//                                <tr> <td>Cerrador: </td><td>0/${row.CERRADOR}</td><td>0%</td><td>${row.RESULTADO_CCERRADOR} Contacto</td><td>${(( parseFloat(row.RESULTADO_CCERRADOR) / parseFloat(row.CANTIDAD) )*100).toFixed(2)}%</td><td>$ ${parseFloat(row.val_RESULTADO_CCERRADOR).toFixed(2)}</td><td>${ ( ( parseFloat(row.val_RESULTADO_CCERRADOR) / parseFloat(row.SALDO_TOTAL) * 100)).toFixed(2) }%</td> </tr>
+//                            `);
+//                     }
+//                    
+//                }
+//            }
             $("#cargando_datos").addClass('hide');
 
         },

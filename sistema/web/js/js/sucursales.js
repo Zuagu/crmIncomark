@@ -8,6 +8,7 @@ window.onload = function () {
     select_sucursales();
     select_departamentos();
     select_areas();
+    select_puestos();
 };
 //var reporte_estiones = [];
 
@@ -45,6 +46,13 @@ $("#tbody_areas").on('click', '.elimimar_area', function () {
 $("#agregar_nueva_area").click(function () {
     let nombre_area = $("#nombre_area").val();
     agregar_area(nombre_area);
+});
+
+
+// Puestos
+$("#agregar_nuevo_puesto").click(function () {
+    let nombre_puesto = $("#nombre_puesto").val();
+    agregar_puesto(nombre_puesto);
 });
 
 
@@ -276,6 +284,54 @@ function agregar_area(_nombre_area) {
     });
 }
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function select_puestos() {
+    let params = {
+        action: 'select_puestos'
+    };
+    console.log(params);
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log('tbody_puesto', response);
+            $('#tbody_puesto').empty();
+            for (let item of response) {
+                $('#tbody_puesto').append(`<tr class="center"><td>${item.id_puesto}</td><td>${item.puesto}</td></tr>`);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            $('#error').empty();
+            $('#error').append(error.responseText);
+        }
+    });
+}
+function agregar_puesto(_nombre_puesto) {
+    let params = {
+        action: 'agregar_puesto',
+        nombre_puesto: _nombre_puesto
+    };
+    $.ajax({
+        type: "POST",
+        url: "ControllerSucursales",
+        data: params,
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+            $("#nombre_puesto").val("");
+            select_puestos();
+        },
+        error: function (error) {
+            $('#error').empty();
+            $('#error').append(error.responseText);
+            console.log(error);
+        }
+    });
+}
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

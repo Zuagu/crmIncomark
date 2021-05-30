@@ -114,6 +114,24 @@ public class ControllerSucursales extends HttpServlet {
             writer.flush();
             writer.close();
         }
+        else if(action.equals("select_puestos")) {
+            String Respuesta = ModelSucursal.select_puestos();
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
+        else if(action.equals("agregar_puesto")) {
+            String Respuesta = ModelSucursal.agregar_puesto(
+                    request.getParameter("nombre_puesto")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        }
         
     }
 

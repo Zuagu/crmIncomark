@@ -220,7 +220,7 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
-    
+
     //==========================================================================
     public static String select_puestos_disponobles() {
         try {
@@ -228,7 +228,7 @@ public class ModelUsuario {
             String sql = "select id_puesto, puesto from sic_puestos;";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
-            
+
             JSONArray puestos = new JSONArray();
             while (inicioConexion.rs.next()) {
                 JSONObject puesto = new JSONObject();
@@ -244,6 +244,7 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
+
     //==========================================================================
     public static String select_jefes_puesto() {
         try {
@@ -251,7 +252,7 @@ public class ModelUsuario {
             String sql = "select id, nombre from arcade_usuarios where id_puesto in (1,2,3,4,5,6,7,8,9,11,18) and f_active = 1;";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
-            
+
             JSONArray puestos = new JSONArray();
             while (inicioConexion.rs.next()) {
                 JSONObject puesto = new JSONObject();
@@ -310,26 +311,10 @@ public class ModelUsuario {
             System.out.println("sexo: " + sexo);
             System.out.println("puesto: " + puesto);
             System.out.println("jefe: " + jefe);
+
             
-            /* 
-            _tipo int,
-            _nombre varchar(100),
-            _alias varchar(45),
-            _id_sucursal int,
-            _id_puesto int,
-            _id_jefe_inmediato int,
-            _sexo varchar(2),
-            _telefono varchar(45),
-            _celular varchar(45),
-            _email varchar(60),
-            _estado TEXT,
-            _localidad TEXT,
-            _territorio TEXT,
-            _id_reclutador int
-            */
-            /*                                       |                |              |               |              */
-            String sql = "CALL arcade_insert_usuario(" + tipo_user + ", '" + nom + "','" + alias + "', 1, " + puesto + ", " + jefe + ",'" + sexo + 
-                    "','" + tel + "','" + cel + "','" + mail + "', 'SIN ESTADO', 'SIN LOCALIDAD', 'SIN TERRITORIO', 211);";
+            String sql = "CALL arcade_insert_usuario(" + tipo_user + ", '" + nom + "','" + alias + "', 1, " + puesto + ", " + jefe + ",'" + sexo
+                    + "','" + tel + "','" + cel + "','" + mail + "', 'SIN ESTADO', 'SIN LOCALIDAD', 'SIN TERRITORIO', 211);";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
 
@@ -338,7 +323,7 @@ public class ModelUsuario {
             while (inicioConexion.rs.next()) {
                 gestor.put("mensaje", inicioConexion.rs.getString("mensaje"));
                 gestor.put("response", inicioConexion.rs.getString("response"));
-                
+
             }
             inicioConexion.conn.close();
             inicioConexion.rs.close();
@@ -348,13 +333,14 @@ public class ModelUsuario {
             return "SQL Code: " + ex;
         }
     }
+
     //==========================================================================
     public static String add_user_visitador(int tipo_user, String nom, String alias, String tel, String cel, String mail, String edad, String estado, String localidad, String sexo, String puesto, String jefe) {
         try {
             StartConexion inicioConexion = new StartConexion();
 
-            String sql = "CALL arcade_insert_usuario(" + tipo_user + ", '" + nom + "','" + alias + "', 1, " + puesto + ", " + jefe + ",'" + sexo + 
-                    "','" + tel + "','" + cel + "','" + mail + "', '" + estado + "', '" + localidad + "', 'SIN TERRITORIO', 211);";
+            String sql = "CALL arcade_insert_usuario(" + tipo_user + ", '" + nom + "','" + alias + "', 1, " + puesto + ", " + jefe + ",'" + sexo
+                    + "','" + tel + "','" + cel + "','" + mail + "', '" + estado + "', '" + localidad + "', 'SIN TERRITORIO', 211);";
             System.out.println(sql);
             inicioConexion.rs = inicioConexion.st.executeQuery(sql);
 
@@ -363,7 +349,7 @@ public class ModelUsuario {
             while (inicioConexion.rs.next()) {
                 gestor.put("mensaje", inicioConexion.rs.getString("mensaje"));
                 gestor.put("response", inicioConexion.rs.getString("response"));
-                
+
             }
             inicioConexion.conn.close();
             inicioConexion.rs.close();
