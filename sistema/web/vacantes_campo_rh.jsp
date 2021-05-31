@@ -79,13 +79,13 @@
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>
                             <div id="promesado_diario_org" class="col s12 m12 l12">
-                                <div id="datos_tabla_promesado_diario_org" class="col s12 z-depth-2 dt">
+                                <div id="datos_tabla_promesado_diario_org" class="z-depth-2 dt">
                                     <div id="cargando_datos" class="progress">
                                         <div class="indeterminate"></div>
                                     </div>
-                                    <table class="highlight col s12 m5 l5">
+                                    <table class="highlight col s12 m6 l6 center">
                                         <thead>
-                                            <tr>
+                                            <tr class="lime lighten-5">
                                                 <th>ESTADO</th>
                                                 <th>LOCALIDAD</th>
                                                 <th>CARTERO</th>
@@ -98,10 +98,10 @@
                                         </tbody>
                                     </table>
                                     
-                                    <table class="highlight col s12 m4 l4">
+                                    <table class="highlight col s12 m3 l3 center">
                                         <thead>
-                                            <tr>
-                                                <th>LOCALIDAD</th>
+                                            <tr class="green lighten-5">
+                                                <!--<th>LOCALIDAD</th>-->
                                                 <th>CARTERO</th>
                                                 <th>NOTIFICADOR</th>
                                                 <th>CERRADOR</th>
@@ -112,6 +112,35 @@
                                         </tbody>
                                     </table>
                                     
+                                    <table class="highlight col s12 m3 l3 center">
+                                        <thead>
+                                            <tr class="red lighten-5">
+                                                <!--<th>LOCALIDAD</th>-->
+                                                <th>CARTERO</th>
+                                                <th>NOTIFICADOR</th>
+                                                <th>CERRADOR</th>
+                                                <th>TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_faltante">
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                                <div class="col s12 m4 l4">
+                                    <table class="highlight col s12">
+                                        <thead>
+                                            <tr>
+                                                <th>LOCALIDAD</th>
+                                                <th>CARTERO</th>
+                                                <th>NOTIFICADOR</th>
+                                                <th>CERRADOR</th>
+                                                <th>TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_no_pin">
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

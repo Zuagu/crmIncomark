@@ -132,15 +132,14 @@ public class ModelVacantes {
                     + "from azteca_base_genenral_original \n"
                     + "where IDENTIFICADOR != 0 and ETAPA in ('EXTRAJUDICIAL', 'PREVENTA')\n"
                     + "group by LOCALIDAD_V  having SUMA > 0 order by ESTADO_V;",
-                    
-                    sql2 = "select \n"
+                    sql2 = "SELECT \n"
                     + "localidad, \n"
-                    + "count(id_puesto = 13) as Notificador, \n"
-                    + "count(id_puesto = 14) as Cartero, \n"
-                    + "count(id_puesto = 12) as Cerrador,\n"
-                    + "count(id_puesto = 12) + count(id_puesto = 14) + count(id_puesto = 12) as suma\n"
-                    + "from arcade_usuarios \n"
-                    + "group by id_puesto,localidad\n"
+                    + "sum(if( id_puesto = 12, 1,0)) as Cerrador,\n"
+                    + "sum(if( id_puesto = 13, 1,0)) as Notificador,\n"
+                    + "sum(if( id_puesto = 14, 1,0)) as Cartero,\n"
+                    + "sum(if( id_puesto = 12 or id_puesto = 13 or id_puesto = 14, 1,0)) as suma\n"
+                    + "from arcade_usuarios where id_puesto in (12,13,14) \n"
+                    + "group by localidad\n"
                     + "having not localidad is null;";
             System.out.println(sql);
             System.out.println(sql2);
@@ -178,7 +177,7 @@ public class ModelVacantes {
             JSONArray res = new JSONArray();
             res.add(vacantes);
             res.add(ocupados);
-            
+
             ic.conn.close();
             ic.rs.close();
             ic.st.close();
