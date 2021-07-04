@@ -309,6 +309,9 @@ $("#estatus").change(function () {
         <option value="38">TITULAR NO DEFINE</option>
         `);
 
+    } else if ($("#estatus").val() === '7') {
+        $("#codigo_llamada").empty();
+        $("#codigo_llamada").append(`<option value="41">REPORTE PAGO</option>`);
     } else {
         $("#codigo_llamada").empty();
         options_estatus_llamadas = `<option value="4" selected>Selecciona Codigo</option>
@@ -396,12 +399,22 @@ $("#buscador_cuentas_gestor").keyup(function (e) {
         }
     }
 });
-$("#buscador_cuentas_gestor").click(function () {
-//    $("#div_cuentas_encontradas").empty();
+
+$("#tbody_telefonos").on('click', '.send_ivr', function () {
+    let params = {
+        action: "enviar_numero_ivr",
+        numero: $(this).attr("id"),
+        num_cliente: $("#CLIENTE_UNICO").val(),
+        id_cuenta: $("#id_cuenta").val(),
+        nombre_cliente: $("#NOMBRE_CTE").val(),
+        id_gestor: id_usuario
+    };
+    console.log(params);
+    enviar_numero_ivr(params);
+
 });
 
-
-$("#tab_saldos").click( function (){
+$("#tab_saldos").click(function () {
     select_convenios_gestor(id_usuario);
 });
 
@@ -434,18 +447,18 @@ function select_datos_cuenta(_cuenta) {
 //                }
             }
 
-           $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL2} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2_2}">${datos_cuenta.TELEFONO2_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL3} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3}">${datos_cuenta.TELEFONO3}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL3} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3_2}">${datos_cuenta.TELEFONO3_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL4} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4}">${datos_cuenta.TELEFONO4}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL4} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4_2}">${datos_cuenta.TELEFONO4_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL5} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5}">${datos_cuenta.TELEFONO5}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL5} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5_2}">${datos_cuenta.TELEFONO5_2}</a></td></tr>
+            $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO1}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO1_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2_2}">${datos_cuenta.TELEFONO2_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO2_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3}">${datos_cuenta.TELEFONO3}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO3}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3_2}">${datos_cuenta.TELEFONO3_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO3_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4}">${datos_cuenta.TELEFONO4}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO4}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4_2}">${datos_cuenta.TELEFONO4_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO4_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5}">${datos_cuenta.TELEFONO5}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO5}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5_2}">${datos_cuenta.TELEFONO5_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO5_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
                 `);
-            
+
             $("#CLASIFICACION_CTE").empty();
             $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
 
@@ -697,19 +710,19 @@ function select_cuenta_siguiente(_id_usuario) {
 //                        <td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta[dato]}">${datos_cuenta[dato]}</a></td></tr>`);
 //                    }
                 }
-                $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL2} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2_2}">${datos_cuenta.TELEFONO2_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL3} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3}">${datos_cuenta.TELEFONO3}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL3} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3_2}">${datos_cuenta.TELEFONO3_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL4} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4}">${datos_cuenta.TELEFONO4}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL4} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4_2}">${datos_cuenta.TELEFONO4_2}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL5} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5}">${datos_cuenta.TELEFONO5}</a></td></tr>
-                <tr><td>${datos_cuenta.NOM_TEL5} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5_2}">${datos_cuenta.TELEFONO5_2}</a></td></tr>
+                $('#tbody_telefonos').append(`<tr><td>${datos_cuenta.NOM_TEL1} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1}">${datos_cuenta.TELEFONO1}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO1}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL1} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO1_2}">${datos_cuenta.TELEFONO1_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO1_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2}">${datos_cuenta.TELEFONO2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL2} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO2_2}">${datos_cuenta.TELEFONO2_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO2_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3}">${datos_cuenta.TELEFONO3}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO3}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL3} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO3_2}">${datos_cuenta.TELEFONO3_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO3_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4}">${datos_cuenta.TELEFONO4}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO4}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL4} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO4_2}">${datos_cuenta.TELEFONO4_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO4_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 1</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5}">${datos_cuenta.TELEFONO5}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO5}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
+                <tr><td>${datos_cuenta.NOM_TEL5} TEL 2</td><td><i class="material-icons">phone_iphone</i></td>><td><a class="font_number_monospace number_call" href="zoiper://${datos_cuenta.TELEFONO5_2}">${datos_cuenta.TELEFONO5_2}</a></td><td class="center-align"><a id="${datos_cuenta.TELEFONO5_2}" class="btn-flat waves-effect send_ivr"><i class="material-icons left">call</i><i class="material-icons right">send</i></a></td></tr>
                 `);
-                
-                
+
+
                 $("#CLASIFICACION_CTE").empty();
                 $("#CLASIFICACION_CTE").append(datos_cuenta.CLASIFICACION_CTE);
 
@@ -1589,8 +1602,95 @@ function select_convenios_gestor(_id_usuario) {
                     <td>${item.ID_ESTATUS}</td>
                 </tr>`);
             }
-            
+
 //            console.log(result);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+$("#estatus").change(function () {
+    let estatus = $("#estatus").val();
+    $("#rp_cliente_unico").val($("#CLIENTE_UNICO").val());
+    if (estatus === "7") {
+        $("#reportar_pago").modal('open');
+        let estatus_llamada = $("#codigo_llamada").val();
+
+        console.log("ok", estatus, estatus_llamada);
+    }
+});
+
+$("#enviar_reporte_pago").click(function () {
+    let params = {
+        action: 'reportar_tiket_pago',
+        rp_cliente_unico: $("#rp_cliente_unico").val() || 0,
+        rp_id_tiket: $("#rp_id_tiket").val() || 0,
+        rp_monto_tiket: $("#rp_monto_tiket").val() || 0,
+        rp_fecha_pago: $("#rp_fecha_pago").val() || 0,
+        rp_tipo_pago: $("#rp_tipo_pago").val() || 0,
+        rp_id_usuario: id_usuario
+    };
+    reportar_tiket_pago(params);
+
+});
+
+
+function reportar_tiket_pago(_params) {
+    console.log("Resportar pago", _params);
+
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: _params,
+        dataType: "json",
+        success: function (result) {
+            let tiempo = 0;
+            if (result.resultado === 'ok') {
+                $("#alerta_reportar_pago").empty();
+                $("#alerta_reportar_pago").append("<b class='blue-text'>Ticket de pago registrado Correctamente</b>");
+                tiempo = 2000;
+            } else {
+                $("#alerta_reportar_pago").empty();
+                $("#alerta_reportar_pago").append("<b>Ticket de pago no agregado</b>");
+                tiempo = 3000;
+            }
+            setTimeout(function () {
+                $("#reportar_pago").modal('close');
+                $("#reportar_pago input").val("");
+                $("#alerta_reportar_pago").empty();
+
+                console.log('Resutaldo de reportar pago', result);
+            }, tiempo);
+            let estatus = $("#estatus").html();
+            $("#estatus").empty();
+            $("#estatus").append(estatus);
+            $("#codigo_llamada").empty();
+            $("#codigo_llamada").append(options_estatus_llamadas);
+            $('select').formSelect();
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+
+function enviar_numero_ivr(_params) {
+
+    $.ajax({
+        type: "POST",
+        url: "ControllerDataCuentaAzteca",
+        data: _params,
+        dataType: "json",
+        success: function (result) {
+            console.log('Resutaldo de send_ivr', result);
+            if (result.resultado === 'ok') {
+                $('#modal_alerta').modal('open');
+                $('#mensaje_alerta').empty();
+                $('#mensaje_alerta').append(`Numero agregado a la lista de ivr`);
+            }
         },
         error: function (error) {
             console.log(error);

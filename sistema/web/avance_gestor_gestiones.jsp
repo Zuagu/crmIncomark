@@ -112,6 +112,7 @@
                                                 <th>CUENTAS</th>
                                                 <th>CONTACTACION</th>
                                                 <th>PROMESADO</th>
+                                                <th>PAGADO</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody_resporte_gestiones">

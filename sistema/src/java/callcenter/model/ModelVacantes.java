@@ -123,14 +123,16 @@ public class ModelVacantes {
                     + "  sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
                     + "  sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
                     + "  sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500, 0) AS CERRADOR,\n"
-                    + "    FORMAT( (sum(RESULTADO_V='N/A') / 1500) + ( sum(RESULTADO_V='AP-Aviso debajo de la puerta') / 1500) +\n"
+                    + "    FORMAT( FORMAT(sum(RESULTADO_V='N/A') / 1500 ,0) + FORMAT( sum(RESULTADO_V='AP-Aviso debajo de la puerta') / 1500 ,0) +\n"
                     + "    ((sum(RESULTADO_V='NM-No concreta en este momento') + sum(RESULTADO_V='PP-PROMESA DE PAGO') + \n"
                     + "  sum(RESULTADO_V='PP-Promete devolver el producto') + sum(RESULTADO_V='PP-Promete liquidar en plazos') + \n"
                     + "  sum(RESULTADO_V='PP-Promete liquidar en un solo pago') + sum(RESULTADO_V='RF-Recado con familiar') + \n"
                     + "  sum(RESULTADO_V='Se recomienda volver a verificar') + sum(RESULTADO_V='MT-Mensaje con terceros') + \n"
                     + "  sum(RESULTADO_V='CI-CLIENTE NO DEFINE21') + sum(RESULTADO_V='AD-ACUDIRA AL DESPACHO') + sum(RESULTADO_V='SE NECESITARA UN CERRADOR') ) / 1500),0) AS SUMA\n"
                     + "from azteca_base_genenral_original \n"
-                    + "where IDENTIFICADOR != 0 and ETAPA in ('EXTRAJUDICIAL', 'PREVENTA')\n"
+                    + "where IDENTIFICADOR != 0 "
+                    + "and if( concat(" + territorio + ") = '0', TERRITORIO like '%%' , TERRITORIO in (" + territorio + ") ) \n"
+                    + "and if( concat(" + etapa + ") = '0', ETAPA like '%%' , ETAPA in (" + etapa + ") ) \n"
                     + "group by LOCALIDAD_V  having SUMA > 0 order by ESTADO_V;",
                     sql2 = "SELECT \n"
                     + "localidad, \n"
@@ -138,7 +140,7 @@ public class ModelVacantes {
                     + "sum(if( id_puesto = 13, 1,0)) as Notificador,\n"
                     + "sum(if( id_puesto = 14, 1,0)) as Cartero,\n"
                     + "sum(if( id_puesto = 12 or id_puesto = 13 or id_puesto = 14, 1,0)) as suma\n"
-                    + "from arcade_usuarios where id_puesto in (12,13,14) \n"
+                    + "from arcade_usuarios where id_puesto in (12,13,14) and f_active = 1 \n"
                     + "group by localidad\n"
                     + "having not localidad is null;";
             System.out.println(sql);

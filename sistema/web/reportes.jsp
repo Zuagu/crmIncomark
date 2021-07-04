@@ -193,6 +193,8 @@
                                             <th>PROMESA</th>
                                             <th>PREDICTIVO</th>
                                             <th>ETAPA</th>
+                                            <th>GERENCIA</th>
+                                            <th>GERENTE</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_tabla_gestiones">

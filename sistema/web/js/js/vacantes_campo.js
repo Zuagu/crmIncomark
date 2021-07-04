@@ -11,15 +11,16 @@ window.onload = function () {
     if (tipo_jsp === "vacantes_visitador_rh") {
         azteca_select_requerimetos_campo_RH();
 //        $("#cargando_datos").addClass("hide");
+    } else {
+        azteca_select_requerimetos_campo();
     }
-
-//    azteca_select_requerimetos_campo();
 };
-//var reporte_estiones = [];
-
 
 $("#getTableRequerimentos").click(function () {
     azteca_select_requerimetos_campo();
+});
+$("#getTableRequerimentosRH").click(function () {
+    azteca_select_requerimetos_campo_RH();
 });
 
 
@@ -67,13 +68,12 @@ function select_etapas_cartera() {
         data: params,
         dataType: "json",
         success: function (response) {
-            console.log("Response de etapas: ", response);
+//            console.log("Response de etapas: ", response);
             $("#etapa_visitas").empty();
             $("#etapa_visitas").append(`<option value="0" selected>TODOS</option>`);
             for (let item of response) {
 
                 $("#etapa_visitas").append(`<option value="${item.ETAPA}">${item.ETAPA}</option>`);
-//                console.log(item.CLASIFICACION_CTE);
             }
             $('select').formSelect();
         },
@@ -171,46 +171,86 @@ function azteca_select_requerimetos_campo_RH() {
 //            console.log(response);
             let vacantes_requeridos = response[0];
             let vacantes_actuales = response[1];
+            
+            let suma_final = {
+                CARTEROS_REC: 0,
+                NOTIFICADOR_REC: 0,
+                CERRADOR_REC: 0,
+                SUMA_REC: 0,
+                CARTEROS_OCU: 0,
+                NOTIFICADOR_OCU: 0,
+                CERRADOR_OCU: 0,
+                SUMA_OCU: 0,
+                CARTEROS_DIF: 0,
+                NOTIFICADOR_DIF: 0,
+                CERRADOR_DIF: 0,
+                SUMA_DIF: 0
+            };
 
             $("#tbody_requerido").empty();
+            $("#tbody_actual").empty();
+            $("#tbody_faltante").empty();
+            $("#tbody_faltante").empty();
             let estados = {};
             let identificador = '0';
             for (let row of vacantes_requeridos) {
+                
+                suma_final.CARTEROS_REC += parseInt(row.CARTEROS);
+                suma_final.NOTIFICADOR_REC += parseInt(row.NOTIFICADOR);
+                suma_final.CERRADOR_REC += parseInt(row.CERRADOR);
+                suma_final.SUMA_REC += parseInt(row.SUMA);
+                
                 if (estados[row.ESTADO_V]) {
                     estados[row.ESTADO_V] += 1;
                 } else {
                     estados[row.ESTADO_V] = 1;
                 }
             }
+//            console.log(suma_final);
 
-            console.log('ESTADOS: ', estados);
+//            console.log('ESTADOS: ', estados);
             for (let row of vacantes_requeridos) {
 
                 if (identificador === '0' || row.ESTADO_V != identificador) {
                     identificador = row.ESTADO_V;
 //                    console.log(estados[row.ESTADO_V], identificador);
-                    $("#tbody_requerido").append(`<tr><td rowspan="${estados[row.ESTADO_V]}">${row.ESTADO_V}</td><td>${row.LOCALIDAD_V}</td><td>${row.CARTEROS}</td><td>${row.NOTIFICADOR}</td><td>${row.CERRADOR}</td><td>${row.SUMA}</td></tr>`);
+                    $("#tbody_requerido").append(`<tr><td rowspan="${estados[row.ESTADO_V]}">${row.ESTADO_V}</td><td>${row.LOCALIDAD_V}</td><td class="${(row.CARTEROS != '0' ? 'lime lighten-5':'' )}">${row.CARTEROS}</td><td class="${(row.NOTIFICADOR != '0' ? 'lime lighten-5':'' )}">${row.NOTIFICADOR}</td><td class="${(row.CERRADOR != '0' ? 'lime lighten-5':'' )}">${row.CERRADOR}</td><td class="${(row.SUMA != '0' ? 'lime lighten-5':'' )}">${row.SUMA}</td></tr>`);
 //                    $("#tbody_actual").append(`<tr><td>${row.LOCALIDAD_V}</td><td id="cart_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="not_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="cerr_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="total_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td></tr>`);
                     $("#tbody_actual").append(`<tr><td id="cart_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="not_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="cerr_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="total_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td></tr>`);
                 } else {
-                    $("#tbody_requerido").append(`<tr><td>${row.LOCALIDAD_V}</td><td>${row.CARTEROS}</td><td>${row.NOTIFICADOR}</td><td>${row.CERRADOR}</td><td>${row.SUMA}</td></tr>`);
+                    $("#tbody_requerido").append(`<tr><td>${row.LOCALIDAD_V}</td><td class="${(row.CARTEROS != '0' ? 'lime lighten-5':'' )}">${row.CARTEROS}</td><td class="${(row.NOTIFICADOR != '0' ? 'lime lighten-5':'' )}">${row.NOTIFICADOR}</td><td class="${(row.CERRADOR != '0' ? 'lime lighten-5':'' )}">${row.CERRADOR}</td><td class="${(row.SUMA != '0' ? 'lime lighten-5':'' )}">${row.SUMA}</td></tr>`);
 //                    $("#tbody_actual").append(`<tr><td>${row.LOCALIDAD_V}</td><td id="cart_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="not_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="cerr_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="total_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td></tr>`);
                     $("#tbody_actual").append(`<tr><td id="cart_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="not_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="cerr_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td><td id="total_${row.LOCALIDAD_V.replace(/ /gm, "_")}">0</td></tr>`);
                 }
             }
+            // imprimimos sumatorias
+            $("#tbody_requerido").append(`<tr><td></td><td><b>SUMA</b></td><td><b>${suma_final.CARTEROS_REC}</b></td><td><b>${suma_final.NOTIFICADOR_REC}</b></td><td><b>${suma_final.CERRADOR_REC}</b></td><td><b>${suma_final.SUMA_REC}</b></td></tr>`);
 
             for (let row of vacantes_actuales) {
 //                console.log(row);
                 $("#cart_" + row.localidad.replace(/ /gm, "_")).empty();
                 $("#cart_" + row.localidad.replace(/ /gm, "_")).append(row.Cartero);
+                (row.Cartero != '0' ? $("#cart_" + row.localidad.replace(/ /gm, "_")).addClass('green lighten-5') : $("#cart_" + row.localidad.replace(/ /gm, "_")).addClass('') );
                 $("#not_" + row.localidad.replace(/ /gm, "_")).empty();
                 $("#not_" + row.localidad.replace(/ /gm, "_")).append(row.Notificador);
+                (row.Notificador != '0' ? $("#not_" + row.localidad.replace(/ /gm, "_")).addClass('green lighten-5') : $("#not_" + row.localidad.replace(/ /gm, "_")).addClass('') );
                 $("#cerr_" + row.localidad.replace(/ /gm, "_")).empty();
                 $("#cerr_" + row.localidad.replace(/ /gm, "_")).append(row.Cerrador);
+                (row.Cerrador != '0' ? $("#cerr_" + row.localidad.replace(/ /gm, "_")).addClass('green lighten-5') : $("#cerr_" + row.localidad.replace(/ /gm, "_")).addClass('') );
                 $("#total_" + row.localidad.replace(/ /gm, "_")).empty();
                 $("#total_" + row.localidad.replace(/ /gm, "_")).append(row.suma);
+                (row.suma != '0' ? $("#total_" + row.localidad.replace(/ /gm, "_")).addClass('green lighten-5') : $("#total_" + row.localidad.replace(/ /gm, "_")).addClass('') );
+                
+                
+                suma_final.CARTEROS_OCU += parseInt(row.Cartero);
+                suma_final.NOTIFICADOR_OCU += parseInt(row.Notificador);
+                suma_final.CERRADOR_OCU += parseInt(row.Cerrador);
+                suma_final.SUMA_OCU += parseInt(row.suma);
 
             }
+            // imprimimos sumatorias
+            $("#tbody_actual").append(`<tr><td><b>${suma_final.CARTEROS_OCU}</b></td><td><b>${suma_final.NOTIFICADOR_OCU}</b></td><td><b>${suma_final.CERRADOR_OCU}</b></td><td><b>${suma_final.SUMA_OCU}</b></td></tr>`);
+
             // idenitificar cuales no se pintaron
             $("#tbody_no_pin").empty();
             for (let row_req of vacantes_requeridos) {
@@ -241,17 +281,30 @@ function azteca_select_requerimetos_campo_RH() {
                 let val_act_not = parseInt( $("#not_" + row.LOCALIDAD_V.replace(/ |\?/gm, "_") ).text() || '0' );
                 let val_act_cerr = parseInt( $("#cerr_" + row.LOCALIDAD_V.replace(/ |\?/gm, "_") ).text() || '0' );
                 let val_act_total = parseInt( $("#total_" + row.LOCALIDAD_V.replace(/ |\?/gm, "_") ).text() || '0' );
-                console.log(val_act_not);
+//                console.log(val_act_not);
                 if (identificador === '0' || row.ESTADO_V != identificador) {
                     identificador = row.ESTADO_V;
 //                    console.log(estados[row.ESTADO_V], identificador);
 //                    $("#tbody_faltante").append(`<tr><td>${row.LOCALIDAD_V}</td><td>${parseInt(row.CARTEROS) - val_act_cart}</td><td>${parseInt(row.NOTIFICADOR) - val_act_not}</td><td>${parseInt(row.CERRADOR) - val_act_cerr}</td><td>${parseInt(row.SUMA) - val_act_total}</td></tr>`);
-                    $("#tbody_faltante").append(`<tr><td>${parseInt(row.CARTEROS) - val_act_cart}</td><td>${parseInt(row.NOTIFICADOR) - val_act_not}</td><td>${parseInt(row.CERRADOR) - val_act_cerr}</td><td>${parseInt(row.SUMA) - val_act_total}</td></tr>`);
+                    $("#tbody_faltante").append(`<tr>
+                            <td class="${( parseInt(row.CARTEROS) - val_act_cart != 0 ? 'red lighten-5':'')}" >${parseInt(row.CARTEROS) - val_act_cart}</td>
+                            <td class="${( parseInt(row.NOTIFICADOR) - val_act_not != 0 ? 'red lighten-5':'')}" >${parseInt(row.NOTIFICADOR) - val_act_not}</td>
+                            <td class="${( parseInt(row.CERRADOR) - val_act_cerr != 0 ? 'red lighten-5':'')}" >${parseInt(row.CERRADOR) - val_act_cerr}</td>
+                            <td class="${( parseInt(row.SUMA) - val_act_total != 0 ? 'red lighten-5':'')}" >${parseInt(row.SUMA) - val_act_total}</td></tr>`
+                            );
                 } else {
 //                    $("#tbody_faltante").append(`<tr><td>${row.LOCALIDAD_V}</td><td>${parseInt(row.CARTEROS) - val_act_cart}</td><td>${parseInt(row.NOTIFICADOR) - val_act_not}</td><td>${parseInt(row.CERRADOR) - val_act_cerr}</td><td>${parseInt(row.SUMA) - val_act_total}</td></tr>`);
-                    $("#tbody_faltante").append(`<tr><td>${parseInt(row.CARTEROS) - val_act_cart}</td><td>${parseInt(row.NOTIFICADOR) - val_act_not}</td><td>${parseInt(row.CERRADOR) - val_act_cerr}</td><td>${parseInt(row.SUMA) - val_act_total}</td></tr>`);
+                    $("#tbody_faltante").append(`<tr>
+                            <td class="${( parseInt(row.CARTEROS) - val_act_cart != 0 ? 'red lighten-5':'')}">${parseInt(row.CARTEROS) - val_act_cart}</td>
+                            <td class="${( parseInt(row.NOTIFICADOR) - val_act_not != 0 ? 'red lighten-5':'')}">${parseInt(row.NOTIFICADOR) - val_act_not}</td>
+                            <td class="${( parseInt(row.CERRADOR) - val_act_cerr != 0 ? 'red lighten-5':'')}">${parseInt(row.CERRADOR) - val_act_cerr}</td>
+                            <td class="${( parseInt(row.SUMA) - val_act_total != 0 ? 'red lighten-5':'')}">${parseInt(row.SUMA) - val_act_total}</td></tr>`
+                            );
                 }
             }
+            // imprimimos sumatorias
+            $("#tbody_faltante").append(`<tr><td><b>${ suma_final.CARTEROS_REC - suma_final.CARTEROS_OCU}</b></td><td><b>${suma_final.NOTIFICADOR_REC - suma_final.NOTIFICADOR_OCU}</b></td><td><b>${suma_final.CERRADOR_REC - suma_final.CERRADOR_OCU}</b></td><td><b>${suma_final.SUMA_REC - suma_final.SUMA_OCU}</b></td></tr>`);
+
             
             $("#cargando_datos").addClass('hide');
 

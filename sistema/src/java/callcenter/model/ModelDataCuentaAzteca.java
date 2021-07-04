@@ -21,7 +21,7 @@ import org.json.simple.parser.JSONParser;
  * @author Emmanuel Medina
  */
 public class ModelDataCuentaAzteca {
-    
+
     public static String datosCuenta(String cuenta) {
         try {
             StartConexion ic = new StartConexion();
@@ -138,11 +138,11 @@ public class ModelDataCuentaAzteca {
 //            System.out.println(objCuenta.toString());
             return objCuenta.toString();
         } catch (SQLException e) {
-            
+
             System.out.println(e);
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }
-        
+
     }
 
     public static String guardarGestion(String objGestion) {
@@ -670,21 +670,21 @@ public class ModelDataCuentaAzteca {
     }
 
     public static String actualizar_informacion_contacto(
-            String nom_tel1, 
-            String tel1_1, 
-            String tel1_2, 
-            String nom_tel2, 
-            String tel2_1, 
-            String tel2_2, 
-            String nom_tel3, 
-            String tel3_1, 
-            String tel3_2, 
-            String nom_tel4, 
-            String tel4_1, 
-            String tel4_2, 
-            String nom_tel5, 
-            String tel5_1, 
-            String tel5_2, 
+            String nom_tel1,
+            String tel1_1,
+            String tel1_2,
+            String nom_tel2,
+            String tel2_1,
+            String tel2_2,
+            String nom_tel3,
+            String tel3_1,
+            String tel3_2,
+            String nom_tel4,
+            String tel4_1,
+            String tel4_2,
+            String nom_tel5,
+            String tel5_1,
+            String tel5_2,
             String cuenta) {
         try {
             StartConexion ic = new StartConexion();
@@ -776,6 +776,104 @@ public class ModelDataCuentaAzteca {
             ic.conn.close();
 
             return pagos.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los pagos azteca Code Error: " + e;
+        }
+    }
+
+    public static String enviar_numero_ivr(String numero, String num_cliente, String id_cuenta, String nombre_cliente, String id_gestor) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "CALL azteca_agregar_numero_ivr('" + numero + "','" + num_cliente + "','" + id_cuenta + "','" + nombre_cliente + "','" + id_gestor + "');";
+            ic.rs = ic.st.executeQuery(sql);
+            JSONObject resultado = new JSONObject();
+            while (ic.rs.next()) {
+                resultado.put("resultado", ic.rs.getString("resultado"));
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return resultado.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los pagos azteca Code Error: " + e;
+        }
+    }
+
+    public static String select_solicitud_ivr(String desde, String hasta, String etapa, String territorio) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "SELECT i.f_enviado, i.fecha_insert,i.id_iregistro, i.fecha_insert, i.num_ivr, i.cliente_unico, i.nombre_ref, \n"
+                    + "i.nombre_cuenta,b.ETAPA,b.TERRITORIO FROM solicitud_ivr i \n"
+                    + "left join azteca_base_genenral_original b on i.cliente_unico = b.CLIENTE_UNICO\n"
+                    + "where if( '" + desde + "' != '0' and '" + hasta + "' != '0', date(i.fecha_insert) between '" + desde + "' and '" + hasta + "', date(i.fecha_insert) = curdate())\n"
+                    + "and if ('" + etapa + "' != '0', b.ETAPA = '" + etapa + "', b.ETAPA like '%%')\n"
+                    + "and if ('" + territorio + "' != '0', b.TERRITORIO = '" + territorio + "', b.TERRITORIO like '%%');";
+            // id_iregistro, fecha_insert, num_ivr, cliente_unico, nombre_ref, nombre_cuenta
+//            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listIvr = new JSONArray();
+            while (ic.rs.next()) {
+                JSONObject ivr = new JSONObject();
+                ivr.put("id_iregistro", ic.rs.getString("id_iregistro"));
+                ivr.put("fecha_insert", ic.rs.getString("fecha_insert"));
+                ivr.put("num_ivr", ic.rs.getString("num_ivr"));
+                ivr.put("cliente_unico", ic.rs.getString("cliente_unico"));
+                ivr.put("nombre_ref", ic.rs.getString("nombre_ref"));
+                ivr.put("nombre_cuenta", ic.rs.getString("nombre_cuenta"));
+                ivr.put("ETAPA", ic.rs.getString("ETAPA"));
+                ivr.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                ivr.put("f_enviado", ic.rs.getString("f_enviado"));
+                listIvr.add(ivr);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listIvr.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los pagos azteca Code Error: " + e;
+        }
+    }
+
+    public static String idenitificar_ivr_descargados(String desde, String hasta, String etapa, String territorio) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "update solicitud_ivr i left join azteca_base_genenral_original b on i.cliente_unico = b.CLIENTE_UNICO\n"
+                    + "set i.f_enviado = 1 where \n"
+                    + "if( '" + desde + "' != '0' and '" + hasta + "' != '0', date(i.fecha_insert) between '" + desde + "' and '" + hasta + "', date(i.fecha_insert) = curdate())\n"
+                    + "and if ('" + etapa + "' != '0', b.ETAPA = '" + etapa + "', b.ETAPA like '%%')\n"
+                    + "and if ('" + territorio + "' != '0', b.TERRITORIO = '" + territorio + "', b.TERRITORIO like '%%');";
+            // id_iregistro, fecha_insert, num_ivr, cliente_unico, nombre_ref, nombre_cuenta
+//            System.out.println(sql);
+            ic.st.executeUpdate(sql);
+            JSONObject ivr = new JSONObject();
+            ivr.put("response", "Registros Actualizados");
+            
+            ic.st.close();
+            ic.conn.close();
+
+            return ivr.toString();
+        } catch (SQLException e) {
+            return "SQL: Error al aplicar identificador de ivrs descargados Code Error: " + e;
+        }
+    }
+    
+    public static String reportar_tiket_pago(String rp_cliente_unico, String rp_id_tiket, String rp_monto_tiket, String rp_fecha_pago, String rp_tipo_pago, String rp_id_usuario) {
+        try {
+            StartConexion ic = new StartConexion();
+            String sql = "CALL azteca_agregar_reporte_pago('" + rp_cliente_unico + "','" + rp_id_tiket + "','" + rp_monto_tiket + "','" + rp_fecha_pago + "','" + rp_tipo_pago + "','" + rp_id_usuario + "');";
+            ic.rs = ic.st.executeQuery(sql);
+            System.out.println(sql);
+            JSONObject resultado = new JSONObject();
+            while (ic.rs.next()) {
+                resultado.put("resultado", ic.rs.getString("resultado"));
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return resultado.toString();
         } catch (SQLException e) {
             return "SQL: Error al traer los pagos azteca Code Error: " + e;
         }

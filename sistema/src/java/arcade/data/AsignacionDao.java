@@ -1113,15 +1113,14 @@ public class AsignacionDao {
             StartConn s = new StartConn();
             String renglones;
             // SOLO LAS CUENTAS ACTIVAS, YA QUE ES PARA GENERAR EL ARCHIVO DE SMS (Y SOLO SE TOCA LO ACTIVO)
-            String sql = "select id_asignacion, nombre_asignacion(id_asignacion) as asignacion from arcade_basegeneral where id_region in (" + cadena_regiones + ") and f_active = 1 and dias < 40 group by id_asignacion;";
+            String sql = "select ETAPA from azteca_base_genenral_original where IDENTIFICADOR != 0 and TERRITORIO in ('" + cadena_regiones + "') group by ETAPA;";
             System.out.println(sql);
             s.rs = s.st.executeQuery(sql);
             List<Asignacion> asignacion = new ArrayList<Asignacion>();
             while (s.rs.next()) {
                 Asignacion c = new Asignacion();
                 // ESTOS SON LOS ENCABEZADOS DE LA COLUMNA DE LA TABLA EN MYSQL
-                c.setId_asignacion(s.rs.getInt("id_asignacion"));
-                c.setAsignacion(s.rs.getString("asignacion"));
+                c.setAsignacion(s.rs.getString("ETAPA"));
                 asignacion.add(c);
             }
 
@@ -1132,8 +1131,8 @@ public class AsignacionDao {
             // CUEPRO DE LA TABLA
             for (Asignacion c : asignacion) {
                 renglones += ""
-                        + "<input type='checkbox' id='" + c.getId_asignacion() + "' class='check_asignacion' />"
-                        + "<label for='" + c.getId_asignacion() + "'>" + c.getAsignacion() + "</label>";
+                        + "<input type='checkbox' id='" + c.getAsignacion() + "' class='check_asignacion' />"
+                        + "<label for='" + c.getAsignacion() + "'>" + c.getAsignacion() + "</label>";
             }
 
             s.rs.close();
@@ -1144,20 +1143,23 @@ public class AsignacionDao {
             return "SQL COde:" + ex;
         }
     }
+
     //==========================================================================
-	 public static String select_ciudades_asignaciones_check(String cadena_asignaciones, int region ) {
+    public static String select_ciudades_asignaciones_check(String cadena_asignaciones, String region) {
         try {
             StartConn s = new StartConn();
             String renglones;
             // SOLO LAS CUENTAS ACTIVAS, YA QUE ES PARA GENERAR EL ARCHIVO DE SMS (Y SOLO SE TOCA LO ACTIVO)
-            String sql = "select distinct(columna32) as ciudad from arcade_basegeneral where id_asignacion in ('" + cadena_asignaciones + "') "+ (region == 1 ? "and columna35='N L'":"" ) +" and f_active = 1  order by columna32 ;";
+            String sql = "select POBLACION_CTE, count(id_cuenta) as cuentas from azteca_base_genenral_original where IDENTIFICADOR != 0 "
+                    + "and TERRITORIO in ('" + region + "') and ETAPA in (" + cadena_asignaciones + ") "
+                    + "and length(POBLACION_CTE) > 4 group by POBLACION_CTE having cuentas > 500;";
             System.out.println(sql);
             s.rs = s.st.executeQuery(sql);
             List<Asignacion> asignacion = new ArrayList<Asignacion>();
             while (s.rs.next()) {
                 Asignacion c = new Asignacion();
                 // ESTOS SON LOS ENCABEZADOS DE LA COLUMNA DE LA TABLA EN MYSQL
-                c.setCiudad(s.rs.getString("ciudad"));
+                c.setCiudad(s.rs.getString("POBLACION_CTE"));
                 asignacion.add(c);
             }
 
@@ -1225,14 +1227,16 @@ public class AsignacionDao {
             StartConn s = new StartConn();
             String renglones;
             // SOLO LAS CUENTAS ACTIVAS, YA QUE ES PARA GENERAR EL ARCHIVO DE SMS (Y SOLO SE TOCA LO ACTIVO)
-            String sql = "select distinct(columna36) as cp from arcade_basegeneral where id_asignacion in (" + cadena_asignaciones + ") and columna32 in ( " + cadena_ciudades + " ) order by columna36 ;";
+            String sql = "select POBLACION_CTE from azteca_base_genenral_original \n"
+                    + "where IDENTIFICADOR != 0 and TERRITORIO in ('NORTE') \n"
+                    + "and ETAPA in ('EXTRAJUDICIAL') and length(POBLACION_CTE) > 4 group by POBLACION_CTE;";
             System.out.println(sql);
             s.rs = s.st.executeQuery(sql);
             List<Asignacion> asignacion = new ArrayList<Asignacion>();
             while (s.rs.next()) {
                 Asignacion c = new Asignacion();
                 // ESTOS SON LOS ENCABEZADOS DE LA COLUMNA DE LA TABLA EN MYSQL
-                c.setCp(s.rs.getString("cp"));
+                c.setCp(s.rs.getString("COLONIA_CTE"));
                 asignacion.add(c);
             }
 
@@ -1266,18 +1270,16 @@ public class AsignacionDao {
             //A QUI DE REMPLAZA LA PREFIJO "_C" POR EL VALOR DE NADA PARA QUE SE PUEDA EFECTUAR LA CONSULTA
             String n_cadena_colonias;
             n_cadena_colonias = cadena_colonias.replace("_C", "");
-            System.out.println("CADENA QUE SE MANDA A LA BASE DE DATOS: "+n_cadena_colonias);
-            
-            
-            
-            String sql ="select distinct \n"
-                +"  ultimo_estatus_cuenta as id_status, \n"
-                +"  nombre_estatus_cuenta(ultimo_estatus_cuenta) as estatus \n"
-                +"from arcade_basegeneral where \n"
-                +"  id_asignacion in ("+cadena_asignaciones+") \n"
-                +"  and  columna33 in ("+n_cadena_colonias+") \n"
-                +"  and columna36 in ("+cadena_codigos+") \n"
-                +"order by ultimo_estatus_cuenta;";
+            System.out.println("CADENA QUE SE MANDA A LA BASE DE DATOS: " + n_cadena_colonias);
+
+            String sql = "select distinct \n"
+                    + "  ultimo_estatus_cuenta as id_status, \n"
+                    + "  nombre_estatus_cuenta(ultimo_estatus_cuenta) as estatus \n"
+                    + "from arcade_basegeneral where \n"
+                    + "  id_asignacion in (" + cadena_asignaciones + ") \n"
+                    + "  and  columna33 in (" + n_cadena_colonias + ") \n"
+                    + "  and columna36 in (" + cadena_codigos + ") \n"
+                    + "order by ultimo_estatus_cuenta;";
             System.out.println(sql);
             s.rs = s.st.executeQuery(sql);
             List<Asignacion> asignacion = new ArrayList<Asignacion>();
@@ -1296,7 +1298,7 @@ public class AsignacionDao {
             // CUEPRO DE LA TABLA
             for (Asignacion c : asignacion) {
                 renglones += ""
-                        + "<input type='checkbox' id='" +c.getId_estatus_llamada()+ "' class='check_lada'/>"
+                        + "<input type='checkbox' id='" + c.getId_estatus_llamada() + "' class='check_lada'/>"
                         + "<label for='" + c.getId_estatus_llamada() + "'>" + c.getUltimo_estatus_cuenta() + "</label><br>";
             }
 
@@ -1313,13 +1315,13 @@ public class AsignacionDao {
     public static String select_datos_visitas(int id_region, String cadena_asignaciones, String cadena_ciudades, String cadena_colonias, String cadena_codigos, String cadena_ladas, int resto) {
         try {
             StartConn s = new StartConn();
-            
+
             //SE HISO UNA MODIFICACION PARA QUE EL ID de cada check_box NO SE REPIRIERA EN EL FRONT END 
             //sE LE AGREGO UN PREFIJO "_C" AL NOMBRE DE LAS COLONIAS PARA QUE NO SE REPITIERAN Y CAUSARAN EL BUG
             //A QUI DE REMPLAZA LA PREFIJO "_C" POR EL VALOR DE NADA PARA QUE SE PUEDA EFECTUAR LA CONSULTA
             String n_cadena_colonias;
             n_cadena_colonias = cadena_colonias.replace("_C", "");
-            
+
             String sql = "select \n"
                     + "nombre_region(a.id_region) as id_region, \n"
                     + "nombre_asignacion(a.id_asignacion) as id_asignacion, \n"
@@ -1381,7 +1383,7 @@ public class AsignacionDao {
 
             // CUEPRO DE LA TABLA
             for (Asignacion c : asignacion) {
-                filas ++;
+                filas++;
                 renglones += ""
                         + "<tr class='cuenta' id='" + c.getCuenta() + "'>"
                         + "<td style='text-align:center;border:solid 1px;'> <a href='#'><i id='print_carteo' class='material-icons print_carteo'>print</i></a> </td>"
@@ -1412,16 +1414,16 @@ public class AsignacionDao {
     }
 
     //==========================================================================
-    public static String select_datos_carteo_tabla(int id_region, int id_asignacion, String cadena_ciudades, String cadena_colonias, String cadena_codigos) {  
+    public static String select_datos_carteo_tabla(int id_region, int id_asignacion, String cadena_ciudades, String cadena_colonias, String cadena_codigos) {
         try {
             StartConn s = new StartConn();
-            
+
             //SE HISO UNA MODIFICACION PARA QUE EL ID de cada check_box NO SE REPIRIERA EN EL FRONT END 
             //sE LE AGREGO UN PREFIJO "_C" AL NOMBRE DE LAS COLONIAS PARA QUE NO SE REPITIERAN Y CAUSARAN EL BUG
             //A QUI DE REMPLAZA LA PREFIJO "_C" POR EL VALOR DE NADA PARA QUE SE PUEDA EFECTUAR LA CONSULTA
             String n_cadena_colonias;
             n_cadena_colonias = cadena_colonias.replace("_C", "");
-            
+
             String sql = "select \n"
                     + "	nombre_region(a.id_region) as region, \n"
                     + "	nombre_asignacion(a.id_asignacion) as asignacion, \n"
@@ -1435,11 +1437,11 @@ public class AsignacionDao {
                     + "    on a.columna1 = b.cuenta\n"
                     + "where b.cuenta is null\n"
                     + "	AND a.f_active = 1 \n"
-                    + "	and a.id_region = "+id_region+" \n"
-                    + "	and a.id_asignacion in ("+id_asignacion+") \n"
-                    + "	and a.columna32 in ("+cadena_ciudades+") \n"
-                    + "	and a.columna33 in ("+n_cadena_colonias+") \n"
-                    + "	and a.columna36 in ("+cadena_codigos+"); \n";
+                    + "	and a.id_region = " + id_region + " \n"
+                    + "	and a.id_asignacion in (" + id_asignacion + ") \n"
+                    + "	and a.columna32 in (" + cadena_ciudades + ") \n"
+                    + "	and a.columna33 in (" + n_cadena_colonias + ") \n"
+                    + "	and a.columna36 in (" + cadena_codigos + "); \n";
             String renglones;
             System.out.println(sql);
             s.rs = s.st.executeQuery(sql);

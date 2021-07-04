@@ -332,7 +332,7 @@ public class ManageAsignacion extends HttpServlet {
 		else if ("select_ciudades_asignaciones_check".equals(accion)) {
             String renglones = AsignacionDao.select_ciudades_asignaciones_check(
                     request.getParameter("cadena_asignaciones"),
-                    Integer.parseInt(request.getParameter("region"))
+                    request.getParameter("region")
             );
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();

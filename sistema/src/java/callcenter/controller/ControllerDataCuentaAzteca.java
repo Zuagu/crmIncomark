@@ -240,6 +240,60 @@ public class ControllerDataCuentaAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        } else if (action.equals("enviar_numero_ivr")) {
+            String Respuesta = ModelDataCuentaAzteca.enviar_numero_ivr(
+                    request.getParameter("numero"),
+                    request.getParameter("num_cliente"),
+                    request.getParameter("id_cuenta"),
+                    request.getParameter("nombre_cliente"),
+                    request.getParameter("id_gestor")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("select_solicitud_ivr")) {
+            String Respuesta = ModelDataCuentaAzteca.select_solicitud_ivr(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta"),
+                    request.getParameter("etapa"),
+                    request.getParameter("territorio")
+                    
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("idenitificar_ivr_descargados")) {
+            String Respuesta = ModelDataCuentaAzteca.idenitificar_ivr_descargados(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta"),
+                    request.getParameter("etapa"),
+                    request.getParameter("territorio")
+                    
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
+        } else if (action.equals("reportar_tiket_pago")) {
+            String Respuesta = ModelDataCuentaAzteca.reportar_tiket_pago(
+                    request.getParameter("rp_cliente_unico"),
+                    request.getParameter("rp_id_tiket"),
+                    request.getParameter("rp_monto_tiket"),
+                    request.getParameter("rp_fecha_pago"),
+                    request.getParameter("rp_tipo_pago"),
+                    request.getParameter("rp_id_usuario")
+                    
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
 
     }

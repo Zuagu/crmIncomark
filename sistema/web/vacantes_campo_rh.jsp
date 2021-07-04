@@ -20,6 +20,10 @@
                 border-radius: 3px;
             }
             .dt {
+                width: 95rem;
+                
+            }
+            #promesado_diario_org {
                 overflow: auto;
                 height: 70vh;
             }
@@ -36,6 +40,7 @@
             }
             td {
                 font-size: 13px;
+                
             }
             .margin_top_btn {
                 margin-top: 20px;
@@ -53,6 +58,14 @@
             #tbody_actual {
                 border: 1px solid grey;
             }
+            .tb_requerido {
+                display: initial;
+                width: 660px;
+            }
+            .tb_actual, .tb_faltante {
+                display: initial;
+                width: 200px;
+            }
         </style>
     </head>
     <body>
@@ -66,26 +79,27 @@
                     <div id="test-swipe-0" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
                             <div class="col s10 hide_print">
-                                <div class="input-field col s3" >
+                                <div class="input-field col s12 m3" >
                                     <select id="territorio_visitas" multiple type="text"></select>
                                     <label for="territorio_visitas">Territorio</label>
                                 </div>
-                                <div class="input-field col s3" >
+                                <div class="input-field col s12 m3" >
                                     <select id="etapa_visitas" multiple type="text"></select>
                                     <label for="etapa_visitas">Etapa</label>
                                 </div>
                                 <input id="tipo" type="hidden" value="vacantes_visitador_rh">
-                                <a id="getTableRequerimentos" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
+                                <a id="getTableRequerimentosRH" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
+                                
                             </div>
-                            <div id="promesado_diario_org" class="col s12 m12 l12">
-                                <div id="datos_tabla_promesado_diario_org" class="z-depth-2 dt">
+                            <div id="promesado_diario_org" class="z-depth-2 col s12 m12 l12">
+                                <div id="datos_tabla_promesado_diario_org" class="dt">
                                     <div id="cargando_datos" class="progress">
                                         <div class="indeterminate"></div>
                                     </div>
-                                    <table class="highlight col s12 m6 l6 center">
+                                    <table id="requerido" class="highlight centered tb_requerido">
                                         <thead>
-                                            <tr class="lime lighten-5">
+                                            <tr class="lime lighten-4">
                                                 <th>ESTADO</th>
                                                 <th>LOCALIDAD</th>
                                                 <th>CARTERO</th>
@@ -98,9 +112,9 @@
                                         </tbody>
                                     </table>
                                     
-                                    <table class="highlight col s12 m3 l3 center">
+                                    <table class="highlight centered tb_actual">
                                         <thead>
-                                            <tr class="green lighten-5">
+                                            <tr class="green lighten-4">
                                                 <!--<th>LOCALIDAD</th>-->
                                                 <th>CARTERO</th>
                                                 <th>NOTIFICADOR</th>
@@ -112,9 +126,9 @@
                                         </tbody>
                                     </table>
                                     
-                                    <table class="highlight col s12 m3 l3 center">
+                                    <table class="highlight centered tb_faltante">
                                         <thead>
-                                            <tr class="red lighten-5">
+                                            <tr class="red lighten-4">
                                                 <!--<th>LOCALIDAD</th>-->
                                                 <th>CARTERO</th>
                                                 <th>NOTIFICADOR</th>
@@ -127,7 +141,9 @@
                                     </table>
                                     
                                 </div>
-                                <div class="col s12 m4 l4">
+                                
+                            </div>
+                            <div class="col s12 m4 l4 hide">
                                     <table class="highlight col s12">
                                         <thead>
                                             <tr>
@@ -142,14 +158,11 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div> 
-
-
 
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>

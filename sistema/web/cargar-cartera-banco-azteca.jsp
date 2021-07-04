@@ -34,56 +34,6 @@
 
         <div class="row">
             <div class="col s12 m12 l12">
-                <div class="col s12 m12 l12">
-
-                    <div class="encabezados_csv center-align hide">
-                        <h4>Encabezados del archivo CSV</h4>
-                        <span>cliente_id</span>
-                        <span>PLAN</span>
-                        <span>STATUS</span> 
-                        <span>GRUPO</span> 
-                        <span>NOMBRE</span>
-                        <span>EDAD</span>
-                        <span>RANGO_DE_EDAD</span>
-                        <span>ATRASO_MAXIMO</span>
-                        <span>ETAPA</span>
-                        <span>SCORE</span>
-                        <span>SALDO</span> 
-                        <span>RANGO</span> 
-                        <span>MORATORIOS</span> 
-                        <span>SALDO_TOTAL</span> 
-                        <span>ZONA</span> 
-                        <span>REGION</span>
-                        <span>GERENCIA</span>
-                        <span>DIA_DE_PAGO</span>
-                        <span>PRODUCTO</span>
-                        <span>MICRO</span>
-                        <span>ITALIKA</span>
-                        <span>CANAL</span>
-                        <span>FECHA_PAGO</span>
-                        <span>ANO_PAGO</span>
-                        <span>IMPORTE</span>
-                        <span>AVAL</span>
-                        <span>NOMBRE_AVAL</span>
-                        <span>MIGRADO_A_CYBER</span>
-                        <span>CUADRANTE</span>
-                        <span>ZONA_GEO</span>
-                        <span>RFC</span>
-                        <span>TEL_AVAL</span>
-                        <span>TIPO_TEL_AVAL</span>
-                        <span>TEL1</span>
-                        <span>TIPO1</span>
-                        <span>TEL2</span>
-                        <span>TIPO2</span>
-                        <span>TEL3</span>
-                        <span>TIPO3</span>
-                        <span>TEL4</span>
-                        <span>TIPO4</span>
-                        <span>FECHA_INICIO</span>
-                        <span>FECHA_RETIRO</span>
-                        <span>FECHA_REINGRESO</span>
-                    </div>
-                </div>
                 <div class="col s4 m4 l4 offset-l4 offset-m4 z-depth-2">
                     <form method="POST" action="ControllerUploadFiles" enctype="multipart/form-data">
                         <div class="col s12 m12 l12">
@@ -98,11 +48,34 @@
                                 <input class="file-path validate" type="text">
                             </div>  
                             <div class="col s4 m14 l14 offset-l4 offset-m4 input-field">
-                                <button class="btn waves-effect waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
+                                <button class="btn waves-effect blue-grey waves-purple" type="submit" name="action">Cargar<i class="material-icons right">send</i></button>
                             </div>
                         </div>
                     </form>
                 </div>
+                <div class="col s12 m10 l10 offset-l1 offset-m1 z-depth-1">
+                    <div class="col s12 m4 l4">
+                        <h5>Archivos Actuales</h5>
+                        <a id="getArchivos" class="btn">ver archivos</a>
+                    </div>
+                    
+                    <div class="col s12 m8 l8 collection">
+                        <h5>Eliminar Archivos</h5>
+                        <div id="div_lista_archivos" class="collection">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="col s12 m12 l12 input-field">
+                        <h5>Procesar Archivos</h5>
+                        <a id="procesarArchivos" class="btn">Procesar archivos</a>
+                        <div id="consola_error">
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
 
             </div>
         </div>
@@ -111,5 +84,86 @@
         <script type="text/javascript" src="js/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/js/menu.js"></script>
+        <script>
+            window.onload = function () {
+                lista_archivos();
+            };
+            function lista_archivos() {
+                let params = {
+                    action: 'lista_archivos'
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "ControllerProcesarCartera",
+                    data: params,
+                    dataType: "json",
+                    success: function (response) {
+                        console.log("Response de lista_archivos: ", response);
+                        $("#div_lista_archivos").empty();
+                        for (let row of response) {
+                            if ( row.split('.').length === 2 ) {
+                                $("#div_lista_archivos").append('<a class="collection-item">' + row + '</a>');
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+            
+            function eliminar_archivo(_nombre_archivo) {
+                let params = {
+                    action: 'eliminar_archivo',
+                    nombre_archivo: _nombre_archivo
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "ControllerProcesarCartera",
+                    data: params,
+                    dataType: "json",
+                    success: function (response) {
+                        window.alert(response.message);
+                        lista_archivos();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+            
+            function procesar_cartera() {
+                let params = {
+                    action: 'procesar_cartera'
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "ControllerProcesarCartera",
+                    data: params,
+                    dataType: "html",
+                    success: function (response) {
+                        console.log(response);
+                         $("#consola_error").empty();
+                         $("#consola_error").append(response);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+            $("#getArchivos").click(function () {
+                lista_archivos();
+            });
+
+            $("#div_lista_archivos").on('click', '.collection-item', function () {
+                eliminar_archivo( $(this).text() );
+                window.alert( $(this).text() );
+            });
+            
+            $("#procesarArchivos").click(function () {
+                procesar_cartera();
+            });
+        </script>
     </body>
 </html>

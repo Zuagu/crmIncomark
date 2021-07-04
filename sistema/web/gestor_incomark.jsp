@@ -228,6 +228,7 @@
                                             <th>NOMBRE</th>
                                             <th>TIPO</th>
                                             <th>TELEFONO</th>
+                                            <th class="center-align">IVR</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody_telefonos">
@@ -470,6 +471,49 @@
 
                 </div>
             </div>
+
+
+            <div id="reportar_pago" class="modal scale-transition">
+                <div id="div_reportar_pago" class="modal-content col s12 m10 l10 offset-l1 offset-m1">
+                    <h3 class="center">Reportar Pago</h3>
+                    <h6 id="alerta_reportar_pago" class="center"></h6>
+
+                    <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
+                        <input id="rp_cliente_unico" type="text" readonly placeholder="N#" class="validate">
+                        <label for="rp_cliente_unico">Cliente Unico</label>
+                    </div>
+                    <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
+                        <input id="rp_id_tiket" type="text" placeholder="N#" class="validate">
+                        <label for="rp_id_tiket">N# Folio Pago</label>
+                    </div>
+                    <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
+                        <input id="rp_monto_tiket" type="text" placeholder="$ 0.00" class="validate">
+                        <label for="rp_monto_tiket">Monto Ticket</label>
+                    </div>
+                    <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
+                        <input id="rp_fecha_pago" type="text" class="datepicker" placeholder="AAAA-MM-DD">
+                        <label for="rp_fecha_pago">Fecha Pago</label>
+                    </div>
+                    <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
+                        <select id="rp_tipo_pago">
+                            <option value="25">PROMESA DE PAGO</option>
+                            <option value="19">LIQUIDACION</option>
+                            <option value="22">RECURRENTE</option>
+                            <option value="23">PAGO PARCIAL</option>
+                            <option value="24">PAGO INICIAL</option>
+                        </select>
+                        <label for="rp_tipo_pago">Tipo Pago</label>
+                    </div>
+                    <div class="col s12 m8 l8 offset-m2 offset-l2 center">
+                        <a class="col s12 m4 l4 red btn accent-2 waves-effect waves-light modal-close">Cancelar</a>
+                        <a id="enviar_reporte_pago" class="col s12 m4 l4 offset-l4 offset-m4 blue btn white-text darken-4 waves-effect waves-light">Resgistrar Pago</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+
             <div id="modal_convenio" class="modal scale-transition">
                 <div class="modal-content">
                     <h3 class="center">Generar Convenio</h3>
@@ -562,10 +606,10 @@
                     </div>
                 </div>
             </div>
-            <div id="modal_alerta" class="modal">
+            <div id="modal_alerta" class="modal col s12 m6 l6 offset-m3 offset-l3">
                 <div class="modal-content">
-                    <h3 class="center">Alerta</h3>
-                    <h5 id="mensaje_alerta" class="mensaje_alerta">
+                    <h3 class="center">...</h3>
+                    <h5 id="mensaje_alerta" class="mensaje_alerta center">
 
                     </h5>
                 </div>

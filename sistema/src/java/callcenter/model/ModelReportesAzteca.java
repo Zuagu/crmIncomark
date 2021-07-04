@@ -212,6 +212,9 @@ public class ModelReportesAzteca {
                 objGestion.put("PROMESA", ic.rs.getString("PROMESA"));
                 objGestion.put("F_PREDICTIVO", ic.rs.getString("F_PREDICTIVO"));
                 objGestion.put("ETAPA", ic.rs.getString("ETAPA"));
+                objGestion.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objGestion.put("GERENTE", ic.rs.getString("GERENTE"));
+                objGestion.put("GERENCIA", ic.rs.getString("GERENCIA"));
                 listGestiones.add(objGestion);
             }
             ic.rs.close();
@@ -270,6 +273,10 @@ public class ModelReportesAzteca {
             fw.append("F_PREDICTIVO");
             fw.append(',');
             fw.append("ETAPA");
+            fw.append(',');
+            fw.append("GERENCIA");
+            fw.append(',');
+            fw.append("GERENTE");
             fw.append('\n');
 
             while (ic.rs.next()) {
@@ -307,6 +314,10 @@ public class ModelReportesAzteca {
                 fw.append(ic.rs.getString("F_PREDICTIVO").replace("\n", ""));
                 fw.append(',');
                 fw.append(ic.rs.getString("ETAPA").replace("\n", ""));
+                fw.append(',');
+                fw.append(ic.rs.getString("GERENCIA").replace("\n", ""));
+                fw.append(',');
+                fw.append(ic.rs.getString("GERENTE").replace("\n", ""));
                 fw.append('\n');
             }
 
@@ -1103,17 +1114,18 @@ public class ModelReportesAzteca {
                     + "    format(count( distinct(g.cuenta)) ,0) as cuentas,\n"
                     + "    format(ifnull((sum(g.id_estatus_llamada in (12,13,16,17,18,19,21,22,23,24,25,28)) /\n"
                     + "    sum(g.id_estatus_llamada in (19,22,23,24,25,12,13,9,16,27,28,30,6,29,26,21,20,17,18,15,11,3,4,8,10,7,5,2,1)) * 100),0.00), 2) as contacto,\n"
-                    + "	ifnull(promesado_por_gestor(g.ID_USUARIO, '"+desde+"','"+hasta+"'), 0.00) as promesado,\n"
-                    + "	sum(1) as total_general, datediff('"+hasta+"','"+desde+"') + 1 as dias, \n"
+                    + "	ifnull(promesado_por_gestor(g.ID_USUARIO, '" + desde + "','" + hasta + "'), 0.00) as promesado,\n"
+                    + "	ifnull(pagado_por_gestor(g.ID_USUARIO, '" + desde + "','" + hasta + "'), 0.00) as pagado,\n"
+                    + "	sum(1) as total_general, datediff('" + hasta + "','" + desde + "') + 1 as dias, \n"
                     + "    'dato' as color\n"
                     + "    -- concat('$',format(promesado_gestor(id_asignacion, id_gestor, _desde, _hasta),2)) as promesado\n"
                     + "from\n"
                     + "	azteca_gestiones g\n"
                     + "left join azteca_base_genenral_original b on b.CLIENTE_UNICO = g.CUENTA\n"
                     + "where \n"
-                    + "IF ( concat("+territorio+") = '0', g.TERRITORIO LIKE '%%' ,  g.TERRITORIO in ("+territorio+") )\n"
-                    + "and IF ( concat("+etapa+") = '0', b.ETAPA LIKE '%%' , b.ETAPA in ("+etapa+") )\n"
-                    + "AND date(g.FECHA_LARGA) between '"+desde+"' and '"+hasta+"' \n"
+                    + "IF ( concat(" + territorio + ") = '0', g.TERRITORIO LIKE '%%' ,  g.TERRITORIO in (" + territorio + ") )\n"
+                    + "and IF ( concat(" + etapa + ") = '0', b.ETAPA LIKE '%%' , b.ETAPA in (" + etapa + ") )\n"
+                    + "AND date(g.FECHA_LARGA) between '" + desde + "' and '" + hasta + "' \n"
                     + "-- and id_region = _id_region\n"
                     + "and g.ID_USUARIO != '1'\n"
                     + "group by g.ID_USUARIO ;";
@@ -1147,6 +1159,7 @@ public class ModelReportesAzteca {
                 objUsuario.put("SG", ic.rs.getString("SG"));
                 objUsuario.put("contacto", ic.rs.getString("contacto"));
                 objUsuario.put("promesado", ic.rs.getString("promesado"));
+                objUsuario.put("pagado", ic.rs.getString("pagado"));
                 objUsuario.put("suma", ic.rs.getString("suma"));
                 objUsuario.put("cuentas", ic.rs.getString("cuentas"));
                 objUsuario.put("total_general", ic.rs.getString("total_general"));
@@ -1215,6 +1228,51 @@ public class ModelReportesAzteca {
             ic.conn.close();
 
             return usuarios.toJSONString();
+        } catch (SQLException e) {
+            return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
+        }
+
+    }
+
+    public static String reporte_tickets_pagos(String desde, String hasta, String territrio, String etapa) {
+        try {
+
+            StartConexion ic = new StartConexion();
+            String sql = "select rp.CLIENTE_UNICO,\n"
+                    + "rp.ID_TICKET,\n"
+                    + "rp.MONTO_TICKET,\n"
+                    + "nombre_usuario(rp.ID_GESTOR) as GESTOR,\n"
+                    + "nombre_estatus_llamada_azteca(rp.TIPO_PAGO) as TIPO_PAGO,\n"
+                    + "rp.FECHA_TICKET,\n"
+                    + "b.ETAPA,\n"
+                    + "b.TERRITORIO, b.GERENTE\n"
+                    + "from azteca_reporte_pagos rp\n"
+                    + "left join azteca_base_genenral_original b on b.CLIENTE_UNICO = rp.CLIENTE_UNICO\n"
+                    + "where if('" + desde + "' = '0' or '" + hasta + "' = '0', rp.FECHA_TICKET = curdate(), rp.FECHA_TICKET between '" + desde + "' and '" + hasta + "' )\n"
+                    + "and if(concat(" + etapa + ") = '0', b.ETAPA like '%%', b.ETAPA in (" + etapa + ") )\n"
+                    + "and if(concat(" + territrio + ") = '0', b.TERRITORIO like '%%', b.TERRITORIO in (" + territrio + ") );";
+            System.out.println(sql);
+            ic.rs = ic.st.executeQuery(sql);
+            JSONArray listTicket = new JSONArray();
+            // , CLIENTE_UNICO, , , , , , ETAPA, 
+            while (ic.rs.next()) {
+                JSONObject objticket = new JSONObject();
+                objticket.put("CLIENTE_UNICO", ic.rs.getString("CLIENTE_UNICO"));
+                objticket.put("ID_TICKET", ic.rs.getString("ID_TICKET"));
+                objticket.put("MONTO_TICKET", ic.rs.getString("MONTO_TICKET"));
+                objticket.put("GESTOR", ic.rs.getString("GESTOR"));
+                objticket.put("TIPO_PAGO", ic.rs.getString("TIPO_PAGO"));
+                objticket.put("FECHA_TICKET", ic.rs.getString("FECHA_TICKET"));
+                objticket.put("ETAPA", ic.rs.getString("ETAPA"));
+                objticket.put("TERRITORIO", ic.rs.getString("TERRITORIO"));
+                objticket.put("GERENTE", ic.rs.getString("GERENTE"));
+                listTicket.add(objticket);
+            }
+            ic.rs.close();
+            ic.st.close();
+            ic.conn.close();
+
+            return listTicket.toJSONString();
         } catch (SQLException e) {
             return "SQL: Error al traer los datos de la cuenta azteca Code Error: " + e;
         }

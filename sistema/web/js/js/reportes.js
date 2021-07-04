@@ -239,6 +239,8 @@ function reporte_gestiones_tabla() {
                     <td>${item.PROMESA}</td>
                     <td>${item.F_PREDICTIVO}</td>
                     <td>${item.ETAPA}</td>
+                    <td>${item.GERENCIA}</td>
+                    <td>${item.GERENTE}</td>
                     </tr>`);
                 cantidad = cantidad + 1;
             }
@@ -498,6 +500,15 @@ function downloadDataUrlFromJavascript(filename, dataUrl) {
 }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $("#descarga_directa_lista_gestion").click(function () {
+    
+    let a = {
+            action: "reporte_gestiones_descarga",
+            desde: $('#desde_gestiones').val(),
+            hasta: $('#hasta_gestiones').val(),
+            territorio: $('#id_ter_gestion').val(),
+            id_despacho: $('#id_etapa_gestion').val()
+        };
+        console.log(a);
     $.ajax({
         type: "POST",
         url: "ControllerReportesAzteca",
@@ -506,7 +517,7 @@ $("#descarga_directa_lista_gestion").click(function () {
             desde: $('#desde_gestiones').val(),
             hasta: $('#hasta_gestiones').val(),
             territorio: $('#id_ter_gestion').val(),
-            id_despacho: $('#id_ter_gestion').val()
+            id_despacho: $('#id_etapa_gestion').val()
         },
         dataType: "json",
         success: function (response) {

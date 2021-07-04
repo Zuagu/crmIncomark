@@ -116,7 +116,7 @@ function select_reporte_llamadas() {
                 <td class="center">${item.contacto} %</td>
                 <td class="${ (parseFloat(item.promesado) > (8000 * parseFloat(item.dias)) ? 'green accent-2' : (parseFloat(item.promesado) > (5000 * parseFloat(item.dias)) && parseFloat(item.promesado) < (8000 * parseFloat(item.dias)) ? 'yellow lighten-4' : 'red accent-1')) }" >$${item.promesado}</td>
                 <td class="hide">${item.promesado}</td>
-                
+                <td class="center">${item.pagado}</td>
                 </tr>`);
             }
             sortTable(25, 'int');

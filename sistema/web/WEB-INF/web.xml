@@ -404,6 +404,10 @@
         <servlet-name>ControllerSucursales</servlet-name>
         <servlet-class>callcenter.controller.ControllerSucursales</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerProcesarCartera</servlet-name>
+        <servlet-class>callcenter.controller.ControllerProcesarCartera</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManageCategorias</servlet-name>
         <url-pattern>/ManageCategorias</url-pattern>
@@ -795,6 +799,10 @@
     <servlet-mapping>
         <servlet-name>ControllerSucursales</servlet-name>
         <url-pattern>/ControllerSucursales</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerProcesarCartera</servlet-name>
+        <url-pattern>/ControllerProcesarCartera</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

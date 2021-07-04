@@ -103,18 +103,17 @@ public class RegionDao {
     public static String select_region_combo(int id_cliente) {
         try {
             StartConn s = new StartConn();
-            String sql = "call arcade_select_region('" + id_cliente + "');";
+            String sql = "select TERRITORIO from azteca_base_genenral_original where IDENTIFICADOR != 0 group by TERRITORIO;;";
             String renglones = "";
             s.rs = s.st.executeQuery(sql);
             List<Region> region = new ArrayList<Region>();
             while (s.rs.next()) {
                 Region e = new Region();
-                e.setId_region(s.rs.getInt("id_region"));
-                e.setRegion(s.rs.getString("region"));
+                e.setRegion(s.rs.getString("TERRITORIO"));
                 region.add(e);
             }
             for (Region c : region) {
-                renglones += "<option value='" + c.getId_region() + "'>" + c.getRegion() + "</option>";
+                renglones += "<option value='" +  c.getRegion() + "'>" + c.getRegion() + "</option>";
             }
             s.rs.close();
             s.st.close();

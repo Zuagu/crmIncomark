@@ -72,6 +72,7 @@
                                     <select id="etapa_visitas" multiple type="text"></select>
                                     <label for="etapa_visitas">Etapa</label>
                                 </div>
+                                <input id="tipo" type="hidden" value="vacantes_visitador">
                                 <a id="getTableRequerimentos" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
                                 <a onclick="tableToExcel('datos_tabla_promesado_diario_org', 'PROMESADO DIARIO')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>

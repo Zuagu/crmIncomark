@@ -246,6 +246,18 @@ public class ControllerReportesAzteca extends HttpServlet {
             writer.print(Respuesta);
             writer.flush();
             writer.close();
+        } else if (action.equals("reporte_tickets_pagos")) {
+            String Respuesta = ModelReportesAzteca.reporte_tickets_pagos(
+                    request.getParameter("desde"),
+                    request.getParameter("hasta"),
+                    request.getParameter("territorio"),
+                    request.getParameter("etapa")
+            );
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.print(Respuesta);
+            writer.flush();
+            writer.close();
         }
     }
 

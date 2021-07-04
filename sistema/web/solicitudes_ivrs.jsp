@@ -61,35 +61,50 @@
 
         <div class="row">
             <div class="col s12 m12 l12">
-                <div class=""><h5>VACANTES DE CAMPO</h5></div>
+                
                 <div class="col s12 m12 l12">
                     <div id="test-swipe-0" class="col s12" style="margin-top:10px;"> 
                         <div class="row">
-                            <div class="col s10 hide_print">
-                                <div class="input-field col s3" >
-                                    <select id="territorio_ivr" multiple type="text"></select>
-                                    <label for="territorio_ivr">Territorio</label>
+                            <div class="col s12 m10 l10 offset-l1 offset-m1">
+                                <div class=""><h5>SOLICITUDES IVR</h5></div>
+                                <div class="input-field col s2" >
+                                    <select id="territorio_ivr" type="text" class="validate"></select>
+                                    <label for="territorio_ivr">TERRITORIO</label>
                                 </div>
-                                <div class="input-field col s3" >
-                                    <select id="etapa_ivr" multiple type="text"></select>
-                                    <label for="etapa_ivr">Etapa</label>
+                                
+                                <div class="input-field col s2" >
+                                    <select id="etapa_ivr" type="text" class="validate"></select>
+                                    <label for="etapa_ivr">ETAPA</label>
                                 </div>
+                                <div class="input-field col s2" >
+                                    <input id="desde_ivr" type="text" class="datepicker">
+                                    <label for="desde_ivr">DESDE</label>
+                                </div>
+                                <div class="input-field col s2" >
+                                    <input id="hasta_ivr" type="text" class="datepicker">
+                                    <label for="hasta_ivr">HASTA</label>
+                                </div>
+                                
+                                
                                 <input id="tipo" type="hidden" value="vacantes_visitador_rh">
                                 <a id="getTableivrs" class="waves-effect waves-light btn blue margin_top_btn"><i class="material-icons right">send</i>Consultar</a> 
-                                <a onclick="tableToExcel('datos_tabla_ivr', 'SOLICITUDES IVR')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
+                                <a id="descargar_tabla_ivrs" onclick="tableToExcel('datos_tabla_ivr', 'SOLICITUDES IVR')" class="waves-effect waves-light btn green margin_top_btn"><i class="material-icons right">explicit</i>Exportar</a> 
                             </div>
-                            <div id="ivr_diario" class="col s12 m12 l12">
-                                <div id="datos_tabla_promesado_diario_org" class="z-depth-2 dt">
+                            <div id="ivr_diario" class="col s12 m10 l01 offset-l1 offset-m1">
+                                <div id="datos_tabla_ivr" class="z-depth-2 dt">
                                     <div id="cargando_datos" class="progress">
                                         <div class="indeterminate"></div>
                                     </div>
-                                    <table class="highlight col s12 m6 l6 center">
+                                    <table class="highlight col s12 center">
                                         <thead>
-                                            <tr class="lime lighten-5">
+                                            <tr class="blue lighten-5">
                                                 <th>Id</th>
+                                                <th>Fecha Insert</th>
                                                 <th>Cliente Unico</th>
                                                 <th>Nombre</th>
                                                 <th>Telefono</th>
+                                                <th>Etapa</th>
+                                                <th>Territorio</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody_solicitud_ivr">

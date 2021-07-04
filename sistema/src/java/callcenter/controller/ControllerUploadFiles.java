@@ -66,8 +66,8 @@ public class ControllerUploadFiles extends HttpServlet {
                         fileName = new File(item.getName()).getName();
                         //System.out.println("paso por qui " + fileName );
 //                        filePath = uploadPath + File.separator + "webapps/sistema/excel/" + fileName;
-                        filePath = "/opt/tomcat/webapps/sistema/excel/" + fileName;
-//                        filePath = "C:\\\\Users\\\\Public\\\\" + fileName;
+//                        filePath = "/opt/tomcat/webapps/sistema/excel/" + fileName;
+                        filePath = "C:\\Users\\Public\\" + fileName;
                         
                         File storeFile = new File(filePath);
                         if (storeFile.delete()){
@@ -83,8 +83,8 @@ public class ControllerUploadFiles extends HttpServlet {
                 }
             }
             if(status_file) {
-                responseDb = ModelProcesadorCsv.cargar_base_azteca(filePath);
-                request.setAttribute("message_db", responseDb);
+//                responseDb = ModelProcesadorCsv.cargar_base_azteca(filePath);
+//                request.setAttribute("message_db", responseDb);
                 //System.out.println(responseDb);
             }
         } catch (Exception ex) {
